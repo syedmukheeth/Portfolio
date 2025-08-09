@@ -356,3 +356,9 @@
         padding: 60px 0;
     }
 }
+@media (max-width: 380px) {
+  #hero-name {
+    font-size: 1.5rem !important; /* This is 24px */
+    line-height: 1.25 !important;
+  }
+}
