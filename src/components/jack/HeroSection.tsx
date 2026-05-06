@@ -41,9 +41,9 @@ export const HeroSection = () => {
       </nav>
 
       {/* HERO HEADING (REFINED FOR CLARITY & RESPONSIVENESS) */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 px-4">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 px-6 md:px-12">
         <FadeIn delay={0.15} y={0} duration={1.2}>
-          <h1 className="hero-heading font-black uppercase tracking-[-0.05em] leading-none whitespace-nowrap text-[clamp(3rem,16vw,20rem)] opacity-100 select-none text-center">
+          <h1 className="hero-heading font-black uppercase tracking-[-0.05em] leading-none whitespace-nowrap text-[clamp(2rem,10.5vw,13rem)] opacity-100 select-none text-center">
             Syed Mukheeth
           </h1>
         </FadeIn>
