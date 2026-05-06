@@ -7,8 +7,10 @@ type Mode = "human" | "machine";
 interface ModeContextType {
   mode: Mode;
   isTransitioning: boolean;
+  isBooted: boolean;
   toggleMode: () => void;
   setMode: (mode: Mode) => void;
+  setIsBooted: (val: boolean) => void;
 }
 
 const ModeContext = createContext<ModeContextType | undefined>(undefined);
@@ -16,11 +18,13 @@ const ModeContext = createContext<ModeContextType | undefined>(undefined);
 export function ModeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setModeState] = useState<Mode>("human");
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isBooted, setIsBooted] = useState(false);
 
   useEffect(() => {
     const savedMode = localStorage.getItem("portfolio-mode") as Mode;
     if (savedMode) {
       setModeState(savedMode);
+      document.documentElement.setAttribute("data-mode", savedMode);
     }
   }, []);
 
@@ -49,8 +53,8 @@ export function ModeProvider({ children }: { children: React.ReactNode }) {
   }, [mode]);
 
   return (
-    <ModeContext.Provider value={{ mode, isTransitioning, toggleMode, setMode }}>
-      <div className={mode === "machine" ? "font-mono" : "font-kanit"}>
+    <ModeContext.Provider value={{ mode, isTransitioning, isBooted, toggleMode, setMode, setIsBooted }}>
+      <div className={mode === "machine" ? "mono" : ""}>
         {children}
       </div>
     </ModeContext.Provider>

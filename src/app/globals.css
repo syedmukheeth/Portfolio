@@ -1,26 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #0C0C0C;
-  --foreground: #D7E2EA;
+  --background: #000000;
+  --foreground: #FFFFFF;
   --accent: #FF4D00;
-  --font-kanit: 'Kanit', sans-serif;
+  --secondary: #888888;
+  --graphite: #050505;
+  --font-inter: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 [data-mode="machine"] {
-  --background: #0C0C0C;
+  --background: #000000;
   --foreground: #FF4D00;
   --accent: #FF4D00;
+  --secondary: #FF4D00;
 }
 
 html,
 body,
-#root,
-.font-kanit {
+#root {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-kanit);
+  font-family: var(--font-inter);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -41,21 +44,19 @@ body,
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
   transition: background 0.5s ease, filter 0.5s ease;
 }
 
 [data-mode="machine"] .hero-heading {
-  background: linear-gradient(180deg, #FF4D00 0%, #882A00 100%);
+  background: linear-gradient(180deg, #FF4D00 0%, #CC3D00 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 10px 30px rgba(255, 77, 0, 0.2));
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -63,9 +64,8 @@ body,
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -73,19 +73,42 @@ body,
 }
 
 .dot-grid {
-  background-image: radial-gradient(rgba(215, 226, 234, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  transition: background-image 0.5s ease;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 [data-mode="machine"] .dot-grid {
-  background-image: radial-gradient(rgba(255, 77, 0, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 77, 0, 0.05) 1px, transparent 1px);
+}
+
+.scanline {
+  width: 100%;
+  height: 100px;
+  z-index: 100;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.1;
+  position: absolute;
+  bottom: 100%;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { bottom: 100%; }
+  100% { bottom: -100px; }
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.topology-bg {
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
 }
 
 .mesh-grid {

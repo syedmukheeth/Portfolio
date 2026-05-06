@@ -45,6 +45,8 @@ const PROJECTS = LIB_PROJECTS.map((p, i) => {
   };
 });
 
+import { ProjectArchitecture } from "./ProjectArchitecture";
+
 export const ProjectsSection = () => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -55,19 +57,20 @@ export const ProjectsSection = () => {
   return (
     <section 
       ref={container} 
-      className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 pt-32 pb-20 relative z-30"
+      className="bg-black pt-32 pb-40 relative z-30"
     >
-      <div className="container max-w-6xl mx-auto px-4 mb-20">
-        <FadeIn delay={0} y={40}>
-          <h2 className="hero-heading font-black uppercase text-center text-[clamp(3rem,12vw,160px)]">
-            Systems
-          </h2>
+      <div className="container max-w-6xl mx-auto px-6 mb-32">
+        <FadeIn delay={0} y={40} className="flex flex-col items-center">
+           <span className="mono text-accent text-xs uppercase tracking-[0.6em] mb-4">Engineering Portfolio</span>
+           <h2 className="hero-heading font-black uppercase text-center text-[clamp(3rem,12vw,120px)] leading-none">
+             Systems
+           </h2>
         </FadeIn>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 flex flex-col gap-20 sm:gap-32 md:gap-40">
+      <div className="max-w-6xl mx-auto px-4 md:px-10 flex flex-col gap-32">
         {PROJECTS.map((project, i) => {
-          const targetScale = 1 - (PROJECTS.length - 1 - i) * 0.05;
+          const targetScale = 1 - (PROJECTS.length - 1 - i) * 0.03;
           return (
             <ProjectCard 
               key={project.id} 
@@ -95,110 +98,104 @@ const ProjectCard = ({
   const { mode } = useMode();
 
   return (
-    <div className="h-[85vh] flex items-center justify-center sticky top-24 md:top-32">
+    <div className="h-[90vh] flex items-center justify-center sticky top-20 md:top-24">
       <motion.div
         style={{ 
           scale,
-          top: `calc(-5vh + ${index * 25}px)`,
+          top: `calc(-2vh + ${index * 30}px)`,
         }}
-        className="relative h-full w-full bg-[#0C0C0C] border-2 border-[#D7E2EA] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-4 sm:p-6 md:p-8 flex flex-col gap-6 overflow-hidden shadow-2xl"
+        className="relative h-full w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group"
       >
-        {/* TOP ROW */}
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="flex items-center gap-6">
-            <span className="text-[#D7E2EA] font-black text-[clamp(2.5rem,8vw,100px)] leading-none opacity-20">
+        {/* Background Accent */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_100%_0%,rgba(255,77,0,0.03)_0%,transparent_70%)] pointer-events-none" />
+
+        {/* HEADER SECTION */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 relative z-10">
+          <div className="flex items-start gap-8">
+            <span className="mono text-white/5 font-bold text-7xl md:text-9xl leading-none select-none">
               0{index + 1}
             </span>
-            <div className="flex flex-col">
-              <span className="text-[#D7E2EA]/40 text-[10px] uppercase tracking-widest">{project.tagline}</span>
-              <h3 className="text-[#D7E2EA] font-medium uppercase text-[clamp(1.2rem,2.5vw,2.2rem)] leading-tight">
+            <div className="flex flex-col pt-2 md:pt-4">
+              <span className="mono text-accent text-[10px] uppercase tracking-[0.4em] mb-2">{project.tagline}</span>
+              <h3 className="text-white font-black uppercase text-[clamp(1.5rem,4vw,3.5rem)] leading-none tracking-tight">
                 {project.title}
               </h3>
+              
+              <div className="flex gap-4 mt-6">
+                 {project.github && (
+                   <a href={project.github} className="mono text-[9px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-2">
+                     Source_Code <Github size={10} />
+                   </a>
+                 )}
+                 {project.demo && (
+                   <a href={project.demo} className="mono text-[9px] uppercase tracking-widest text-accent hover:text-white transition-colors flex items-center gap-2">
+                     Live_Interface <ExternalLink size={10} />
+                   </a>
+                 )}
+              </div>
             </div>
           </div>
+
+          <div className="flex flex-wrap gap-2 md:max-w-[200px] justify-end">
+             {project.stack.map((s: string) => (
+               <span key={s} className="px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] mono text-[8px] uppercase tracking-widest text-white/30">{s}</span>
+             ))}
+          </div>
+        </div>
+
+        {/* CONTENT SECTION */}
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8 min-h-0 relative z-10">
           
-          <div className="flex gap-3">
-            {project.github && (
-              <a 
-                href={project.github} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-3 rounded-full border-2 border-[#D7E2EA]/20 text-[#D7E2EA] hover:bg-[#D7E2EA] hover:text-[#0C0C0C] transition-all"
-              >
-                <Github size={20} />
-              </a>
-            )}
-            {project.demo && (
-              <a 
-                href={project.demo} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-6 py-3 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest text-xs flex items-center gap-2 hover:bg-[#D7E2EA] hover:text-[#0C0C0C] transition-all"
-              >
-                Live <ExternalLink size={14} />
-              </a>
-            )}
+          {/* Architecture Visualization */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+             <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500">
+                <img 
+                  src={project.gridImages.col2} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                
+                <div className="absolute bottom-8 left-8 right-8">
+                   <ProjectArchitecture projectId={project.id} />
+                </div>
+             </div>
           </div>
+
+          {/* Project Details */}
+          <div className="lg:col-span-5 flex flex-col justify-end gap-6">
+             <div className="p-8 rounded-3xl bg-white/[0.01] border border-white/5 flex flex-col gap-6">
+                <p className="text-white/50 text-sm md:text-base leading-relaxed uppercase tracking-wider font-light">
+                  {project.description}
+                </p>
+                
+                <div className="grid grid-cols-2 gap-4 mono text-[8px] uppercase tracking-[0.2em] text-white/20 border-t border-white/5 pt-6">
+                   <div className="flex flex-col gap-1">
+                      <span className="text-white/40">Status</span>
+                      <span className="text-green-500/80">Production_Ready</span>
+                   </div>
+                   <div className="flex flex-col gap-1">
+                      <span className="text-white/40">Complexity</span>
+                      <span className="text-white/80">High_Performance</span>
+                   </div>
+                </div>
+             </div>
+          </div>
+
         </div>
 
-        {/* IMAGE GRID */}
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-10 gap-4 min-h-0">
-          <div className="md:col-span-4 flex flex-col gap-4">
-            <div className="relative w-full h-[clamp(130px,16vw,230px)] rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden border border-white/10">
-              <img 
-                src={project.gridImages.col1_1} 
-                alt={`${project.title} 1`} 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20" />
-            </div>
-            <div className="relative w-full flex-1 rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden border border-white/10">
-              <img 
-                src={project.gridImages.col1_2} 
-                alt={`${project.title} 2`} 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20" />
-            </div>
-          </div>
-          <div className="md:col-span-6 h-full relative rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden border border-white/10">
-            <img 
-              src={project.gridImages.col2} 
-              alt={`${project.title} Main`} 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8 sm:p-12">
-               <div className="max-w-md space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.slice(0, 3).map((s: string) => (
-                      <span key={s} className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-[8px] uppercase tracking-widest text-white/60 border border-white/5">{s}</span>
-                    ))}
-                  </div>
-                  <p className="text-[#D7E2EA]/60 text-xs sm:text-sm leading-relaxed line-clamp-3">
-                    {project.description}
-                  </p>
-               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Machine Mode technical overlay */}
+        {/* Machine Mode Technical HUD */}
         <AnimatePresence>
           {mode === "machine" && (
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 pointer-events-none p-4 font-mono text-[8px] text-accent flex flex-col justify-between"
+              className="absolute inset-x-10 bottom-10 pointer-events-none flex justify-between mono text-[7px] text-accent/40"
             >
-              <div className="flex justify-between">
-                <span>SYSTEM_IDENT: {project.id.toUpperCase()}</span>
-                <span>STATUS: OPERATIONAL</span>
-              </div>
-              <div className="flex justify-between">
-                <span>CORE_STACK: {project.stack.join("::")}</span>
-                <span>UUID: {crypto.randomUUID().slice(0, 8)}</span>
-              </div>
+               <span>ARCH_VERSION: V{index + 1}.0.2</span>
+               <span>SYSTEM_REDUNDANCY: ACTIVE</span>
+               <span>DATA_FLOW_VERIFIED: TRUE</span>
             </motion.div>
           )}
         </AnimatePresence>
