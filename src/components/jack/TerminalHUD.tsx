@@ -21,6 +21,27 @@ export const TerminalHUD = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() === "t" && !isOpen) {
+        setIsOpen(true);
+      }
+      if (e.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
@@ -92,9 +113,11 @@ export const TerminalHUD = () => {
             <form onSubmit={handleCommand} className="p-4 border-t border-white/5 bg-black/40 flex items-center gap-2">
                <span className="text-accent mono text-[11px]">></span>
                <input 
+                ref={inputRef}
                 autoFocus
                 type="text" 
                 value={inputValue}
+                onKeyDown={(e) => e.stopPropagation()}
                 onChange={(e) => setInputValue(e.target.value)}
                 className="flex-1 bg-transparent border-none outline-none mono text-[11px] text-white placeholder:text-white/10"
                 placeholder="enter command..."
