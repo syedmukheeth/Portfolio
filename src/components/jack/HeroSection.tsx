@@ -93,9 +93,9 @@ export const HeroSection = () => {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 1, delay: 0.8 }}
-                          className="mono text-[10px] md:text-[14px] uppercase tracking-[0.5em] text-white/60 font-medium"
+                          className="mono text-[10px] md:text-[14px] uppercase tracking-[0.6em] text-white font-bold"
                         >
-                          Full Stack Systems Engineer
+                          <span className="text-accent">Full Stack</span> Systems Engineer
                         </motion.p>
                      </div>
                   </FadeIn>
