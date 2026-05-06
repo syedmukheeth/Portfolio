@@ -23,13 +23,17 @@ export const OSNavbar = () => {
 
       {/* Nav Links - More Visible */}
       <FadeIn delay={0.2} y={-10} className="pointer-events-auto hidden lg:flex items-center gap-10 glass px-8 py-3 rounded-full border border-white/5 shadow-2xl">
-        {["About", "Projects", "Systems", "Contact"].map((item) => (
+        {[
+          { name: "About", href: "#about" },
+          { name: "Projects", href: "/projects" },
+          { name: "Contact", href: "#contact" }
+        ].map((item) => (
           <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
+            key={item.name}
+            href={item.href}
             className="mono text-[10px] uppercase tracking-[0.5em] text-white/50 hover:text-white transition-all duration-300 relative group"
           >
-            {item}
+            {item.name}
             <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-accent transition-all duration-300 group-hover:w-full" />
           </a>
         ))}
