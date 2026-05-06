@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import { 
+  Globe,
   Shield, 
   Cpu, 
   Zap, 
@@ -26,13 +27,13 @@ export default function SamCompilerPage() {
   const { mode } = useMode();
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-accent">
+    <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-white transition-colors duration-500">
       {/* Back button */}
       <Link 
         href="/" 
-        className="fixed top-24 left-8 z-50 flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+        className="fixed top-24 left-8 z-50 flex items-center gap-2 text-[10px] uppercase tracking-widest text-foreground/40 hover:text-foreground transition-colors"
       >
-        <span className="p-1.5 rounded bg-white/5 border border-white/10">←</span>
+        <span className="p-1.5 rounded bg-foreground/5 border border-foreground/10">←</span>
         Back to System
       </Link>
 
@@ -57,18 +58,18 @@ export default function SamCompilerPage() {
               mode === "machine" ? "font-mono uppercase" : "font-sans"
             )}>
               SAM <br />
-              <span className="text-white/20 italic">Compiler.</span>
+              <span className="text-foreground/20 italic">Compiler.</span>
             </h1>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-              <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-xl">
+              <p className="text-xl md:text-2xl text-foreground/60 font-light leading-relaxed max-w-xl">
                 A distributed cloud-native IDE designed for secure, collaborative code execution within ephemeral, kernel-level isolated sandboxes.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="flex-1 py-4 px-6 rounded-lg bg-white text-black font-bold flex items-center justify-center gap-2 hover:bg-accent hover:text-white transition-all">
+                <a href="#" className="flex-1 py-4 px-6 rounded-lg bg-foreground text-background font-bold flex items-center justify-center gap-2 hover:bg-accent hover:text-white transition-all">
                   Launch Platform <ExternalLink size={18} />
                 </a>
-                <a href="#" className="flex-1 py-4 px-6 rounded-lg border border-white/10 text-white/40 font-mono text-xs flex items-center justify-center gap-2 hover:border-accent hover:text-accent transition-all uppercase tracking-widest">
+                <a href="#" className="flex-1 py-4 px-6 rounded-lg border border-foreground/10 text-foreground/40 font-mono text-xs flex items-center justify-center gap-2 hover:border-accent hover:text-accent transition-all uppercase tracking-widest">
                   View Repo <Github size={18} />
                 </a>
               </div>
@@ -82,7 +83,7 @@ export default function SamCompilerPage() {
             <div>
               <div className="text-[10px] font-mono text-accent uppercase tracking-widest mb-4">01 // THE CHALLENGE</div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">The Security-Latency Paradox.</h2>
-              <p className="text-white/40 leading-relaxed text-lg">
+              <p className="text-foreground/40 leading-relaxed text-lg">
                 Direct execution of untrusted code in a multi-tenant environment is inherently dangerous. Traditional solutions sacrifice latency for security, or synchronization for simplicity. We needed a system that provided kernel-level isolation without compromising the real-time collaborative experience.
               </p>
             </div>
@@ -98,7 +99,7 @@ export default function SamCompilerPage() {
             <div>
               <div className="text-[10px] font-mono text-accent uppercase tracking-widest mb-4">02 // THE INFRASTRUCTURE</div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Orchestrated Isolation.</h2>
-              <p className="text-white/40 leading-relaxed text-lg">
+              <p className="text-foreground/40 leading-relaxed text-lg">
                 SAM Compiler solves this through a multi-tier orchestration layer. Every execution request is decoupled from the main thread, queued via BullMQ, and dispatched to a pool of ephemeral Docker workers that exist only for the duration of the task.
               </p>
             </div>
@@ -116,10 +117,10 @@ export default function SamCompilerPage() {
         <section className="mb-60">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tighter">System Topology.</h2>
-            <p className="text-white/40 font-mono text-[10px] uppercase tracking-widest">Distributed Request Lifecycle Architecture</p>
+            <p className="text-foreground/40 font-mono text-[10px] uppercase tracking-widest">Distributed Request Lifecycle Architecture</p>
           </div>
 
-          <div className="relative aspect-video rounded-3xl bg-white/[0.02] border border-white/5 p-8 md:p-20 overflow-hidden group">
+          <div className="relative aspect-video rounded-3xl bg-foreground/[0.02] border border-foreground/5 p-8 md:p-20 overflow-hidden group">
             <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
             
             <div className="relative z-10 h-full flex flex-col justify-between">
@@ -130,7 +131,7 @@ export default function SamCompilerPage() {
 
                {/* Connections */}
                <div className="flex justify-center h-20">
-                  <div className="w-px h-full bg-gradient-to-b from-accent/50 to-white/10 relative">
+                  <div className="w-px h-full bg-gradient-to-b from-accent/50 to-foreground/10 relative">
                      <motion.div animate={{ top: ["0%", "100%"] }} transition={{ duration: 1.5, repeat: Infinity }} className="absolute w-2 h-2 -left-[3.5px] bg-accent rounded-full blur-[2px]" />
                   </div>
                </div>
@@ -143,8 +144,8 @@ export default function SamCompilerPage() {
 
                {/* Connections */}
                <div className="flex justify-around h-20">
-                  <div className="w-px h-full bg-white/10" />
-                  <div className="w-px h-full bg-white/10" />
+                  <div className="w-px h-full bg-foreground/10" />
+                  <div className="w-px h-full bg-foreground/10" />
                </div>
 
                {/* Tier 3: Workers */}
@@ -156,7 +157,7 @@ export default function SamCompilerPage() {
 
                {/* Tier 4: Isolation */}
                <div className="mt-20 flex justify-center gap-8">
-                  <div className="px-12 py-6 rounded-2xl border border-white/5 bg-accent/5 backdrop-blur-3xl relative overflow-hidden group-hover:border-accent/20 transition-all">
+                  <div className="px-12 py-6 rounded-2xl border border-foreground/5 bg-accent/5 backdrop-blur-3xl relative overflow-hidden group-hover:border-accent/20 transition-all">
                      <div className="flex items-center gap-4 text-accent">
                         <Box size={24} />
                         <span className="font-mono text-xs font-bold uppercase tracking-widest">Kernel-Level Docker Sandbox Pool</span>
@@ -191,7 +192,7 @@ export default function SamCompilerPage() {
         </section>
 
         {/* Scaling Philosophy */}
-        <section className="mb-40 border border-white/10 bg-white/[0.01] rounded-3xl p-12 md:p-20 relative overflow-hidden">
+        <section className="mb-40 border border-foreground/10 bg-foreground/[0.01] rounded-3xl p-12 md:p-20 relative overflow-hidden">
            <div className="absolute top-0 right-0 p-8">
               <Layers size={40} className="text-accent opacity-20" />
            </div>
@@ -222,9 +223,9 @@ export default function SamCompilerPage() {
            </div>
            <h3 className="text-2xl md:text-4xl font-bold mb-8 leading-tight">
              Building SAM Compiler wasn't about the code; <br />
-             <span className="text-white/40">it was about the infrastructure that supports it.</span>
+             <span className="text-foreground/40">it was about the infrastructure that supports it.</span>
            </h3>
-           <p className="text-white/30 text-lg italic font-light">
+           <p className="text-foreground/30 text-lg italic font-light">
              This project demonstrates my ability to design distributed systems, manage secure execution environments, and architect production-ready cloud platforms from the ground up.
            </p>
         </section>
@@ -238,8 +239,8 @@ function ProblemItem({ title, desc }: { title: string; desc: string }) {
     <div className="flex gap-4 group">
        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/40 group-hover:bg-accent transition-colors" />
        <div>
-          <h4 className="text-white font-medium mb-1">{title}</h4>
-          <p className="text-white/30 text-sm">{desc}</p>
+          <h4 className="text-foreground font-medium mb-1">{title}</h4>
+          <p className="text-foreground/30 text-sm">{desc}</p>
        </div>
     </div>
   );
@@ -247,11 +248,11 @@ function ProblemItem({ title, desc }: { title: string; desc: string }) {
 
 function SolutionBox({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
-    <div className="p-6 rounded-xl border border-white/5 bg-white/[0.02] flex flex-col gap-4 hover:border-accent/20 transition-all group">
+    <div className="p-6 rounded-xl border border-foreground/5 bg-foreground/[0.02] flex flex-col gap-4 hover:border-accent/20 transition-all group">
        <div className="text-accent group-hover:scale-110 transition-transform">
           {icon}
        </div>
-       <div className="text-xs font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">{title}</div>
+       <div className="text-xs font-bold uppercase tracking-widest text-foreground/60 group-hover:text-foreground transition-colors">{title}</div>
     </div>
   );
 }
@@ -260,17 +261,17 @@ function ArchNode({ icon, label, sub, color = "white", small = false }: { icon: 
   return (
     <div className={cn(
       "flex flex-col items-center gap-3",
-      color === "accent" ? "text-accent" : "text-white"
+      color === "accent" ? "text-accent" : "text-foreground"
     )}>
        <div className={cn(
-         "rounded-xl border border-white/10 bg-black flex items-center justify-center transition-all hover:border-accent/40",
+         "rounded-xl border border-foreground/10 bg-black flex items-center justify-center transition-all hover:border-accent/40",
          small ? "w-12 h-12" : "w-16 h-16"
        )}>
           {icon}
        </div>
        <div className="text-center">
           <div className="text-[10px] font-bold uppercase tracking-widest mb-0.5">{label}</div>
-          {sub && <div className="text-[8px] text-white/20 uppercase tracking-tighter">{sub}</div>}
+          {sub && <div className="text-[8px] text-foreground/20 uppercase tracking-tighter">{sub}</div>}
        </div>
     </div>
   );
@@ -278,14 +279,14 @@ function ArchNode({ icon, label, sub, color = "white", small = false }: { icon: 
 
 function DeepDiveCard({ title, desc, tags }: { title: string; desc: string; tags: string[] }) {
   return (
-    <div className="p-8 rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all group flex flex-col justify-between">
+    <div className="p-8 rounded-3xl border border-foreground/5 bg-foreground/[0.01] hover:bg-foreground/[0.03] transition-all group flex flex-col justify-between">
        <div>
           <h4 className="text-2xl font-bold mb-4 group-hover:text-accent transition-colors">{title}</h4>
-          <p className="text-white/40 leading-relaxed mb-8 text-sm">{desc}</p>
+          <p className="text-foreground/40 leading-relaxed mb-8 text-sm">{desc}</p>
        </div>
        <div className="flex flex-wrap gap-2">
           {tags.map(tag => (
-            <span key={tag} className="text-[8px] px-2 py-1 bg-white/5 text-white/20 rounded-full border border-white/5 uppercase tracking-widest">{tag}</span>
+            <span key={tag} className="text-[8px] px-2 py-1 bg-foreground/5 text-foreground/20 rounded-full border border-foreground/5 uppercase tracking-widest">{tag}</span>
           ))}
        </div>
     </div>
@@ -295,11 +296,11 @@ function DeepDiveCard({ title, desc, tags }: { title: string; desc: string; tags
 function ScalingItem({ title, desc }: { title: string; desc: string }) {
   return (
     <div className="space-y-2">
-       <h4 className="text-lg font-bold text-white flex items-center gap-3">
+       <h4 className="text-lg font-bold text-foreground flex items-center gap-3">
           <ArrowRight size={14} className="text-accent" />
           {title}
        </h4>
-       <p className="text-white/40 text-sm leading-relaxed pl-6">{desc}</p>
+       <p className="text-foreground/40 text-sm leading-relaxed pl-6">{desc}</p>
     </div>
   );
 }

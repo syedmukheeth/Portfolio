@@ -5,6 +5,7 @@
   --background: #0C0C0C;
   --foreground: #D7E2EA;
   --accent: #FF4D00;
+  --font-kanit: 'Kanit', sans-serif;
 }
 
 [data-mode="machine"] {
@@ -16,11 +17,14 @@
 html, body, #root, .font-kanit {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Kanit', sans-serif;
+  font-family: var(--font-kanit);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) var(--background);
 }
 
 *, *::before, *::after {
@@ -30,13 +34,16 @@ html, body, #root, .font-kanit {
 .hero-heading {
   background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  transition: background 0.5s ease;
 }
 
 [data-mode="machine"] .hero-heading {
   background: linear-gradient(180deg, #FF4D00 0%, #882A00 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Custom Scrollbar */
@@ -45,21 +52,23 @@ html, body, #root, .font-kanit {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0C0C0C;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222222;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
+  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
+  background: var(--accent);
 }
 
 .dot-grid {
   background-image: radial-gradient(rgba(215, 226, 234, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
+  transition: background-image 0.5s ease;
 }
 
 [data-mode="machine"] .dot-grid {
@@ -78,3 +87,4 @@ html, body, #root, .font-kanit {
     linear-gradient(90deg, rgba(255, 77, 0, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
+
