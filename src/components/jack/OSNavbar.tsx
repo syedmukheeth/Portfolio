@@ -25,7 +25,7 @@ export const OSNavbar = () => {
       <FadeIn delay={0.2} y={-10} className="pointer-events-auto hidden lg:flex items-center gap-10 glass px-8 py-3 rounded-full border border-white/5 shadow-2xl">
         {[
           { name: "About", href: "#about" },
-          { name: "Projects", href: "/projects" },
+          { name: "Projects", href: "#projects" },
           { name: "Contact", href: "#contact" }
         ].map((item) => (
           <a

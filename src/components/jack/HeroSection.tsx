@@ -179,7 +179,7 @@ export const HeroSection = () => {
 
                   <FadeIn delay={0.8} y={20}>
                     <div className="flex items-center gap-8">
-                       <a href="/projects" className="mono text-[10px] uppercase tracking-[0.4em] text-white/40 hover:text-white transition-all duration-300">
+                       <a href="#projects" className="mono text-[10px] uppercase tracking-[0.4em] text-white/40 hover:text-white transition-all duration-300">
                          My Projects
                        </a>
                        <div className="w-1 h-1 rounded-full bg-white/10" />

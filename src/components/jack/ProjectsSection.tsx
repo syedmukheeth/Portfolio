@@ -56,6 +56,7 @@ export const ProjectsSection = () => {
 
   return (
     <section 
+      id="projects"
       ref={container} 
       className="bg-black pt-32 pb-40 relative z-30"
     >
@@ -63,7 +64,7 @@ export const ProjectsSection = () => {
         <FadeIn delay={0} y={40} className="flex flex-col items-center">
            <span className="mono text-accent text-xs uppercase tracking-[0.6em] mb-4">Engineering Portfolio</span>
            <h2 className="hero-heading font-black uppercase text-center text-[clamp(3rem,12vw,120px)] leading-none">
-             Systems
+             Projects
            </h2>
         </FadeIn>
       </div>
