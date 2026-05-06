@@ -45,7 +45,7 @@ export const HeroSection = () => {
             ))}
           </div>
         </FadeIn>
-        
+
         {/* Parallel-inspired System Status in Corner */}
         <FadeIn delay={0.2} y={-20}>
           <div className="hidden md:flex flex-col items-end font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
@@ -115,7 +115,7 @@ export const HeroSection = () => {
             </p>
           </div>
         </FadeIn>
-        
+
         <ContactButton delay={0.5} />
       </div>
 

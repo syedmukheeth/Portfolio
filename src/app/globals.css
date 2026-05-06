@@ -14,7 +14,10 @@
   --accent: #FF4D00;
 }
 
-html, body, #root, .font-kanit {
+html,
+body,
+#root,
+.font-kanit {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-kanit);
@@ -27,23 +30,27 @@ html, body, #root, .font-kanit {
   scrollbar-color: rgba(255, 255, 255, 0.1) var(--background);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 .hero-heading {
-  background: linear-gradient(180deg, #FFFFFF 0%, #D7E2EA 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #BBCCD7 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  transition: background 0.5s ease;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  transition: background 0.5s ease, filter 0.5s ease;
 }
 
 [data-mode="machine"] .hero-heading {
-  background: linear-gradient(180deg, #FF4D00 0%, #CC3D00 100%);
+  background: linear-gradient(180deg, #FF4D00 0%, #882A00 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  filter: drop-shadow(0 10px 30px rgba(255, 77, 0, 0.2));
 }
 
 /* Custom Scrollbar */
@@ -82,9 +89,8 @@ html, body, #root, .font-kanit {
 }
 
 .mesh-grid {
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 77, 0, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 77, 0, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
-
