@@ -8,9 +8,27 @@ import { cn } from "@/lib/utils";
 
 export const HeroSection = () => {
   const { mode } = useMode();
+  const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!sectionRef.current) return;
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = sectionRef.current.getBoundingClientRect();
+    
+    // Calculate normalized position (-1 to 1)
+    const x = ((clientX - left) / width) * 2 - 1;
+    const y = ((clientY - top) / height) * 2 - 1;
+    
+    setMousePos({ x, y });
+  };
 
   return (
-    <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#0C0C0C]">
+    <section 
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#0C0C0C]"
+    >
       {/* NAVBAR */}
       <nav className="w-full flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 relative z-50">
         <FadeIn delay={0} y={-20}>
@@ -52,37 +70,38 @@ export const HeroSection = () => {
       {/* HERO PORTRAIT */}
       <div className="relative flex-1 flex flex-col justify-end items-center z-10 pb-[5vh]">
         <FadeIn delay={0.6} y={50} duration={1.2}>
-          <Magnet padding={200} strength={2}>
-            <motion.div
-              className="w-[280px] sm:w-[340px] md:w-[440px] lg:w-[500px] relative aspect-[3/4] sm:aspect-[4/5]"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-               {/* Cinematic Glow */}
-               <div className="absolute inset-0 bg-gradient-to-tr from-accent/40 to-transparent rounded-[30px] sm:rounded-[50px] blur-3xl opacity-30 -z-10" />
+          <motion.div
+            animate={{ 
+              x: mousePos.x * 20, 
+              y: mousePos.y * 20 
+            }}
+            transition={{ type: "spring", stiffness: 75, damping: 15 }}
+            className="w-[280px] sm:w-[340px] md:w-[440px] lg:w-[500px] relative aspect-[3/4] sm:aspect-[4/5]"
+          >
+             {/* Cinematic Glow */}
+             <div className="absolute inset-0 bg-gradient-to-tr from-accent/40 to-transparent rounded-[30px] sm:rounded-[50px] blur-3xl opacity-30 -z-10" />
+             
+             <div className="w-full h-full rounded-[30px] sm:rounded-[50px] overflow-hidden border-2 border-white/10 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.8)]">
+               <img
+                  src="/images/portrait.jpg"
+                  alt="Syed Mukheeth Portrait"
+                  className="w-full h-full object-cover object-top"
+               />
                
-               <div className="w-full h-full rounded-[30px] sm:rounded-[50px] overflow-hidden border-2 border-white/10 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.8)]">
-                 <img
-                    src="/images/portrait.jpg"
-                    alt="Syed Mukheeth Portrait"
-                    className="w-full h-full object-cover object-top"
-                 />
-                 
-                 {/* VIGNETTE OVERLAY */}
-                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 pointer-events-none" />
-               </div>
-               
-               {/* Overlay Terminal details in Machine mode */}
-               {mode === "machine" && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                     <div className="absolute inset-4 border border-accent/40 rounded-[30px] sm:rounded-[40px] animate-pulse" />
-                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[8px] font-mono uppercase tracking-[0.4em] text-accent whitespace-nowrap bg-[#0C0C0C] px-4 py-1 border border-accent/20 rounded-full">
-                        Subject: System_Architect_0x00
-                     </div>
-                  </div>
-               )}
-            </motion.div>
-          </Magnet>
+               {/* VIGNETTE OVERLAY */}
+               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 pointer-events-none" />
+             </div>
+             
+             {/* Overlay Terminal details in Machine mode */}
+             {mode === "machine" && (
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                   <div className="absolute inset-4 border border-accent/40 rounded-[30px] sm:rounded-[40px] animate-pulse" />
+                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[8px] font-mono uppercase tracking-[0.4em] text-accent whitespace-nowrap bg-[#0C0C0C] px-4 py-1 border border-accent/20 rounded-full">
+                      Subject: System_Architect_0x00
+                   </div>
+                </div>
+             )}
+          </motion.div>
         </FadeIn>
       </div>
 
