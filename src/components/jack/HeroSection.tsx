@@ -183,7 +183,7 @@ export const HeroSection = () => {
                          My Projects
                        </a>
                        <div className="w-1 h-1 rounded-full bg-white/10" />
-                       <a href="#contact" className="px-10 py-3.5 bg-accent text-white rounded-full mono text-[9px] uppercase tracking-[0.5em] font-bold hover:bg-accent/80 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(255,77,0,0.4)]">
+                       <a href="#contact" className="px-10 py-3.5 glass-bright border border-accent/30 text-white rounded-full mono text-[9px] uppercase tracking-[0.5em] font-bold hover:bg-accent/10 transition-all duration-500 shadow-[0_10px_30px_-15px_rgba(255,77,0,0.2)]">
                          Contact Me
                        </a>
                     </div>
