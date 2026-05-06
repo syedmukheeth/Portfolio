@@ -86,14 +86,6 @@ export const HeroSection = () => {
                 <div className="relative z-30 mb-12 flex flex-col items-center text-center">
                   <FadeIn delay={0.2} y={30} duration={1}>
                      <div className="flex flex-col items-center gap-6">
-                        <motion.span 
-                          initial={{ opacity: 0, letterSpacing: "0.2em" }}
-                          animate={{ opacity: 1, letterSpacing: "0.8em" }}
-                          transition={{ duration: 1.5, delay: 0.5 }}
-                          className="mono text-accent text-[8px] md:text-[10px] uppercase font-bold"
-                        >
-                          Establishing Connectivity
-                        </motion.span>
                         <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-[0.85] text-[clamp(2.5rem,12vw,9.5rem)] text-white drop-shadow-2xl">
                           {mode === "human" ? "Syed Mukheeth" : "ARCHITECT_0x0"}
                         </h1>
