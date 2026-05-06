@@ -97,6 +97,14 @@ export const HeroSection = () => {
                         <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-[0.85] text-[clamp(2.5rem,12vw,9.5rem)] text-white drop-shadow-2xl">
                           {mode === "human" ? "Syed Mukheeth" : "ARCHITECT_0x0"}
                         </h1>
+                        <motion.p 
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 1, delay: 0.8 }}
+                          className="mono text-[10px] md:text-[14px] uppercase tracking-[0.5em] text-white/60 font-medium"
+                        >
+                          Full Stack Systems Engineer
+                        </motion.p>
                      </div>
                   </FadeIn>
                 </div>
