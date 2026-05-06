@@ -44,7 +44,7 @@ export const OSNavbar = () => {
           >
             <div className="w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_rgba(255,77,0,0.8)]" />
             <span className="mono text-[9px] uppercase tracking-[0.4em] text-white/80 group-hover:text-white transition-colors">
-              {mode === 'human' ? 'Clean Mode' : 'Dev Mode'}
+              {mode}
             </span>
           </button>
         </FadeIn>
