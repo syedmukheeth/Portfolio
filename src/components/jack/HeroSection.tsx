@@ -86,8 +86,8 @@ export const HeroSection = () => {
                 <div className="relative z-30 mb-12 flex flex-col items-center text-center">
                   <FadeIn delay={0.2} y={30} duration={1}>
                      <div className="flex flex-col items-center gap-6">
-                        <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-[0.85] text-[clamp(2.5rem,12vw,9.5rem)] text-white drop-shadow-2xl">
-                          {mode === "human" ? "Syed Mukheeth" : "ARCHITECT_0x0"}
+                        <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-[0.85] text-[clamp(2.5rem,12vw,9.5rem)] text-white drop-shadow-2xl text-center">
+                          Syed Mukheeth
                         </h1>
                         <motion.p 
                           initial={{ opacity: 0, y: 10 }}
@@ -134,12 +134,12 @@ export const HeroSection = () => {
                         {/* Dynamic HUD Layer */}
                         <div className="absolute inset-8 z-20 flex flex-col justify-between pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
                            <div className="flex justify-between items-start mono text-[7px] tracking-widest text-accent font-bold">
-                              <span>BIO_SCAN__01</span>
-                              <span>STABLE</span>
+                              <span>PROFILE_01</span>
+                              <span>ONLINE</span>
                            </div>
                            <div className="flex flex-col gap-3">
                               <div className="flex justify-between mono text-[7px] text-white/50">
-                                 <span>NEURAL_ENGINE</span>
+                                 <span>SYSTEM_STATUS</span>
                                  <span className="text-accent animate-pulse">ACTIVE</span>
                               </div>
                               <div className="w-full h-[1px] bg-white/5 relative overflow-hidden">
@@ -159,7 +159,7 @@ export const HeroSection = () => {
                           "font-black uppercase tracking-[-0.1em] leading-[0.7] text-[clamp(5rem,25vw,25rem)] opacity-[0.015] transition-all duration-1000",
                           mode === "machine" ? "text-accent opacity-[0.04] scale-105" : "text-white"
                         )}>
-                          SYSTEMS<br/>ENGINEER
+                          SOFTWARE<br/>ENGINEER
                         </h2>
                       </div>
                     </motion.div>
@@ -171,7 +171,7 @@ export const HeroSection = () => {
                   <FadeIn delay={0.6} y={20}>
                     <div className="flex flex-col items-center text-center gap-2">
                        <p className="mono text-[9px] md:text-[11px] uppercase tracking-[0.4em] text-white/40 font-light">
-                         Designing Scalable Digital Infrastructures
+                         Building High-Performance Web Applications
                        </p>
                        <div className="w-12 h-[1px] bg-accent/20 mt-2" />
                     </div>
@@ -180,11 +180,11 @@ export const HeroSection = () => {
                   <FadeIn delay={0.8} y={20}>
                     <div className="flex items-center gap-8">
                        <a href="#projects" className="mono text-[10px] uppercase tracking-[0.4em] text-white/40 hover:text-white transition-all duration-300">
-                         View_Systems
+                         My Projects
                        </a>
                        <div className="w-1 h-1 rounded-full bg-white/10" />
                        <a href="#contact" className="px-10 py-3.5 bg-accent text-white rounded-full mono text-[9px] uppercase tracking-[0.5em] font-bold hover:bg-accent/80 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(255,77,0,0.4)]">
-                         Execute_Contact
+                         Contact Me
                        </a>
                     </div>
                   </FadeIn>
@@ -198,7 +198,7 @@ export const HeroSection = () => {
               style={{ opacity }}
               className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
             >
-               <span className="mono text-[8px] uppercase tracking-[0.4em] text-white/20">Scroll_to_Initialize</span>
+               <span className="mono text-[8px] uppercase tracking-[0.4em] text-white/20">Scroll to Explore</span>
                <div className="w-[1px] h-12 bg-gradient-to-b from-accent to-transparent" />
             </motion.div>
 

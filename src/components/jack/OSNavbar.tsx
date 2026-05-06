@@ -17,7 +17,7 @@ export const OSNavbar = () => {
       <FadeIn delay={0.1} y={-10} className="pointer-events-auto">
         <div className="flex items-center gap-3">
           <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span className="mono text-[10px] uppercase tracking-[0.5em] text-white font-bold drop-shadow-md">SYED_MUKHEETH</span>
+          <span className="mono text-[10px] uppercase tracking-[0.5em] text-white font-bold drop-shadow-md">Syed Mukheeth</span>
         </div>
       </FadeIn>
 
@@ -44,7 +44,7 @@ export const OSNavbar = () => {
           >
             <div className="w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_rgba(255,77,0,0.8)]" />
             <span className="mono text-[9px] uppercase tracking-[0.4em] text-white/80 group-hover:text-white transition-colors">
-              {mode}
+              {mode === 'human' ? 'Clean Mode' : 'Dev Mode'}
             </span>
           </button>
         </FadeIn>
