@@ -19,9 +19,10 @@ export const HeroSection = () => {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200"
+                className="group relative text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.2rem] hover:text-white transition-colors duration-200"
               >
                 {link}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -29,22 +30,28 @@ export const HeroSection = () => {
         
         {/* Parallel-inspired System Status in Corner */}
         <FadeIn delay={0.2} y={-20}>
-          <div className="hidden md:flex flex-col items-end font-mono text-[10px] uppercase tracking-widest text-accent">
-            <span>System: Online</span>
+          <div className="hidden md:flex flex-col items-end font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+              <span className="font-bold">System: Online</span>
+            </div>
             <span className="opacity-40">Systems_Engineer: v9.2.4</span>
           </div>
         </FadeIn>
       </nav>
 
-      {/* HERO HEADING (BACKGROUND TEXT) */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 px-4 md:px-10">
-        <div className="w-full flex justify-center">
-          <FadeIn delay={0.15} y={0} duration={1}>
-            <h1 className="hero-heading font-black uppercase tracking-tighter leading-none whitespace-nowrap text-[12vw] sm:text-[14vw] md:text-[15vw] lg:text-[16vw] opacity-70 select-none text-center">
-              Syed Mukheeth
-            </h1>
-          </FadeIn>
-        </div>
+      {/* HERO HEADING (SPLIT FOR CLARITY) */}
+      <div className="absolute inset-0 flex items-center justify-between px-[2vw] md:px-[5vw] pointer-events-none z-0">
+        <FadeIn delay={0.15} x={-100} y={0} duration={1.2}>
+          <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-none text-[15vw] md:text-[18vw] lg:text-[20vw] select-none">
+            Syed
+          </h1>
+        </FadeIn>
+        <FadeIn delay={0.25} x={100} y={0} duration={1.2}>
+          <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-none text-[15vw] md:text-[18vw] lg:text-[20vw] select-none text-right">
+            Mukheeth
+          </h1>
+        </FadeIn>
       </div>
 
       {/* HERO PORTRAIT */}
@@ -67,7 +74,7 @@ export const HeroSection = () => {
                  />
                  
                  {/* VIGNETTE OVERLAY */}
-                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
+                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 pointer-events-none" />
                </div>
                
                {/* Overlay Terminal details in Machine mode */}
@@ -88,18 +95,30 @@ export const HeroSection = () => {
           initial={{ opacity: 0, scale: 0, rotate: -20 }}
           animate={{ opacity: 1, scale: 1, rotate: 12 }}
           transition={{ delay: 1.2, type: "spring" }}
-          className="absolute right-[10%] top-[20%] z-20 pointer-events-none hidden xl:block"
+          className="absolute right-[5%] md:right-[10%] top-[25%] z-20 pointer-events-none hidden lg:block"
         >
-          <img src="/images/wow.png" alt="Wow" className="w-32 drop-shadow-2xl" />
+          <img src="/images/wow.png" alt="Wow" className="w-24 md:w-32 drop-shadow-2xl" />
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0, rotate: 20 }}
+          animate={{ opacity: 1, scale: 1, rotate: -15 }}
+          transition={{ delay: 1.4, type: "spring" }}
+          className="absolute left-[5%] md:left-[10%] top-[30%] z-20 pointer-events-none hidden lg:block"
+        >
+          <img src="/images/approved.png" alt="Approved" className="w-24 md:w-32 drop-shadow-2xl opacity-80" />
         </motion.div>
       </div>
 
       {/* BOTTOM BAR */}
       <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-end px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 relative z-50 gap-6">
         <FadeIn delay={0.35} y={20}>
-          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[280px] md:max-w-[400px] text-center md:text-left text-[clamp(0.75rem,1.4vw,1.2rem)] opacity-80">
-            Engineering scalable systems, distributed mesh networks, and intelligent infrastructure
-          </p>
+          <div className="space-y-2">
+            <p className="text-accent font-mono text-[10px] uppercase tracking-[0.4em] mb-2 text-center md:text-left">Human Centric // Machine Optimized</p>
+            <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[320px] md:max-w-[450px] text-center md:text-left text-[clamp(0.85rem,1.4vw,1.3rem)] opacity-90">
+              Engineering <span className="text-white font-bold italic">scalable systems</span>, distributed mesh networks, and intelligent infrastructure
+            </p>
+          </div>
         </FadeIn>
         
         <ContactButton delay={0.5} />
