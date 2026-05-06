@@ -111,7 +111,7 @@ export const TerminalHUD = () => {
 
             {/* Terminal Input */}
             <form onSubmit={handleCommand} className="p-4 border-t border-white/5 bg-black/40 flex items-center gap-2">
-               <span className="text-accent mono text-[11px]">></span>
+               <span className="text-accent mono text-[11px]">{">"}</span>
                <input 
                 ref={inputRef}
                 autoFocus
