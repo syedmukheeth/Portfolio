@@ -40,16 +40,11 @@ export const HeroSection = () => {
         </FadeIn>
       </nav>
 
-      {/* HERO HEADING (SPLIT FOR CLARITY) */}
-      <div className="absolute inset-0 flex items-center justify-between px-[2vw] md:px-[5vw] pointer-events-none z-0">
-        <FadeIn delay={0.15} x={-100} y={0} duration={1.2}>
-          <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-none text-[15vw] md:text-[18vw] lg:text-[20vw] select-none">
-            Syed
-          </h1>
-        </FadeIn>
-        <FadeIn delay={0.25} x={100} y={0} duration={1.2}>
-          <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-none text-[15vw] md:text-[18vw] lg:text-[20vw] select-none text-right">
-            Mukheeth
+      {/* HERO HEADING (REFINED FOR CLARITY & RESPONSIVENESS) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 px-4">
+        <FadeIn delay={0.15} y={0} duration={1.2}>
+          <h1 className="hero-heading font-black uppercase tracking-[-0.05em] leading-none whitespace-nowrap text-[clamp(3rem,16vw,20rem)] opacity-100 select-none text-center">
+            Syed Mukheeth
           </h1>
         </FadeIn>
       </div>
@@ -89,25 +84,6 @@ export const HeroSection = () => {
             </motion.div>
           </Magnet>
         </FadeIn>
-        
-        {/* Floating Stickers */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0, rotate: -20 }}
-          animate={{ opacity: 1, scale: 1, rotate: 12 }}
-          transition={{ delay: 1.2, type: "spring" }}
-          className="absolute right-[5%] md:right-[10%] top-[25%] z-20 pointer-events-none hidden lg:block"
-        >
-          <img src="/images/wow.png" alt="Wow" className="w-24 md:w-32 drop-shadow-2xl" />
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, scale: 0, rotate: 20 }}
-          animate={{ opacity: 1, scale: 1, rotate: -15 }}
-          transition={{ delay: 1.4, type: "spring" }}
-          className="absolute left-[5%] md:left-[10%] top-[30%] z-20 pointer-events-none hidden lg:block"
-        >
-          <img src="/images/approved.png" alt="Approved" className="w-24 md:w-32 drop-shadow-2xl opacity-80" />
-        </motion.div>
       </div>
 
       {/* BOTTOM BAR */}
