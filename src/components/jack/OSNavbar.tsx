@@ -14,7 +14,6 @@ export const OSNavbar = () => {
       <FadeIn delay={0.1} y={-10} className="pointer-events-auto">
         <div className="flex flex-col">
           <span className="mono text-[10px] uppercase tracking-[0.5em] text-white font-bold">SYSMUK//OS</span>
-          <span className="mono text-[8px] uppercase tracking-[0.3em] text-white/30">Infrastructure_Platform</span>
         </div>
       </FadeIn>
 
@@ -31,28 +30,16 @@ export const OSNavbar = () => {
         ))}
       </FadeIn>
 
-      {/* Mode Switcher & Status */}
+      {/* Mode Switcher */}
       <div className="flex items-center gap-8 pointer-events-auto">
-        <FadeIn delay={0.3} y={-10} className="hidden md:flex flex-col items-end">
-           <span className="mono text-[8px] uppercase tracking-[0.3em] text-green-500/80">Status: Online</span>
-           <span className="mono text-[8px] uppercase tracking-[0.3em] text-white/20">Build: 2.4.1</span>
-        </FadeIn>
-
         <FadeIn delay={0.4} y={-10}>
           <button 
             onClick={toggleMode}
             className="flex flex-col items-end group"
           >
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span className="mono text-[9px] uppercase tracking-[0.4em] text-white group-hover:text-accent transition-colors">Mode: {mode}</span>
-            </div>
-            <div className="h-[1px] w-full bg-white/10 overflow-hidden">
-               <motion.div 
-                animate={{ x: ["-100%", "100%"] }}
-                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                className="h-full w-1/2 bg-accent/40"
-               />
             </div>
           </button>
         </FadeIn>

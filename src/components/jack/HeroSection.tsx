@@ -45,7 +45,6 @@ export const HeroSection = () => {
             className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black"
           >
             <OSNavbar />
-            <SystemHUD />
             <TerminalHUD />
 
             {/* BACKGROUND LAYERS */}
