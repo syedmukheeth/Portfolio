@@ -35,7 +35,7 @@ export const AboutSection = () => {
         </FadeIn>
 
         <AnimatedText 
-          text="I build software that solves engineering friction. I created SAMIndex to bridge the 'Context Gap' in growing codebases—moving beyond simple keyword search to understanding developer intent. I also developed PeerNet, a scalable event-driven networking platform built to handle high-throughput real-time communication."
+          text="I build software that solves engineering friction. I created SAMIndex to bridge the 'Context Gap' in large codebases and SAM Compiler to explore secure, distributed code execution. I also developed PeerNet, a scalable networking platform built for high-throughput real-time communication."
           className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[850px] text-[clamp(1rem,2vw,1.35rem)]"
         />
 

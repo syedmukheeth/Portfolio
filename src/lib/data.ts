@@ -23,7 +23,7 @@ export const PROJECTS: Project[] = [
     title: "SAM Compiler",
     tagline: "Exploring Distributed Code Execution",
     role: "Systems Exploration",
-    description: "An ambitious project built to understand the complexities of distributed compilation, featuring real-time collaboration and secure Docker-sandboxed execution environments.",
+    description: "I built SAM Compiler to explore the complexities of secure, distributed code execution, using Docker-sandboxed environments to understand how to run untrusted code safely at scale.",
     architecture: {
       nodes: ["Frontend", "Gateway", "Execution Workers", "Docker Sandboxes"],
       flow: ["CRDT Sync", "Sandbox Execution", "Worker Orchestration"],
