@@ -76,7 +76,7 @@ export default function PeerNetPage() {
         </section>
 
         {/* The Product -> The Infrastructure */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-32 mb-60">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-32 mb-40">
           <div className="space-y-12">
             <div>
               <div className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-4">01 // THE MISSION</div>
@@ -109,6 +109,45 @@ export default function PeerNetPage() {
                <FeatureBox icon={<Activity />} title="Low Latency" />
             </div>
           </div>
+        </section>
+
+        {/* Cinematic Video Previews */}
+        <section className="mb-60">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[1, 2].map((num) => (
+                <div key={num} className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-white/5 group">
+                   <video 
+                     src={`/clips/PeerNet-${num}.mp4`} 
+                     autoPlay 
+                     muted 
+                     loop 
+                     playsInline 
+                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700" 
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+                   <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                      <div className="px-2 py-1 rounded bg-blue-500/20 border border-blue-500/40 text-[8px] font-mono text-blue-400 uppercase tracking-widest">
+                         System_Feed_0{num}
+                      </div>
+                      <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                         Live_Interaction_Trace
+                      </div>
+                   </div>
+                   
+                   {/* HUD Elements */}
+                   <div className="absolute top-6 right-6 flex flex-col items-end gap-1">
+                      <div className="w-12 h-1 bg-blue-500/40 rounded-full overflow-hidden">
+                         <motion.div 
+                           animate={{ width: ["20%", "80%", "40%"] }} 
+                           transition={{ duration: 3, repeat: Infinity }} 
+                           className="h-full bg-blue-400" 
+                         />
+                      </div>
+                      <div className="text-[8px] font-mono text-blue-400/60 uppercase">Buffering_Stream</div>
+                   </div>
+                </div>
+              ))}
+           </div>
         </section>
 
         {/* Event Flow Visualization */}

@@ -77,7 +77,7 @@ export default function SamIndexPage() {
         </section>
 
         {/* The ZIP Strategy -> The Flex */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-32 mb-60">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-32 mb-40">
           <div className="space-y-12">
             <div>
               <div className="text-[10px] font-mono text-accent uppercase tracking-widest mb-4">01 // THE ARCHITECTURE SHIFT</div>
@@ -110,6 +110,45 @@ export default function SamIndexPage() {
                <FeatureBox icon={<Activity />} title="Live Indexing" />
             </div>
           </div>
+        </section>
+
+        {/* Cinematic Video Previews */}
+        <section className="mb-60">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[1, 2].map((num) => (
+                <div key={num} className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-white/5 group">
+                   <video 
+                     src={`/clips/SamIndex-${num}.mp4`} 
+                     autoPlay 
+                     muted 
+                     loop 
+                     playsInline 
+                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700" 
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+                   <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                      <div className="px-2 py-1 rounded bg-accent/20 border border-accent/40 text-[8px] font-mono text-accent uppercase tracking-widest">
+                         Ingestion_Pipeline_0{num}
+                      </div>
+                      <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                         Real_Time_Intelligence_Feed
+                      </div>
+                   </div>
+                   
+                   {/* HUD Elements */}
+                   <div className="absolute top-6 right-6 flex flex-col items-end gap-1">
+                      <div className="w-12 h-1 bg-accent/40 rounded-full overflow-hidden">
+                         <motion.div 
+                           animate={{ width: ["30%", "70%", "50%"] }} 
+                           transition={{ duration: 3.5, repeat: Infinity }} 
+                           className="h-full bg-accent" 
+                         />
+                      </div>
+                      <div className="text-[8px] font-mono text-accent/60 uppercase">Bulk_Processing_Active</div>
+                   </div>
+                </div>
+              ))}
+           </div>
         </section>
 
         {/* Indexing Pipeline Visualization */}

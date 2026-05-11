@@ -150,16 +150,35 @@ const ProjectCard = ({
           {/* Architecture Visualization */}
           <div className="lg:col-span-7 flex flex-col gap-6">
              <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500">
-                <img 
-                  src={project.gridImages.col2} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-700"
-                />
+                {project.clips && project.clips.length > 0 ? (
+                  <video 
+                    src={project.clips[0]} 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    className="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-700"
+                  />
+                ) : (
+                  <img 
+                    src={project.gridImages.col2} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-700"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                 
                 <div className="absolute bottom-8 left-8 right-8">
                    <ProjectArchitecture projectId={project.id} />
                 </div>
+
+                {/* Video Indicator Overlay */}
+                {project.clips && project.clips.length > 0 && (
+                  <div className="absolute top-6 left-6 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                    <span className="mono text-[8px] text-accent uppercase tracking-widest font-bold">System_Live_Feed</span>
+                  </div>
+                )}
              </div>
           </div>
 

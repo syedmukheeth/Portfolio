@@ -15,6 +15,7 @@ export interface Project {
   stack: string[];
   github?: string;
   demo?: string;
+  clips?: string[];
 }
 
 export const PROJECTS: Project[] = [
@@ -36,6 +37,7 @@ export const PROJECTS: Project[] = [
     stack: ["Node.js", "Docker", "Socket.io", "Redis"],
     github: "https://github.com/syedmukheeth/SAM-Compiler",
     demo: "https://sam-compiler-web.vercel.app",
+    clips: ["/clips/SamCompiler-1.mp4", "/clips/SamCompiler-2.mp4"]
   },
   {
     id: "sam-index",
@@ -55,6 +57,7 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "BullMQ", "Redis", "OpenAI"],
     github: "https://github.com/syedmukheeth/SAMIndex",
     demo: "https://sam-index.vercel.app/",
+    clips: ["/clips/SamIndex-1.mp4", "/clips/SamIndex-2.mp4"]
   },
   {
     id: "peer-net",
@@ -74,6 +77,7 @@ export const PROJECTS: Project[] = [
     stack: ["Kafka", "Express", "MongoDB", "Redis"],
     github: "https://github.com/syedmukheeth/PeerNet",
     demo: "https://peer-net-indol.vercel.app",
+    clips: ["/clips/PeerNet-1.mp4", "/clips/PeerNet-2.mp4"]
   },
   {
     id: "sjdc-modernization",
@@ -92,5 +96,6 @@ export const PROJECTS: Project[] = [
     ],
     stack: ["Supabase", "React", "PostgreSQL", "Next.js"],
     github: "https://github.com/syedmukheeth/SJDC",
+    clips: ["/clips/SJDC-1.mp4", "/clips/SJDC-2.mp4"]
   },
 ];
