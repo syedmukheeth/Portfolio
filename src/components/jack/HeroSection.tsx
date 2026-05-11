@@ -80,34 +80,14 @@ export const HeroSection = () => {
               </motion.div>
 
               {/* Main Content Reveal */}
-              <div className="relative z-20 flex flex-col items-center justify-center min-h-screen pt-20 pb-12">
+              <div className="relative z-20 flex flex-col md:flex-row items-center justify-center min-h-screen gap-12 md:gap-24 py-20 w-full">
                 
-                {/* 1. TOP SECTION: THE NAME & IDENTITY */}
-                <div className="relative z-30 mb-12 flex flex-col items-center text-center">
-                  <FadeIn delay={0.2} y={30} duration={1}>
-                     <div className="flex flex-col items-center gap-6">
-                        <h1 className="hero-heading font-black uppercase tracking-[-0.04em] leading-[0.85] text-[clamp(2.5rem,12vw,9.5rem)] text-white drop-shadow-2xl text-center">
-                          Syed Mukheeth
-                        </h1>
-                        <motion.p 
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 1, delay: 0.8 }}
-                          className="mono text-[10px] md:text-[14px] uppercase tracking-[0.6em] text-white font-bold"
-                        >
-                          <span className="text-accent">Full Stack</span> Systems Engineer
-                        </motion.p>
-                     </div>
-                  </FadeIn>
-                </div>
-
-                {/* 2. MIDDLE SECTION: CINEMATIC PORTRAIT */}
-                <div className="relative w-full max-w-5xl flex justify-center items-center py-4">
-                  
+                {/* LEFT SECTION: CINEMATIC PORTRAIT */}
+                <div className="relative flex justify-center items-center py-4 order-2 md:order-1">
                   {/* Subtle Volumetric Glow behind portrait */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle,rgba(255,77,0,0.05)_0%,transparent_70%)] pointer-events-none -z-10 blur-3xl animate-pulse" />
                   
-                  <FadeIn delay={0.4} y={0} duration={1.5} className="relative">
+                  <FadeIn delay={0.2} y={0} duration={1.5} className="relative">
                     <motion.div
                       animate={{ 
                         x: mousePos.x * 12, 
@@ -123,7 +103,7 @@ export const HeroSection = () => {
                       <div className="absolute -inset-8 border border-white/[0.03] rounded-[3rem] -z-10 group-hover:border-white/10 transition-colors duration-700" />
                       <div className="absolute -inset-16 border border-white/[0.01] rounded-[4rem] -z-20" />
                       
-                      <div className="relative w-[280px] sm:w-[340px] md:w-[400px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
+                      <div className="relative w-[280px] sm:w-[340px] md:w-[450px] lg:w-[500px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                         <img 
                           src="/images/avatar.png" 
@@ -153,22 +133,62 @@ export const HeroSection = () => {
                         </div>
                       </div>
 
-                      {/* Large Background Text (Depth Layer) */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-30 w-screen flex justify-center pointer-events-none overflow-hidden">
-                        <h2 className={cn(
-                          "font-black uppercase tracking-[-0.1em] leading-[0.7] text-[clamp(5rem,25vw,25rem)] opacity-[0.015] transition-all duration-1000",
-                          mode === "machine" ? "text-accent opacity-[0.04] scale-105" : "text-white"
-                        )}>
-                          SOFTWARE<br/>ENGINEER
+                      {/* Depth Layer Text (Only visible on hover or subtle background) */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-30 w-[200%] flex justify-center pointer-events-none overflow-hidden opacity-[0.02]">
+                        <h2 className="font-black uppercase tracking-[-0.1em] leading-[0.7] text-[15rem] text-white">
+                          BIO<br/>METRIC
                         </h2>
                       </div>
                     </motion.div>
                   </FadeIn>
                 </div>
 
+                {/* RIGHT SECTION: THE NAME & IDENTITY */}
+                <div className="relative z-30 flex flex-col items-center md:items-start text-center md:text-left order-1 md:order-2 max-w-2xl">
+                  <FadeIn delay={0.4} y={30} duration={1}>
+                     <div className="flex flex-col gap-4 md:gap-8">
+                        <div className="flex flex-col">
+                          <motion.span 
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                            className="mono text-accent text-[10px] md:text-[12px] uppercase tracking-[0.4em] font-bold mb-2 block"
+                          >
+                            Systems Architect
+                          </motion.span>
+                          <h1 className="font-black uppercase tracking-[-0.04em] leading-[0.8] text-[clamp(2.5rem,8vw,8rem)] text-white drop-shadow-2xl">
+                            Syed<br/>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/40">Mukheeth</span>
+                          </h1>
+                        </div>
+                        
+                        <div className="flex flex-col gap-6">
+                          <motion.p 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, delay: 1 }}
+                            className="mono text-[10px] md:text-[16px] uppercase tracking-[0.4em] text-white/60 font-medium leading-relaxed max-w-md"
+                          >
+                            Building <span className="text-white">Resilient</span>, <span className="text-white">Scalable</span> & <span className="text-white">High-Performance</span> Digital Ecosystems.
+                          </motion.p>
 
-
-
+                          <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, delay: 1.2 }}
+                            className="flex items-center gap-6 mt-4 justify-center md:justify-start"
+                          >
+                            <button className="px-8 py-4 bg-white text-black mono text-[10px] font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300">
+                              View Projects
+                            </button>
+                            <button className="px-8 py-4 border border-white/10 text-white mono text-[10px] font-bold uppercase tracking-widest hover:border-accent transition-all duration-300">
+                              Contact Me
+                            </button>
+                          </motion.div>
+                        </div>
+                     </div>
+                  </FadeIn>
+                </div>
 
               </div>
             </div>
