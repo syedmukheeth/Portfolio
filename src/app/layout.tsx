@@ -7,10 +7,14 @@ import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://syedmukheeth.com"),
-  title: "Syed Mukheeth -- Full Stack Systems Engineer",
+  title: "Syed Mukheeth",
   description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Portfolio of Syed Mukheeth.",
+  icons: {
+    icon: "/images/avatar.png",
+    apple: "/images/avatar.png",
+  },
   openGraph: {
-    title: "Syed Mukheeth -- Full Stack Systems Engineer",
+    title: "Syed Mukheeth",
     description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure.",
     url: "https://syedmukheeth.com",
     siteName: "Syed Mukheeth Portfolio",
