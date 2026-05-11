@@ -30,7 +30,7 @@ export const AboutSection = () => {
       <div className="relative z-10 flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
-            How I Build
+            Product & <br/> Systems
           </h2>
         </FadeIn>
 
