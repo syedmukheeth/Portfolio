@@ -154,7 +154,7 @@ export const HeroSection = () => {
                             transition={{ duration: 0.8, delay: 0.6 }}
                             className="mono text-accent text-[10px] md:text-[12px] uppercase tracking-[0.4em] font-bold mb-2 block"
                           >
-                            The Systems Mindset
+                            Software Engineer
                           </motion.span>
                           <h1 className="font-black uppercase tracking-[-0.04em] leading-[0.8] text-[clamp(2.5rem,8vw,8rem)] text-white drop-shadow-2xl">
                             Syed<br/>
@@ -169,9 +169,9 @@ export const HeroSection = () => {
                             transition={{ duration: 1, delay: 1 }}
                             className="mono text-[10px] md:text-[16px] uppercase tracking-[0.4em] text-white/60 font-medium leading-relaxed max-w-md"
                           >
-                            Deconstructing <span className="text-white font-bold">Complexity</span>. <br/>
-                            Engineering <span className="text-white font-bold">Resilience</span>. <br/>
-                            Building the next generation of <span className="text-accent">Distributed Ecosystems</span>.
+                            Focused on <span className="text-white font-bold">Backend Architecture</span>, <br/>
+                            <span className="text-white font-bold">Distributed Performance</span>, and <br/>
+                            building <span className="text-accent">Scalable Web Applications</span>.
                           </motion.p>
                         </div>
                      </div>

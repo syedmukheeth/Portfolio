@@ -30,12 +30,12 @@ export const AboutSection = () => {
       <div className="relative z-10 flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
-            Architectural <br/> Intent
+            How I Build
           </h2>
         </FadeIn>
 
         <AnimatedText 
-          text="I don't just build software; I design systems that endure. My engineering philosophy sits at the intersection of high-performance distributed architecture and intentional product design. I spend my time deconstructing complex patterns to build ambitious experiments—from distributed code execution engines to real-time event meshes—bridging the gap between raw infrastructure and human-centric products."
+          text="I focus on building software that works well and scales properly. I'm interested in the space where backend logic meets real user needs. Lately, I've been diving deep into distributed systems and real-time infrastructure, building tools like custom compiler engines and event meshes to understand the fundamentals of performance."
           className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[850px] text-[clamp(1rem,2vw,1.35rem)]"
         />
 
