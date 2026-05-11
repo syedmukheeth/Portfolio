@@ -13,17 +13,17 @@ import { motion } from "framer-motion";
  */
 
 const ASSET_ITEMS = [
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKSjNGBhNDM44TC/giphy.gif" }, // Code scrolling
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/QNVzHs6qC35Cg/giphy.gif" }, // Servers
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/26tn33aiTi1jkl6H6/giphy.gif" }, // Abstract data
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/13HBDT4QSTpveU/giphy.gif" }, // Network nodes
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/pS66V8vRz5Z9m/giphy.gif" }, // Matrix/System
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/o0vwzuFwCGAFO/giphy.gif" }, // Grid
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKVUn7iM8FMEU24/giphy.gif" }, // Blueprints
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/LndvH0hF9S7W8/giphy.gif" }, // Tech Hud
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/H89gnVatH60m4/giphy.gif" }, // Satellite
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/xT9IgzoKnwFNmISR8I/giphy.gif" }, // Scanning
-  { type: 'image', url: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKMGpxPucLiVdzO/giphy.gif" }, // UI elements
+  { type: 'video', url: "/clips/PeerNet-1.mp4" },
+  { type: 'image', url: "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif" },
+  { type: 'video', url: "/clips/SamCompiler-1.mp4" },
+  { type: 'image', url: "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif" },
+  { type: 'video', url: "/clips/SamIndex-1.mp4" },
+  { type: 'image', url: "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif" },
+  { type: 'video', url: "/clips/SJDC-1.mp4" },
+  { type: 'image', url: "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif" },
+  { type: 'video', url: "/clips/PeerNet-2.mp4" },
+  { type: 'image', url: "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif" },
+  { type: 'video', url: "/clips/SamCompiler-2.mp4" },
 ];
 
 export const MarqueeSection = () => {
