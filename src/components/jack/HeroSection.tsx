@@ -98,7 +98,7 @@ export const HeroSection = () => {
                         />
                         
                         {/* Dynamic HUD Layer */}
-                        <div className="absolute inset-8 z-20 flex flex-col justify-between pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
+                        <div className="absolute inset-8 z-20 flex flex-col justify-between pointer-events-none opacity-100 transition-all duration-700">
                            <div className="flex justify-between items-start mono text-[7px] tracking-widest text-accent font-bold">
                               <span>PROFILE_01</span>
                               <span>ONLINE</span>
