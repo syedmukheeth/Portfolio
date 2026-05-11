@@ -40,8 +40,8 @@ export default function Home() {
            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
               <div className="lg:col-span-7">
                  <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black uppercase tracking-tighter mb-10 leading-[0.9] text-white">
-                    Building <br />
-                    <span className="text-white/20">Thoughtful</span> <br />
+                    Let&apos;s <br />
+                    <span className="text-white/20">Connect</span> <br />
                     Systems.
                  </h2>
                  <p className="text-white/50 text-base md:text-lg max-w-lg mb-12 leading-relaxed font-light">
