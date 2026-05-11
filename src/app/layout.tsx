@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Portfolio of Syed Mukheeth.",
   icons: {
     icon: [
-      { url: "/images/avatar.png?v=2", type: "image/png" },
-      { url: "/images/avatar.png?v=2", type: "image/png", rel: "icon" },
+      { url: "/images/avatar_round.png?v=3", type: "image/png" },
+      { url: "/images/avatar_round.png?v=3", type: "image/png", rel: "icon" },
     ],
-    shortcut: "/images/avatar.png?v=2",
-    apple: "/images/avatar.png?v=2",
+    shortcut: "/images/avatar_round.png?v=3",
+    apple: "/images/avatar_round.png?v=3",
   },
   openGraph: {
     title: "Syed Mukheeth",
