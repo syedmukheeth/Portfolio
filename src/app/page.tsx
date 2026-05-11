@@ -40,65 +40,75 @@ export default function Home() {
         </svg>
       </div>
 
+import { Github, Linkedin, Twitter, FileText, ArrowUpRight } from "lucide-react";
+
       {/* CINEMATIC FOOTER */}
-      <footer id="contact" className="py-32 bg-black border-t border-white/5 relative overflow-hidden">
+      <footer id="contact" className="py-32 md:py-48 bg-black border-t border-white/5 relative overflow-hidden">
         <div className="container max-w-6xl mx-auto px-4 relative z-10">
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-              <div>
-                 <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-none">
-                    Let&apos;s build <br />
-                    <span className="text-accent">together.</span>
+           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+              <div className="lg:col-span-7">
+                 <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black uppercase tracking-tighter mb-10 leading-[0.9] text-white">
+                    Building <br />
+                    <span className="text-white/20">Thoughtful</span> <br />
+                    Systems.
                  </h2>
-                 <p className="text-white/60 text-sm md:text-base max-w-md mb-12 uppercase tracking-[0.2em] leading-relaxed">
-                    Open to exploring ambitious engineering challenges in distributed systems, backend infrastructure, and product-driven development. 🛠️ 🌐 ⚡
+                 <p className="text-white/50 text-base md:text-lg max-w-lg mb-12 leading-relaxed font-light">
+                    I’m always interested in discussing backend architecture, scalable software, and the intersection of product engineering and infrastructure. If you&apos;re building something that requires a systems-thinking mindset, let&apos;s connect.
                  </p>
-                 <div className="flex flex-col gap-2">
-                   <span className="mono text-[10px] text-accent/60 uppercase tracking-widest">Drop a message</span>
+                 
+                 <div className="group inline-flex flex-col gap-2">
+                   <span className="mono text-[10px] text-white/30 uppercase tracking-[0.4em]">Direct Communication</span>
                    <a 
                       href="https://mail.google.com/mail/?view=cm&fs=1&to=syedmukheeth09@gmail.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-2xl md:text-4xl font-medium text-white hover:text-accent transition-all duration-500 underline underline-offset-8 decoration-white/10 hover:decoration-accent"
+                      className="text-2xl md:text-3xl font-medium text-white/90 hover:text-white transition-all duration-500 underline underline-offset-8 decoration-white/5 hover:decoration-white/40 flex items-center gap-4"
                    >
                       syedmukheeth09@gmail.com
+                      <ArrowUpRight className="w-6 h-6 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-white/40" />
                    </a>
                  </div>
               </div>
               
-              <div className="flex flex-col gap-6 md:items-end">
-                 {[
-                   { label: "GitHub", href: "https://github.com/syedmukheeth", emoji: "🐙" },
-                   { label: "LinkedIn", href: "https://linkedin.com/in/syedmukheeth", emoji: "💼" },
-                   { label: "X / Twitter", href: "https://x.com/syed_mukheeth", emoji: "🐦" },
-                   { label: "Download CV", href: "#", emoji: "📄" }
-                 ].map(link => (
-                   <a 
-                     key={link.label} 
-                     href={link.href}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="text-xl uppercase tracking-[0.3em] text-white/40 hover:text-white transition-all flex items-center gap-6 group mono"
-                   >
-                     <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">
-                       {link.emoji}
-                     </span>
-                     <span className="w-8 h-px bg-white/10 group-hover:bg-accent group-hover:w-16 transition-all duration-500" />
-                     {link.label}
-                   </a>
-                 ))}
+              <div className="lg:col-span-5 flex flex-col gap-10 lg:items-end justify-center">
+                 <div className="flex flex-col gap-8 w-full max-w-[280px]">
+                   {[
+                     { label: "GitHub", href: "https://github.com/syedmukheeth", icon: Github },
+                     { label: "LinkedIn", href: "https://linkedin.com/in/syedmukheeth", icon: Linkedin },
+                     { label: "X", href: "https://x.com/syed_mukheeth", icon: Twitter },
+                     { label: "Resume", href: "#", icon: FileText }
+                   ].map(link => (
+                     <a 
+                       key={link.label} 
+                       href={link.href}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="group flex items-center justify-between text-white/40 hover:text-white transition-all duration-500 py-2 border-b border-white/5 hover:border-white/20"
+                     >
+                       <div className="flex items-center gap-6">
+                         <link.icon className="w-5 h-5 opacity-40 group-hover:opacity-100 group-hover:text-white transition-all duration-500" />
+                         <span className="text-sm uppercase tracking-[0.4em] mono">{link.label}</span>
+                       </div>
+                       <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                     </a>
+                   ))}
+                 </div>
               </div>
            </div>
            
-           <div className="mt-40 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-8 items-center">
-              <div className="mono text-[9px] uppercase tracking-[0.5em] text-white/20">Designed & Engineered &copy; 2026 Syed Mukheeth</div>
-              <div className="mono text-[9px] uppercase tracking-[0.3em] text-accent/40 bg-accent/5 px-6 py-3 rounded-full border border-accent/10 backdrop-blur-sm">
-                 SYSTEM_STATUS: <span className="text-accent">READY_TO_CONNECT</span>
+           <div className="mt-40 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between gap-10 items-center opacity-40">
+              <div className="mono text-[10px] uppercase tracking-[0.6em] text-white">Designed & Engineered &copy; 2026 Syed Mukheeth</div>
+              <div className="flex items-center gap-4">
+                 <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse" />
+                 <div className="mono text-[10px] uppercase tracking-[0.4em]">
+                    System Mode: <span className="text-white">Active Exploration</span>
+                 </div>
               </div>
            </div>
         </div>
         
         {/* Ambient Glow */}
-        <div className="absolute -bottom-1/2 -right-1/4 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[160px] pointer-events-none opacity-50" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[180px] pointer-events-none" />
       </footer>
     </div>
   );
