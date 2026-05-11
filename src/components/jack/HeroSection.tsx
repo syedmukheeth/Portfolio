@@ -36,6 +36,7 @@ export const HeroSection = () => {
       <AnimatePresence>
         {isBooted && (
           <motion.section
+            id="hero"
             ref={sectionRef}
             onMouseMove={handleMouseMove}
             initial={{ opacity: 0 }}
