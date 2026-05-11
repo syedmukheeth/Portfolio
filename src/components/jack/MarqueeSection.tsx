@@ -13,68 +13,79 @@ import { motion } from "framer-motion";
  */
 
 const ASSET_ITEMS = [
-  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519205/PeerNet-1_ysx8lh.mp4" },
-  { type: 'image', url: "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif" },
-  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamCompiler-1_dotu4m.mp4" },
-  { type: 'image', url: "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif" },
-  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamIndex-1_srrmp2.mp4" },
-  { type: 'image', url: "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif" },
-  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519206/SJDC-1_gz4t3w.mp4" },
-  { type: 'image', url: "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif" },
-  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/PeerNet-2_pznwtj.mp4" },
-  { type: 'image', url: "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif" },
-  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519210/SamCompiler-2_hdkgnc.mp4" },
+  { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519205/PeerNet-1_ysx8lh.mp4" },
+  { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519207/SamCompiler-1_dotu4m.mp4" },
+  { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519207/SamIndex-1_srrmp2.mp4" },
+  { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519206/SJDC-1_gz4t3w.mp4" },
+  { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519207/PeerNet-2_pznwtj.mp4" },
+  { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519210/SamCompiler-2_hdkgnc.mp4" },
+  { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519207/SamIndex-2_rz4747.mp4" },
+  { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519206/SJDC-2_hq7doz.mp4" },
 ];
+
+const LazyMarqueeVideo = ({ url }: { url: string }) => {
+  const containerRef = useRef(null);
+  // Only mount the video tag when it's visible in the marquee
+  const isInView = (require("framer-motion").useInView)(containerRef, { margin: "0px 100px 0px 100px" });
+
+  return (
+    <div ref={containerRef} className="w-[300px] sm:w-[450px] h-[200px] sm:h-[300px] rounded-3xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group relative">
+      {isInView ? (
+        <video 
+          src={url} 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
+          className="w-full h-full object-cover grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+        />
+      ) : (
+        <div className="w-full h-full bg-gradient-to-br from-white/5 to-transparent flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full border border-white/10 border-t-accent/30 animate-spin" />
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const MarqueeSection = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  
+  // UseInView to disable the entire section scroll listener when off-screen
+  const isSectionInView = (require("framer-motion").useInView)(sectionRef, { margin: "200px 0px 200px 0px" });
 
   useEffect(() => {
+    if (!isSectionInView) return;
+    
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const top = rect.top + window.scrollY;
-      const offset = (window.scrollY - top + window.innerHeight) * 0.3;
+      const offset = (window.scrollY - top + window.innerHeight) * 0.25; // Slower, smoother parallax
       setScrollOffset(offset);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isSectionInView]);
 
-  const row1 = ASSET_ITEMS.slice(0, 6);
-  const row2 = ASSET_ITEMS.slice(5);
+  const row1 = ASSET_ITEMS.slice(0, 4);
+  const row2 = ASSET_ITEMS.slice(4, 8);
 
   const MarqueeRow = ({ items, direction = 1 }: { items: typeof ASSET_ITEMS, direction?: number }) => (
     <div className="flex gap-4 overflow-hidden whitespace-nowrap">
       <div 
-        className="flex gap-4 transition-transform duration-100 ease-linear"
+        className="flex gap-4 transition-transform duration-75 ease-linear"
         style={{ 
-          transform: `translateX(${direction * (scrollOffset - 300)}px)`,
+          transform: `translate3d(${direction * (scrollOffset - 300)}px, 0, 0)`,
           willChange: 'transform'
         }}
       >
-        {[...items, ...items, ...items, ...items].map((item, i) => (
-          <div key={i} className="w-[450px] h-[300px] rounded-3xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group">
-             {item.type === 'video' ? (
-               <video 
-                 src={item.url} 
-                 autoPlay 
-                 loop 
-                 muted 
-                 playsInline 
-                 className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-               />
-             ) : (
-               <img
-                 src={item.url}
-                 alt={`Work ${i}`}
-                 loading="lazy"
-                 className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-               />
-             )}
-          </div>
+        {/* Only 2 sets for extreme performance optimization */}
+        {[...items, ...items].map((item, i) => (
+          <LazyMarqueeVideo key={i} url={item.url} />
         ))}
       </div>
     </div>

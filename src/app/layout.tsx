@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Syed Mukheeth Portfolio",
     images: [
       {
-        url: "https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif",
+        url: "/images/avatar.png",
         width: 1200,
         height: 630,
       },
