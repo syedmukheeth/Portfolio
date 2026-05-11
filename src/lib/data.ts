@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     stack: ["Node.js", "Docker", "Socket.io", "Redis"],
     github: "https://github.com/syedmukheeth/SAM-Compiler",
     demo: "https://sam-compiler-web.vercel.app",
-    clips: ["/clips/SamCompiler-1.mp4", "/clips/SamCompiler-2.mp4"]
+    clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamCompiler-1_dotu4m.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519210/SamCompiler-2_hdkgnc.mp4"]
   },
   {
     id: "sam-index",
@@ -57,7 +57,7 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "BullMQ", "Redis", "OpenAI"],
     github: "https://github.com/syedmukheeth/SAMIndex",
     demo: "https://sam-index.vercel.app/",
-    clips: ["/clips/SamIndex-1.mp4", "/clips/SamIndex-2.mp4"]
+    clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamIndex-1_srrmp2.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamIndex-2_rz4747.mp4"]
   },
   {
     id: "peer-net",
@@ -77,7 +77,7 @@ export const PROJECTS: Project[] = [
     stack: ["Kafka", "Express", "MongoDB", "Redis"],
     github: "https://github.com/syedmukheeth/PeerNet",
     demo: "https://peer-net-indol.vercel.app",
-    clips: ["/clips/PeerNet-1.mp4", "/clips/PeerNet-2.mp4"]
+    clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519205/PeerNet-1_ysx8lh.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/PeerNet-2_pznwtj.mp4"]
   },
   {
     id: "sjdc-modernization",
@@ -96,6 +96,6 @@ export const PROJECTS: Project[] = [
     ],
     stack: ["Supabase", "React", "PostgreSQL", "Next.js"],
     github: "https://github.com/syedmukheeth/SJDC",
-    clips: ["/clips/SJDC-1.mp4", "/clips/SJDC-2.mp4"]
+    clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519206/SJDC-1_gz4t3w.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519206/SJDC-2_hq7doz.mp4"]
   },
 ];

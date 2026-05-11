@@ -13,17 +13,17 @@ import { motion } from "framer-motion";
  */
 
 const ASSET_ITEMS = [
-  { type: 'video', url: "/clips/PeerNet-1.mp4" },
+  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519205/PeerNet-1_ysx8lh.mp4" },
   { type: 'image', url: "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif" },
-  { type: 'video', url: "/clips/SamCompiler-1.mp4" },
+  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamCompiler-1_dotu4m.mp4" },
   { type: 'image', url: "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif" },
-  { type: 'video', url: "/clips/SamIndex-1.mp4" },
+  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamIndex-1_srrmp2.mp4" },
   { type: 'image', url: "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif" },
-  { type: 'video', url: "/clips/SJDC-1.mp4" },
+  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519206/SJDC-1_gz4t3w.mp4" },
   { type: 'image', url: "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif" },
-  { type: 'video', url: "/clips/PeerNet-2.mp4" },
+  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/PeerNet-2_pznwtj.mp4" },
   { type: 'image', url: "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif" },
-  { type: 'video', url: "/clips/SamCompiler-2.mp4" },
+  { type: 'video', url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519210/SamCompiler-2_hdkgnc.mp4" },
 ];
 
 export const MarqueeSection = () => {

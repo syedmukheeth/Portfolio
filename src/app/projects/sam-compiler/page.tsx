@@ -22,9 +22,12 @@ import {
   Github
 } from "lucide-react";
 import Link from "next/link";
+import { PROJECTS } from "@/lib/data";
 
 export default function SamCompilerPage() {
   const { mode } = useMode();
+  const project = PROJECTS.find(p => p.id === "sam-compiler");
+  const clips = project?.clips || [];
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-white transition-colors duration-500">
@@ -116,8 +119,8 @@ export default function SamCompilerPage() {
         {/* Cinematic Video Previews */}
         <section className="mb-60">
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[1, 2].map((num) => (
-                <VideoCard key={num} src={`/clips/SamCompiler-${num}.mp4`} num={num} />
+              {clips.map((src, index) => (
+                <VideoCard key={index} src={src} num={index + 1} />
               ))}
            </div>
         </section>
