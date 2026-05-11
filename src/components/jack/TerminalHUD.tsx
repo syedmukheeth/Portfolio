@@ -4,12 +4,18 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMode } from "@/context/ModeContext";
 
-const COMMANDS = {
-  help: "available commands: help, inspect [project], reveal stack, clear, list systems, exit",
-  "list systems": "systems: [SAM-COMPILER], [SAMINDEX], [PEERNET], [SJDC-ACADEMIC]",
-  "reveal stack": "core: [next.js, typescript, tailwind]\ninfra: [distributed mesh, edge runtime, redis orchestration]\nintelligence: [gemini-pro, nvidia-nim]",
-  "inspect sam-compiler": "analyzing SAM-COMPILER architecture...\n- isolated docker sandboxes\n- distributed execution workers\n- crdt realtime sync\n- multi-tenant isolation",
-  "inspect samindex": "analyzing SAMINDEX pipeline...\n- bulk repository indexing\n- semantic vector retrieval\n- redis event queue\n- ai-powered workspace intelligence",
+const KNOWLEDGE_BASE = {
+  whois: "NAME: SYED MUKHEETH\nROLE: SOFTWARE ENGINEER / SYSTEMS EXPLORER\nSTATUS: ACTIVE_DEVELOPMENT\nLOCATION: HYDERABAD, INDIA\n\nI build software that deconstructs complex systems. My work focuses on backend architecture, distributed performance, and bridging the 'Context Gap' in developer tooling.",
+  mission: "ENGINEERING PHILOSOPHY:\n- Solve friction, don't just add features.\n- Build systems that feel intuitive and efficient.\n- Deconstruct complex infrastructure (like event meshes and compilers) to understand the 'why' behind the 'how'.",
+  stack: "CORE SYSTEMS:\n- Frontend: [React, Next.js, Framer Motion]\n- Backend: [Node.js, Express, BullMQ]\n- Infrastructure: [Redis, Kafka, Docker, Supabase]\n- Language: [TypeScript, JavaScript, SQL]",
+  projects: "SYSTEMS_CATALOG:\n1. [SAMINDEX] - Repository Intelligence Pipeline\n2. [SAM-COMPILER] - Distributed Secure Execution\n3. [PEERNET] - Scalable Event Mesh Networking\n4. [SJDC] - Institutional Modernization\n\nType 'inspect [name]' for deep-dive technical data.",
+  "inspect samindex": "TECHNICAL ANALYSIS: SAMINDEX\n- Problem: 'Keyword Blindness' in large codebases.\n- Solution: Automated intelligence pipelines.\n- Stack: Next.js, BullMQ, Redis, OpenAI.\n- Result: Bridged the gap between raw code and developer intent.",
+  "inspect sam-compiler": "TECHNICAL ANALYSIS: SAM-COMPILER\n- Problem: Secure execution of untrusted code at scale.\n- Solution: Docker-sandboxed execution environments.\n- Stack: Node.js, Docker, Socket.io, Redis.\n- Features: CRDT/Yjs realtime sync, multi-tenant isolation.",
+  "inspect peernet": "TECHNICAL ANALYSIS: PEERNET\n- Problem: High-throughput real-time event propagation.\n- Solution: Distributed social graph activities.\n- Stack: Kafka, Express, MongoDB, Redis.\n- Features: Resilient WebSocket meshes, event-driven state.",
+  "inspect sjdc": "TECHNICAL ANALYSIS: SJDC MODERNIZATION\n- Focus: Legacy modernization for 20k+ users.\n- Stack: React, Supabase RLS, PostgreSQL.\n- Core: Secure RBAC architectures, real-time academic workflows.",
+  contact: "CONNECT_INTERFACE:\n- Email: syedmukheeth09@gmail.com\n- Status: Open to collaborating on ambitious systems projects.",
+  socials: "SOCIAL_NODES:\n- GitHub: github.com/syedmukheeth\n- LinkedIn: linkedin.com/in/syedmukheeth\n- X: x.com/syed_mukheeth",
+  help: "AVAILABLE_COMMANDS: whois, mission, stack, projects, inspect [name], socials, contact, clear, exit",
   clear: "CLEAR",
 };
 
@@ -56,8 +62,8 @@ export const TerminalHUD = () => {
     
     if (cmd === "clear") {
       setHistory([]);
-    } else if (COMMANDS[cmd as keyof typeof COMMANDS]) {
-      newHistory.push(COMMANDS[cmd as keyof typeof COMMANDS]);
+    } else if (KNOWLEDGE_BASE[cmd as keyof typeof KNOWLEDGE_BASE]) {
+      newHistory.push(KNOWLEDGE_BASE[cmd as keyof typeof KNOWLEDGE_BASE]);
       setHistory(newHistory);
     } else if (cmd === "exit") {
       setIsOpen(false);
