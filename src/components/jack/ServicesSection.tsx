@@ -7,28 +7,28 @@ import { FadeIn } from "./JackComponents";
 const SERVICES = [
   {
     id: "01",
-    name: "Distributed Systems",
-    description: "Architecting scalable backend ecosystems using event-driven patterns, Kafka, and Redis for global-scale performance and reliability."
+    name: "Realtime & Event-Driven Systems",
+    description: "Exploring low-latency networking through PeerNet, where I implemented WebSocket communication and Redis adapters to manage asynchronous event-driven flows and real-time social interaction."
   },
   {
     id: "02",
-    name: "Infrastructure Engineering",
-    description: "Designing automated pipelines for repository intelligence and secure code execution using Docker, BullMQ, and cloud-native patterns."
+    name: "Repository & Infrastructure Tooling",
+    description: "Building automated intelligence pipelines for SAMIndex. I developed ZIP-based ingestion workflows using Redis queues and BullMQ to process codebase context for AI-assisted analysis."
   },
   {
     id: "03",
-    name: "Real-time Architectures",
-    description: "Implementing low-latency synchronization protocols using WebSockets and CRDTs for collaborative engineering tools and social platforms."
+    name: "Realtime Collaboration & Synchronization",
+    description: "Experimenting with distributed state in SAM Compiler. I implemented CRDT/Yjs synchronization and WebSockets to enable seamless multi-user collaboration and real-time code execution."
   },
   {
     id: "04",
-    name: "Product Engineering",
-    description: "Bridging the gap between complex infrastructure and premium user experience with cinematic frontend craftsmanship and systems thinking."
+    name: "Product-Focused Engineering",
+    description: "Focusing on the intersection of technical curiosity and user experience. I build tools that make complex concepts—like repository indexing or event meshes—accessible through intuitive product design."
   },
   {
     id: "05",
-    name: "Security & Modernization",
-    description: "Transforming legacy institutional platforms into modern, secure environments using Zero-Trust RLS models and progressive migration."
+    name: "Security & Platform Modernization",
+    description: "Modernizing legacy institutional platforms at SJDC. I migrated legacy stacks to React and implemented secure, role-based access control using Supabase RLS to protect academic workflows."
   }
 ];
 
