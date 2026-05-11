@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
     title: "SAMIndex",
     tagline: "Building Repo Intelligence Pipelines",
     role: "Infrastructure Exploration",
-    description: "A deep dive into automated codebase indexing, transforming raw source code into structured context for AI-driven development workflows.",
+    description: "I built SAMIndex to solve 'Keyword Blindness' in large repositories, bridging the Context Gap between raw code and developer intent through automated intelligence pipelines.",
     architecture: {
       nodes: ["ZIP Ingest", "Extraction", "Redis Queue", "AI Context Engine"],
       flow: ["Indexing Pipeline", "Repo Scanning", "Worker Orchestration"],
@@ -61,7 +61,7 @@ export const PROJECTS: Project[] = [
     title: "PeerNet",
     tagline: "Deconstructing Real-time Event Meshes",
     role: "Backend Exploration",
-    description: "An exploration of scalable messaging infrastructure, leveraging Kafka and WebSockets to understand high-throughput event propagation and social graph activity.",
+    description: "A scalable networking platform designed to deconstruct high-throughput event meshes, leveraging Kafka and WebSockets for resilient real-time communication.",
     architecture: {
       nodes: ["Client", "Socket Layer", "Redis Adapter", "Kafka Events"],
       flow: ["Websocket Flows", "Event Propagation", "Social Graph Activity"],
