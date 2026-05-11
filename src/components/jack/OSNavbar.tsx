@@ -15,9 +15,17 @@ export const OSNavbar = () => {
 
       {/* Editorial Name */}
       <FadeIn delay={0.1} y={-10} className="pointer-events-auto">
-        <div className="flex items-center gap-3">
-          <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span className="mono text-[10px] uppercase tracking-[0.5em] text-white font-bold drop-shadow-md">Syed Mukheeth</span>
+        <div className="flex items-center gap-4">
+          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10 shadow-lg">
+            <img src="/images/avatar.png" alt="SM" className="w-full h-full object-cover" />
+          </div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="mono text-[10px] uppercase tracking-[0.5em] text-white font-bold drop-shadow-md">Syed Mukheeth</span>
+            </div>
+            <span className="mono text-[6px] tracking-[0.3em] text-white/30 uppercase mt-0.5">Systems Engineer</span>
+          </div>
         </div>
       </FadeIn>
 

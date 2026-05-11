@@ -123,12 +123,12 @@ export const HeroSection = () => {
                       <div className="absolute -inset-8 border border-white/[0.03] rounded-[3rem] -z-10 group-hover:border-white/10 transition-colors duration-700" />
                       <div className="absolute -inset-16 border border-white/[0.01] rounded-[4rem] -z-20" />
                       
-                      <div className="relative w-[280px] sm:w-[360px] md:w-[440px] aspect-[4/5] overflow-hidden rounded-[2.5rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
+                      <div className="relative w-[280px] sm:w-[340px] md:w-[400px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                         <img 
-                          src="/images/portrait.jpg" 
+                          src="/images/avatar.png" 
                           alt="Syed Mukheeth" 
-                          className="w-full h-full object-cover object-top opacity-95 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+                          className="w-full h-full object-cover object-center opacity-95 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
                         />
                         
                         {/* Dynamic HUD Layer */}
@@ -166,29 +166,9 @@ export const HeroSection = () => {
                   </FadeIn>
                 </div>
 
-                {/* 3. BOTTOM SECTION: CALL TO ACTION */}
-                <div className="mt-auto w-full flex flex-col items-center gap-10">
-                  <FadeIn delay={0.6} y={20}>
-                    <div className="flex flex-col items-center text-center gap-2">
-                       <p className="mono text-[9px] md:text-[11px] uppercase tracking-[0.4em] text-white/40 font-light">
-                         Building High-Performance Web Applications
-                       </p>
-                       <div className="w-12 h-[1px] bg-accent/20 mt-2" />
-                    </div>
-                  </FadeIn>
 
-                  <FadeIn delay={0.8} y={20}>
-                    <div className="flex items-center gap-8">
-                       <a href="#projects" className="mono text-[10px] uppercase tracking-[0.4em] text-white/40 hover:text-white transition-all duration-300">
-                         My Projects
-                       </a>
-                       <div className="w-1 h-1 rounded-full bg-white/10" />
-                       <a href="#contact" className="px-10 py-3.5 glass-bright border border-accent/30 text-white rounded-full mono text-[9px] uppercase tracking-[0.5em] font-bold hover:bg-accent/10 transition-all duration-500 shadow-[0_10px_30px_-15px_rgba(255,77,0,0.2)]">
-                         Contact Me
-                       </a>
-                    </div>
-                  </FadeIn>
-                </div>
+
+
 
               </div>
             </div>
