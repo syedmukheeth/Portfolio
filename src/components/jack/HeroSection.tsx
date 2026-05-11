@@ -64,18 +64,6 @@ export const HeroSection = () => {
             {/* THE ARCHITECTURAL HIERARCHY */}
             <div className="relative z-10 w-full max-w-[1440px] px-6 md:px-20 flex flex-col items-center">
               
-              {/* Background Title: SYSTEMS ENGINEER */}
-              <motion.div 
-                style={{ y: y1, opacity }}
-                className="absolute top-1/2 -translate-y-1/2 left-0 w-full flex flex-col items-center pointer-events-none"
-              >
-                <h2 className={cn(
-                  "font-black uppercase tracking-[-0.08em] leading-[0.8] text-[clamp(4rem,20vw,24rem)] opacity-[0.03] select-none text-center transition-colors duration-1000",
-                  mode === "machine" ? "text-accent opacity-[0.08]" : "text-white"
-                )}>
-                  SYSTEMS<br/>ENGINEER
-                </h2>
-              </motion.div>
 
               {/* Main Content Reveal */}
               <div className="relative z-20 flex flex-col md:flex-row items-center justify-center min-h-screen gap-12 md:gap-24 py-20 w-full">
