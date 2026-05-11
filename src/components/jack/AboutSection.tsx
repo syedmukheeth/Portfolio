@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FadeIn, AnimatedText, ContactButton } from "./JackComponents";
+import { FadeIn, AnimatedText } from "./JackComponents";
 
 export const AboutSection = () => {
   return (
@@ -40,7 +40,6 @@ export const AboutSection = () => {
         />
 
         <div className="mt-6">
-          <ContactButton delay={0.4} />
         </div>
       </div>
 

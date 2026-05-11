@@ -171,20 +171,6 @@ export const HeroSection = () => {
                           >
                             Building <span className="text-white">Resilient</span>, <span className="text-white">Scalable</span> & <span className="text-white">High-Performance</span> Digital Ecosystems.
                           </motion.p>
-
-                          <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 1.2 }}
-                            className="flex items-center gap-6 mt-4 justify-center md:justify-start"
-                          >
-                            <button className="px-8 py-4 bg-white text-black mono text-[10px] font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300">
-                              View Projects
-                            </button>
-                            <button className="px-8 py-4 border border-white/10 text-white mono text-[10px] font-bold uppercase tracking-widest hover:border-accent transition-all duration-300">
-                              Contact Me
-                            </button>
-                          </motion.div>
                         </div>
                      </div>
                   </FadeIn>
