@@ -8,13 +8,7 @@ import { ServicesSection } from "@/components/jack/ServicesSection";
 import { ProjectsSection } from "@/components/jack/ProjectsSection";
 import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
-
-const SOCIAL_LINKS = [
-  { label: "GitHub", href: "https://github.com/syedmukheeth" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/syedmukheeth" },
-  { label: "X", href: "https://x.com/syed_mukheeth" },
-  { label: "CV", href: "#" }
-];
+import { Github, Linkedin, Twitter, FileText, ArrowUpRight } from "lucide-react";
 
 export default function Home() {
   const { mode } = useMode();
@@ -39,8 +33,6 @@ export default function Home() {
           <rect width="100%" height="100%" filter="url(#noiseFilter)" />
         </svg>
       </div>
-
-import { Github, Linkedin, Twitter, FileText, ArrowUpRight } from "lucide-react";
 
       {/* CINEMATIC FOOTER */}
       <footer id="contact" className="py-32 md:py-48 bg-black border-t border-white/5 relative overflow-hidden">
