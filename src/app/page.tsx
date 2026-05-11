@@ -41,8 +41,7 @@ export default function Home() {
               <div className="lg:col-span-7">
                  <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black uppercase tracking-tighter mb-10 leading-[0.9] text-white">
                     Let&apos;s <br />
-                    <span className="text-white/20">Connect</span> <br />
-                    Systems.
+                    <span className="text-white/20">Connect.</span>
                  </h2>
                  <p className="text-white/50 text-base md:text-lg max-w-lg mb-12 leading-relaxed font-light">
                     I’m always interested in discussing backend architecture, scalable software, and the intersection of product engineering and infrastructure. If you&apos;re building something that requires a systems-thinking mindset, let&apos;s connect.
