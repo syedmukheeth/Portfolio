@@ -97,15 +97,30 @@ const ProjectCard = ({
 }: any) => {
   const scale = useTransform(progress, range, [1, targetScale]);
   const { mode } = useMode();
+  const [isHovered, setIsHovered] = React.useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      if (isHovered) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [isHovered]);
 
   return (
     <div className="h-[90vh] flex items-center justify-center sticky top-20 md:top-24">
       <motion.div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{ 
           scale,
           top: `calc(-2vh + ${index * 30}px)`,
         }}
-        className="relative h-full w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group"
+        className="relative h-full w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group will-change-transform"
       >
         {/* Background Accent */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_100%_0%,rgba(255,77,0,0.03)_0%,transparent_70%)] pointer-events-none" />
@@ -150,33 +165,46 @@ const ProjectCard = ({
           {/* Architecture Visualization */}
           <div className="lg:col-span-7 flex flex-col gap-6">
              <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500">
-                {project.clips && project.clips.length > 0 ? (
+                {project.clips && project.clips.length > 0 && (
                   <video 
+                    ref={videoRef}
                     src={project.clips[0]} 
-                    autoPlay 
                     muted 
                     loop 
                     playsInline 
-                    className="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-700"
-                  />
-                ) : (
-                  <img 
-                    src={project.gridImages.col2} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-700"
+                    preload="metadata"
+                    className={cn(
+                      "w-full h-full object-cover transition-opacity duration-700 absolute inset-0",
+                      isHovered ? "opacity-80" : "opacity-0"
+                    )}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                 
-                <div className="absolute bottom-8 left-8 right-8">
+                <img 
+                  src={project.gridImages.col2} 
+                  alt={project.title} 
+                  className={cn(
+                    "w-full h-full object-cover transition-opacity duration-700",
+                    isHovered ? "opacity-30" : "opacity-50"
+                  )}
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent pointer-events-none" />
+                
+                <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
                    <ProjectArchitecture projectId={project.id} />
                 </div>
 
                 {/* Video Indicator Overlay */}
                 {project.clips && project.clips.length > 0 && (
-                  <div className="absolute top-6 left-6 flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                    <span className="mono text-[8px] text-accent uppercase tracking-widest font-bold">System_Live_Feed</span>
+                  <div className="absolute top-6 left-6 flex items-center gap-2 pointer-events-none">
+                    <div className={cn(
+                      "w-1.5 h-1.5 rounded-full transition-colors duration-500",
+                      isHovered ? "bg-accent animate-pulse" : "bg-white/20"
+                    )} />
+                    <span className="mono text-[8px] text-accent uppercase tracking-widest font-bold">
+                       {isHovered ? "System_Live_Feed" : "Static_Analysis"}
+                    </span>
                   </div>
                 )}
              </div>

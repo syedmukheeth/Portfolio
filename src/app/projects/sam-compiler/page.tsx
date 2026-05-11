@@ -117,37 +117,7 @@ export default function SamCompilerPage() {
         <section className="mb-60">
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[1, 2].map((num) => (
-                <div key={num} className="relative aspect-video rounded-2xl overflow-hidden border border-foreground/10 bg-foreground/5 group">
-                   <video 
-                     src={`/clips/SamCompiler-${num}.mp4`} 
-                     autoPlay 
-                     muted 
-                     loop 
-                     playsInline 
-                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700" 
-                   />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                   <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                      <div className="px-2 py-1 rounded bg-accent/20 border border-accent/40 text-[8px] font-mono text-accent uppercase tracking-widest">
-                         Execution_Trace_0{num}
-                      </div>
-                      <div className="text-[10px] font-mono text-foreground/40 uppercase tracking-widest">
-                         Sandbox_Isolation_Monitor
-                      </div>
-                   </div>
-                   
-                   {/* HUD Elements */}
-                   <div className="absolute top-6 right-6 flex flex-col items-end gap-1">
-                      <div className="w-12 h-1 bg-accent/40 rounded-full overflow-hidden">
-                         <motion.div 
-                           animate={{ width: ["10%", "90%", "30%"] }} 
-                           transition={{ duration: 4, repeat: Infinity }} 
-                           className="h-full bg-accent" 
-                         />
-                      </div>
-                      <div className="text-[8px] font-mono text-accent/60 uppercase">Kernel_Audit_Log</div>
-                   </div>
-                </div>
+                <VideoCard key={num} src={`/clips/SamCompiler-${num}.mp4`} num={num} />
               ))}
            </div>
         </section>
@@ -343,3 +313,79 @@ function ScalingItem({ title, desc }: { title: string; desc: string }) {
     </div>
   );
 }
+
+function VideoCard({ src, num }: { src: string; num: number }) {
+  const [isHovered, setIsHovered] = React.useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  
+  React.useEffect(() => {
+    if (videoRef.current) {
+      if (isHovered) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [isHovered]);
+
+  return (
+    <div 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative aspect-video rounded-2xl overflow-hidden border border-foreground/10 bg-foreground/5 group transition-all duration-500 hover:border-accent/30 will-change-transform"
+    >
+       {/* Persistent Video Element for Zero Latency */}
+       <video 
+         ref={videoRef}
+         src={src} 
+         muted 
+         loop 
+         playsInline 
+         preload="metadata"
+         className={cn(
+           "w-full h-full object-cover transition-opacity duration-500 absolute inset-0",
+           isHovered ? "opacity-100" : "opacity-0"
+         )} 
+       />
+
+       {/* Placeholder UI */}
+       <div className={cn(
+         "w-full h-full bg-black/40 flex items-center justify-center transition-opacity duration-500",
+         isHovered ? "opacity-0" : "opacity-100"
+       )}>
+          <div className="flex flex-col items-center gap-4">
+             <div className="w-12 h-12 rounded-full border border-accent/20 flex items-center justify-center text-accent/40 animate-pulse">
+                <TerminalIcon size={20} />
+             </div>
+             <span className="mono text-[8px] uppercase tracking-[0.4em] text-foreground/20">Hover to Stream</span>
+          </div>
+       </div>
+       
+       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 pointer-events-none" />
+       
+       <div className="absolute bottom-6 left-6 flex items-center gap-3 pointer-events-none">
+          <div className="px-2 py-1 rounded bg-accent/20 border border-accent/40 text-[8px] font-mono text-accent uppercase tracking-widest">
+             Execution_Trace_0{num}
+          </div>
+          <div className="text-[10px] font-mono text-foreground/40 uppercase tracking-widest">
+             {isHovered ? "Sandbox_Isolation_Monitor" : "Static_Analysis"}
+          </div>
+       </div>
+       
+       <div className="absolute top-6 right-6 flex flex-col items-end gap-1 pointer-events-none">
+          <div className="w-12 h-1 bg-accent/40 rounded-full overflow-hidden">
+             <motion.div 
+               animate={{ width: isHovered ? ["10%", "90%", "30%"] : "5%" }} 
+               transition={{ duration: 4, repeat: Infinity }} 
+               className="h-full bg-accent" 
+             />
+          </div>
+          <div className="text-[8px] font-mono text-accent/60 uppercase">
+             {isHovered ? "Kernel_Audit_Log" : "Idle_State"}
+          </div>
+       </div>
+    </div>
+  );
+}
+import React from 'react';
