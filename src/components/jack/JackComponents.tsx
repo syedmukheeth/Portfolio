@@ -129,7 +129,7 @@ export const AnimatedText = ({ text, className = "" }: { text: string; className
   const containerRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.9", "end 0.2"]
+    offset: ["start 0.75", "end 0.25"]
   });
 
   const words = text.split(" ");
@@ -139,7 +139,7 @@ export const AnimatedText = ({ text, className = "" }: { text: string; className
       {words.map((word, index) => {
         const start = index / words.length;
         const end = (index + 1) / words.length;
-        const opacity = useTransform(scrollYProgress, [start, end], [0.1, 1]);
+        const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
         
         return (
           <motion.span key={index} style={{ opacity }} className="relative inline-block mr-[0.3em]">
