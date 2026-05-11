@@ -39,10 +39,16 @@ export default function Home() {
         <div className="container max-w-6xl mx-auto px-4 relative z-10">
            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
               <div className="lg:col-span-7">
-                 <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black uppercase tracking-tighter mb-10 leading-[0.9] text-white">
-                    Let&apos;s <br />
-                    <span className="text-white/20">Connect.</span>
-                 </h2>
+                 <div className="flex items-center gap-8 mb-10">
+                    <div className="relative w-16 h-16 rounded-full overflow-hidden border border-white/10 shadow-2xl">
+                       <img src="/images/avatar.png" alt="Syed Mukheeth" className="w-full h-full object-cover" />
+                       <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent" />
+                    </div>
+                    <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black uppercase tracking-tighter leading-[0.9] text-white">
+                       Let&apos;s <br />
+                       <span className="text-white/20">Connect.</span>
+                    </h2>
+                 </div>
                  <p className="text-white/50 text-base md:text-lg max-w-lg mb-12 leading-relaxed font-light">
                     I’m always interested in discussing backend architecture, scalable software, and the intersection of product engineering and infrastructure. If you&apos;re building something that requires a systems-thinking mindset, let&apos;s connect.
                  </p>
