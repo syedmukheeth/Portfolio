@@ -30,13 +30,13 @@ export const AboutSection = () => {
       <div className="relative z-10 flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
-            Systems thinker
+            Architectural <br/> Intent
           </h2>
         </FadeIn>
 
         <AnimatedText 
-          text="I am a Software Engineer driven by a deep curiosity for how large-scale systems work under the hood. I spend my time deconstructing complex architectural patterns and building ambitious experiments—from distributed code execution engines to real-time event meshes—to understand the fundamentals of scalability, resilience, and product craftsmanship."
-          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[800px] text-[clamp(1rem,2vw,1.35rem)]"
+          text="I don't just build software; I design systems that endure. My engineering philosophy sits at the intersection of high-performance distributed architecture and intentional product design. I spend my time deconstructing complex patterns to build ambitious experiments—from distributed code execution engines to real-time event meshes—bridging the gap between raw infrastructure and human-centric products."
+          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[850px] text-[clamp(1rem,2vw,1.35rem)]"
         />
 
         <div className="mt-6">

@@ -124,26 +124,26 @@ export const LiveProjectButton = () => {
   );
 };
 
-// ANIMATED TEXT (Character by Character)
+// ANIMATED TEXT (Word by Word)
 export const AnimatedText = ({ text, className = "" }: { text: string; className?: string }) => {
   const containerRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.8", "end 0.2"]
+    offset: ["start 0.9", "end 0.2"]
   });
 
-  const characters = text.split("");
+  const words = text.split(" ");
 
   return (
-    <p ref={containerRef} className={cn("relative flex flex-wrap", className)}>
-      {characters.map((char, index) => {
-        const start = index / characters.length;
-        const end = (index + 1) / characters.length;
-        const opacity = useTransform(scrollYProgress, [start, end], [0.2, 1]);
+    <p ref={containerRef} className={cn("relative flex flex-wrap justify-center", className)}>
+      {words.map((word, index) => {
+        const start = index / words.length;
+        const end = (index + 1) / words.length;
+        const opacity = useTransform(scrollYProgress, [start, end], [0.1, 1]);
         
         return (
-          <motion.span key={index} style={{ opacity }} className="relative">
-            {char === " " ? "\u00A0" : char}
+          <motion.span key={index} style={{ opacity }} className="relative inline-block mr-[0.3em]">
+            {word}
           </motion.span>
         );
       })}
