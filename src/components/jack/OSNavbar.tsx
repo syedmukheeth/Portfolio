@@ -30,16 +30,17 @@ export const OSNavbar = () => {
       </FadeIn>
 
       {/* Nav Links - More Visible */}
-      <FadeIn delay={0.2} y={-10} className="pointer-events-auto hidden lg:flex items-center gap-10 glass px-8 py-3 rounded-full border border-white/5 shadow-2xl">
+      <FadeIn delay={0.2} y={-10} className="pointer-events-auto flex items-center gap-4 md:gap-10 glass px-5 md:px-8 py-2 md:py-3 rounded-full border border-white/5 shadow-2xl overflow-x-auto no-scrollbar max-w-[calc(100vw-2rem)]">
         {[
           { name: "About", href: "#about" },
+          { name: "Expertise", href: "#expertise" },
           { name: "Projects", href: "#projects" },
           { name: "Contact", href: "#contact" }
         ].map((item) => (
           <a
             key={item.name}
             href={item.href}
-            className="mono text-[10px] uppercase tracking-[0.5em] text-white/50 hover:text-white transition-all duration-300 relative group"
+            className="mono text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] text-white/50 hover:text-white transition-all duration-300 relative group whitespace-nowrap"
           >
             {item.name}
             <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-accent transition-all duration-300 group-hover:w-full" />

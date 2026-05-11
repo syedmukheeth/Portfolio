@@ -7,7 +7,6 @@ import { FadeIn } from "./JackComponents";
 import { cn } from "@/lib/utils";
 import { OSNavbar } from "./OSNavbar";
 import { SystemHUD } from "./SystemHUD";
-import { TerminalHUD } from "./TerminalHUD";
 import { BootSequence } from "./BootSequence";
 
 export const HeroSection = () => {
@@ -45,7 +44,6 @@ export const HeroSection = () => {
             className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black"
           >
             <OSNavbar />
-            <TerminalHUD />
 
             {/* BACKGROUND LAYERS */}
             <div className="absolute inset-0 z-0 pointer-events-none">

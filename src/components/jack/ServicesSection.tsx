@@ -34,7 +34,7 @@ const SERVICES = [
 
 export const ServicesSection = () => {
   return (
-    <section id="stack" className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative z-20">
+    <section id="expertise" className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative z-20">
       <div className="max-w-5xl mx-auto">
         <FadeIn delay={0} y={40}>
           <h2 className="text-[#0C0C0C] font-black uppercase text-center text-[clamp(3rem,12vw,160px)] mb-16 sm:mb-20 md:mb-28">
