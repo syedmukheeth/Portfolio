@@ -10,8 +10,12 @@ export const metadata: Metadata = {
   title: "Syed Mukheeth",
   description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Portfolio of Syed Mukheeth.",
   icons: {
-    icon: "/images/avatar.png",
-    apple: "/images/avatar.png",
+    icon: [
+      { url: "/images/avatar.png?v=2", type: "image/png" },
+      { url: "/images/avatar.png?v=2", type: "image/png", rel: "icon" },
+    ],
+    shortcut: "/images/avatar.png?v=2",
+    apple: "/images/avatar.png?v=2",
   },
   openGraph: {
     title: "Syed Mukheeth",
