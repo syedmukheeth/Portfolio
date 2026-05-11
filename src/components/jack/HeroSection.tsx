@@ -154,7 +154,7 @@ export const HeroSection = () => {
                             transition={{ duration: 0.8, delay: 0.6 }}
                             className="mono text-accent text-[10px] md:text-[12px] uppercase tracking-[0.4em] font-bold mb-2 block"
                           >
-                            Systems Architect
+                            Software Engineer
                           </motion.span>
                           <h1 className="font-black uppercase tracking-[-0.04em] leading-[0.8] text-[clamp(2.5rem,8vw,8rem)] text-white drop-shadow-2xl">
                             Syed<br/>
@@ -169,7 +169,7 @@ export const HeroSection = () => {
                             transition={{ duration: 1, delay: 1 }}
                             className="mono text-[10px] md:text-[16px] uppercase tracking-[0.4em] text-white/60 font-medium leading-relaxed max-w-md"
                           >
-                            Building <span className="text-white">Resilient</span>, <span className="text-white">Scalable</span> & <span className="text-white">High-Performance</span> Digital Ecosystems.
+                            Exploring the <span className="text-white">Architecture</span> of Scalable Systems through <span className="text-white">Ambitious</span> Experiments.
                           </motion.p>
                         </div>
                      </div>

@@ -24,7 +24,7 @@ export const OSNavbar = () => {
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               <span className="mono text-[10px] uppercase tracking-[0.5em] text-white font-bold drop-shadow-md">Syed Mukheeth</span>
             </div>
-            <span className="mono text-[6px] tracking-[0.3em] text-white/30 uppercase mt-0.5">Systems Engineer</span>
+            <span className="mono text-[6px] tracking-[0.3em] text-white/30 uppercase mt-0.5">Software Engineer</span>
           </div>
         </div>
       </FadeIn>

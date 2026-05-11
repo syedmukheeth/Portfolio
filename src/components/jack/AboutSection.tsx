@@ -35,8 +35,8 @@ export const AboutSection = () => {
         </FadeIn>
 
         <AnimatedText 
-          text="Full Stack Systems Engineer specializing in distributed architectures and real-time infrastructure. I build high-performance compilation engines, automated repository intelligence pipelines, and secure institutional operating platforms. Driven by technical elegance and production-grade reliability."
-          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[700px] text-[clamp(1rem,2vw,1.35rem)]"
+          text="I am a Software Engineer driven by a deep curiosity for how large-scale systems work under the hood. I spend my time deconstructing complex architectural patterns and building ambitious experiments—from distributed code execution engines to real-time event meshes—to understand the fundamentals of scalability, resilience, and product craftsmanship."
+          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[800px] text-[clamp(1rem,2vw,1.35rem)]"
         />
 
         <div className="mt-6">
