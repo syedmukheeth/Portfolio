@@ -77,46 +77,59 @@ export const OSNavbar = () => {
         </FadeIn>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu - Floating Island */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl pointer-events-auto lg:hidden"
-          >
-            <div className="absolute top-8 right-8">
-              <button 
-                onClick={() => setIsMenuOpen(false)}
-                className="p-4 rounded-full bg-white/5 hover:bg-white/10 transition-colors group"
-              >
-                <X className="w-6 h-6 text-white/50 group-hover:text-white transition-colors" />
-              </button>
-            </div>
+          <>
+            {/* Backdrop for closing */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="fixed inset-0 z-[190] bg-black/20 backdrop-blur-sm pointer-events-auto lg:hidden"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: -20, x: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: -20, x: 20 }}
+              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              className="fixed top-6 right-6 w-[240px] z-[200] glass-heavy rounded-[2rem] border border-white/10 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.5)] pointer-events-auto lg:hidden overflow-hidden"
+            >
+              <div className="flex flex-col p-8 gap-6">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="mono text-[8px] uppercase tracking-[0.4em] text-accent font-bold">Menu</span>
+                  <button 
+                    onClick={() => setIsMenuOpen(false)}
+                    className="p-2 -mr-2 rounded-full hover:bg-white/5 transition-colors"
+                  >
+                    <X className="w-4 h-4 text-white/50" />
+                  </button>
+                </div>
 
-            <div className="flex flex-col items-center justify-center h-full gap-12">
-               {navLinks.map((item, i) => (
-                 <motion.a
-                   initial={{ opacity: 0, y: 20 }}
-                   animate={{ opacity: 1, y: 0 }}
-                   transition={{ delay: i * 0.1 + 0.2 }}
-                   key={item.name}
-                   href={item.href}
-                   onClick={() => setIsMenuOpen(false)}
-                   className="mono text-2xl uppercase tracking-[0.6em] text-white/40 hover:text-white hover:tracking-[0.8em] transition-all duration-500"
-                 >
-                   {item.name}
-                 </motion.a>
-               ))}
-            </div>
+                <div className="flex flex-col gap-4">
+                   {navLinks.map((item, i) => (
+                     <motion.a
+                       initial={{ opacity: 0, x: 10 }}
+                       animate={{ opacity: 1, x: 0 }}
+                       transition={{ delay: i * 0.05 }}
+                       key={item.name}
+                       href={item.href}
+                       onClick={() => setIsMenuOpen(false)}
+                       className="mono text-[11px] uppercase tracking-[0.5em] text-white/40 hover:text-accent hover:translate-x-2 transition-all duration-300 py-2 border-b border-white/[0.03] last:border-none"
+                     >
+                       {item.name}
+                     </motion.a>
+                   ))}
+                </div>
 
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-20">
-               <span className="mono text-[8px] uppercase tracking-[0.4em]">Syed Mukheeth // OS Navigation</span>
-               <div className="w-12 h-[1px] bg-white/20" />
-            </div>
-          </motion.div>
+                <div className="mt-4 pt-4 border-t border-white/[0.05] flex justify-center">
+                   <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
