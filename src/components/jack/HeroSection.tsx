@@ -103,7 +103,7 @@ export const HeroSection = () => {
                       <div className="absolute -inset-8 border border-white/[0.03] rounded-[3rem] -z-10 group-hover:border-white/10 transition-colors duration-700" />
                       <div className="absolute -inset-16 border border-white/[0.01] rounded-[4rem] -z-20" />
                       
-                      <div className="relative w-[280px] sm:w-[340px] md:w-[450px] lg:w-[500px] aspect-square overflow-hidden rounded-full glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
+                      <div className="relative w-[280px] sm:w-[340px] md:w-[450px] lg:w-[500px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                         <img 
                           src="/images/avatar.png" 
