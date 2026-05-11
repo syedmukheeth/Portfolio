@@ -54,17 +54,17 @@ export default function Home() {
                  </p>
                  
                  <div className="group inline-flex flex-col gap-2">
-                   <span className="mono text-[10px] text-white/30 uppercase tracking-[0.4em]">Direct Communication</span>
-                   <a 
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=syedmukheeth09@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-2xl md:text-3xl font-medium text-white/90 hover:text-white transition-all duration-500 underline underline-offset-8 decoration-white/5 hover:decoration-white/40 flex items-center gap-4"
-                   >
-                      syedmukheeth09@gmail.com
-                      <ArrowUpRight className="w-6 h-6 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-white/40" />
-                   </a>
-                 </div>
+                    <span className="mono text-[10px] text-white/30 uppercase tracking-[0.4em]">Direct Communication</span>
+                    <a 
+                       href="https://mail.google.com/mail/?view=cm&fs=1&to=syedmukheeth09@gmail.com&su=Inquiry from Portfolio&body=Hello Syed,"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="text-xl md:text-3xl font-medium text-white/90 hover:text-accent transition-all duration-500 underline underline-offset-8 decoration-white/5 hover:decoration-accent/40 flex items-center gap-4 break-all"
+                    >
+                       syedmukheeth09@gmail.com
+                       <ArrowUpRight className="w-6 h-6 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-accent" />
+                    </a>
+                  </div>
               </div>
               
                <div className="lg:col-span-5 flex flex-col gap-10 lg:items-end justify-center">
