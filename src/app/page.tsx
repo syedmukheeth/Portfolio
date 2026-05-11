@@ -49,29 +49,40 @@ export default function Home() {
                     Let&apos;s build <br />
                     <span className="text-accent">together.</span>
                  </h2>
-                 <p className="text-white/40 text-lg max-w-sm mb-12 uppercase tracking-widest">
-                    Available for senior systems engineering roles, distributed infrastructure design, and technical product leadership.
+                 <p className="text-white/60 text-sm md:text-base max-w-md mb-12 uppercase tracking-[0.2em] leading-relaxed">
+                    Open to exploring ambitious engineering challenges in distributed systems, backend infrastructure, and product-driven development. 🛠️ 🌐 ⚡
                  </p>
-                 <a 
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=syedmukheeth09@gmail.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-2xl md:text-4xl font-medium text-white hover:text-accent transition-colors underline underline-offset-8"
-                 >
-                    syedmukheeth09@gmail.com
-                 </a>
+                 <div className="flex flex-col gap-2">
+                   <span className="mono text-[10px] text-accent/60 uppercase tracking-widest">Drop a message</span>
+                   <a 
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=syedmukheeth09@gmail.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-2xl md:text-4xl font-medium text-white hover:text-accent transition-all duration-500 underline underline-offset-8 decoration-white/10 hover:decoration-accent"
+                   >
+                      syedmukheeth09@gmail.com
+                   </a>
+                 </div>
               </div>
               
               <div className="flex flex-col gap-6 md:items-end">
-                 {SOCIAL_LINKS.map(link => (
+                 {[
+                   { label: "GitHub", href: "https://github.com/syedmukheeth", emoji: "🐙" },
+                   { label: "LinkedIn", href: "https://linkedin.com/in/syedmukheeth", emoji: "💼" },
+                   { label: "X / Twitter", href: "https://x.com/syed_mukheeth", emoji: "🐦" },
+                   { label: "Download CV", href: "#", emoji: "📄" }
+                 ].map(link => (
                    <a 
                      key={link.label} 
                      href={link.href}
                      target="_blank"
                      rel="noopener noreferrer"
-                     className="text-xl uppercase tracking-widest text-white/40 hover:text-white transition-all flex items-center gap-4 group mono"
+                     className="text-xl uppercase tracking-[0.3em] text-white/40 hover:text-white transition-all flex items-center gap-6 group mono"
                    >
-                     <span className="w-8 h-px bg-white/10 group-hover:bg-accent group-hover:w-12 transition-all" />
+                     <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">
+                       {link.emoji}
+                     </span>
+                     <span className="w-8 h-px bg-white/10 group-hover:bg-accent group-hover:w-16 transition-all duration-500" />
                      {link.label}
                    </a>
                  ))}
@@ -79,15 +90,15 @@ export default function Home() {
            </div>
            
            <div className="mt-40 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-8 items-center">
-              <div className="mono text-[8px] uppercase tracking-[0.4em] text-white/20">Designed & Engineered &copy; 2026 Syed Mukheeth</div>
-              <div className="mono text-[8px] uppercase tracking-widest text-accent/40 bg-accent/5 px-4 py-2 rounded-full border border-accent/10">
-                 Infrastructure: SYSMUK//OS Node_01
+              <div className="mono text-[9px] uppercase tracking-[0.5em] text-white/20">Designed & Engineered &copy; 2026 Syed Mukheeth</div>
+              <div className="mono text-[9px] uppercase tracking-[0.3em] text-accent/40 bg-accent/5 px-6 py-3 rounded-full border border-accent/10 backdrop-blur-sm">
+                 SYSTEM_STATUS: <span className="text-accent">READY_TO_CONNECT</span>
               </div>
            </div>
         </div>
         
         {/* Ambient Glow */}
-        <div className="absolute -bottom-1/2 -right-1/4 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute -bottom-1/2 -right-1/4 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[160px] pointer-events-none opacity-50" />
       </footer>
     </div>
   );
