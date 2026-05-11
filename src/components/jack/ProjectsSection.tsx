@@ -168,7 +168,9 @@ const ProjectCard = ({
                 {project.clips && project.clips.length > 0 && (
                   <video 
                     ref={videoRef}
-                    src={project.clips[0]} 
+                    src={project.clips[0].includes('cloudinary') 
+                      ? project.clips[0].replace('/upload/', '/upload/f_auto,q_auto/') 
+                      : project.clips[0]} 
                     muted 
                     loop 
                     playsInline 

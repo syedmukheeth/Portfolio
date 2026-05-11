@@ -339,7 +339,7 @@ function VideoCard({ src, num }: { src: string; num: number }) {
        {/* Persistent Video Element for Zero Latency */}
        <video 
          ref={videoRef}
-         src={src} 
+         src={src.includes('cloudinary') ? src.replace('/upload/', '/upload/f_auto,q_auto/') : src} 
          muted 
          loop 
          playsInline 
