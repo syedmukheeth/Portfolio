@@ -1,49 +1,15 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion";
 import { FadeIn } from "./JackComponents";
 import { useMode } from "@/context/ModeContext";
 import { PROJECTS as LIB_PROJECTS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Github, ExternalLink } from "lucide-react";
 
-// EXTEND PROJECTS WITH IMAGES FOR THE GRID
-const PROJECTS = LIB_PROJECTS.map((p, i) => {
-  const images = [
-    [
-      "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif",
-      "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif",
-      "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif"
-    ],
-    [
-      "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif",
-      "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif",
-      "https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif"
-    ],
-    [
-      "https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif",
-      "https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif",
-      "https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif"
-    ],
-    [
-      "https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif",
-      "https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif",
-      "https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif"
-    ]
-  ];
-
-  const projectImages = images[i % images.length];
-
-  return {
-    ...p,
-    gridImages: {
-      col1_1: projectImages[0],
-      col1_2: projectImages[1],
-      col2: projectImages[2]
-    }
-  };
-});
+// THE PROJECTS ARE NOW FULLY DRIVEN BY DATA.TS
+const PROJECTS = LIB_PROJECTS;
 
 import { ProjectArchitecture } from "./ProjectArchitecture";
 
@@ -98,21 +64,29 @@ const ProjectCard = ({
   const scale = useTransform(progress, range, [1, targetScale]);
   const { mode } = useMode();
   const [isHovered, setIsHovered] = React.useState(false);
+  const containerRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  
+  // SENIOR DEV TECHNIQUE: Intersection Observer for Performance
+  // Only mount/load the video when the card is in or near the viewport
+  const isInView = useInView(containerRef, { 
+    margin: "100px 0px 100px 0px", // Load slightly before it enters view for zero perceived latency
+    once: false 
+  });
 
   React.useEffect(() => {
     if (videoRef.current) {
-      if (isHovered) {
+      if (isHovered && isInView) {
         videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
-        videoRef.current.currentTime = 0;
+        if (!isHovered) videoRef.current.currentTime = 0;
       }
     }
-  }, [isHovered]);
+  }, [isHovered, isInView]);
 
   return (
-    <div className="h-[90vh] flex items-center justify-center sticky top-20 md:top-24">
+    <div ref={containerRef} className="h-[90vh] flex items-center justify-center sticky top-20 md:top-24">
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -162,10 +136,10 @@ const ProjectCard = ({
         {/* CONTENT SECTION */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8 min-h-0 relative z-10">
           
-          {/* Architecture Visualization */}
+          {/* Main Visual Showcase */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-             <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500">
-                {project.clips && project.clips.length > 0 && (
+             <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500 bg-black/40">
+                {isInView && project.clips && project.clips.length > 0 && (
                   <video 
                     ref={videoRef}
                     src={project.clips[0].includes('cloudinary') 
@@ -174,22 +148,19 @@ const ProjectCard = ({
                     muted 
                     loop 
                     playsInline 
-                    preload="metadata"
+                    preload="auto"
                     className={cn(
                       "w-full h-full object-cover transition-opacity duration-700 absolute inset-0",
-                      isHovered ? "opacity-80" : "opacity-0"
+                      isHovered ? "opacity-100" : "opacity-40"
                     )}
                   />
                 )}
                 
-                <img 
-                  src={project.gridImages.col2} 
-                  alt={project.title} 
-                  className={cn(
-                    "w-full h-full object-cover transition-opacity duration-700",
-                    isHovered ? "opacity-30" : "opacity-50"
-                  )}
-                />
+                {/* Fallback/Static state when not in view or not hovered */}
+                <div className={cn(
+                  "absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent transition-opacity duration-700",
+                  isHovered ? "opacity-0" : "opacity-100"
+                )} />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent pointer-events-none" />
                 
