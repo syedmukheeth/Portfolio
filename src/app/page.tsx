@@ -99,12 +99,12 @@ export default function Home() {
                         metric: "+12.4% Weekly"
                       },
                       { 
-                        label: "X / Twitter", 
+                        label: "X", 
                         href: "https://x.com/syed_mukheeth", 
                         icon: Twitter, 
                         color: "group-hover:text-[#1DA1F2]", 
                         glow: "group-hover:shadow-[0_0_30px_rgba(29,161,242,0.15)]",
-                        stats: "Tech_Thread_Feed",
+                        stats: "",
                         status: "SIGNAL_BROADCAST",
                         metric: "ACTIVE"
                       },
@@ -114,7 +114,7 @@ export default function Home() {
                         icon: FileText, 
                         color: "group-hover:text-accent", 
                         glow: "group-hover:shadow-[0_0_30px_rgba(255,77,0,0.2)]",
-                        stats: "V3.0.2_STABLE",
+                        stats: "",
                         status: "DOCUMENT_STORE",
                         metric: "PDF_VERIFIED"
                       }
@@ -151,12 +151,14 @@ export default function Home() {
                             </div>
                             
                             <div className="flex items-center gap-3">
-                               <div className="flex items-center gap-2">
-                                  <div className={cn("w-1 h-1 rounded-full animate-pulse", link.stats ? "bg-accent" : "bg-white/20")} />
-                                  <span className="mono text-[9px] text-white/80 font-bold tracking-widest uppercase">
-                                    {link.stats || "CONNECTING..."}
-                                  </span>
-                               </div>
+                               {link.stats && (
+                                 <div className="flex items-center gap-2">
+                                    <div className="w-1 h-1 rounded-full animate-pulse bg-accent" />
+                                    <span className="mono text-[9px] text-white/80 font-bold tracking-widest uppercase">
+                                      {link.stats}
+                                    </span>
+                                 </div>
+                               )}
                                <span className="mono text-[7px] text-accent/50 font-bold">{link.metric}</span>
                             </div>
                           </div>
