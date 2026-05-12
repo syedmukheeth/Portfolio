@@ -3,11 +3,11 @@ import { PROJECTS } from '@/lib/data';
 
 export async function GET() {
   const markdown = `
-# SYED MUKHEETH | SYSTEMS ENGINEER
+# SYED MUKHEETH | SOFTWARE ENGINEER
 Engineering scalable systems, distributed mesh networks, and intelligent infrastructure.
 
 ## CORE_IDENTITY
-- **Role**: Systems Engineer / Architect
+- **Role**: Software Engineer
 - **Focus**: Backend Architecture, Distributed Performance, Real-time Infrastructure
 - **Location**: Hyderabad, India
 - **Mission**: Deconstruct complex systems to build intuitive, high-performance solutions.

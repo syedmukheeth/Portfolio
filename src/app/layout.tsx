@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://syedmukheeth.com"),
-  title: "Syed Mukheeth | Systems Engineer",
+  title: "Syed Mukheeth | Software Engineer",
   description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Focused on high-performance backend architecture.",
   icons: {
     icon: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/avatar_kyjo2q.png",
         width: 1200,
         height: 630,
-        alt: "Syed Mukheeth - Systems Engineer"
+        alt: "Syed Mukheeth - Software Engineer"
       },
     ],
     locale: "en_US",
@@ -63,7 +63,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Person",
                 "name": "Syed Mukheeth",
-                "jobTitle": "Systems Engineer",
+                "jobTitle": "Software Engineer",
                 "email": "syedmukheeth09@gmail.com",
                 "url": "https://syedmukheeth.com",
                 "sameAs": [

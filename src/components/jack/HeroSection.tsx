@@ -149,7 +149,7 @@ export const HeroSection = () => {
                             transition={{ duration: 0.8, delay: 0.6 }}
                             className="mono text-accent text-[10px] md:text-[12px] uppercase tracking-[0.4em] font-bold mb-2 block"
                           >
-                            Systems Engineer
+                            Software Engineer
                           </motion.span>
                           <h1 className="font-black uppercase tracking-[-0.04em] leading-[0.8] text-[clamp(2.5rem,7vw,7.5rem)] text-white drop-shadow-2xl">
                             Syed<br/>
