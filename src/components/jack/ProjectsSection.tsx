@@ -113,27 +113,27 @@ const ProjectCard = ({
               0{index + 1}
             </span>
             <div className="flex flex-col pt-2 md:pt-4">
-              <span className="mono text-accent text-[10px] uppercase tracking-[0.4em] mb-2">{project.tagline}</span>
-              <h3 className="text-white font-black uppercase text-[clamp(1.5rem,4vw,3.5rem)] leading-none tracking-tight">
+              <span className="mono text-accent text-xs uppercase tracking-[0.5em] mb-3 font-bold">{project.tagline}</span>
+              <h3 className="text-white font-black uppercase text-[clamp(1.5rem,4vw,3.8rem)] leading-none tracking-tight">
                 {project.title}
               </h3>
               
               <div className="flex gap-6 mt-8 items-center">
                   <button 
                     onClick={onOpenDetails}
-                    className="px-6 py-2.5 rounded-full bg-white text-black mono text-[10px] font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-all shadow-[0_10px_30px_-10px_rgba(255,255,255,0.3)] active:scale-95"
+                    className="px-6 py-3 rounded-full bg-white text-black font-bold uppercase tracking-tighter text-[11px] hover:bg-accent hover:text-white transition-all shadow-[0_8px_20px_-5px_rgba(255,255,255,0.2)] active:scale-95"
                   >
-                    Know_More
+                    KNOW MORE
                   </button>
-                  <div className="flex gap-4">
+                  <div className="flex gap-6">
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="mono text-[9px] uppercase tracking-widest text-white/60 hover:text-white transition-colors flex items-center gap-2">
-                        Source_Code <Github size={10} />
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="mono text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-2">
+                        <Github size={12} className="opacity-60" /> Source
                       </a>
                     )}
                     {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="mono text-[9px] uppercase tracking-widest text-accent hover:text-white transition-colors flex items-center gap-2">
-                        Live_Interface <ExternalLink size={10} />
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="mono text-[10px] uppercase tracking-widest text-accent/80 hover:text-accent transition-colors flex items-center gap-2">
+                        <ExternalLink size={12} className="opacity-60" /> Interface
                       </a>
                     )}
                   </div>
@@ -141,9 +141,11 @@ const ProjectCard = ({
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 md:max-w-[200px] justify-end">
+          <div className="flex flex-wrap gap-2 md:max-w-[280px] justify-end">
              {project.stack.map((s: string) => (
-               <span key={s} className="px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] mono text-[8px] uppercase tracking-widest text-white/60">{s}</span>
+               <span key={s} className="px-3 py-1.5 rounded-full border border-white/20 bg-white/[0.06] mono text-[9px] uppercase tracking-widest text-white/90 font-medium">
+                 {s}
+               </span>
              ))}
           </div>
         </div>
@@ -187,19 +189,22 @@ const ProjectCard = ({
 
           {/* Project Details */}
           <div className="lg:col-span-5 flex flex-col justify-end gap-6">
-             <div className="p-8 rounded-3xl bg-white/[0.01] border border-white/5 flex flex-col gap-6">
-                <p className="text-white/50 text-sm md:text-base leading-relaxed uppercase tracking-wider font-light">
+             <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col gap-8 shadow-inner">
+                <p className="text-white/80 text-[15px] md:text-[17px] leading-relaxed font-normal">
                   {project.description}
                 </p>
                 
-                <div className="grid grid-cols-2 gap-4 mono text-[8px] uppercase tracking-[0.2em] text-white/40 border-t border-white/10 pt-6">
-                   <div className="flex flex-col gap-1">
-                      <span className="text-white/60">Status</span>
-                      <span className="text-green-500/80 font-bold">Production_Ready</span>
+                <div className="grid grid-cols-2 gap-8 mono text-[10px] uppercase tracking-[0.2em] border-t border-white/10 pt-8">
+                   <div className="flex flex-col gap-2">
+                      <span className="text-white/30">System_Status</span>
+                      <span className="text-green-400 font-black flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                        PROD_READY
+                      </span>
                    </div>
-                   <div className="flex flex-col gap-1">
-                      <span className="text-white/60">Complexity</span>
-                      <span className="text-white/80 font-bold">High_Performance</span>
+                   <div className="flex flex-col gap-2">
+                      <span className="text-white/30">Architecture</span>
+                      <span className="text-white font-black">HIGH_LOAD_OK</span>
                    </div>
                 </div>
              </div>
