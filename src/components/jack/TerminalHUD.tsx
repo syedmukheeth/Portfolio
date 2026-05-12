@@ -9,13 +9,14 @@ const KNOWLEDGE_BASE = {
   mission: "ENGINEERING PHILOSOPHY:\n- Solve friction, don't just add features.\n- Build systems that feel intuitive and efficient.\n- Deconstruct complex infrastructure (like event meshes and compilers) to understand the 'why' behind the 'how'.",
   stack: "CORE SYSTEMS:\n- Frontend: [React, Next.js, Framer Motion]\n- Backend: [Node.js, Express, BullMQ]\n- Infrastructure: [Redis, Kafka, Docker, Supabase]\n- Language: [TypeScript, JavaScript, SQL]",
   projects: "SYSTEMS_CATALOG:\n1. [SAMINDEX] - Repository Intelligence Pipeline\n2. [SAM-COMPILER] - Distributed Secure Execution\n3. [PEERNET] - Scalable Event Mesh Networking\n4. [SJDC] - Institutional Modernization\n\nType 'inspect [name]' for deep-dive technical data.",
+  ai: "AI_OPTIMIZATION_STATUS:\n- Markdown Negotiation: ACTIVE\n- Token Efficiency: HIGH\n- Agent Discovery: OPTIMIZED\n\nThis system serves lightweight text/markdown to AI agents (Accept: text/markdown) for zero-latency ingestion.",
   "inspect samindex": "TECHNICAL ANALYSIS: SAMINDEX\n- Problem: 'Keyword Blindness' in large codebases.\n- Solution: Automated intelligence pipelines.\n- Stack: Next.js, BullMQ, Redis, OpenAI.\n- Result: Bridged the gap between raw code and developer intent.",
   "inspect sam-compiler": "TECHNICAL ANALYSIS: SAM-COMPILER\n- Problem: Secure execution of untrusted code at scale.\n- Solution: Docker-sandboxed execution environments.\n- Stack: Node.js, Docker, Socket.io, Redis.\n- Features: CRDT/Yjs realtime sync, multi-tenant isolation.",
   "inspect peernet": "TECHNICAL ANALYSIS: PEERNET\n- Problem: High-throughput real-time event propagation.\n- Solution: Distributed social graph activities.\n- Stack: Kafka, Express, MongoDB, Redis.\n- Features: Resilient WebSocket meshes, event-driven state.",
   "inspect sjdc": "TECHNICAL ANALYSIS: SJDC MODERNIZATION\n- Focus: Legacy modernization for 20k+ users.\n- Stack: React, Supabase RLS, PostgreSQL.\n- Core: Secure RBAC architectures, real-time academic workflows.",
   contact: "CONNECT_INTERFACE:\n- Email: syedmukheeth09@gmail.com\n- Status: Open to collaborating on ambitious systems projects.",
   socials: "SOCIAL_NODES:\n- GitHub: github.com/syedmukheeth\n- LinkedIn: linkedin.com/in/syedmukheeth\n- X: x.com/syed_mukheeth",
-  help: "AVAILABLE_COMMANDS: whois, mission, stack, projects, inspect [name], socials, contact, clear, exit",
+  help: "AVAILABLE_COMMANDS: whois, mission, stack, projects, inspect [name], ai, socials, contact, clear, exit",
   clear: "CLEAR",
 };
 

@@ -229,6 +229,7 @@ const ProjectCard = ({
               className="absolute inset-x-10 bottom-10 pointer-events-none flex justify-between mono text-[7px] text-accent/40"
             >
                <span>ARCH_VERSION: V{index + 1}.0.2</span>
+               <span className="animate-pulse">MD_NEGOTIATION: READY</span>
                <span>SYSTEM_REDUNDANCY: ACTIVE</span>
                <span>DATA_FLOW_VERIFIED: TRUE</span>
             </motion.div>

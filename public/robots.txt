@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# AI Agent Configuration
+# This site supports Content Negotiation for AI Bots.
+# Request 'text/markdown' via Accept header for optimized ingestion.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Crawl-delay for non-essential scrapers
+User-agent: *
+Crawl-delay: 1
