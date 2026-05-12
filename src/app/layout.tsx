@@ -1,9 +1,22 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import TransitionOverlay from "@/components/layout/TransitionOverlay";
 import { ModeProvider } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://syedmukheeth.com"),
@@ -27,12 +40,36 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/avatar_kyjo2q.png",
         width: 1200,
         height: 630,
-        alt: "Syed Mukheeth - Software Engineer"
+        alt: "Syed Mukheeth | Software Engineer",
       },
     ],
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Syed Mukheeth | Software Engineer",
+    description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure.",
+    images: ["https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/avatar_kyjo2q.png"],
+    creator: "@syed_mukheeth",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export const viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -41,17 +78,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className={cn("dark", inter.variable, mono.variable)} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
-      <body className="antialiased selection:bg-accent selection:text-white">
+      <body className={cn(inter.variable, mono.variable, "antialiased selection:bg-accent selection:text-white bg-black")}>
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:px-6 focus:py-3 focus:bg-accent focus:text-white focus:rounded-full focus:font-bold focus:shadow-2xl transition-all"
+        >
+          Skip to content
+        </a>
         <ModeProvider>
           <TransitionOverlay />
           <div className="relative min-h-screen">
             <SmoothScroll>
-              <main className="relative z-10">
+              <main id="main-content" className="relative z-10 outline-none" tabIndex={-1}>
                 {children}
               </main>
             </SmoothScroll>

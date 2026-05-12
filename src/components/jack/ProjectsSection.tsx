@@ -88,7 +88,7 @@ const ProjectCard = ({
     <div 
       ref={containerRef} 
       className="h-auto min-h-[75vh] flex items-center justify-center sticky py-10"
-      style={{ top: `calc(8vh + ${index * 20}px)` }}
+      style={{ top: `calc(clamp(80px, 12vh, 120px) + ${index * 20}px)` }}
     >
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
@@ -104,7 +104,7 @@ const ProjectCard = ({
         {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 relative z-10">
           <div className="flex items-start gap-8">
-            <span className="mono text-white/40 font-bold text-6xl md:text-8xl leading-none select-none">
+            <span className="mono text-white/60 font-bold text-6xl md:text-8xl leading-none select-none">
               0{index + 1}
             </span>
             <div className="flex flex-col pt-2">
@@ -219,7 +219,7 @@ const ProjectCard = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-x-10 bottom-10 pointer-events-none flex justify-between mono text-[7px] text-accent/40"
+              className="absolute inset-x-10 bottom-10 pointer-events-none flex justify-between mono text-[7px] text-accent/60"
             >
                <span>ARCH_VERSION: V{index + 1}.0.2</span>
                <span className="animate-pulse">MD_NEGOTIATION: READY</span>

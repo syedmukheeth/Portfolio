@@ -154,7 +154,7 @@ export const AnimatedText = ({ text, className = "" }: { text: string; className
       {words.map((word, index) => (
         <motion.span 
           key={index} 
-          initial={{ opacity: 0.4, y: 5 }}
+          initial={{ opacity: 0, y: 5 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ 
@@ -162,7 +162,7 @@ export const AnimatedText = ({ text, className = "" }: { text: string; className
             delay: Math.min(index * 0.01, 2), // Cap delay for long texts
             ease: "easeOut" 
           }}
-          className="relative inline-block mr-[0.3em] opacity-40"
+          className="relative inline-block mr-[0.3em]"
         >
           {word}
         </motion.span>

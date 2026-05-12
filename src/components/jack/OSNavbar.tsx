@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMode } from "@/context/ModeContext";
 import { FadeIn } from "./JackComponents";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 /**
  * OSNavbar Component
@@ -36,7 +37,13 @@ export const OSNavbar = () => {
       <FadeIn delay={0.1} y={-10} className="pointer-events-auto">
         <a href="#hero" className="flex items-center gap-4 group cursor-pointer transition-transform duration-300">
           <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)] group-hover:border-accent/50 transition-all duration-500 group-hover:scale-110">
-            <img src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_64/avatar_kyjo2q.png" alt="SM" className="w-full h-full object-cover" />
+            <Image 
+              src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_64/avatar_kyjo2q.png" 
+              alt="Syed Mukheeth Profile Avatar" 
+              width={40}
+              height={40}
+              className="w-full h-full object-cover" 
+            />
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
           </div>
           <div className="flex items-start gap-3">
@@ -131,7 +138,8 @@ export const OSNavbar = () => {
                        key={item.name}
                        href={item.href}
                        onClick={() => setIsMenuOpen(false)}
-                       className="mono text-[14px] uppercase tracking-[0.6em] text-white/50 hover:text-accent hover:translate-x-4 transition-all duration-500 py-4 border-b border-white/[0.03] last:border-none font-black flex justify-between items-center group"
+                       onKeyDown={(e) => { if(e.key === 'Enter') setIsMenuOpen(false); }}
+                       className="mono text-[14px] uppercase tracking-[0.6em] text-white/70 hover:text-accent hover:translate-x-4 transition-all duration-500 py-4 border-b border-white/[0.03] last:border-none font-black flex justify-between items-center group"
                      >
                        {item.name}
                        <span className="text-accent/0 group-hover:text-accent transition-colors">_</span>
@@ -141,7 +149,7 @@ export const OSNavbar = () => {
 
                 <div className="mt-4 pt-6 border-t border-white/[0.05] flex flex-col gap-4 items-center">
                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(255,77,0,0.5)]" />
-                   <span className="mono text-[7px] text-white/20 uppercase tracking-widest">Interface v2.4.1 stable</span>
+                   <span className="mono text-[7px] text-white/60 uppercase tracking-widest">Interface v2.4.1 stable</span>
                 </div>
               </div>
             </motion.div>

@@ -46,14 +46,14 @@ export const ServicesSection = () => {
           {SERVICES.map((service, i) => (
             <FadeIn key={service.id} delay={i * 0.1} y={30}>
               <div className="flex flex-col md:flex-row gap-6 md:gap-20 py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] group hover:bg-black/5 transition-colors duration-300">
-                <div className="text-[#0C0C0C] font-black leading-none text-[clamp(3rem,10vw,140px)] opacity-[0.45] group-hover:opacity-100 transition-opacity">
+                <div className="text-[#0C0C0C] font-black leading-none text-[clamp(3rem,10vw,140px)] opacity-70 group-hover:opacity-100 transition-opacity">
                   {service.id}
                 </div>
                 <div className="flex flex-col gap-4">
                   <h3 className="text-[#0C0C0C] font-medium uppercase text-[clamp(1rem,2.2vw,2.1rem)]">
                     {service.name}
                   </h3>
-                  <p className="text-[#0C0C0C] font-light leading-relaxed max-w-2xl text-[clamp(0.85rem,1.6vw,1.25rem)] opacity-60">
+                  <p className="text-[#0C0C0C] font-light leading-relaxed max-w-2xl text-[clamp(1rem,1.6vw,1.25rem)] opacity-90">
                     {service.description}
                   </p>
                 </div>

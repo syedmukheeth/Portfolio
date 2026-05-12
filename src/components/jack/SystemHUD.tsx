@@ -25,16 +25,16 @@ export const SystemHUD = () => {
             <div className="w-1 h-1 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
             <span className="text-white/60">Systems_Operational</span>
           </div>
-          <div className="hidden md:flex flex-col gap-1 opacity-50">
+          <div className="hidden md:flex flex-col gap-1 text-white/70">
             <span>Uptime: 99.98%</span>
             <span>Workers: 12 Active</span>
           </div>
         </div>
 
         <div className="flex flex-col items-end gap-1">
-          <span className={cn("transition-colors duration-500", mode === "machine" ? "text-accent" : "text-white/40")}>Mode: {mode}</span>
-          <span className="hidden sm:inline">Region: Global_Edge</span>
-          <span className="hidden sm:inline">Build: v2.4.1</span>
+          <span className={cn("transition-colors duration-500", mode === "machine" ? "text-accent" : "text-white/70")}>Mode: {mode}</span>
+          <span className="hidden sm:inline text-white/70">Region: Global_Edge</span>
+          <span className="hidden sm:inline text-white/70">Build: v2.4.1</span>
         </div>
       </div>
 
@@ -42,15 +42,15 @@ export const SystemHUD = () => {
       <div className="flex justify-between items-end pb-4 md:pb-8">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
-             <span className="opacity-50">Network:</span>
+             <span className="text-white/60">Network:</span>
              <span className="text-white/70 font-bold">latency {latency}ms</span>
           </div>
           <span className="hidden sm:inline">Distributed_Mesh: Active</span>
         </div>
 
         <div className="hidden lg:flex flex-col items-end gap-1">
-          <span>Syed Mukheeth // Portfolio</span>
-          <span className="opacity-50 text-[8px]">© 2026 all rights reserved</span>
+          <span className="text-white/80">Syed Mukheeth // Portfolio</span>
+          <span className="opacity-70 text-[8px]">© 2026 all rights reserved</span>
         </div>
       </div>
     </div>

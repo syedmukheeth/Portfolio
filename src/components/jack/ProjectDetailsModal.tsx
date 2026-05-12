@@ -61,6 +61,9 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
             className="fixed inset-4 md:inset-10 lg:inset-20 z-[4001] bg-[#080808] border border-white/10 rounded-[2rem] overflow-hidden flex flex-col shadow-[0_0_100px_rgba(0,0,0,1)]"
           >
             {/* Header / Close Button */}
@@ -85,7 +88,7 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
                   <div className="space-y-8">
                     <div className="flex flex-col gap-4">
                         <span className="mono text-accent text-xs uppercase tracking-[0.5em]">{project.tagline}</span>
-                        <h2 className="text-3xl md:text-7xl font-black uppercase text-white leading-none tracking-tighter">
+                        <h2 id="modal-title" className="text-3xl md:text-7xl font-black uppercase text-white leading-none tracking-tighter">
                           {project.title}
                         </h2>
                     </div>
@@ -123,7 +126,7 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
                 {/* Tech Stack & Stats */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                    <div className="md:col-span-2 space-y-6">
-                      <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/40">Technology Stack</h4>
+                      <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/60">Technology Stack</h4>
                       <div className="flex flex-wrap gap-3">
                          {project.stack.map((tech) => {
                            const Icon = TECH_ICONS[tech] || Box;
@@ -139,7 +142,7 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
                    <div className="grid grid-cols-1 gap-4">
                       {project.stats.map((stat, i) => (
                         <div key={i} className="p-6 rounded-2xl bg-accent/[0.03] border border-accent/10 flex justify-between items-center">
-                           <span className="mono text-[9px] uppercase tracking-widest text-white/40">{stat.label}</span>
+                           <span className="mono text-[9px] uppercase tracking-widest text-white/60">{stat.label}</span>
                            <span className="text-sm font-bold text-white uppercase">{stat.value}</span>
                         </div>
                       ))}
@@ -149,7 +152,7 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
                 {/* Features & Challenges */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
                    <div className="space-y-8">
-                      <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/40">Core Functionality</h4>
+                      <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/60">Core Functionality</h4>
                       <div className="grid grid-cols-1 gap-4">
                          {project.features.map((feature, i) => (
                            <div key={i} className="flex items-start gap-4 group">
@@ -160,7 +163,7 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
                       </div>
                    </div>
                    <div className="space-y-8">
-                      <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/40">Engineering Challenges</h4>
+                      <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/60">Engineering Challenges</h4>
                       <div className="space-y-6">
                          {project.challenges.map((challenge, i) => (
                            <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
@@ -176,8 +179,8 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
                 <div className="pt-16 border-t border-white/5">
                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
                       <div className="space-y-2">
-                         <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/40">Expertise Demonstrated</h4>
-                         <p className="text-white/60">This project serves as a technical benchmark for:</p>
+                         <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/60">Expertise Demonstrated</h4>
+                         <p className="text-white/70">This project serves as a technical benchmark for:</p>
                       </div>
                       <div className="flex flex-wrap gap-4 justify-center md:justify-end">
                          {project.demonstrates.map((skill, i) => (

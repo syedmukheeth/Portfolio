@@ -57,17 +57,17 @@ export const BootSequence = () => {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 className={`text-xs uppercase tracking-widest ${
-                  i === currentLog ? "text-accent" : "text-white/40"
+                  i === currentLog ? "text-accent" : "text-white/60"
                 }`}
               >
-                <span className="mr-4 opacity-30">[{i.toString().padStart(2, "0")}]</span>
+                <span className="mr-4 opacity-60">[{i.toString().padStart(2, "0")}]</span>
                 {log}
                 {i === currentLog && <motion.span animate={{ opacity: [0, 1] }} transition={{ repeat: Infinity, duration: 0.5 }} className="ml-1">_</motion.span>}
               </motion.div>
             ))}
           </div>
 
-          <div className="absolute bottom-10 left-10 text-[10px] text-white/20 uppercase tracking-[0.4em]">
+          <div className="absolute bottom-10 left-10 text-[10px] text-white/60 uppercase tracking-[0.4em]">
             SyMuk // OS v2.4.1
           </div>
           
