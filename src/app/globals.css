@@ -149,6 +149,7 @@ video {
   width: 100%;
   height: auto;
   object-fit: cover;
+  background: #000;           /* Prevent flickering during buffer resets */
   will-change: auto;          /* let browser decide */
   transform: translateZ(0);  /* GPU layer */
 }
