@@ -32,7 +32,9 @@ export const ProjectsSection = () => {
     >
       <div className="container max-w-6xl mx-auto px-6 mb-20">
         <FadeIn delay={0} y={40} className="flex flex-col items-center">
-           <span className="mono text-accent text-xs uppercase tracking-[0.6em] mb-4">Engineering Portfolio</span>
+           <span className="mono bg-gradient-to-r from-accent via-white to-accent bg-[length:200%_auto] animate-[text-shimmer_5s_linear_infinite] bg-clip-text text-transparent text-[10px] md:text-xs uppercase tracking-[0.8em] mb-4 font-black drop-shadow-[0_0_20px_rgba(255,77,0,0.5)]">
+             Engineering Portfolio
+           </span>
            <h2 className="hero-heading font-black uppercase text-center text-[clamp(3rem,12vw,120px)] leading-none">
              Projects
            </h2>
