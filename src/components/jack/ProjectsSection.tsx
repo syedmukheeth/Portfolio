@@ -62,7 +62,13 @@ const ProjectCard = ({
   targetScale, 
   progress 
 }: any) => {
-  const scale = useTransform(progress, range, [1, targetScale]);
+  const scaleRaw = useTransform(progress, range, [1, targetScale]);
+  const scale = useSpring(scaleRaw, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+  
   const { mode } = useMode();
   const [isHovered, setIsHovered] = React.useState(false);
   const containerRef = useRef(null);

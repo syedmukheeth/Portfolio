@@ -132,9 +132,7 @@ html, body {
 
 /* GPU accelerate and ensure layout stability */
 section, .video-section, .hero {
-  /* Removed content-visibility: auto as it conflicts with Lenis smooth scroll */
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  /* Removed transform to prevent breaking position: sticky in Projects section */
 }
 
 .hero-heading, .glass, .glass-heavy, .video-wrapper {
