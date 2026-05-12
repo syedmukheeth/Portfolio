@@ -109,7 +109,7 @@ const ProjectCard = ({
         {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 relative z-10">
           <div className="flex items-start gap-8">
-            <span className="mono text-white/5 font-bold text-6xl md:text-8xl leading-none select-none">
+            <span className="mono text-white/10 font-bold text-6xl md:text-8xl leading-none select-none">
               0{index + 1}
             </span>
             <div className="flex flex-col pt-2">
