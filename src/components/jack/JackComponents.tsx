@@ -1,10 +1,19 @@
-"use client";
+/**
+ * JackComponents.tsx
+ * 
+ * A collection of high-performance, reusable UI components designed for
+ * the "Systems Thinker" aesthetic. Includes motion-enhanced elements
+ * and interactive utilities.
+ */
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-// FADE IN COMPONENT
+/**
+ * FadeIn Component
+ * Handles standard entrance animations with configurable directional offsets.
+ */
 export const FadeIn = ({ 
   children, 
   delay = 0, 
@@ -37,7 +46,10 @@ export const FadeIn = ({
   );
 };
 
-// MAGNET COMPONENT
+/**
+ * Magnet Component
+ * Creates a magnetic attraction effect for its children based on mouse proximity.
+ */
 export const Magnet = ({ 
   children, 
   padding = 150, 
@@ -89,7 +101,10 @@ export const Magnet = ({
   );
 };
 
-// CONTACT BUTTON
+/**
+ * ContactButton Component
+ * A highly styled, interactive button for global contact actions.
+ */
 export const ContactButton = ({ delay = 0.5 }: { delay?: number }) => {
   return (
     <FadeIn delay={delay} y={20}>
@@ -111,7 +126,10 @@ export const ContactButton = ({ delay = 0.5 }: { delay?: number }) => {
   );
 };
 
-// LIVE PROJECT BUTTON
+/**
+ * LiveProjectButton Component
+ * CTA button for viewing live project deployments.
+ */
 export const LiveProjectButton = () => {
   return (
     <motion.button
@@ -124,7 +142,10 @@ export const LiveProjectButton = () => {
   );
 };
 
-// ANIMATED TEXT (Performance Optimized)
+/**
+ * AnimatedText Component
+ * Word-by-word reveal animation optimized for performance.
+ */
 export const AnimatedText = ({ text, className = "" }: { text: string; className?: string }) => {
   const words = text.split(" ");
 
@@ -149,3 +170,4 @@ export const AnimatedText = ({ text, className = "" }: { text: string; className
     </p>
   );
 };
+
