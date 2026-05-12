@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useInView, useSpring } from "framer-motion";
 import { FadeIn } from "./JackComponents";
 import { useMode } from "@/context/ModeContext";
 import { PROJECTS as LIB_PROJECTS } from "@/lib/data";
@@ -36,18 +36,19 @@ export const ProjectsSection = () => {
         </FadeIn>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 md:px-10 flex flex-col gap-32">
+      <div className="max-w-6xl mx-auto px-4 md:px-10 relative">
         {PROJECTS.map((project, i) => {
           const targetScale = 1 - (PROJECTS.length - 1 - i) * 0.03;
           return (
-            <ProjectCard 
-              key={project.id} 
-              index={i} 
-              project={project}
-              range={[i * (1 / PROJECTS.length), 1]}
-              targetScale={targetScale}
-              progress={scrollYProgress}
-            />
+            <div key={project.id} className="min-h-[120vh] relative mb-[10vh] last:mb-0">
+              <ProjectCard 
+                index={i} 
+                project={project}
+                range={[i * (1 / PROJECTS.length), 1]}
+                targetScale={targetScale}
+                progress={scrollYProgress}
+              />
+            </div>
           );
         })}
       </div>
@@ -80,8 +81,8 @@ const ProjectCard = ({
   return (
     <div 
       ref={containerRef} 
-      className="h-[85vh] flex items-center justify-center sticky"
-      style={{ top: `calc(4rem + ${index * 30}px)` }}
+      className="h-[80vh] flex items-center justify-center sticky"
+      style={{ top: `calc(10vh + ${index * 30}px)` }}
     >
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
