@@ -6,22 +6,32 @@ import { MarqueeSection } from "@/components/jack/MarqueeSection";
 import { AboutSection } from "@/components/jack/AboutSection";
 import { ServicesSection } from "@/components/jack/ServicesSection";
 import { ProjectsSection } from "@/components/jack/ProjectsSection";
+import { ProjectDetailsModal } from "@/components/jack/ProjectDetailsModal";
+import { OSNavbar } from "@/components/jack/OSNavbar";
 import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 
 export default function JackPortfolio() {
   const { mode } = useMode();
+  const [selectedProject, setSelectedProject] = React.useState<any>(null);
 
   return (
     <div className={cn(
       "min-h-screen bg-[#0C0C0C] selection:bg-accent selection:text-white transition-colors duration-1000",
       mode === "machine" ? "machine-theme" : "creative-theme"
     )}>
+      <OSNavbar />
       <HeroSection />
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
-      <ProjectsSection />
+      <ProjectsSection onOpenProject={setSelectedProject} />
+
+      <ProjectDetailsModal 
+        isOpen={!!selectedProject} 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
       
       {/* GLOBAL BACKGROUND NOISE/GRAIN (Parallel style) */}
       <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay">
