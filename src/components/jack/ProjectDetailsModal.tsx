@@ -61,10 +61,10 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-4 md:inset-10 lg:inset-20 z-[1001] bg-[#080808] border border-white/10 rounded-[2rem] overflow-hidden flex flex-col shadow-[0_0_100px_rgba(0,0,0,1)]"
+            className="fixed inset-4 md:inset-10 lg:inset-20 z-[2000] bg-[#080808] border border-white/10 rounded-[2rem] overflow-hidden flex flex-col shadow-[0_0_100px_rgba(0,0,0,1)]"
           >
             {/* Header / Close Button */}
-            <div className="absolute top-4 right-4 md:top-8 md:right-8 z-[1002]">
+            <div className="absolute top-4 left-4 md:left-auto md:top-8 md:right-8 z-[2001]">
               <button 
                 onClick={onClose}
                 className="p-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all group backdrop-blur-md"

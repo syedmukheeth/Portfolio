@@ -11,6 +11,7 @@ import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import { Github, Linkedin, Twitter, FileText, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { OSNavbar } from "@/components/jack/OSNavbar";
 
 export default function Home() {
   const { mode } = useMode();
@@ -21,6 +22,7 @@ export default function Home() {
       "min-h-screen bg-black selection:bg-accent selection:text-white transition-colors duration-1000",
       mode === "machine" ? "machine-theme" : ""
     )}>
+      <OSNavbar />
       <HeroSection />
       <MarqueeSection />
       <AboutSection />

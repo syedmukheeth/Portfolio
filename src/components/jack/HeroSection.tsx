@@ -5,7 +5,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { useMode } from "@/context/ModeContext";
 import { FadeIn } from "./JackComponents";
 import { cn } from "@/lib/utils";
-import { OSNavbar } from "./OSNavbar";
 import { SystemHUD } from "./SystemHUD";
 import Image from "next/image";
 
@@ -43,7 +42,6 @@ export const HeroSection = () => {
           !isBooted && "pointer-events-none" // Disable interaction during boot
         )}
       >
-        <OSNavbar />
 
         {/* BACKGROUND LAYERS - Deferred until after boot to save main-thread work */}
         {isBooted && (
