@@ -28,13 +28,12 @@ export default function LazyVideo({
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Optimized URL Helpers - More responsive sizing
-  // For mobile we don't need 1280px
   const optimizedSrc = (src.includes('cloudinary') && !src.includes('/upload/q_auto')) 
-    ? src.replace('/upload/', '/upload/q_auto:best,f_auto,vc_auto,w_auto,c_limit/') 
+    ? src.replace('/upload/', '/upload/f_auto,q_auto:best,vc_auto,w_1200,c_limit/') 
     : src;
     
   const optimizedPoster = poster || (src.includes('cloudinary') && !src.includes('/upload/so_0')
-    ? src.replace('/upload/', '/upload/so_0,q_auto,f_auto,w_800/').replace('.mp4', '.jpg')
+    ? src.replace('/upload/', '/upload/so_0,q_auto,f_auto,w_1200/').replace('.mp4', '.jpg')
     : undefined);
 
   useEffect(() => {

@@ -131,12 +131,16 @@ html, body {
 }
 
 /* GPU accelerate and defer rendering of off-screen sections */
-section, .video-section, .hero, [class*="section"] {
+section, .video-section, .hero {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px; /* Helps browser estimate height for scrollbar */
+  contain-intrinsic-size: auto 1000px; /* Better estimation */
+}
+
+.hero-heading, .glass, .glass-heavy {
+  will-change: transform, opacity;
 }
 
 .video-wrapper {

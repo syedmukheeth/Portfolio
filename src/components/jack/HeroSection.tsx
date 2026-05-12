@@ -98,6 +98,7 @@ export const HeroSection = () => {
                       alt="Syed Mukheeth" 
                       fill
                       priority
+                      unoptimized
                       sizes="(max-width: 768px) 100vw, 500px"
                       className="object-cover object-center opacity-100 group-hover:scale-105 transition-all duration-700 z-0"
                     />
