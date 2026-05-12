@@ -52,7 +52,7 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-xl cursor-zoom-out"
+            className="fixed inset-0 z-[1000] bg-black/95 backdrop-blur-2xl cursor-zoom-out"
           />
 
           {/* Modal Content */}
@@ -61,30 +61,30 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-4 md:inset-10 lg:inset-20 z-[210] bg-[#080808] border border-white/10 rounded-[2rem] overflow-hidden flex flex-col shadow-2xl"
+            className="fixed inset-4 md:inset-10 lg:inset-20 z-[1001] bg-[#080808] border border-white/10 rounded-[2rem] overflow-hidden flex flex-col shadow-[0_0_100px_rgba(0,0,0,1)]"
           >
             {/* Header / Close Button */}
-            <div className="absolute top-6 right-6 z-50">
+            <div className="absolute top-4 right-4 md:top-8 md:right-8 z-[1002]">
               <button 
                 onClick={onClose}
-                className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all group"
+                className="p-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all group backdrop-blur-md"
               >
                 <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
               </button>
             </div>
 
             <div 
-              className="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-12 lg:p-16"
+              className="flex-1 overflow-y-auto custom-scrollbar p-6 pt-24 md:p-12 lg:p-16"
               data-lenis-prevent
             >
               <div className="max-w-6xl mx-auto space-y-24">
                 
                 {/* Hero Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                   <div className="space-y-8">
                     <div className="flex flex-col gap-4">
                         <span className="mono text-accent text-xs uppercase tracking-[0.5em]">{project.tagline}</span>
-                        <h2 className="text-4xl md:text-7xl font-black uppercase text-white leading-none">
+                        <h2 className="text-3xl md:text-7xl font-black uppercase text-white leading-none tracking-tighter">
                           {project.title}
                         </h2>
                     </div>
@@ -146,7 +146,7 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
                 </div>
 
                 {/* Features & Challenges */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
                    <div className="space-y-8">
                       <h4 className="mono text-[10px] uppercase tracking-[0.4em] text-white/40">Core Functionality</h4>
                       <div className="grid grid-cols-1 gap-4">

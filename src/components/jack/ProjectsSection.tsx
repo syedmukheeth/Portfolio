@@ -28,7 +28,7 @@ export const ProjectsSection = () => {
     <section 
       id="projects"
       ref={container} 
-      className="bg-black pt-24 pb-20 relative z-30"
+      className="bg-black pt-24 pb-40 relative z-40"
     >
       <div className="container max-w-6xl mx-auto px-6 mb-20">
         <FadeIn delay={0} y={40} className="flex flex-col items-center">
@@ -95,7 +95,7 @@ const ProjectCard = ({
     <div 
       ref={containerRef} 
       className="h-auto min-h-[75vh] flex items-center justify-center sticky py-10"
-      style={{ top: `calc(6vh + ${index * 20}px)` }}
+      style={{ top: `calc(8vh + ${index * 20}px)` }}
     >
       <motion.div
         onMouseEnter={() => setIsHovered(true)}

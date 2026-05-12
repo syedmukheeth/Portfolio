@@ -19,7 +19,7 @@ export const SystemHUD = () => {
   return (
     <div className="fixed inset-0 pointer-events-none z-40 p-6 md:p-12 lg:p-16 flex flex-col justify-between mono text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-white/60">
       {/* Top HUD - Offset to avoid OSNavbar */}
-      <div className="flex justify-between items-start pt-16 md:pt-20">
+      <div className="flex justify-between items-start pt-24 md:pt-20">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-1 h-1 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />

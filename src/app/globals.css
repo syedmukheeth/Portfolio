@@ -143,10 +143,6 @@ html, body {
 }
 
 /* GPU accelerate and ensure layout stability */
-section, .video-section, .hero {
-  /* Removed transform to prevent breaking position: sticky in Projects section */
-}
-
 .hero-heading, .glass, .glass-heavy, .video-wrapper {
   will-change: transform, opacity;
 }
