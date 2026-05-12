@@ -13,7 +13,7 @@ import { OSNavbar } from "@/components/jack/OSNavbar";
 
 // DYNAMIC IMPORTS FOR PERFORMANCE
 const ProjectDetailsModal = dynamic(() => import("@/components/jack/ProjectDetailsModal").then(mod => mod.ProjectDetailsModal), { ssr: false });
-const SystemHUD = dynamic(() => import("@/components/jack/SystemHUD").then(mod => mod.SystemHUD), { ssr: false });
+
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: false });
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
         onClose={() => setSelectedProject(null)} 
       />
       
-      {/* <SystemHUD /> */}
+
       <Footer />
       
       {/* GLOBAL BACKGROUND NOISE/GRAIN */}
