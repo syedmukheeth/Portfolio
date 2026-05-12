@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
+import LazyVideo from "@/components/jack/LazyVideo";
 
 export default function PeerNetPage() {
   const { mode } = useMode();
@@ -320,33 +321,16 @@ function ProductItem({ title, desc }: { title: string; desc: string }) {
 
 function VideoCard({ src, num }: { src: string; num: number }) {
   const [isHovered, setIsHovered] = React.useState(false);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
   
-  React.useEffect(() => {
-    if (videoRef.current) {
-      if (isHovered) {
-        videoRef.current.play().catch(err => console.log("Video play interrupted", err));
-      } else {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      }
-    }
-  }, [isHovered]);
-
   return (
     <div 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-white/5 group transition-all duration-500 hover:border-blue-400/30 will-change-transform"
     >
-       {/* Persistent Video Element for Zero Latency */}
-       <video 
-         ref={videoRef}
-         src={src.includes('cloudinary') ? src.replace('/upload/', '/upload/f_auto,q_auto/') : src} 
-         muted 
-         loop 
-         playsInline 
-         preload="metadata"
+       <LazyVideo 
+         src={src}
+         active={isHovered}
          className={cn(
            "w-full h-full object-cover transition-opacity duration-500 absolute inset-0",
            isHovered ? "opacity-100" : "opacity-0"

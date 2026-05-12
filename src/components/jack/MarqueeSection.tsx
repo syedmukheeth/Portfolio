@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import LazyVideo from "./LazyVideo";
 
 /**
  * GUIDE: HOW TO GET PERSONALIZED ASSETS
@@ -24,38 +25,10 @@ const ASSET_ITEMS = [
 ];
 
 const LazyMarqueeVideo = ({ url }: { url: string }) => {
-  const containerRef = useRef(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(containerRef, { margin: "200px" });
-
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isInView) {
-        videoRef.current.play().catch(() => {});
-      } else {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0; // Free memory on scroll away
-      }
-    }
-  }, [isInView]);
-
   return (
-    <div ref={containerRef} className="w-[300px] sm:w-[450px] h-[200px] sm:h-[300px] rounded-3xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group relative video-wrapper">
-      <video 
-        ref={videoRef}
-        poster={url.includes('cloudinary') 
-          ? url.replace('/upload/', '/upload/so_0,q_auto,f_auto,w_1280/').replace('.mp4', '.jpg')
-          : undefined}
-        src={isInView 
-          ? (url.includes('cloudinary') 
-            ? url.replace('/upload/', '/upload/q_auto,f_auto,vc_auto,w_1280/') 
-            : url)
-          : undefined} 
-        autoPlay 
-        loop 
-        muted 
-        playsInline 
-        preload="none"
+    <div className="w-[300px] sm:w-[450px] h-[200px] sm:h-[300px] rounded-3xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group relative video-wrapper">
+      <LazyVideo 
+        src={url} 
         className="w-full h-full object-cover transition-all duration-700"
       />
       {/* Subtle overlay for depth */}

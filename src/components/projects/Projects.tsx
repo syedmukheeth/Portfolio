@@ -7,6 +7,7 @@ import { PROJECTS, Project } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Github, ExternalLink, Code2, Database, Shield, Zap, Terminal as TerminalIcon, FileJson, BarChart3, Activity, ArrowRight } from "lucide-react";
 import React, { useRef, useEffect } from "react";
+import LazyVideo from "../jack/LazyVideo";
 
 export default function Projects() {
   const { mode } = useMode();
@@ -84,24 +85,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 function HumanProjectView({ project }: { project: Project }) {
-  const containerRef = useRef(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(containerRef, { margin: "200px" });
-
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isInView) {
-        videoRef.current.play().catch(() => {});
-      } else {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0; // Free memory on scroll away
-      }
-    }
-  }, [isInView]);
-
   return (
     <motion.div
-      ref={containerRef}
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.02 }}
@@ -172,21 +157,8 @@ function HumanProjectView({ project }: { project: Project }) {
         )}>
           {project.clips ? (
             <div className="absolute inset-0 w-full h-full">
-              <video
-                ref={videoRef}
-                poster={project.clips[0].includes('cloudinary') 
-                  ? project.clips[0].replace('/upload/', '/upload/so_0,q_auto,f_auto,w_1280/').replace('.mp4', '.jpg')
-                  : undefined}
-                src={isInView 
-                  ? (project.clips[0].includes('cloudinary') 
-                    ? project.clips[0].replace('/upload/', '/upload/q_auto,f_auto,vc_auto,w_1280/') 
-                    : project.clips[0])
-                  : undefined}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="none"
+              <LazyVideo
+                src={project.clips[0]}
                 className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />

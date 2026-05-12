@@ -7,6 +7,7 @@ import { useMode } from "@/context/ModeContext";
 import { PROJECTS as LIB_PROJECTS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Github, ExternalLink } from "lucide-react";
+import LazyVideo from "./LazyVideo";
 
 // THE PROJECTS ARE NOW FULLY DRIVEN BY DATA.TS
 const PROJECTS = LIB_PROJECTS;
@@ -65,28 +66,6 @@ const ProjectCard = ({
   const { mode } = useMode();
   const [isHovered, setIsHovered] = React.useState(false);
   const containerRef = useRef(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  
-  // SENIOR DEV TECHNIQUE: Intersection Observer for Performance
-  // Only mount/load the video when the card is in or near the viewport
-  const isInView = useInView(containerRef, { 
-    margin: "100px 0px 100px 0px", // Load slightly before it enters view for zero perceived latency
-    once: false 
-  });
-
-  React.useEffect(() => {
-    if (videoRef.current) {
-      if (isHovered && isInView) {
-        videoRef.current.play().catch(() => {});
-      } else {
-        videoRef.current.pause();
-        // SENIOR DEV: Reset time when not in use to free up buffer memory
-        if (!isInView) {
-          videoRef.current.currentTime = 0;
-        }
-      }
-    }
-  }, [isHovered, isInView]);
 
   return (
     <div ref={containerRef} className="h-[90vh] flex items-center justify-center sticky top-20 md:top-24">
@@ -143,20 +122,9 @@ const ProjectCard = ({
           <div className="lg:col-span-7 flex flex-col gap-6">
              <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500 bg-black/40 video-wrapper">
                 {project.clips && project.clips.length > 0 && (
-                  <video 
-                    ref={videoRef}
-                    poster={project.clips[0].includes('cloudinary') 
-                      ? project.clips[0].replace('/upload/', '/upload/so_0,q_auto,f_auto,w_1280/').replace('.mp4', '.jpg')
-                      : undefined}
-                    src={isInView 
-                      ? (project.clips[0].includes('cloudinary') 
-                        ? project.clips[0].replace('/upload/', '/upload/q_auto,f_auto,vc_auto,w_1280/') 
-                        : project.clips[0])
-                      : undefined}
-                    muted 
-                    loop 
-                    playsInline 
-                    preload="none"
+                  <LazyVideo 
+                    src={project.clips[0]}
+                    active={isHovered}
                     className={cn(
                       "w-full h-full object-cover transition-opacity duration-700 absolute inset-0",
                       isHovered ? "opacity-100" : "opacity-80"
