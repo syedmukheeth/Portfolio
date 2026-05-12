@@ -93,8 +93,10 @@ body,
 }
 
 @keyframes scanline {
-  0% { bottom: 100%; }
-  100% { bottom: -100px; }
+  0% { top: 0%; opacity: 0; }
+  5% { opacity: 0.5; }
+  95% { opacity: 0.5; }
+  100% { top: 100%; opacity: 0; }
 }
 
 .glass {

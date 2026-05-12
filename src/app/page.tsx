@@ -78,46 +78,96 @@ export default function Home() {
                <div className="lg:col-span-5 flex flex-col gap-10 lg:items-end justify-center">
                   <div className="flex flex-col gap-6 w-full max-w-[320px]">
                     {[
-                      { label: "GitHub", href: "https://github.com/syedmukheeth", icon: Github, color: "group-hover:text-white", glow: "group-hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]" },
+                      { 
+                        label: "GitHub", 
+                        href: "https://github.com/syedmukheeth", 
+                        icon: Github, 
+                        color: "group-hover:text-white", 
+                        glow: "group-hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]",
+                        stats: "40+ Repos",
+                        status: "SOURCE_CONTROL",
+                        metric: "99.9% Uptime"
+                      },
                       { 
                         label: "LinkedIn", 
                         href: "https://linkedin.com/in/syedmukheeth", 
                         icon: Linkedin, 
                         color: "group-hover:text-[#0077B5]", 
-                        glow: "group-hover:shadow-[0_0_20px_rgba(0,119,181,0.2)]",
-                        stats: "8.2K+" 
+                        glow: "group-hover:shadow-[0_0_30px_rgba(0,119,181,0.2)]",
+                        stats: "8,247 Followers",
+                        status: "NETWORK_NODE",
+                        metric: "+12.4% Weekly"
                       },
-                      { label: "X", href: "https://x.com/syed_mukheeth", icon: Twitter, color: "group-hover:text-[#1DA1F2]", glow: "group-hover:shadow-[0_0_20px_rgba(29,161,242,0.2)]" },
-                      { label: "Resume", href: "#", icon: FileText, color: "group-hover:text-accent", glow: "group-hover:shadow-[0_0_20px_rgba(255,77,0,0.2)]" }
-                    ].map(link => (
+                      { 
+                        label: "X / Twitter", 
+                        href: "https://x.com/syed_mukheeth", 
+                        icon: Twitter, 
+                        color: "group-hover:text-[#1DA1F2]", 
+                        glow: "group-hover:shadow-[0_0_30px_rgba(29,161,242,0.15)]",
+                        stats: "Tech_Thread_Feed",
+                        status: "SIGNAL_BROADCAST",
+                        metric: "ACTIVE"
+                      },
+                      { 
+                        label: "Internal Resume", 
+                        href: "#", 
+                        icon: FileText, 
+                        color: "group-hover:text-accent", 
+                        glow: "group-hover:shadow-[0_0_30px_rgba(255,77,0,0.2)]",
+                        stats: "V3.0.2_STABLE",
+                        status: "DOCUMENT_STORE",
+                        metric: "PDF_VERIFIED"
+                      }
+                    ].map((link, idx) => (
                       <a 
                         key={link.label} 
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={cn(
-                          "group relative flex items-center justify-between py-5 px-6 rounded-2xl transition-all duration-500",
-                          "bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-white/10 hover:-translate-y-1",
+                          "group relative flex items-center justify-between py-6 px-7 rounded-[2rem] transition-all duration-700",
+                          "bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 hover:-translate-y-2",
                           link.glow
                         )}
                       >
-                        <div className="flex items-center gap-6">
-                          <div className={cn("p-2 rounded-lg bg-white/5 transition-colors duration-500", link.color)}>
-                             <link.icon className="w-5 h-5 opacity-50 group-hover:opacity-100" />
+                        {/* Vertical Scanline Animation */}
+                        <div className="absolute inset-x-0 h-[1px] bg-white/20 top-0 opacity-0 group-hover:opacity-100 animate-[scanline_3s_linear_infinite] pointer-events-none" />
+                        
+                        <div className="flex items-center gap-6 relative z-10">
+                          <div className={cn(
+                            "p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 transition-all duration-500",
+                            "group-hover:bg-white/[0.05] group-hover:scale-110 group-hover:rotate-6",
+                            link.color
+                          )}>
+                             <link.icon className="w-6 h-6 opacity-40 group-hover:opacity-100" />
                           </div>
-                          <div className="flex flex-col gap-0.5">
-                            <span className={cn("text-[12px] uppercase tracking-[0.4em] mono text-white/30 transition-all duration-500", link.color)}>
-                              {link.label}
-                            </span>
-                            {link.stats && (
-                              <div className="flex items-center gap-1.5 mt-0.5">
-                                <div className="w-1 h-1 rounded-full bg-accent animate-pulse" />
-                                <span className="mono text-[8px] text-accent font-black tracking-widest uppercase">{link.stats} CONNECTED</span>
-                              </div>
-                            )}
+                          
+                          <div className="flex flex-col gap-1">
+                            <div className="flex items-center gap-3">
+                              <span className={cn("text-[13px] font-black uppercase tracking-[0.4em] text-white/40 transition-all duration-500", link.color)}>
+                                {link.label}
+                              </span>
+                              <span className="mono text-[7px] text-white/10 tracking-widest hidden sm:block">[{link.status}]</span>
+                            </div>
+                            
+                            <div className="flex items-center gap-3">
+                               <div className="flex items-center gap-2">
+                                  <div className={cn("w-1 h-1 rounded-full animate-pulse", link.stats ? "bg-accent" : "bg-white/20")} />
+                                  <span className="mono text-[9px] text-white/80 font-bold tracking-widest uppercase">
+                                    {link.stats || "CONNECTING..."}
+                                  </span>
+                               </div>
+                               <span className="mono text-[7px] text-accent/50 font-bold">{link.metric}</span>
+                            </div>
                           </div>
                         </div>
-                        <ArrowUpRight className={cn("w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500", link.color)} />
+                        
+                        <div className="flex flex-col items-end gap-2 relative z-10">
+                           <ArrowUpRight className={cn("w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500", link.color)} />
+                           <div className="mono text-[6px] text-white/10 uppercase tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity">
+                              Direct_Access_Link
+                           </div>
+                        </div>
                       </a>
                     ))}
                   </div>
