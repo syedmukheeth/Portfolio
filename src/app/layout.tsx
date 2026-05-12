@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Focused on high-performance backend architecture.",
   icons: {
     icon: [
-      { url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_32/v1778549740/avatar_kyjo2q.png", type: "image/png" },
-      { url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_128/v1778549740/avatar_kyjo2q.png", type: "image/png", rel: "icon" },
+      { url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_32/avatar_kyjo2q.png", type: "image/png" },
+      { url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_128/avatar_kyjo2q.png", type: "image/png", rel: "icon" },
     ],
-    shortcut: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_192/v1778549740/avatar_kyjo2q.png",
-    apple: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_180/v1778549740/avatar_kyjo2q.png",
+    shortcut: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_192/avatar_kyjo2q.png",
+    apple: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_180/avatar_kyjo2q.png",
   },
   openGraph: {
     title: "Syed Mukheeth | Portfolio",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Syed Mukheeth",
     images: [
       {
-        url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1778549740/avatar_kyjo2q.png",
+        url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/avatar_kyjo2q.png",
         width: 1200,
         height: 630,
         alt: "Syed Mukheeth - Systems Engineer"

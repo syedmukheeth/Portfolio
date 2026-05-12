@@ -94,12 +94,12 @@ export const HeroSection = () => {
                   <div className="relative w-[280px] sm:w-[320px] md:w-[400px] lg:w-[500px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                     <Image 
-                      src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1000/v1778549740/avatar_kyjo2q.png" 
+                      src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_800/avatar_kyjo2q.png" 
                       alt="Syed Mukheeth" 
                       fill
                       priority
                       sizes="(max-width: 768px) 100vw, 500px"
-                      className="object-cover object-center opacity-100 group-hover:scale-105 transition-all duration-700"
+                      className="object-cover object-center opacity-100 group-hover:scale-105 transition-all duration-700 z-0"
                     />
                         
                         {/* Dynamic HUD Layer */}
