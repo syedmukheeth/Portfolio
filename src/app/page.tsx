@@ -79,7 +79,14 @@ export default function Home() {
                   <div className="flex flex-col gap-6 w-full max-w-[320px]">
                     {[
                       { label: "GitHub", href: "https://github.com/syedmukheeth", icon: Github, color: "group-hover:text-white", glow: "group-hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]" },
-                      { label: "LinkedIn", href: "https://linkedin.com/in/syedmukheeth", icon: Linkedin, color: "group-hover:text-[#0077B5]", glow: "group-hover:shadow-[0_0_20px_rgba(0,119,181,0.2)]" },
+                      { 
+                        label: "LinkedIn", 
+                        href: "https://linkedin.com/in/syedmukheeth", 
+                        icon: Linkedin, 
+                        color: "group-hover:text-[#0077B5]", 
+                        glow: "group-hover:shadow-[0_0_20px_rgba(0,119,181,0.2)]",
+                        stats: "8.2K+" 
+                      },
                       { label: "X", href: "https://x.com/syed_mukheeth", icon: Twitter, color: "group-hover:text-[#1DA1F2]", glow: "group-hover:shadow-[0_0_20px_rgba(29,161,242,0.2)]" },
                       { label: "Resume", href: "#", icon: FileText, color: "group-hover:text-accent", glow: "group-hover:shadow-[0_0_20px_rgba(255,77,0,0.2)]" }
                     ].map(link => (
@@ -98,9 +105,17 @@ export default function Home() {
                           <div className={cn("p-2 rounded-lg bg-white/5 transition-colors duration-500", link.color)}>
                              <link.icon className="w-5 h-5 opacity-50 group-hover:opacity-100" />
                           </div>
-                          <span className={cn("text-[12px] uppercase tracking-[0.4em] mono text-white/30 transition-all duration-500", link.color)}>
-                            {link.label}
-                          </span>
+                          <div className="flex flex-col gap-0.5">
+                            <span className={cn("text-[12px] uppercase tracking-[0.4em] mono text-white/30 transition-all duration-500", link.color)}>
+                              {link.label}
+                            </span>
+                            {link.stats && (
+                              <div className="flex items-center gap-1.5 mt-0.5">
+                                <div className="w-1 h-1 rounded-full bg-accent animate-pulse" />
+                                <span className="mono text-[8px] text-accent font-black tracking-widest uppercase">{link.stats} CONNECTED</span>
+                              </div>
+                            )}
+                          </div>
                         </div>
                         <ArrowUpRight className={cn("w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500", link.color)} />
                       </a>
