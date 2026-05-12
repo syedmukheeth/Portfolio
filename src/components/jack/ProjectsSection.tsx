@@ -80,7 +80,10 @@ const ProjectCard = ({
         videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
-        if (!isHovered) videoRef.current.currentTime = 0;
+        // SENIOR DEV: Reset time when not in use to free up buffer memory
+        if (!isInView) {
+          videoRef.current.currentTime = 0;
+        }
       }
     }
   }, [isHovered, isInView]);
@@ -143,11 +146,11 @@ const ProjectCard = ({
                   <video 
                     ref={videoRef}
                     poster={project.clips[0].includes('cloudinary') 
-                      ? project.clips[0].replace('/upload/', '/upload/so_0,q_auto,f_auto/').replace('.mp4', '.jpg')
+                      ? project.clips[0].replace('/upload/', '/upload/so_0,q_auto,f_auto,w_1280/').replace('.mp4', '.jpg')
                       : undefined}
                     src={isInView 
                       ? (project.clips[0].includes('cloudinary') 
-                        ? project.clips[0].replace('/upload/', '/upload/q_auto,f_auto,vc_auto/') 
+                        ? project.clips[0].replace('/upload/', '/upload/q_auto,f_auto,vc_auto,w_1280/') 
                         : project.clips[0])
                       : undefined}
                     muted 

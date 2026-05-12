@@ -125,8 +125,16 @@ body,
 }
 
 /* 🎨 SMOOTH SCROLL & GPU ACCELERATION */
-html {
+html, body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* GPU accelerate every video section */
+section, .video-section, .hero, [class*="section"] {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .video-wrapper {
@@ -138,8 +146,11 @@ html {
 
 video {
   display: block;
+  width: 100%;
+  height: auto;
   object-fit: cover;
-  will-change: auto;
+  will-change: auto;          /* let browser decide */
+  transform: translateZ(0);  /* GPU layer */
 }
 
 /* CUSTOM SCROLLBAR FIX FOR SMOOTHNESS */

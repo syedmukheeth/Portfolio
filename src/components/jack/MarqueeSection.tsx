@@ -34,6 +34,7 @@ const LazyMarqueeVideo = ({ url }: { url: string }) => {
         videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
+        videoRef.current.currentTime = 0; // Free memory on scroll away
       }
     }
   }, [isInView]);
@@ -43,11 +44,11 @@ const LazyMarqueeVideo = ({ url }: { url: string }) => {
       <video 
         ref={videoRef}
         poster={url.includes('cloudinary') 
-          ? url.replace('/upload/', '/upload/so_0,q_auto,f_auto/').replace('.mp4', '.jpg')
+          ? url.replace('/upload/', '/upload/so_0,q_auto,f_auto,w_1280/').replace('.mp4', '.jpg')
           : undefined}
         src={isInView 
           ? (url.includes('cloudinary') 
-            ? url.replace('/upload/', '/upload/q_auto,f_auto,vc_auto/') 
+            ? url.replace('/upload/', '/upload/q_auto,f_auto,vc_auto,w_1280/') 
             : url)
           : undefined} 
         autoPlay 

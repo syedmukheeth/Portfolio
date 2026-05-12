@@ -94,6 +94,7 @@ function HumanProjectView({ project }: { project: Project }) {
         videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
+        videoRef.current.currentTime = 0; // Free memory on scroll away
       }
     }
   }, [isInView]);
@@ -174,11 +175,11 @@ function HumanProjectView({ project }: { project: Project }) {
               <video
                 ref={videoRef}
                 poster={project.clips[0].includes('cloudinary') 
-                  ? project.clips[0].replace('/upload/', '/upload/so_0,q_auto,f_auto/').replace('.mp4', '.jpg')
+                  ? project.clips[0].replace('/upload/', '/upload/so_0,q_auto,f_auto,w_1280/').replace('.mp4', '.jpg')
                   : undefined}
                 src={isInView 
                   ? (project.clips[0].includes('cloudinary') 
-                    ? project.clips[0].replace('/upload/', '/upload/q_auto,f_auto,vc_auto/') 
+                    ? project.clips[0].replace('/upload/', '/upload/q_auto,f_auto,vc_auto,w_1280/') 
                     : project.clips[0])
                   : undefined}
                 autoPlay
