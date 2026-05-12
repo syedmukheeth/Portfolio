@@ -28,13 +28,24 @@ export default function LazyVideo({
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Optimized URL Helpers - More responsive sizing
-  const optimizedSrc = (src.includes('cloudinary') && !src.includes('/upload/q_auto')) 
-    ? src.replace('/upload/', '/upload/f_auto,q_auto:best,vc_auto,w_1200,c_limit/') 
-    : src;
+  // Removing f_auto for videos to prevent 416 Range Not Satisfiable errors in some browsers/proxies
+  const [videoSrc, setVideoSrc] = useState(
+    (src.includes('cloudinary') && !src.includes('/upload/q_auto')) 
+      ? src.replace('/upload/', '/upload/q_auto:eco,vc_auto,w_1280,c_limit/') 
+      : src
+  );
     
   const optimizedPoster = poster || (src.includes('cloudinary') && !src.includes('/upload/so_0')
     ? src.replace('/upload/', '/upload/so_0,q_auto,f_auto,w_1200/').replace('.mp4', '.jpg')
     : undefined);
+
+  const handleError = (e: any) => {
+    console.error("Video Error:", e);
+    // If we have a 416 or other range error, fallback to raw source
+    if (videoSrc !== src) {
+      setVideoSrc(src);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,13 +85,16 @@ export default function LazyVideo({
     <div className={cn("video-wrapper w-full overflow-hidden bg-black", className)}>
       <video
         ref={videoRef}
-        src={optimizedSrc}
+        src={videoSrc}
         poster={optimizedPoster}
         preload={priority ? "auto" : "metadata"}
         muted
         loop
         playsInline
+        title="Project demonstration video"
+        aria-label="Project demonstration video"
         onLoadedData={() => setIsLoaded(true)}
+        onError={handleError}
         className={cn(
           "w-full h-full object-cover transition-opacity duration-700",
           isLoaded ? "opacity-100" : "opacity-0"

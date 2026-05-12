@@ -104,7 +104,7 @@ const ProjectCard = ({
         {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 relative z-10">
           <div className="flex items-start gap-8">
-            <span className="mono text-white/10 font-bold text-6xl md:text-8xl leading-none select-none">
+            <span className="mono text-white/40 font-bold text-6xl md:text-8xl leading-none select-none">
               0{index + 1}
             </span>
             <div className="flex flex-col pt-2">
@@ -127,7 +127,7 @@ const ProjectCard = ({
                   </button>
                   <div className="flex gap-6">
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="mono text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-2">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="mono text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-colors flex items-center gap-2">
                         <Github size={12} className="opacity-60" /> Source
                       </a>
                     )}
@@ -169,7 +169,7 @@ const ProjectCard = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent pointer-events-none" />
                 
                 <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
-                   <ProjectArchitecture projectId={project.id} />
+                   {(isInView || isHovered) && <ProjectArchitecture projectId={project.id} />}
                 </div>
 
                 {/* Video Indicator Overlay */}
@@ -196,14 +196,14 @@ const ProjectCard = ({
                 
                 <div className="grid grid-cols-2 gap-8 mono text-[10px] uppercase tracking-[0.2em] border-t border-white/10 pt-8">
                    <div className="flex flex-col gap-2">
-                      <span className="text-white/30">System_Status</span>
+                      <span className="text-white/60">System_Status</span>
                       <span className="text-green-400 font-black flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                         PROD_READY
                       </span>
                    </div>
                    <div className="flex flex-col gap-2">
-                      <span className="text-white/30">Architecture</span>
+                      <span className="text-white/60">Architecture</span>
                       <span className="text-white font-black">HIGH_LOAD_OK</span>
                    </div>
                 </div>

@@ -1,19 +1,20 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/jack/HeroSection";
 import { MarqueeSection } from "@/components/jack/MarqueeSection";
 import { AboutSection } from "@/components/jack/AboutSection";
 import { ServicesSection } from "@/components/jack/ServicesSection";
 import { ProjectsSection } from "@/components/jack/ProjectsSection";
-import { ProjectDetailsModal } from "@/components/jack/ProjectDetailsModal";
 import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
-import { Github, Linkedin, Twitter, FileText, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import { OSNavbar } from "@/components/jack/OSNavbar";
-import { SystemHUD } from "@/components/jack/SystemHUD";
-import Footer from "@/components/layout/Footer";
+
+// DYNAMIC IMPORTS FOR PERFORMANCE
+const ProjectDetailsModal = dynamic(() => import("@/components/jack/ProjectDetailsModal").then(mod => mod.ProjectDetailsModal), { ssr: false });
+const SystemHUD = dynamic(() => import("@/components/jack/SystemHUD").then(mod => mod.SystemHUD), { ssr: false });
+const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: false });
 
 export default function Home() {
   const { mode } = useMode();

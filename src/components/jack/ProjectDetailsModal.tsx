@@ -52,7 +52,7 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[1000] bg-black/95 backdrop-blur-2xl cursor-zoom-out"
+            className="fixed inset-0 z-[4000] bg-black/95 backdrop-blur-2xl cursor-zoom-out"
           />
 
           {/* Modal Content */}
@@ -61,15 +61,16 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-4 md:inset-10 lg:inset-20 z-[2000] bg-[#080808] border border-white/10 rounded-[2rem] overflow-hidden flex flex-col shadow-[0_0_100px_rgba(0,0,0,1)]"
+            className="fixed inset-4 md:inset-10 lg:inset-20 z-[4001] bg-[#080808] border border-white/10 rounded-[2rem] overflow-hidden flex flex-col shadow-[0_0_100px_rgba(0,0,0,1)]"
           >
             {/* Header / Close Button */}
-            <div className="absolute top-4 left-4 md:left-auto md:top-8 md:right-8 z-[2001]">
+            <div className="absolute top-6 right-6 md:top-10 md:right-10 z-[2001]">
               <button 
                 onClick={onClose}
-                className="p-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all group backdrop-blur-md"
+                aria-label="Close modal"
+                className="p-4 md:p-5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all group backdrop-blur-xl shadow-2xl active:scale-90"
               >
-                <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
+                <X className="w-6 h-6 md:w-5 md:h-5 group-hover:rotate-90 transition-transform duration-300" />
               </button>
             </div>
 

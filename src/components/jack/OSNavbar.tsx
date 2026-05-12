@@ -28,7 +28,7 @@ export const OSNavbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-[1000] flex justify-between items-center px-6 md:px-12 py-6 pointer-events-none">
+    <nav className="fixed top-0 inset-x-0 z-[1000] flex justify-between items-center px-4 md:px-12 py-4 md:py-6 pointer-events-none">
       {/* Background Mask - Ensures readability on scroll */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-transparent h-40 -z-10 pointer-events-none" />
 
@@ -42,7 +42,7 @@ export const OSNavbar = () => {
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_rgba(255,77,0,0.8)] animate-pulse mt-1.5 md:mt-2" />
             <div className="flex flex-col">
-              <span className="mono text-[12px] md:text-[14px] uppercase tracking-[0.5em] font-black bg-gradient-to-r from-white via-white/50 to-white bg-[length:200%_auto] animate-[text-shimmer_6s_linear_infinite] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,255,255,0.2)] group-hover:from-accent group-hover:via-white group-hover:to-accent transition-all duration-500">Syed Mukheeth</span>
+              <span className="mono text-[10px] sm:text-[12px] md:text-[14px] uppercase tracking-[0.3em] sm:tracking-[0.5em] font-black bg-gradient-to-r from-white via-white/50 to-white bg-[length:200%_auto] animate-[text-shimmer_6s_linear_infinite] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,255,255,0.2)] group-hover:from-accent group-hover:via-white group-hover:to-accent transition-all duration-500">Syed Mukheeth</span>
               <span className="mono text-[8px] md:text-[9px] tracking-[0.4em] text-white/70 uppercase mt-1 font-medium">Software Engineer</span>
             </div>
           </div>
@@ -84,7 +84,7 @@ export const OSNavbar = () => {
             className="flex items-center gap-3 px-6 py-3 rounded-full glass-heavy border border-white/10 hover:border-accent/50 transition-all duration-500 group shadow-[0_0_20px_rgba(0,0,0,0.4)] relative overflow-hidden"
           >
             <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_rgba(255,77,0,0.9)] animate-pulse" />
-            <span className="mono text-[10px] uppercase tracking-[0.5em] font-black bg-gradient-to-r from-white via-accent/50 to-white bg-[length:200%_auto] animate-[text-shimmer_3s_linear_infinite] bg-clip-text text-transparent group-hover:text-accent transition-colors">
+            <span className="mono text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.5em] font-black bg-gradient-to-r from-white via-accent/50 to-white bg-[length:200%_auto] animate-[text-shimmer_3s_linear_infinite] bg-clip-text text-transparent group-hover:text-accent transition-colors">
               {mode}
             </span>
           </button>

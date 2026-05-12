@@ -2,13 +2,15 @@
 
 A high-performance, system-architected portfolio designed for the "Systems Thinker". Built with Next.js 15, React 19, and Framer Motion.
 
-## 🚀 System Architecture
-
-- **Core**: Next.js 15.0.3 (App Router) + React 19.0.0
-- **Styling**: Tailwind CSS + Glassmorphism Engine
-- **Animations**: Framer Motion (Orchestration) + Lenis (Smooth Scroll)
-- **Infrastructure**: Turbopack Build Pipeline
-- **AI-Ready**: Integrated Markdown Negotiation for AI agents
+### 🚀 Technical Highlights
+- **Framework**: Next.js 15 (App Router) + React 19.
+- **Performance**: 
+  - `95+` Lighthouse score (Targeted).
+  - **Dynamic Hydration**: Critical components like Modals, HUDs, and Footers are lazy-loaded via `next/dynamic`.
+  - **Media Pipeline**: Cloudinary-backed `LazyVideo` with intersection-observer logic and auto-fallback for range-request (416) errors.
+  - **Zero-Shift UX**: Skeleton states and aspect-ratio locking for all visual assets.
+- **Security**: Supabase RLS (Row Level Security) and isolated Docker-sandbox patterns (demonstrated in SAM-Compiler).
+- **Architecture**: Event-driven event meshes using Kafka and Redis (demonstrated in PeerNet).
 
 ## 🛠 Features
 

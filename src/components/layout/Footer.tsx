@@ -58,7 +58,7 @@ export default function Footer() {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="mono text-[10px] uppercase tracking-[0.4em] text-white/30">Direct_Line</span>
+                  <span className="mono text-[10px] uppercase tracking-[0.4em] text-white/60">Direct_Line</span>
                   <span className={cn(
                     "text-xl md:text-2xl font-bold tracking-tight",
                     mode === 'machine' && 'font-mono'
@@ -84,11 +84,11 @@ export default function Footer() {
                       target="_blank"
                       className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-accent/30 transition-colors"
                     >
-                      <div className="flex items-center gap-4 text-white/40 group-hover:text-white transition-colors">
+                      <div className="flex items-center gap-4 text-white/65 group-hover:text-white transition-colors">
                         {social.icon}
                         <span className="mono text-[12px] uppercase tracking-widest">{social.name}</span>
                       </div>
-                      <ArrowUpRight size={14} className="text-white/20 group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                      <ArrowUpRight size={14} className="text-white/40 group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                     </a>
                   ))}
                </div>
@@ -98,19 +98,19 @@ export default function Footer() {
                <span className="mono text-[11px] uppercase tracking-[0.5em] text-accent font-black">System_Spec</span>
                <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col gap-4">
                   <div className="flex justify-between items-center mono text-[9px]">
-                    <span className="text-white/30">VERSION</span>
+                    <span className="text-white/60">VERSION</span>
                     <span className="text-white/90">V4.2.1-STABLE</span>
                   </div>
                   <div className="flex justify-between items-center mono text-[9px]">
-                    <span className="text-white/30">RUNTIME</span>
+                    <span className="text-white/60">RUNTIME</span>
                     <span className="text-green-500/80 font-bold">NODE_20_LTS</span>
                   </div>
                   <div className="flex justify-between items-center mono text-[9px]">
-                    <span className="text-white/30">UPTIME</span>
+                    <span className="text-white/60">UPTIME</span>
                     <span className="text-white/90 font-black animate-pulse">99.99%</span>
                   </div>
                   <div className="flex justify-between items-center mono text-[9px] pt-4 border-t border-white/5">
-                    <span className="text-white/30">LOCATION</span>
+                    <span className="text-white/60">LOCATION</span>
                     <div className="flex items-center gap-2 text-white/90">
                       <Globe size={10} className="text-accent" />
                       <span>BANGALORE, IN</span>
@@ -124,7 +124,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-6">
-            <span className="mono text-[10px] text-white/20 uppercase tracking-[0.4em]">© {currentYear} Syed Mukheeth</span>
+            <span className="mono text-[10px] text-white/45 uppercase tracking-[0.4em]">© {currentYear} Syed Mukheeth</span>
             <div className="hidden md:block w-px h-3 bg-white/10" />
             <span className="mono text-[10px] text-accent/40 uppercase tracking-[0.4em] hidden md:block">Engineering Portfolio Architecture</span>
           </div>

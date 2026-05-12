@@ -80,7 +80,7 @@ export const TerminalHUD = () => {
     <>
       <button 
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-2 glass rounded-full mono text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-colors duration-300"
+        className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[600] flex items-center gap-2 px-4 py-2 glass rounded-full mono text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-colors duration-300"
       >
         <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
         Terminal_Access [T]
@@ -92,7 +92,7 @@ export const TerminalHUD = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed inset-x-6 bottom-10 md:inset-x-auto md:right-10 md:w-[500px] h-[350px] z-[60] glass rounded-2xl overflow-hidden flex flex-col shadow-2xl"
+            className="fixed inset-x-6 bottom-10 md:inset-x-auto md:right-10 md:w-[500px] h-[350px] z-[601] glass rounded-2xl overflow-hidden flex flex-col shadow-2xl"
           >
             {/* Terminal Header */}
             <div className="flex justify-between items-center px-4 py-3 border-b border-white/5 bg-white/5">

@@ -89,7 +89,7 @@ export const HeroSection = () => {
                   <div className="absolute -inset-8 border border-white/[0.03] rounded-[3rem] -z-10 group-hover:border-white/10 transition-colors duration-700" />
                   <div className="absolute -inset-16 border border-white/[0.01] rounded-[4rem] -z-20" />
                   
-                  <div className="relative w-[280px] sm:w-[320px] md:w-[400px] lg:w-[500px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
+                  <div className="relative w-[240px] sm:w-[280px] md:w-[400px] lg:w-[500px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                     <Image 
                       src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_800/avatar_kyjo2q.png" 
@@ -146,7 +146,7 @@ export const HeroSection = () => {
                           >
                             Software Engineer
                           </motion.span>
-                          <h1 className="font-black uppercase tracking-[-0.04em] leading-[0.8] text-[clamp(2.5rem,7vw,7.5rem)] text-white drop-shadow-2xl">
+                          <h1 className="font-black uppercase tracking-[-0.04em] leading-[0.8] text-[clamp(2rem,8vw,7.5rem)] text-white drop-shadow-2xl">
                             Syed<br/>
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/40">Mukheeth</span>
                           </h1>
