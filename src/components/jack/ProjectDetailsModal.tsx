@@ -73,7 +73,10 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-12 lg:p-16">
+            <div 
+              className="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-12 lg:p-16"
+              data-lenis-prevent
+            >
               <div className="max-w-6xl mx-auto space-y-24">
                 
                 {/* Hero Grid */}
