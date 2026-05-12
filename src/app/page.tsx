@@ -84,7 +84,7 @@ export default function Home() {
                         icon: Github, 
                         color: "group-hover:text-white", 
                         glow: "group-hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]",
-                        stats: "40+ Repos",
+                        stats: "19 Repos",
                         status: "SOURCE_CONTROL",
                         metric: "99.9% Uptime"
                       },
