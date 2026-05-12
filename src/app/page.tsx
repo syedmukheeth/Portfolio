@@ -38,7 +38,7 @@ export default function Home() {
         onClose={() => setSelectedProject(null)} 
       />
       
-      <SystemHUD />
+      {/* <SystemHUD /> */}
       <Footer />
       
       {/* GLOBAL BACKGROUND NOISE/GRAIN */}
