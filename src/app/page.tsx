@@ -109,14 +109,14 @@ export default function Home() {
                </div>
            </div>
            
-           <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between gap-10 items-center opacity-80">
-              <div className="mono text-[10px] uppercase tracking-[0.6em] text-white/50">
-                Designed & Engineered &copy; 2026 <span className="text-white">Syed Mukheeth</span>
+           <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between gap-10 items-center">
+              <div className="mono text-xs uppercase tracking-[0.4em] text-white/40">
+                Designed & Engineered &copy; 2026 <span className="text-white font-bold tracking-[0.2em]">Syed Mukheeth</span>
               </div>
-              <div className="flex items-center gap-4">
-                 <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(255,77,0,0.5)]" />
-                 <div className="mono text-[10px] uppercase tracking-[0.4em] text-white/40">
-                    System Mode: <span className="text-accent font-bold">Active Exploration</span>
+              <div className="flex items-center gap-6">
+                 <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_15px_rgba(255,77,0,0.8)]" />
+                 <div className="mono text-xs uppercase tracking-[0.4em] text-white/40">
+                    System Mode: <span className="text-accent font-black tracking-widest">Active Exploration</span>
                  </div>
               </div>
            </div>
