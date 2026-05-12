@@ -25,12 +25,12 @@ export const BootSequence = () => {
       setCurrentLog((prev) => {
         if (prev >= BOOT_LOGS.length - 1) {
           clearInterval(timer);
-          setTimeout(() => setIsBooted(true), 800);
+          setTimeout(() => setIsBooted(true), 200);
           return prev;
         }
         return prev + 1;
       });
-    }, 400);
+    }, 100);
 
     return () => clearInterval(timer);
   }, [isBooted, setIsBooted]);

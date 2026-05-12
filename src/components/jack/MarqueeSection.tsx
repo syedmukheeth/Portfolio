@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 /**
  * GUIDE: HOW TO GET PERSONALIZED ASSETS
@@ -25,26 +25,40 @@ const ASSET_ITEMS = [
 
 const LazyMarqueeVideo = ({ url }: { url: string }) => {
   const containerRef = useRef(null);
-  // Only mount the video tag when it's visible in the marquee
-  const isInView = (require("framer-motion").useInView)(containerRef, { margin: "0px 100px 0px 100px" });
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isInView = useInView(containerRef, { margin: "200px" });
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isInView) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isInView]);
 
   return (
-    <div ref={containerRef} className="w-[300px] sm:w-[450px] h-[200px] sm:h-[300px] rounded-3xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group relative">
-      {isInView ? (
-        <video 
-          src={url} 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          preload="auto"
-          className="w-full h-full object-cover grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-        />
-      ) : (
-        <div className="w-full h-full bg-gradient-to-br from-white/5 to-transparent flex items-center justify-center">
-          <div className="w-8 h-8 rounded-full border border-white/10 border-t-accent/30 animate-spin" />
-        </div>
-      )}
+    <div ref={containerRef} className="w-[300px] sm:w-[450px] h-[200px] sm:h-[300px] rounded-3xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group relative video-wrapper">
+      <video 
+        ref={videoRef}
+        poster={url.includes('cloudinary') 
+          ? url.replace('/upload/', '/upload/so_0,q_auto,f_auto/').replace('.mp4', '.jpg')
+          : undefined}
+        src={isInView 
+          ? (url.includes('cloudinary') 
+            ? url.replace('/upload/', '/upload/q_auto,f_auto,vc_auto/') 
+            : url)
+          : undefined} 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        preload="none"
+        className="w-full h-full object-cover transition-all duration-700"
+      />
+      {/* Subtle overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
     </div>
   );
 };
@@ -54,7 +68,7 @@ export const MarqueeSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   
   // UseInView to disable the entire section scroll listener when off-screen
-  const isSectionInView = (require("framer-motion").useInView)(sectionRef, { margin: "200px 0px 200px 0px" });
+  const isSectionInView = useInView(sectionRef, { margin: "200px 0px 200px 0px" });
 
   useEffect(() => {
     if (!isSectionInView) return;

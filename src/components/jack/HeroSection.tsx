@@ -95,7 +95,7 @@ export const HeroSection = () => {
                         <img 
                           src="/images/avatar.png" 
                           alt="Syed Mukheeth" 
-                          className="w-full h-full object-cover object-center opacity-95 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+                          className="w-full h-full object-cover object-center opacity-100 group-hover:scale-105 transition-all duration-700"
                         />
                         
                         {/* Dynamic HUD Layer */}

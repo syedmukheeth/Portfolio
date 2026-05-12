@@ -123,3 +123,27 @@ body,
     linear-gradient(90deg, rgba(255, 77, 0, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
+
+/* 🎨 SMOOTH SCROLL & GPU ACCELERATION */
+html {
+  scroll-behavior: smooth;
+}
+
+.video-wrapper {
+  will-change: transform;
+  transform: translateZ(0);   /* Force GPU layer */
+  contain: layout paint;      /* Isolate repaint */
+  background: #000;           /* Solid background to prevent flickering */
+}
+
+video {
+  display: block;
+  object-fit: cover;
+  will-change: auto;
+}
+
+/* CUSTOM SCROLLBAR FIX FOR SMOOTHNESS */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

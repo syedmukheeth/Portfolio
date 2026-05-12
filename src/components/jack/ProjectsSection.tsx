@@ -138,31 +138,31 @@ const ProjectCard = ({
           
           {/* Main Visual Showcase */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-             <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500 bg-black/40">
-                {isInView && project.clips && project.clips.length > 0 && (
+             <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500 bg-black/40 video-wrapper">
+                {project.clips && project.clips.length > 0 && (
                   <video 
                     ref={videoRef}
-                    src={project.clips[0].includes('cloudinary') 
-                      ? project.clips[0].replace('/upload/', '/upload/f_auto,q_auto/') 
-                      : project.clips[0]} 
+                    poster={project.clips[0].includes('cloudinary') 
+                      ? project.clips[0].replace('/upload/', '/upload/so_0,q_auto,f_auto/').replace('.mp4', '.jpg')
+                      : undefined}
+                    src={isInView 
+                      ? (project.clips[0].includes('cloudinary') 
+                        ? project.clips[0].replace('/upload/', '/upload/q_auto,f_auto,vc_auto/') 
+                        : project.clips[0])
+                      : undefined}
                     muted 
                     loop 
                     playsInline 
-                    preload="auto"
+                    preload="none"
                     className={cn(
                       "w-full h-full object-cover transition-opacity duration-700 absolute inset-0",
-                      isHovered ? "opacity-100" : "opacity-40"
+                      isHovered ? "opacity-100" : "opacity-80"
                     )}
                   />
                 )}
                 
-                {/* Fallback/Static state when not in view or not hovered */}
-                <div className={cn(
-                  "absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent transition-opacity duration-700",
-                  isHovered ? "opacity-0" : "opacity-100"
-                )} />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent pointer-events-none" />
+                {/* Subtle depth overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent pointer-events-none" />
                 
                 <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
                    <ProjectArchitecture projectId={project.id} />
