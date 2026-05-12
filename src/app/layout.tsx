@@ -63,7 +63,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Person",
                 "name": "Syed Mukheeth",
-                "jobTitle": "Full Stack Systems Engineer",
+                "jobTitle": "Systems Engineer",
                 "email": "syedmukheeth09@gmail.com",
                 "url": "https://syedmukheeth.com",
                 "sameAs": [

@@ -34,7 +34,7 @@ export const OSNavbar = () => {
               <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_rgba(255,77,0,0.8)] animate-pulse" />
               <span className="mono text-[12px] md:text-[14px] uppercase tracking-[0.5em] font-black bg-gradient-to-r from-white via-white/50 to-white bg-[length:200%_auto] animate-[text-shimmer_6s_linear_infinite] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,255,255,0.2)] group-hover:from-accent group-hover:via-white group-hover:to-accent transition-all duration-500">Syed Mukheeth</span>
             </div>
-            <span className="mono text-[8px] md:text-[9px] tracking-[0.4em] text-white/70 uppercase mt-1 font-medium">Software Engineer</span>
+            <span className="mono text-[8px] md:text-[9px] tracking-[0.4em] text-white/70 uppercase mt-1 font-medium">Systems Engineer</span>
           </div>
         </a>
       </FadeIn>
