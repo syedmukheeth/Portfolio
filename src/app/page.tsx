@@ -36,9 +36,10 @@ export default function Home() {
       </div>
 
       {/* CINEMATIC FOOTER */}
-      <footer id="contact" className="py-32 md:py-48 bg-black border-t border-white/5 relative overflow-hidden">
+      <footer id="contact" className="py-20 md:py-24 bg-black border-t border-white/5 relative overflow-hidden">
         <div className="container max-w-6xl mx-auto px-4 relative z-10">
            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+              {/* ... existing columns ... */}
               <div className="lg:col-span-7">
                  <div className="flex items-center gap-8 mb-10">
                     <div className="relative w-16 h-16 rounded-full overflow-hidden border border-white/10 shadow-2xl">
@@ -108,12 +109,14 @@ export default function Home() {
                </div>
            </div>
            
-           <div className="mt-40 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between gap-10 items-center opacity-40">
-              <div className="mono text-[10px] uppercase tracking-[0.6em] text-white">Designed & Engineered &copy; 2026 Syed Mukheeth</div>
+           <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between gap-10 items-center opacity-80">
+              <div className="mono text-[10px] uppercase tracking-[0.6em] text-white/50">
+                Designed & Engineered &copy; 2026 <span className="text-white">Syed Mukheeth</span>
+              </div>
               <div className="flex items-center gap-4">
-                 <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse" />
-                 <div className="mono text-[10px] uppercase tracking-[0.4em]">
-                    System Mode: <span className="text-white">Active Exploration</span>
+                 <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(255,77,0,0.5)]" />
+                 <div className="mono text-[10px] uppercase tracking-[0.4em] text-white/40">
+                    System Mode: <span className="text-accent font-bold">Active Exploration</span>
                  </div>
               </div>
            </div>
