@@ -25,8 +25,8 @@ export const HeroSection = () => {
     if (!sectionRef.current) return;
     const { clientX, clientY } = e;
     const { left, top, width, height } = sectionRef.current.getBoundingClientRect();
-    const x = ((clientX - left) / width) * 2 - 1;
-    const y = ((clientY - top) / height) * 2 - 1;
+    const x = Math.max(-1.2, Math.min(1.2, ((clientX - left) / width) * 2 - 1));
+    const y = Math.max(-1.2, Math.min(1.2, ((clientY - top) / height) * 2 - 1));
     setMousePos({ x, y });
   };
 
@@ -81,12 +81,15 @@ export const HeroSection = () => {
                   animate={{ 
                     x: mousePos.x * 12, 
                     y: mousePos.y * 12,
-                    rotateX: -mousePos.y * 6,
-                    rotateY: mousePos.x * 6
+                    rotateX: -mousePos.y * 8,
+                    rotateY: mousePos.x * 8
                   }}
-                  transition={{ type: "spring", stiffness: 40, damping: 20 }}
-                  className="relative group"
-                  style={{ perspective: 2000 }}
+                  transition={{ type: "spring", stiffness: 50, damping: 25 }}
+                  className="relative group preserve-3d"
+                  style={{ 
+                    perspective: 2000,
+                    backfaceVisibility: "hidden"
+                  }}
                 >
                   <div className="absolute -inset-8 border border-white/[0.03] rounded-[3rem] -z-10 group-hover:border-white/10 transition-colors duration-700" />
                   <div className="absolute -inset-16 border border-white/[0.01] rounded-[4rem] -z-20" />
