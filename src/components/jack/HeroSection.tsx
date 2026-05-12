@@ -7,7 +7,6 @@ import { FadeIn } from "./JackComponents";
 import { cn } from "@/lib/utils";
 import { OSNavbar } from "./OSNavbar";
 import { SystemHUD } from "./SystemHUD";
-import { BootSequence } from "./BootSequence";
 import Image from "next/image";
 
 export const HeroSection = () => {
@@ -32,8 +31,6 @@ export const HeroSection = () => {
 
   return (
     <div className="relative">
-      <BootSequence />
-      
       <motion.section
         id="hero"
         ref={sectionRef}

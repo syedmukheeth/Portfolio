@@ -18,7 +18,7 @@ const ModeContext = createContext<ModeContextType | undefined>(undefined);
 export function ModeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setModeState] = useState<Mode>("human");
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isBooted, setIsBooted] = useState(false);
+  const [isBooted, setIsBooted] = useState(true);
 
   useEffect(() => {
     const savedMode = localStorage.getItem("portfolio-mode") as Mode;
