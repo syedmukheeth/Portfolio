@@ -119,12 +119,21 @@ const ProjectCard = ({
               </h3>
               
               <div className="flex gap-6 mt-8 items-center">
-                  <button 
+                  <motion.button 
                     onClick={onOpenDetails}
-                    className="px-6 py-3 rounded-full bg-white text-black font-bold uppercase tracking-tighter text-[11px] hover:bg-accent hover:text-white transition-all shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] active:scale-95 border-none"
+                    whileHover={{ scale: 1.05, backgroundColor: "var(--accent)" }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-6 py-3 rounded-full bg-white text-black font-bold uppercase tracking-tighter text-[11px] transition-colors duration-300 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] flex items-center justify-center group"
                   >
-                    KNOW MORE
-                  </button>
+                    <motion.span 
+                      variants={{
+                        hover: { color: "#fff" }
+                      }}
+                      className="group-hover:text-white"
+                    >
+                      KNOW MORE
+                    </motion.span>
+                  </motion.button>
                   <div className="flex gap-6">
                     {project.github && (
                       <a href={project.github} target="_blank" rel="noopener noreferrer" className="mono text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-2">
