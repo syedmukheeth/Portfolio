@@ -124,22 +124,20 @@ body,
   background-size: 50px 50px;
 }
 
-/* 🎨 SMOOTH SCROLL & GPU ACCELERATION */
+/* 🎨 GPU ACCELERATION */
 html, body {
-  scroll-behavior: smooth;
   overflow-x: hidden;
+  overscroll-behavior-y: none; /* Prevent scroll bounce conflicts with Lenis */
 }
 
-/* GPU accelerate and defer rendering of off-screen sections */
+/* GPU accelerate and ensure layout stability */
 section, .video-section, .hero {
-  will-change: transform;
+  /* Removed content-visibility: auto as it conflicts with Lenis smooth scroll */
   transform: translateZ(0);
   backface-visibility: hidden;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 1000px; /* Better estimation */
 }
 
-.hero-heading, .glass, .glass-heavy {
+.hero-heading, .glass, .glass-heavy, .video-wrapper {
   will-change: transform, opacity;
 }
 
