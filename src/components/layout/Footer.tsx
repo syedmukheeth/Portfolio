@@ -7,7 +7,7 @@
 "use client";
 
 import React from 'react';
-import { Github, Twitter, Linkedin, Mail, ArrowUpRight, Globe, Cpu, Database } from 'lucide-react';
+import { Github, Twitter, Linkedin, Mail, ArrowUpRight, Globe, Cpu, Database, FileText } from 'lucide-react';
 import { FadeIn } from '@/components/jack/JackComponents';
 import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
@@ -76,7 +76,8 @@ export default function Footer() {
                   {[
                     { name: 'Github', icon: <Github size={18} />, href: 'https://github.com/Syed-Mukheeth' },
                     { name: 'LinkedIn', icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/in/syed-mukheeth-425b03212/' },
-                    { name: 'Twitter', icon: <Twitter size={18} />, href: 'https://twitter.com/syed_mukheeth' }
+                    { name: 'Twitter', icon: <Twitter size={18} />, href: 'https://twitter.com/syed_mukheeth' },
+                    { name: 'Resume', icon: <FileText size={18} />, href: '#' }
                   ].map((social) => (
                     <a 
                       key={social.name}
@@ -94,30 +95,6 @@ export default function Footer() {
                </div>
             </FadeIn>
 
-            <FadeIn delay={0.4} y={20} className="flex flex-col gap-8">
-               <span className="mono text-[11px] uppercase tracking-[0.5em] text-accent font-black">System_Spec</span>
-               <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col gap-4">
-                   <div className="flex justify-between items-center mono text-[9px]">
-                    <span className="text-white/80 font-bold">VERSION</span>
-                    <span className="text-white font-black">V4.3.0-STABLE</span>
-                  </div>
-                  <div className="flex justify-between items-center mono text-[9px]">
-                    <span className="text-white/80 font-bold">RUNTIME</span>
-                    <span className="text-green-400 font-black">NODE_20_LTS</span>
-                  </div>
-                  <div className="flex justify-between items-center mono text-[9px]">
-                    <span className="text-white/80 font-bold">UPTIME</span>
-                    <span className="text-white font-black animate-pulse">99.99%</span>
-                  </div>
-                  <div className="flex justify-between items-center mono text-[9px] pt-4 border-t border-white/10">
-                    <span className="text-white/80 font-bold">LOCATION</span>
-                    <div className="flex items-center gap-2 text-white font-black">
-                      <Globe size={10} className="text-accent" />
-                      <span>BANGALORE, IN</span>
-                    </div>
-                  </div>
-               </div>
-            </FadeIn>
           </div>
         </div>
 
@@ -125,15 +102,9 @@ export default function Footer() {
         <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-6">
             <span className="mono text-[10px] text-white/80 uppercase tracking-[0.4em] font-medium">© {currentYear} Syed Mukheeth</span>
-            <div className="hidden md:block w-px h-3 bg-white/20" />
-            <span className="mono text-[10px] text-accent uppercase tracking-[0.4em] font-black hidden md:block">Engineering Portfolio Architecture</span>
           </div>
 
           <div className="flex items-center gap-8">
-            <div className="flex items-center gap-2 mono text-[10px] text-white/80 font-bold">
-              <Database size={12} className="text-accent" />
-              <span>DB_STABLE</span>
-            </div>
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="mono text-[10px] uppercase tracking-[0.4em] text-white/80 hover:text-white transition-colors flex items-center gap-2 group font-black"
