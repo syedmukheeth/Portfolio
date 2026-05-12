@@ -41,7 +41,7 @@ export default function Footer() {
                   "text-3xl md:text-5xl font-black uppercase tracking-tighter transition-colors",
                   mode === 'machine' ? 'text-accent font-mono' : 'text-white'
                 )}>
-                  {mode === 'machine' ? "CONNECT_HANDSHAKE" : "Let's Build Systems."}
+                  {mode === 'machine' ? "CONNECT_HANDSHAKE" : "Let's Connect."}
                 </h2>
               </div>
               <p className="text-white/80 text-lg md:text-xl max-w-md leading-relaxed">
