@@ -15,9 +15,8 @@ const PROJECTS = LIB_PROJECTS;
 import { ProjectDetailsModal } from "./ProjectDetailsModal";
 import { ProjectArchitecture } from "./ProjectArchitecture";
 
-export const ProjectsSection = () => {
+export const ProjectsSection = ({ onOpenProject }: { onOpenProject: (project: any) => void }) => {
   const container = useRef(null);
-  const [selectedProject, setSelectedProject] = React.useState<any>(null);
   
   const { scrollYProgress } = useScroll({
     target: container,
@@ -52,18 +51,12 @@ export const ProjectsSection = () => {
                 range={[i * (1 / PROJECTS.length), 1]}
                 targetScale={targetScale}
                 progress={scrollYProgress}
-                onOpenDetails={() => setSelectedProject(project)}
+                onOpenDetails={() => onOpenProject(project)}
               />
             </div>
           );
         })}
       </div>
-
-      <ProjectDetailsModal 
-        isOpen={!!selectedProject} 
-        project={selectedProject} 
-        onClose={() => setSelectedProject(null)} 
-      />
     </section>
   );
 };

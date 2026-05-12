@@ -6,6 +6,7 @@ import { MarqueeSection } from "@/components/jack/MarqueeSection";
 import { AboutSection } from "@/components/jack/AboutSection";
 import { ServicesSection } from "@/components/jack/ServicesSection";
 import { ProjectsSection } from "@/components/jack/ProjectsSection";
+import { ProjectDetailsModal } from "@/components/jack/ProjectDetailsModal";
 import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import { Github, Linkedin, Twitter, FileText, ArrowUpRight } from "lucide-react";
@@ -13,6 +14,7 @@ import Image from "next/image";
 
 export default function Home() {
   const { mode } = useMode();
+  const [selectedProject, setSelectedProject] = React.useState<any>(null);
 
   return (
     <div className={cn(
@@ -23,7 +25,13 @@ export default function Home() {
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
-      <ProjectsSection />
+      <ProjectsSection onOpenProject={setSelectedProject} />
+      
+      <ProjectDetailsModal 
+        isOpen={!!selectedProject} 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
       
       {/* GLOBAL BACKGROUND NOISE/GRAIN */}
       <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.02] mix-blend-overlay">
