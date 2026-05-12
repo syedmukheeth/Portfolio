@@ -19,7 +19,7 @@ export const AboutSection = () => {
 
         <AnimatedText 
           text="I’m passionate about building software that makes complex systems feel more intuitive and efficient. My projects explore areas like repository intelligence, secure code execution, realtime communication, and scalable application design. Through systems such as SAMIndex, SAM Compiler, and PeerNet, I’ve been learning how modern infrastructure, developer tooling, and product engineering come together to solve real-world engineering challenges."
-          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[850px] text-[clamp(1rem,2vw,1.35rem)]"
+          className="text-white/70 font-medium text-center leading-relaxed max-w-[850px] text-[clamp(1rem,2vw,1.35rem)]"
         />
 
         <div className="mt-6">

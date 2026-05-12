@@ -14,7 +14,8 @@ export default function Navbar() {
       <motion.div 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="glass rounded-full px-6 py-2 flex items-center gap-8 pointer-events-auto shadow-2xl"
+        whileHover={{ scale: 1.02 }}
+        className="glass glass-shine rounded-full px-6 py-2 flex items-center gap-8 pointer-events-auto shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/10"
       >
         <Link href="/" className="flex items-center gap-2">
           <div className="w-6 h-6 bg-accent rounded-sm rotate-45 flex items-center justify-center overflow-hidden">
@@ -36,9 +37,10 @@ export default function Navbar() {
         <button 
           onClick={toggleMode}
           disabled={isTransitioning}
+          aria-label={`Switch to ${mode === "human" ? "Machine" : "Human"} mode`}
           className={cn(
-            "relative flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-500 overflow-hidden min-w-[90px]",
-            mode === "human" ? "bg-white/5 text-white" : "bg-accent/20 text-accent",
+            "relative flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-500 overflow-hidden min-w-[100px] border border-white/5",
+            mode === "human" ? "bg-white/5 text-white hover:bg-white/10" : "bg-accent/20 text-accent border-accent/20",
             isTransitioning && "opacity-50 cursor-wait"
           )}
         >
@@ -78,7 +80,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link 
       href={href} 
-      className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+      className="text-[10px] uppercase tracking-[0.2em] text-white/60 hover:text-white transition-all hover:tracking-[0.25em]"
     >
       {children}
     </Link>

@@ -24,6 +24,9 @@ export default function Footer() {
       {/* Background Grid Accent */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
       
+      {/* Refined Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-accent/[0.05] to-transparent pointer-events-none blur-[120px]" />
+      
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 mb-24">
           
@@ -44,7 +47,7 @@ export default function Footer() {
                   {mode === 'machine' ? "CONNECT_HANDSHAKE" : "Let's Connect."}
                 </h2>
               </div>
-              <p className="text-white/80 text-lg md:text-xl max-w-md leading-relaxed">
+              <p className="text-white/70 text-lg md:text-xl max-w-md leading-relaxed font-medium">
                 Currently open for software developer roles and engineering internships.
               </p>
             </FadeIn>
@@ -58,9 +61,9 @@ export default function Footer() {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="mono text-[10px] uppercase tracking-[0.4em] text-accent/80 font-black">Direct_Line</span>
+                  <span className="mono text-[10px] uppercase tracking-[0.4em] text-accent/90 font-black">Direct_Line</span>
                   <span className={cn(
-                    "text-xl md:text-2xl font-bold tracking-tight text-white",
+                    "text-xl md:text-3xl font-black tracking-tight text-white transition-colors group-hover:text-accent",
                     mode === 'machine' && 'font-mono'
                   )}>syedmukheeth09@gmail.com</span>
                 </div>
@@ -101,7 +104,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-6">
-            <span className="mono text-[10px] text-white/80 uppercase tracking-[0.4em] font-medium">© {currentYear} Syed Mukheeth</span>
+            <span className="mono text-[10px] text-white/60 uppercase tracking-[0.4em] font-medium">© {currentYear} Syed Mukheeth</span>
           </div>
 
           <div className="flex items-center gap-8">

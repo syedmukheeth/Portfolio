@@ -53,7 +53,7 @@ export const ServicesSection = () => {
                   <h3 className="text-[#0C0C0C] font-medium uppercase text-[clamp(1rem,2.2vw,2.1rem)]">
                     {service.name}
                   </h3>
-                  <p className="text-[#0C0C0C] font-light leading-relaxed max-w-2xl text-[clamp(1rem,1.6vw,1.25rem)] opacity-90">
+                  <p className="text-[#0C0C0C] font-medium leading-relaxed max-w-2xl text-[clamp(1rem,1.6vw,1.25rem)]">
                     {service.description}
                   </p>
                 </div>

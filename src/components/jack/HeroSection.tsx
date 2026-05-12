@@ -93,7 +93,7 @@ export const HeroSection = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                       <Image 
                         src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_800/avatar_kyjo2q.png" 
-                        alt="Syed Mukheeth" 
+                        alt="Syed Mukheeth - Software Engineer Portfolio Avatar" 
                         fill
                         priority
                         unoptimized

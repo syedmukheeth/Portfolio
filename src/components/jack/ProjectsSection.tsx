@@ -96,7 +96,7 @@ const ProjectCard = ({
         style={{ 
           scale,
         }}
-        className="relative h-auto w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group will-change-transform"
+        className="relative h-auto w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group will-change-transform glass-shine"
       >
         {/* Background Accent */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_100%_0%,rgba(255,77,0,0.03)_0%,transparent_70%)] pointer-events-none" />
@@ -104,7 +104,7 @@ const ProjectCard = ({
         {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 relative z-10">
           <div className="flex items-start gap-8">
-            <span className="mono text-white/60 font-bold text-6xl md:text-8xl leading-none select-none">
+            <span className="mono text-white/40 font-black text-6xl md:text-9xl leading-none select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]">
               0{index + 1}
             </span>
             <div className="flex flex-col pt-2">
@@ -169,7 +169,18 @@ const ProjectCard = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent pointer-events-none" />
                 
                 <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
-                   {(isInView || isHovered) && <ProjectArchitecture projectId={project.id} />}
+                   <AnimatePresence>
+                     {(isInView || isHovered) && (
+                       <motion.div
+                         initial={{ opacity: 0, y: 10 }}
+                         animate={{ opacity: 1, y: 0 }}
+                         exit={{ opacity: 0, y: 10 }}
+                         transition={{ duration: 0.5 }}
+                       >
+                         <ProjectArchitecture projectId={project.id} />
+                       </motion.div>
+                     )}
+                   </AnimatePresence>
                 </div>
 
                 {/* Video Indicator Overlay */}
@@ -190,7 +201,7 @@ const ProjectCard = ({
           {/* Project Details */}
           <div className="lg:col-span-5 flex flex-col justify-end gap-6">
              <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col gap-8 shadow-inner">
-                <p className="text-white/80 text-[15px] md:text-[17px] leading-relaxed font-normal">
+                <p className="text-white/70 text-[15px] md:text-[17px] leading-relaxed font-medium">
                   {project.description}
                 </p>
                 
