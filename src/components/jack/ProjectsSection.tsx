@@ -28,9 +28,9 @@ export const ProjectsSection = () => {
     <section 
       id="projects"
       ref={container} 
-      className="bg-black pt-32 pb-40 relative z-30"
+      className="bg-black pt-24 pb-20 relative z-30"
     >
-      <div className="container max-w-6xl mx-auto px-6 mb-32">
+      <div className="container max-w-6xl mx-auto px-6 mb-20">
         <FadeIn delay={0} y={40} className="flex flex-col items-center">
            <span className="mono text-accent text-xs uppercase tracking-[0.6em] mb-4">Engineering Portfolio</span>
            <h2 className="hero-heading font-black uppercase text-center text-[clamp(3rem,12vw,120px)] leading-none">
@@ -43,7 +43,7 @@ export const ProjectsSection = () => {
         {PROJECTS.map((project, i) => {
           const targetScale = 1 - (PROJECTS.length - 1 - i) * 0.03;
           return (
-            <div key={project.id} className="min-h-[120vh] relative mb-[10vh] last:mb-0">
+            <div key={project.id} className="min-h-[85vh] relative mb-0">
               <ProjectCard 
                 index={i} 
                 project={project}
@@ -93,7 +93,7 @@ const ProjectCard = ({
     <div 
       ref={containerRef} 
       className="h-[80vh] flex items-center justify-center sticky"
-      style={{ top: `calc(10vh + ${index * 30}px)` }}
+      style={{ top: `calc(8vh + ${index * 20}px)` }}
     >
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
