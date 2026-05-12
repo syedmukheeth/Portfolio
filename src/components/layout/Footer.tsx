@@ -45,7 +45,7 @@ export default function Footer() {
                 </h2>
               </div>
               <p className="text-white/80 text-lg md:text-xl max-w-md leading-relaxed">
-                Currently open for senior engineering roles and high-impact architectural consulting.
+                Currently open for software developer roles and engineering internships.
               </p>
             </FadeIn>
 

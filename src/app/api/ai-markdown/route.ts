@@ -11,6 +11,7 @@ Engineering scalable systems, distributed mesh networks, and intelligent infrast
 - **Focus**: Backend Architecture, Distributed Performance, Real-time Infrastructure
 - **Location**: Hyderabad, India
 - **Mission**: Deconstruct complex systems to build intuitive, high-performance solutions.
+- **Availability**: Open for Software Developer roles and Engineering Internships.
 
 ## SYSTEMS_PROJECTS
 ${PROJECTS.map(p => `
