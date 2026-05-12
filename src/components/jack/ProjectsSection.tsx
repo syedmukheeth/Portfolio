@@ -92,8 +92,8 @@ const ProjectCard = ({
   return (
     <div 
       ref={containerRef} 
-      className="h-[80vh] flex items-center justify-center sticky"
-      style={{ top: `calc(8vh + ${index * 20}px)` }}
+      className="h-auto min-h-[75vh] flex items-center justify-center sticky py-10"
+      style={{ top: `calc(6vh + ${index * 20}px)` }}
     >
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
@@ -101,20 +101,20 @@ const ProjectCard = ({
         style={{ 
           scale,
         }}
-        className="relative h-full w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group will-change-transform"
+        className="relative h-auto w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group will-change-transform"
       >
         {/* Background Accent */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_100%_0%,rgba(255,77,0,0.03)_0%,transparent_70%)] pointer-events-none" />
 
         {/* HEADER SECTION */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-8 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-6 relative z-10">
           <div className="flex items-start gap-8">
-            <span className="mono text-white/5 font-bold text-7xl md:text-9xl leading-none select-none">
+            <span className="mono text-white/5 font-bold text-6xl md:text-8xl leading-none select-none">
               0{index + 1}
             </span>
-            <div className="flex flex-col pt-2 md:pt-4">
-              <span className="mono text-accent text-xs uppercase tracking-[0.5em] mb-3 font-bold">{project.tagline}</span>
-              <h3 className="text-white font-black uppercase text-[clamp(1.5rem,4vw,3.8rem)] leading-none tracking-tight">
+            <div className="flex flex-col pt-2">
+              <span className="mono text-accent text-xs uppercase tracking-[0.5em] mb-2 font-bold">{project.tagline}</span>
+              <h3 className="text-white font-black uppercase text-[clamp(1.5rem,4vw,3.2rem)] leading-tight tracking-tight">
                 {project.title}
               </h3>
               
