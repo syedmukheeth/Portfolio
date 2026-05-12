@@ -121,7 +121,7 @@ const ProjectCard = ({
               <div className="flex gap-6 mt-8 items-center">
                   <button 
                     onClick={onOpenDetails}
-                    className="px-6 py-3 rounded-full bg-white text-black font-bold uppercase tracking-tighter text-[11px] hover:bg-accent hover:text-white transition-all shadow-[0_8px_20px_-5px_rgba(255,255,255,0.2)] active:scale-95"
+                    className="px-6 py-3 rounded-full bg-white text-black font-bold uppercase tracking-tighter text-[11px] hover:bg-accent hover:text-white transition-all shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] active:scale-95 border-none"
                   >
                     KNOW MORE
                   </button>
