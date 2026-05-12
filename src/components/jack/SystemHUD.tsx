@@ -17,7 +17,7 @@ export const SystemHUD = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-40 p-6 md:p-12 lg:p-16 flex flex-col justify-between mono text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-white/40">
+    <div className="fixed inset-0 pointer-events-none z-40 p-6 md:p-12 lg:p-16 flex flex-col justify-between mono text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-white/60">
       {/* Top HUD - Offset to avoid OSNavbar */}
       <div className="flex justify-between items-start pt-16 md:pt-20">
         <div className="flex flex-col gap-4">
@@ -42,15 +42,15 @@ export const SystemHUD = () => {
       <div className="flex justify-between items-end pb-4 md:pb-8">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
-             <span className="opacity-20">Network:</span>
-             <span className="text-white/60">latency {latency}ms</span>
+             <span className="opacity-50">Network:</span>
+             <span className="text-white/70 font-bold">latency {latency}ms</span>
           </div>
           <span className="hidden sm:inline">Distributed_Mesh: Active</span>
         </div>
 
         <div className="hidden lg:flex flex-col items-end gap-1">
           <span>Syed Mukheeth // Portfolio</span>
-          <span className="opacity-20 text-[8px]">© 2026 all rights reserved</span>
+          <span className="opacity-50 text-[8px]">© 2026 all rights reserved</span>
         </div>
       </div>
     </div>

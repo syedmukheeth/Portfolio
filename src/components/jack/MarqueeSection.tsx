@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import LazyVideo from "./LazyVideo";
 
 /**
@@ -25,70 +25,72 @@ const ASSET_ITEMS = [
 ];
 
 const LazyMarqueeVideo = ({ url }: { url: string }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+  
+  // Use a much smaller width for marquee items
+  const marqueeUrl = url.replace('w_800', 'w_400');
+
   return (
-    <div className="w-[300px] sm:w-[450px] h-[200px] sm:h-[300px] rounded-3xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group relative video-wrapper">
+    <div 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="w-[280px] sm:w-[400px] aspect-video rounded-3xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group relative video-wrapper transition-transform duration-500 hover:scale-[1.02] hover:z-30 hover:border-accent/30"
+    >
       <LazyVideo 
-        src={url} 
+        src={marqueeUrl} 
+        active={isHovered}
         className="w-full h-full object-cover transition-all duration-700"
       />
       {/* Subtle overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+      
+      {!isHovered && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+           <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[7px] border-l-white border-b-[4px] border-b-transparent ml-1" />
+           </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export const MarqueeSection = () => {
-  const [scrollOffset, setScrollOffset] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
-  
-  // UseInView to disable the entire section scroll listener when off-screen
-  const isSectionInView = useInView(sectionRef, { margin: "200px 0px 200px 0px" });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
 
-  useEffect(() => {
-    if (!isSectionInView) return;
-    
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const top = rect.top + window.scrollY;
-      const offset = (window.scrollY - top + window.innerHeight) * 0.25; // Slower, smoother parallax
-      setScrollOffset(offset);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isSectionInView]);
+  const x1 = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const x2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   const row1 = ASSET_ITEMS.slice(0, 4);
   const row2 = ASSET_ITEMS.slice(4, 8);
 
-  const MarqueeRow = ({ items, direction = 1 }: { items: typeof ASSET_ITEMS, direction?: number }) => (
-    <div className="flex gap-4 overflow-hidden whitespace-nowrap">
-      <div 
-        className="flex gap-4 transition-transform duration-75 ease-linear"
-        style={{ 
-          transform: `translate3d(${direction * (scrollOffset - 300)}px, 0, 0)`,
-          willChange: 'transform'
-        }}
+  const MarqueeRow = ({ items, x }: { items: typeof ASSET_ITEMS, x: any }) => (
+    <div className="flex gap-4 overflow-hidden whitespace-nowrap py-4">
+      <motion.div 
+        className="flex gap-6"
+        style={{ x }}
       >
-        {/* Only 2 sets for extreme performance optimization */}
         {[...items, ...items].map((item, i) => (
           <LazyMarqueeVideo key={i} url={item.url} />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 
   return (
     <section ref={sectionRef} className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-20 overflow-hidden relative">
-      {/* SECTION LABEL */}
-      <div className="absolute top-10 left-10 z-10 pointer-events-none opacity-20">
-         <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-accent">Internal_System_Visuals // 01</span>
+      <div className="absolute top-10 left-10 z-10 pointer-events-none flex items-center gap-2">
+         <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+         <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-white/60">Internal_System_Visuals // 01</span>
       </div>
 
       <div className="flex flex-col gap-4">
-        <MarqueeRow items={row1} direction={1} />
-        <MarqueeRow items={row2} direction={-1} />
+        <MarqueeRow items={row1} x={x1} />
+        <MarqueeRow items={row2} x={x2} />
       </div>
 
       {/* GRADIENT OVERLAYS FOR SMOOTH EDGE */}

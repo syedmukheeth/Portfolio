@@ -130,11 +130,13 @@ html, body {
   overflow-x: hidden;
 }
 
-/* GPU accelerate every video section */
+/* GPU accelerate and defer rendering of off-screen sections */
 section, .video-section, .hero, [class*="section"] {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px; /* Helps browser estimate height for scrollbar */
 }
 
 .video-wrapper {
@@ -147,11 +149,20 @@ section, .video-section, .hero, [class*="section"] {
 video {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  aspect-ratio: 16 / 9;      /* Reserve space to prevent CLS */
   object-fit: cover;
   background: #000;           /* Prevent flickering during buffer resets */
-  will-change: auto;          /* let browser decide */
-  transform: translateZ(0);  /* GPU layer */
+  will-change: transform;     /* Force GPU */
+  transform: translateZ(0); 
+}
+
+/* Ensure wrappers don't collapse */
+.video-wrapper {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+  background: #000;
 }
 
 /* CUSTOM SCROLLBAR FIX FOR SMOOTHNESS */

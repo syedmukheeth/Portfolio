@@ -21,18 +21,23 @@ export const BootSequence = () => {
   useEffect(() => {
     if (isBooted) return;
 
-    const timer = setInterval(() => {
-      setCurrentLog((prev) => {
-        if (prev >= BOOT_LOGS.length - 1) {
-          clearInterval(timer);
-          setTimeout(() => setIsBooted(true), 200);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 100);
+    // Small delay to allow main thread to settle after hydration
+    const startTimeout = setTimeout(() => {
+      const timer = setInterval(() => {
+        setCurrentLog((prev) => {
+          if (prev >= BOOT_LOGS.length - 1) {
+            clearInterval(timer);
+            setTimeout(() => setIsBooted(true), 200);
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, 100);
+      
+      return () => clearInterval(timer);
+    }, 200);
 
-    return () => clearInterval(timer);
+    return () => clearTimeout(startTimeout);
   }, [isBooted, setIsBooted]);
 
   return (
@@ -41,6 +46,8 @@ export const BootSequence = () => {
         <motion.div
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          role="status"
+          aria-live="polite"
           className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center p-6 mono"
         >
           <div className="w-full max-w-md space-y-2">

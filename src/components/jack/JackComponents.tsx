@@ -124,29 +124,28 @@ export const LiveProjectButton = () => {
   );
 };
 
-// ANIMATED TEXT (Word by Word)
+// ANIMATED TEXT (Performance Optimized)
 export const AnimatedText = ({ text, className = "" }: { text: string; className?: string }) => {
-  const containerRef = useRef<HTMLParagraphElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 0.75", "end 0.25"]
-  });
-
   const words = text.split(" ");
 
   return (
-    <p ref={containerRef} className={cn("relative flex flex-wrap justify-center", className)}>
-      {words.map((word, index) => {
-        const start = index / words.length;
-        const end = (index + 1) / words.length;
-        const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
-        
-        return (
-          <motion.span key={index} style={{ opacity }} className="relative inline-block mr-[0.3em]">
-            {word}
-          </motion.span>
-        );
-      })}
+    <p className={cn("relative flex flex-wrap justify-center", className)}>
+      {words.map((word, index) => (
+        <motion.span 
+          key={index} 
+          initial={{ opacity: 0.1, y: 5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ 
+            duration: 0.4, 
+            delay: Math.min(index * 0.01, 2), // Cap delay for long texts
+            ease: "easeOut" 
+          }}
+          className="relative inline-block mr-[0.3em]"
+        >
+          {word}
+        </motion.span>
+      ))}
     </p>
   );
 };

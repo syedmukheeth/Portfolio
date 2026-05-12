@@ -100,7 +100,7 @@ export const TerminalHUD = () => {
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
               </div>
-              <span className="mono text-[8px] uppercase tracking-[0.4em] text-white/20"> symuk // os_terminal </span>
+              <span className="mono text-[8px] uppercase tracking-[0.4em] text-white/50"> symuk // os_terminal </span>
               <button onClick={() => setIsOpen(false)} className="text-white/20 hover:text-white transition-colors">
                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
               </button>

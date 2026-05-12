@@ -9,6 +9,7 @@ import { ProjectsSection } from "@/components/jack/ProjectsSection";
 import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import { Github, Linkedin, Twitter, FileText, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   const { mode } = useMode();
@@ -41,7 +42,7 @@ export default function Home() {
               <div className="lg:col-span-7">
                  <div className="flex items-center gap-8 mb-10">
                     <div className="relative w-16 h-16 rounded-full overflow-hidden border border-white/10 shadow-2xl">
-                       <img src="/images/avatar.png" alt="Syed Mukheeth" className="w-full h-full object-cover" />
+                       <Image src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto/v1778549740/avatar_kyjo2q.png" alt="Syed Mukheeth" fill className="object-cover" />
                        <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent" />
                     </div>
                     <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black uppercase tracking-tighter leading-[0.9] text-white">

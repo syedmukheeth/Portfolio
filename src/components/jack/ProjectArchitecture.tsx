@@ -10,19 +10,19 @@ const ARCHITECTURES = {
     { label: "Workers", x: 66, y: 50 },
     { label: "Docker", x: 100, y: 50 },
   ],
-  "samindex": [
+  "sam-index": [
     { label: "ZIP", x: 0, y: 50 },
     { label: "Pipeline", x: 33, y: 50 },
     { label: "Redis", x: 66, y: 50 },
     { label: "AI_Engine", x: 100, y: 50 },
   ],
-  "peernet": [
+  "peer-net": [
     { label: "Socket", x: 0, y: 50 },
     { label: "Adapter", x: 33, y: 50 },
     { label: "Kafka", x: 66, y: 50 },
     { label: "Consumers", x: 100, y: 50 },
   ],
-  "sjdc": [
+  "sjdc-modernization": [
     { label: "Legacy", x: 0, y: 50 },
     { label: "Bridge", x: 33, y: 50 },
     { label: "React", x: 66, y: 50 },

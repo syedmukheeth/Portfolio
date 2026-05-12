@@ -7,26 +7,27 @@ import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://syedmukheeth.com"),
-  title: "Syed Mukheeth",
-  description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Portfolio of Syed Mukheeth.",
+  title: "Syed Mukheeth | Systems Engineer",
+  description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Focused on high-performance backend architecture.",
   icons: {
     icon: [
-      { url: "/images/avatar.png?v=2", type: "image/png" },
-      { url: "/images/avatar.png?v=2", type: "image/png", rel: "icon" },
+      { url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_32/v1778549740/avatar_kyjo2q.png", type: "image/png" },
+      { url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_128/v1778549740/avatar_kyjo2q.png", type: "image/png", rel: "icon" },
     ],
-    shortcut: "/images/avatar.png?v=2",
-    apple: "/images/avatar.png?v=2",
+    shortcut: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_192/v1778549740/avatar_kyjo2q.png",
+    apple: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_180/v1778549740/avatar_kyjo2q.png",
   },
   openGraph: {
-    title: "Syed Mukheeth",
+    title: "Syed Mukheeth | Portfolio",
     description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure.",
     url: "https://syedmukheeth.com",
-    siteName: "Syed Mukheeth Portfolio",
+    siteName: "Syed Mukheeth",
     images: [
       {
-        url: "/images/avatar.png",
+        url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1778549740/avatar_kyjo2q.png",
         width: 1200,
         height: 630,
+        alt: "Syed Mukheeth - Systems Engineer"
       },
     ],
     locale: "en_US",
@@ -41,6 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      </head>
       <body className="antialiased selection:bg-accent selection:text-white">
         <ModeProvider>
           <TransitionOverlay />

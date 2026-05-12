@@ -66,6 +66,10 @@ const ProjectCard = ({
   const { mode } = useMode();
   const [isHovered, setIsHovered] = React.useState(false);
   const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { 
+    margin: "-10% 0px -10% 0px", // Trigger when partially in view
+    once: false 
+  });
 
   return (
     <div ref={containerRef} className="h-[90vh] flex items-center justify-center sticky top-20 md:top-24">
@@ -95,7 +99,7 @@ const ProjectCard = ({
               
               <div className="flex gap-4 mt-6">
                  {project.github && (
-                   <a href={project.github} className="mono text-[9px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-2">
+                   <a href={project.github} className="mono text-[9px] uppercase tracking-widest text-white/60 hover:text-white transition-colors flex items-center gap-2">
                      Source_Code <Github size={10} />
                    </a>
                  )}
@@ -110,7 +114,7 @@ const ProjectCard = ({
 
           <div className="flex flex-wrap gap-2 md:max-w-[200px] justify-end">
              {project.stack.map((s: string) => (
-               <span key={s} className="px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] mono text-[8px] uppercase tracking-widest text-white/30">{s}</span>
+               <span key={s} className="px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] mono text-[8px] uppercase tracking-widest text-white/60">{s}</span>
              ))}
           </div>
         </div>
@@ -120,15 +124,13 @@ const ProjectCard = ({
           
           {/* Main Visual Showcase */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-             <div className="flex-1 relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500 bg-black/40 video-wrapper">
+             <div className="aspect-video relative rounded-3xl overflow-hidden glass group-hover:border-white/10 transition-colors duration-500 bg-black/40 video-wrapper">
                 {project.clips && project.clips.length > 0 && (
                   <LazyVideo 
                     src={project.clips[0]}
-                    active={isHovered}
-                    className={cn(
-                      "w-full h-full object-cover transition-opacity duration-700 absolute inset-0",
-                      isHovered ? "opacity-100" : "opacity-80"
-                    )}
+                    active={isInView || isHovered}
+                    priority={index === 0}
+                    className="w-full h-full object-cover"
                   />
                 )}
                 
@@ -144,10 +146,10 @@ const ProjectCard = ({
                   <div className="absolute top-6 left-6 flex items-center gap-2 pointer-events-none">
                     <div className={cn(
                       "w-1.5 h-1.5 rounded-full transition-colors duration-500",
-                      isHovered ? "bg-accent animate-pulse" : "bg-white/20"
+                      (isInView || isHovered) ? "bg-accent animate-pulse" : "bg-white/20"
                     )} />
                     <span className="mono text-[8px] text-accent uppercase tracking-widest font-bold">
-                       {isHovered ? "System_Live_Feed" : "Static_Analysis"}
+                       {(isInView || isHovered) ? "System_Live_Feed" : "Static_Analysis"}
                     </span>
                   </div>
                 )}
@@ -161,14 +163,14 @@ const ProjectCard = ({
                   {project.description}
                 </p>
                 
-                <div className="grid grid-cols-2 gap-4 mono text-[8px] uppercase tracking-[0.2em] text-white/20 border-t border-white/5 pt-6">
+                <div className="grid grid-cols-2 gap-4 mono text-[8px] uppercase tracking-[0.2em] text-white/40 border-t border-white/10 pt-6">
                    <div className="flex flex-col gap-1">
-                      <span className="text-white/40">Status</span>
-                      <span className="text-green-500/80">Production_Ready</span>
+                      <span className="text-white/60">Status</span>
+                      <span className="text-green-500/80 font-bold">Production_Ready</span>
                    </div>
                    <div className="flex flex-col gap-1">
-                      <span className="text-white/40">Complexity</span>
-                      <span className="text-white/80">High_Performance</span>
+                      <span className="text-white/60">Complexity</span>
+                      <span className="text-white/80 font-bold">High_Performance</span>
                    </div>
                 </div>
              </div>

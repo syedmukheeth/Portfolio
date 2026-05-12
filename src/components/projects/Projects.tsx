@@ -152,7 +152,7 @@ function HumanProjectView({ project }: { project: Project }) {
       {/* Visualization Side */}
       <div className="flex-1 relative group">
         <div className={cn(
-          "aspect-square md:aspect-video rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden relative backdrop-blur-3xl group-hover:border-accent/20 transition-all duration-500 video-wrapper",
+          "aspect-video rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden relative backdrop-blur-3xl group-hover:border-accent/20 transition-all duration-500 video-wrapper",
           project.clips && "p-0" // Remove padding if there's a video
         )}>
           {project.clips ? (

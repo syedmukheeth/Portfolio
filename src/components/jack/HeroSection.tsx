@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { OSNavbar } from "./OSNavbar";
 import { SystemHUD } from "./SystemHUD";
 import { BootSequence } from "./BootSequence";
+import Image from "next/image";
 
 export const HeroSection = () => {
   const { mode, isBooted, isTransitioning } = useMode();
@@ -33,70 +34,73 @@ export const HeroSection = () => {
     <div className="relative">
       <BootSequence />
       
-      <AnimatePresence>
+      <motion.section
+        id="hero"
+        ref={sectionRef}
+        onMouseMove={handleMouseMove}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isBooted ? 1 : 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className={cn(
+          "relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black",
+          !isBooted && "pointer-events-none" // Disable interaction during boot
+        )}
+      >
+        <OSNavbar />
+
+        {/* BACKGROUND LAYERS - Deferred until after boot to save main-thread work */}
         {isBooted && (
-          <motion.section
-            id="hero"
-            ref={sectionRef}
-            onMouseMove={handleMouseMove}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black"
-          >
-            <OSNavbar />
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute inset-0 dot-grid opacity-20" />
+            <div className="absolute inset-0 mesh-grid opacity-10" />
+            <div className="scanline" />
+            
+            {/* Radial Lighting */}
+            <motion.div 
+              animate={{ 
+                x: mousePos.x * 50, 
+                y: mousePos.y * 50 
+              }}
+              className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,77,0,0.05)_0%,transparent_50%)]" 
+            />
+          </div>
+        )}
 
-            {/* BACKGROUND LAYERS */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-              <div className="absolute inset-0 dot-grid opacity-20" />
-              <div className="absolute inset-0 mesh-grid opacity-10" />
-              <div className="scanline" />
+        {/* THE ARCHITECTURAL HIERARCHY */}
+        <div className="relative z-10 w-full max-w-[1440px] px-6 md:px-20 flex flex-col items-center">
+          
+          {/* Main Content Reveal */}
+          <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center min-h-screen gap-16 lg:gap-24 py-24 lg:py-20 w-full">
+            
+            {/* LEFT SECTION: CINEMATIC PORTRAIT */}
+            <div className="relative flex justify-center items-center py-4 order-2 lg:order-1">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle,rgba(255,77,0,0.05)_0%,transparent_70%)] pointer-events-none -z-10 blur-3xl animate-pulse" />
               
-              {/* Radial Lighting */}
-              <motion.div 
-                animate={{ 
-                  x: mousePos.x * 50, 
-                  y: mousePos.y * 50 
-                }}
-                className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,77,0,0.05)_0%,transparent_50%)]" 
-              />
-            </div>
-
-            {/* THE ARCHITECTURAL HIERARCHY */}
-            <div className="relative z-10 w-full max-w-[1440px] px-6 md:px-20 flex flex-col items-center">
-              
-
-              {/* Main Content Reveal */}
-              <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center min-h-screen gap-16 lg:gap-24 py-24 lg:py-20 w-full">
-                
-                {/* LEFT SECTION: CINEMATIC PORTRAIT */}
-                <div className="relative flex justify-center items-center py-4 order-2 lg:order-1">
-                  {/* Subtle Volumetric Glow behind portrait */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle,rgba(255,77,0,0.05)_0%,transparent_70%)] pointer-events-none -z-10 blur-3xl animate-pulse" />
+              <FadeIn delay={0.2} y={0} duration={1.5} className="relative">
+                <motion.div
+                  animate={{ 
+                    x: mousePos.x * 12, 
+                    y: mousePos.y * 12,
+                    rotateX: -mousePos.y * 6,
+                    rotateY: mousePos.x * 6
+                  }}
+                  transition={{ type: "spring", stiffness: 40, damping: 20 }}
+                  className="relative group"
+                  style={{ perspective: 2000 }}
+                >
+                  <div className="absolute -inset-8 border border-white/[0.03] rounded-[3rem] -z-10 group-hover:border-white/10 transition-colors duration-700" />
+                  <div className="absolute -inset-16 border border-white/[0.01] rounded-[4rem] -z-20" />
                   
-                  <FadeIn delay={0.2} y={0} duration={1.5} className="relative">
-                    <motion.div
-                      animate={{ 
-                        x: mousePos.x * 12, 
-                        y: mousePos.y * 12,
-                        rotateX: -mousePos.y * 6,
-                        rotateY: mousePos.x * 6
-                      }}
-                      transition={{ type: "spring", stiffness: 40, damping: 20 }}
-                      className="relative group"
-                      style={{ perspective: 2000 }}
-                    >
-                      {/* Interactive Frames */}
-                      <div className="absolute -inset-8 border border-white/[0.03] rounded-[3rem] -z-10 group-hover:border-white/10 transition-colors duration-700" />
-                      <div className="absolute -inset-16 border border-white/[0.01] rounded-[4rem] -z-20" />
-                      
-                      <div className="relative w-[280px] sm:w-[320px] md:w-[400px] lg:w-[500px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
-                        <img 
-                          src="/images/avatar.png" 
-                          alt="Syed Mukheeth" 
-                          className="w-full h-full object-cover object-center opacity-100 group-hover:scale-105 transition-all duration-700"
-                        />
+                  <div className="relative w-[280px] sm:w-[320px] md:w-[400px] lg:w-[500px] aspect-square overflow-hidden rounded-[3rem] glass p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.9)] border border-white/10">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
+                    <Image 
+                      src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1000/v1778549740/avatar_kyjo2q.png" 
+                      alt="Syed Mukheeth" 
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, 500px"
+                      className="object-cover object-center opacity-100 group-hover:scale-105 transition-all duration-700"
+                    />
                         
                         {/* Dynamic HUD Layer */}
                         <div className="absolute inset-8 z-20 flex flex-col justify-between pointer-events-none opacity-100 transition-all duration-700">
@@ -173,13 +177,11 @@ export const HeroSection = () => {
               style={{ opacity }}
               className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
             >
-               <span className="mono text-[8px] uppercase tracking-[0.4em] text-white/20">Scroll to Explore</span>
+               <span className="mono text-[8px] uppercase tracking-[0.4em] text-white/50">Scroll to Explore</span>
                <div className="w-[1px] h-12 bg-gradient-to-b from-accent to-transparent" />
             </motion.div>
 
-          </motion.section>
-        )}
-      </AnimatePresence>
+      </motion.section>
     </div>
   );
 };

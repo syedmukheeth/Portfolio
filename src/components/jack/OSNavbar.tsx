@@ -26,7 +26,7 @@ export const OSNavbar = () => {
       <FadeIn delay={0.1} y={-10} className="pointer-events-auto">
         <a href="#hero" className="flex items-center gap-4 group cursor-pointer transition-transform duration-300 hover:scale-[1.02]">
           <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10 shadow-lg group-hover:border-accent/40 transition-colors">
-            <img src="/images/avatar.png" alt="SM" className="w-full h-full object-cover" />
+            <img src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_64/v1778549740/avatar_kyjo2q.png" alt="SM" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
@@ -57,6 +57,7 @@ export const OSNavbar = () => {
         <FadeIn delay={0.3} y={-10} className="lg:hidden">
           <button 
             onClick={() => setIsMenuOpen(true)}
+            aria-label="Open Navigation Menu"
             className="p-3 rounded-full glass border border-white/10 hover:border-accent/40 transition-all duration-300 group"
           >
             <Menu className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
@@ -102,9 +103,10 @@ export const OSNavbar = () => {
                   <span className="mono text-[8px] uppercase tracking-[0.4em] text-accent font-bold">Menu</span>
                   <button 
                     onClick={() => setIsMenuOpen(false)}
+                    aria-label="Close Menu"
                     className="p-2 -mr-2 rounded-full hover:bg-white/5 transition-colors"
                   >
-                    <X className="w-4 h-4 text-white/50" />
+                    <X className="w-4 h-4 text-white/60" />
                   </button>
                 </div>
 
