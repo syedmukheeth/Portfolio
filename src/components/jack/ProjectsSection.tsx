@@ -12,10 +12,12 @@ import LazyVideo from "./LazyVideo";
 // THE PROJECTS ARE NOW FULLY DRIVEN BY DATA.TS
 const PROJECTS = LIB_PROJECTS;
 
-import { ProjectArchitecture } from "./ProjectArchitecture";
+import { ProjectDetailsModal } from "./ProjectDetailsModal";
 
 export const ProjectsSection = () => {
   const container = useRef(null);
+  const [selectedProject, setSelectedProject] = React.useState<any>(null);
+  
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end']
@@ -47,11 +49,18 @@ export const ProjectsSection = () => {
                 range={[i * (1 / PROJECTS.length), 1]}
                 targetScale={targetScale}
                 progress={scrollYProgress}
+                onOpenDetails={() => setSelectedProject(project)}
               />
             </div>
           );
         })}
       </div>
+
+      <ProjectDetailsModal 
+        isOpen={!!selectedProject} 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </section>
   );
 };
@@ -61,7 +70,8 @@ const ProjectCard = ({
   index, 
   range, 
   targetScale, 
-  progress 
+  progress,
+  onOpenDetails
 }: any) => {
   const scaleRaw = useTransform(progress, range, [1, targetScale]);
   const scale = useSpring(scaleRaw, {
@@ -107,18 +117,26 @@ const ProjectCard = ({
                 {project.title}
               </h3>
               
-              <div className="flex gap-4 mt-6">
-                 {project.github && (
-                   <a href={project.github} className="mono text-[9px] uppercase tracking-widest text-white/60 hover:text-white transition-colors flex items-center gap-2">
-                     Source_Code <Github size={10} />
-                   </a>
-                 )}
-                 {project.demo && (
-                   <a href={project.demo} className="mono text-[9px] uppercase tracking-widest text-accent hover:text-white transition-colors flex items-center gap-2">
-                     Live_Interface <ExternalLink size={10} />
-                   </a>
-                 )}
-              </div>
+              <div className="flex gap-6 mt-8 items-center">
+                  <button 
+                    onClick={onOpenDetails}
+                    className="px-6 py-2.5 rounded-full bg-white text-black mono text-[10px] font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-all shadow-[0_10px_30px_-10px_rgba(255,255,255,0.3)] active:scale-95"
+                  >
+                    Know_More
+                  </button>
+                  <div className="flex gap-4">
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="mono text-[9px] uppercase tracking-widest text-white/60 hover:text-white transition-colors flex items-center gap-2">
+                        Source_Code <Github size={10} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="mono text-[9px] uppercase tracking-widest text-accent hover:text-white transition-colors flex items-center gap-2">
+                        Live_Interface <ExternalLink size={10} />
+                      </a>
+                    )}
+                  </div>
+               </div>
             </div>
           </div>
 
