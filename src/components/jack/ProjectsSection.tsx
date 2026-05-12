@@ -78,13 +78,16 @@ const ProjectCard = ({
   });
 
   return (
-    <div ref={containerRef} className="h-[90vh] flex items-center justify-center sticky top-20 md:top-24">
+    <div 
+      ref={containerRef} 
+      className="h-[85vh] flex items-center justify-center sticky"
+      style={{ top: `calc(4rem + ${index * 30}px)` }}
+    >
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{ 
           scale,
-          top: `calc(-2vh + ${index * 30}px)`,
         }}
         className="relative h-full w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group will-change-transform"
       >
