@@ -6,7 +6,7 @@ import type { NextRequest } from 'next/server'
  * Implements "Markdown Negotiation" for AI Agents and Bots.
  * Based on the "AI-Ready Content" strategy.
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // 1. Check for Content Negotiation via Accept Header
   const acceptHeader = request.headers.get('accept')
   
