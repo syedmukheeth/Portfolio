@@ -13,6 +13,7 @@ import LazyVideo from "./LazyVideo";
 const PROJECTS = LIB_PROJECTS;
 
 import { ProjectDetailsModal } from "./ProjectDetailsModal";
+import { ProjectArchitecture } from "./ProjectArchitecture";
 
 export const ProjectsSection = () => {
   const container = useRef(null);
