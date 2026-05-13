@@ -66,8 +66,8 @@ export const ProjectArchitecture = ({ projectId }: { projectId: string }) => {
               <div 
                 className="absolute top-1/2 h-px bg-white/10 overflow-hidden"
                 style={{ 
-                  left: `${node.x}%`, 
-                  width: `${nodes[i+1].x - node.x}%`,
+                  left: `${10 + (node.x * 0.8)}%`, 
+                  width: `${(nodes[i+1].x - node.x) * 0.8}%`,
                   transform: 'translateY(-50%)'
                 }}
               >
@@ -86,8 +86,8 @@ export const ProjectArchitecture = ({ projectId }: { projectId: string }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="absolute top-1/2 flex flex-col items-center gap-4 group"
-              style={{ left: `${node.x}%`, transform: `translate(-50%, -50%)` }}
+               className="absolute top-1/2 flex flex-col items-center gap-4 group"
+              style={{ left: `${10 + (node.x * 0.8)}%`, transform: `translate(-50%, -50%)` }}
             >
               <div className="relative">
                 <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl flex items-center justify-center text-white/60 group-hover:text-accent group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500 shadow-2xl">

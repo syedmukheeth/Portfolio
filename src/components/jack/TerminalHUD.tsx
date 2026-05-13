@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMode } from "@/context/ModeContext";
 
 const KNOWLEDGE_BASE = {
-  whois: "NAME: SYED MUKHEETH\nROLE: SOFTWARE ENGINEER\nSTATUS: ACTIVE_DEVELOPMENT\nLOCATION: HYDERABAD, INDIA\n\nI build software that deconstructs complex systems. My work focuses on backend architecture, distributed performance, and bridging the 'Context Gap' in developer tooling.",
+  whois: "NAME: SYED MUKHEETH\nROLE: SOFTWARE ENGINEER\nSTATUS: ACTIVE_DEVELOPMENT\nLOCATION: KURNOOL, ANDHRA PRADESH\n\nI build software that deconstructs complex systems. My work focuses on backend architecture, distributed performance, and bridging the 'Context Gap' in developer tooling.",
   mission: "ENGINEERING PHILOSOPHY:\n- Solve friction, don't just add features.\n- Build systems that feel intuitive and efficient.\n- Deconstruct complex infrastructure (like event meshes and compilers) to understand the 'why' behind the 'how'.",
   stack: "CORE SYSTEMS:\n- Frontend: [React, Next.js, Framer Motion]\n- Backend: [Node.js, Express, BullMQ]\n- Infrastructure: [Redis, Kafka, Docker, Supabase]\n- Language: [TypeScript, JavaScript, SQL]",
   projects: "SYSTEMS_CATALOG:\n1. [SAMINDEX] - Repository Intelligence Pipeline\n2. [SAM-COMPILER] - Distributed Secure Execution\n3. [PEERNET] - Scalable Event Mesh Networking\n4. [SJDC] - Institutional Modernization\n\nType 'inspect [name]' for deep-dive technical data.",

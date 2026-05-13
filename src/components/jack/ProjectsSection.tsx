@@ -184,18 +184,7 @@ const ProjectCard = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent pointer-events-none" />
                 
                 <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
-                   <AnimatePresence>
-                     {(isInView || isHovered) && (
-                       <motion.div
-                         initial={{ opacity: 0, y: 10 }}
-                         animate={{ opacity: 1, y: 0 }}
-                         exit={{ opacity: 0, y: 10 }}
-                         transition={{ duration: 0.5 }}
-                       >
-                         <ProjectArchitecture projectId={project.id} />
-                       </motion.div>
-                     )}
-                   </AnimatePresence>
+                    <ProjectArchitecture projectId={project.id} />
                 </div>
 
                 {/* Video Indicator Overlay */}

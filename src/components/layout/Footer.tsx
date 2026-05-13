@@ -171,7 +171,7 @@ export default function Footer() {
                <div className="mt-4 p-4 rounded-xl bg-white/[0.01] border border-white/5 flex items-center justify-between">
                   <div className="flex flex-col gap-1">
                     <span className="mono text-[9px] uppercase text-white/40 tracking-widest">Active_Region</span>
-                    <span className="mono text-[10px] text-white/80 font-bold tracking-tight uppercase">Bengaluru, India // IST</span>
+                    <span className="mono text-[10px] text-white/80 font-bold tracking-tight uppercase">Kurnool, Andhra Pradesh // IST</span>
                   </div>
                   <div className="w-[1px] h-8 bg-white/10" />
                   <div className="flex flex-col gap-1 text-right">

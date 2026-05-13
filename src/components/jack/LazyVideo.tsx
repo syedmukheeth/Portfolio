@@ -102,7 +102,7 @@ export default function LazyVideo({
         className={cn(
           "w-full h-full object-cover transition-all duration-700 ease-in-out",
           isLoaded ? "opacity-100" : "opacity-0",
-          !active ? "blur-[20px] scale-110 opacity-30 grayscale" : "blur-0 scale-100 opacity-100 grayscale-0"
+          !active ? "blur-0 scale-100 opacity-100 grayscale-0" : "blur-0 scale-100 opacity-100 grayscale-0"
         )}
         style={{ aspectRatio: "16/9" }}
         {...(priority ? { fetchpriority: "high" } : {})}
@@ -119,7 +119,7 @@ export default function LazyVideo({
           loading="lazy"
           className={cn(
             "absolute inset-0 w-full h-full object-cover transition-all duration-500",
-            !active ? "blur-[20px] scale-110 opacity-30 grayscale" : "blur-0 scale-100 opacity-100 grayscale-0"
+            !active ? "blur-0 scale-100 opacity-100 grayscale-0" : "blur-0 scale-100 opacity-100 grayscale-0"
           )}
         />
       )}
