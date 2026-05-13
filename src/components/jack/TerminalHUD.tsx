@@ -15,7 +15,7 @@ const KNOWLEDGE_BASE = {
   "inspect peernet": "TECHNICAL ANALYSIS: PEERNET\n- Problem: High-throughput real-time event propagation.\n- Solution: Distributed social graph activities.\n- Stack: Kafka, Express, MongoDB, Redis.\n- Features: Resilient WebSocket meshes, event-driven state.",
   "inspect sjdc": "TECHNICAL ANALYSIS: SJDC MODERNIZATION\n- Focus: Legacy modernization for 20k+ users.\n- Stack: React, Supabase RLS, PostgreSQL.\n- Core: Secure RBAC architectures, real-time academic workflows.",
   contact: "CONNECT_INTERFACE:\n- Email: syedmukheeth09@gmail.com\n- Status: Open to collaborating on ambitious systems projects.",
-  socials: "SOCIAL_NODES:\n- GitHub: github.com/syedmukheeth\n- LinkedIn: linkedin.com/in/syedmukheeth\n- X: x.com/syed_mukheeth\n- Resume: [Link pending update]",
+  socials: "SOCIAL_NODES:\n- GitHub: github.com/syedmukheeth\n- LinkedIn: linkedin.com/in/syedmukheeth\n- X: x.com/syed_mukheeth\n- Resume: drive.google.com/file/d/1SMFd_ADTNeYjBQ-6IH7RHT_UzzAPrTBy/view",
   help: "AVAILABLE_COMMANDS: whois, mission, stack, projects, inspect [name], ai, socials, contact, clear, exit",
   clear: "CLEAR",
 };

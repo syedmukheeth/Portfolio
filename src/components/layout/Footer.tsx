@@ -147,7 +147,7 @@ export default function Footer() {
                     { name: 'Github', icon: <Github size={18} />, href: 'https://github.com/Syed-Mukheeth' },
                     { name: 'LinkedIn', icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/in/syed-mukheeth-425b03212/' },
                     { name: 'Twitter', icon: <Twitter size={18} />, href: 'https://twitter.com/syed_mukheeth' },
-                    { name: 'Resume', icon: <FileText size={18} />, href: '#' }
+                    { name: 'Resume', icon: <FileText size={18} />, href: 'https://drive.google.com/file/d/1SMFd_ADTNeYjBQ-6IH7RHT_UzzAPrTBy/view?usp=sharing' }
                   ].map((social) => (
                     <a 
                       key={social.name}
