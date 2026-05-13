@@ -19,7 +19,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://syedmukheeth.com"),
+  metadataBase: new URL("https://syedmukheeth.is-a.dev"),
   title: "Syed Mukheeth | Software Engineer",
   description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Focused on high-performance backend architecture.",
   icons: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Syed Mukheeth | Portfolio",
     description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure.",
-    url: "https://syedmukheeth.com",
+    url: "https://syedmukheeth.is-a.dev",
     siteName: "Syed Mukheeth",
     images: [
       {
@@ -108,7 +108,7 @@ export default function RootLayout({
                 "name": "Syed Mukheeth",
                 "jobTitle": "Software Engineer",
                 "email": "syedmukheeth09@gmail.com",
-                "url": "https://syedmukheeth.com",
+                "url": "https://syedmukheeth.is-a.dev",
                 "sameAs": [
                   "https://github.com/syedmukheeth",
                   "https://linkedin.com/in/syedmukheeth",

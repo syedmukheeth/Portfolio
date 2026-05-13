@@ -15,12 +15,39 @@ import { cn } from "@/lib/utils";
 export default function Footer() {
   const { mode } = useMode();
   const currentYear = new Date().getFullYear();
+  const email = "syedmukheeth09@gmail.com";
+  const [emailHref, setEmailHref] = React.useState(`mailto:${email}`);
+
+  React.useEffect(() => {
+    // Determine the best Gmail link based on platform
+    const ua = navigator.userAgent;
+    const isIOS = /iPad|iPhone|iPod/.test(ua);
+    const isAndroid = /Android/.test(ua);
+    
+    if (isIOS) {
+      // iOS Gmail deep link - if Gmail isn't installed, this might fail, 
+      // but the user specifically requested the Gmail app.
+      setEmailHref(`googlegmail:///co?to=${email}`);
+      
+      // Fallback mechanism: if it fails, maybe mailto:?
+      // For now, adhering strictly to "directs gmail app"
+    } else if (isAndroid) {
+      // On Android, mailto: is usually intercepted by Gmail or triggers the app chooser.
+      setEmailHref(`mailto:${email}`);
+    } else {
+      // Desktop: Redirect to Gmail Web UI
+      setEmailHref(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`);
+    }
+  }, []);
 
   return (
-    <footer className={cn(
-      "relative pt-32 pb-12 overflow-hidden transition-colors duration-1000",
-      mode === 'machine' ? 'bg-black border-t border-accent/20' : 'bg-black border-t border-white/5'
-    )}>
+    <footer 
+      id="contact"
+      className={cn(
+        "relative pt-32 pb-12 overflow-hidden transition-colors duration-1000",
+        mode === 'machine' ? 'bg-black border-t border-accent/20' : 'bg-black border-t border-white/5'
+      )}
+    >
       {/* Background Grid Accent */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
       
@@ -54,7 +81,9 @@ export default function Footer() {
 
             <FadeIn delay={0.2} y={20}>
               <a 
-                href="mailto:syedmukheeth09@gmail.com"
+                href={emailHref}
+                target={emailHref.startsWith('http') ? "_blank" : undefined}
+                rel={emailHref.startsWith('http') ? "noopener noreferrer" : undefined}
                 className="group flex items-center gap-6 text-white hover:text-accent transition-all duration-500"
               >
                 <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-500">

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://syedmukheeth.com/sitemap.xml',
+    sitemap: 'https://syedmukheeth.is-a.dev/sitemap.xml',
   }
 }
