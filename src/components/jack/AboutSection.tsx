@@ -62,7 +62,7 @@ export const AboutSection = () => {
         </FadeIn>
 
         <AnimatedText 
-          text="I’m passionate about building software that makes complex systems feel more intuitive and efficient. My projects explore areas like repository intelligence, secure code execution, realtime communication, and scalable application design. Through systems such as SAMIndex, SAM Compiler, and PeerNet, I’ve been learning how modern infrastructure, developer tooling, and product engineering come together to solve real-world engineering challenges."
+          text="As a software engineering student, I’m passionate about building systems that make complexity intuitive. My focus lies in Backend Architecture and Infrastructure—building tools that solve real-world engineering challenges. Through projects like SAMIndex, SAM Compiler, and PeerNet, I’m exploring high-performance systems and seeking opportunities to apply these skills in Full-Time or Internship roles."
           className="text-white/70 font-medium text-center leading-relaxed max-w-[850px] text-[clamp(1rem,2vw,1.35rem)]"
         />
 

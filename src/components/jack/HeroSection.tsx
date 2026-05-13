@@ -136,7 +136,7 @@ export const HeroSection = () => {
                       transition={{ duration: 0.5, delay: 0.1 }}
                       className="mono text-accent text-[11px] md:text-[12px] uppercase tracking-[0.4em] font-black mb-4 block"
                     >
-                      Software Engineer
+                      Software Engineer & Student
                     </motion.span>
                     <motion.h1 
                       animate={{ opacity: 1, y: 0 }}
@@ -154,9 +154,9 @@ export const HeroSection = () => {
                       transition={{ duration: 0.5, delay: 0.3 }}
                       className="mono text-[12px] md:text-[14px] lg:text-[16px] uppercase tracking-[0.4em] text-white/70 font-medium leading-relaxed max-w-md mx-auto lg:mx-0"
                     >
-                      Focused on <span className="text-white font-black">Backend Architecture</span>, <br className="hidden lg:block" />
-                      <span className="text-white font-black">Distributed Performance</span>, and <br className="hidden lg:block" />
-                      building <span className="text-accent">Scalable Web Applications</span>.
+                      Seeking <span className="text-white font-black">Full-Time</span> & <span className="text-white font-black">Internship</span> roles, <br className="hidden lg:block" />
+                      building <span className="text-white font-black">High-Performance Systems</span>, and <br className="hidden lg:block" />
+                      exploring <span className="text-accent">Scalable Architecture</span>.
                     </motion.p>
                   </div>
                 </div>

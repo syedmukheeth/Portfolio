@@ -99,9 +99,9 @@ export default function Footer() {
                 </div>
                 
                 <p className="text-white/60 text-lg md:text-xl max-w-lg leading-relaxed font-medium">
-                  Available for <span className="text-white">Full-Stack Development</span>, 
-                  <span className="text-white"> Backend Infrastructure</span>, and 
-                  <span className="text-white"> Systems Engineering</span> roles.
+                  Currently seeking <span className="text-white">Full-Time Roles</span> and 
+                  <span className="text-white"> Backend Internships</span> in Software Development 
+                  and Systems Engineering.
                 </p>
               </div>
             </FadeIn>
@@ -111,25 +111,25 @@ export default function Footer() {
                 href={emailHref}
                 target={emailHref.startsWith('http') ? "_blank" : undefined}
                 rel={emailHref.startsWith('http') ? "noopener noreferrer" : undefined}
-                className="group relative flex items-center gap-8 p-1 rounded-full border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-700 w-fit pr-10"
+                className="group relative flex items-center gap-4 md:gap-8 p-1 rounded-full border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-700 w-full sm:w-fit pr-6 sm:pr-10"
               >
-                <div className="relative w-16 h-16 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
                   <div className="absolute inset-0 bg-accent/20 animate-pulse" />
-                  <Mail className="relative w-6 h-6 text-accent" />
+                  <Mail className="relative w-5 h-5 md:w-6 md:h-6 text-accent" />
                 </div>
                 
-                <div className="flex flex-col">
+                <div className="flex flex-col min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
-                    <span className="mono text-[10px] uppercase tracking-[0.4em] text-accent/80 font-black">Secure_Protocol // Email</span>
+                    <span className="mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-accent/80 font-black truncate">Secure_Protocol // Email</span>
                   </div>
                   <span className={cn(
-                    "text-xl md:text-3xl font-black tracking-tight text-white/90 group-hover:text-white transition-colors",
+                    "text-lg md:text-3xl font-black tracking-tight text-white/90 group-hover:text-white transition-colors truncate",
                     mode === 'machine' && 'font-mono'
                   )}>syedmukheeth09@gmail.com</span>
                 </div>
                 
-                <ArrowUpRight className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 text-accent ml-2" size={24} />
+                <ArrowUpRight className="hidden sm:block opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 text-accent ml-2" size={24} />
               </a>
             </FadeIn>
           </div>
