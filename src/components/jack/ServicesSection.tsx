@@ -23,7 +23,7 @@ const SERVICES = [
   {
     id: "04",
     name: "Product-Focused Engineering",
-    description: "Focusing on the intersection of technical curiosity and user experience. I build tools that make complex concepts—like repository indexing or event meshes—accessible through intuitive product design."
+    description: "Focusing on the intersection of technical curiosity and user experience. I build tools that make complex concepts-like repository indexing or event meshes-accessible through intuitive product design."
   },
   {
     id: "05",

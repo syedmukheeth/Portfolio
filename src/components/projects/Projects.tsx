@@ -1,13 +1,37 @@
 "use client";
 
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useMode } from "@/context/ModeContext";
 import { PROJECTS, Project } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import { Github, ExternalLink, Code2, Database, Shield, Zap, Terminal as TerminalIcon, FileJson, BarChart3, Activity, ArrowRight } from "lucide-react";
-import React, { useRef, useEffect } from "react";
+import { 
+  Github, ExternalLink, Code2, Database, Shield, Zap, Terminal as TerminalIcon, FileJson, BarChart3, Activity, ArrowRight,
+  Layout, Network, Box, Cpu, Workflow, Search, Lock, Server, Globe
+} from "lucide-react";
+import React from "react";
 import LazyVideo from "../jack/LazyVideo";
+
+const NODE_ICON_MAP: Record<string, any> = {
+  "Frontend": Layout,
+  "Gateway": Network,
+  "Workers": Zap,
+  "Docker": Box,
+  "ZIP": Box,
+  "Pipeline": Workflow,
+  "Redis": Database,
+  "AI_Engine": Cpu,
+  "Socket": Zap,
+  "Adapter": Network,
+  "Kafka": Database,
+  "Consumers": Workflow,
+  "Legacy": Database,
+  "Bridge": Network,
+  "React": Layout,
+  "Platform": Cpu,
+  "Search": Search,
+  "Auth": Lock
+};
 
 export default function Projects() {
   const { mode } = useMode();
@@ -21,7 +45,7 @@ export default function Projects() {
               layout
               className={cn(
                 "text-3xl md:text-6xl font-bold tracking-tight mb-4 transition-all duration-500",
-                mode === "machine" ? "font-mono uppercase text-accent" : "font-sans"
+                mode === "machine" ? "font-mono uppercase text-accent" : "font-sans text-white"
               )}
             >
               {mode === "machine" ? "SYSTEM_REPOSITORIES" : "Engineering Systems"}
@@ -100,7 +124,7 @@ function HumanProjectView({ project }: { project: Project }) {
                {project.role}
              </span>
           </div>
-          <h3 className="text-4xl md:text-7xl font-bold mb-4 font-sans tracking-tighter">
+          <h3 className="text-4xl md:text-7xl font-bold mb-4 font-sans tracking-tighter text-white">
             {project.title}
           </h3>
           <p className="text-xl text-white/60 font-light italic">
@@ -152,8 +176,8 @@ function HumanProjectView({ project }: { project: Project }) {
       {/* Visualization Side */}
       <div className="flex-1 relative group">
         <div className={cn(
-          "aspect-video rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden relative backdrop-blur-3xl group-hover:border-accent/20 transition-all duration-500 video-wrapper",
-          project.clips && "p-0" // Remove padding if there's a video
+          "aspect-video rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden relative backdrop-blur-3xl group-hover:border-accent/20 transition-all duration-500 video-wrapper flex items-center justify-center",
+          project.clips && "p-0"
         )}>
           {project.clips ? (
             <div className="absolute inset-0 w-full h-full">
@@ -163,56 +187,51 @@ function HumanProjectView({ project }: { project: Project }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
               
-              {/* Video Overlay Info */}
               <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                   <span className="text-[10px] font-mono text-accent uppercase tracking-widest">Live_System_Preview</span>
                 </div>
-                {project.clips.length > 1 && (
-                  <div className="flex gap-1">
-                    {project.clips.map((_, i) => (
-                      <div key={i} className={cn("w-8 h-1 rounded-full bg-white/20", i === 0 && "bg-accent/60")} />
-                    ))}
-                  </div>
-                )}
               </div>
 
-              {/* Scanline Effect */}
               <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.03),rgba(0,255,0,0.01),rgba(0,0,255,0.03))] bg-[length:100%_4px,3px_100%] opacity-20" />
             </div>
           ) : (
-            <div className="p-12 flex flex-col justify-center h-full">
-              {/* Topology Visualization (Fallback) */}
+            <div className="w-full p-12 flex flex-col justify-center h-full">
               <div className="relative z-10 space-y-12">
-                <div className="flex justify-between items-center px-4">
-                   {project.architecture.nodes.map((node, i) => (
-                     <motion.div 
-                       key={node} 
-                       whileHover={{ scale: 1.1, color: "var(--accent)" }}
-                       className="flex flex-col items-center gap-3"
-                     >
-                        <div className="w-16 h-16 rounded-2xl border border-white/10 bg-black/50 flex items-center justify-center text-white/80 shadow-2xl backdrop-blur-xl group-hover:border-accent/30 transition-colors">
-                           {i === 0 ? <Code2 size={24} /> : i === 1 ? <Database size={24} /> : i === 2 ? <Zap size={24} /> : <Shield size={24} />}
-                        </div>
-                        <span className="text-[10px] uppercase tracking-widest text-white/30">{node}</span>
-                     </motion.div>
-                   ))}
+                <div className="flex justify-between items-center px-4 relative">
+                   <div className="absolute top-[32px] left-8 right-8 h-px bg-white/5" />
+                   
+                   {project.architecture.nodes.map((node, i) => {
+                     const Icon = NODE_ICON_MAP[node] || Code2;
+                     return (
+                       <motion.div 
+                         key={node} 
+                         whileHover={{ y: -5 }}
+                         className="flex flex-col items-center gap-4 relative z-10"
+                       >
+                          <div className="w-16 h-16 rounded-2xl border border-white/10 bg-black/50 flex items-center justify-center text-white/80 shadow-2xl backdrop-blur-xl group-hover:border-accent/30 group-hover:text-accent transition-all duration-500">
+                             <Icon size={24} />
+                          </div>
+                          <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-white/60 transition-colors">{node}</span>
+                       </motion.div>
+                     );
+                   })}
                 </div>
                 
-                <div className="h-px w-full bg-white/5 relative">
+                <div className="h-px w-full bg-white/5 relative overflow-hidden">
                    <motion.div 
-                     animate={{ x: ["0%", "100%"] }}
+                     animate={{ x: ["-100%", "100%"] }}
                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                     className="absolute inset-y-0 w-32 bg-gradient-to-r from-transparent via-accent to-transparent opacity-40"
+                     className="absolute inset-y-0 w-32 bg-gradient-to-r from-transparent via-accent to-transparent opacity-20"
                    />
                 </div>
     
                 <div className="flex flex-wrap justify-center gap-6">
                   {project.architecture.flow.map((flow, i) => (
                     <div key={flow} className="flex items-center gap-2">
-                       <div className="w-1.5 h-1.5 rounded-full bg-accent/40" />
-                       <span className="text-[11px] font-mono text-white/30 uppercase tracking-widest">{flow}</span>
+                       <div className="w-1 h-1 rounded-full bg-accent/40" />
+                       <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">{flow}</span>
                     </div>
                   ))}
                 </div>
@@ -220,7 +239,6 @@ function HumanProjectView({ project }: { project: Project }) {
             </div>
           )}
 
-          {/* Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
         </div>
       </div>
@@ -245,7 +263,6 @@ function MachineProjectView({ project }: { project: Project }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* Terminal Info */}
         <div className="bg-accent/[0.02] border border-accent/10 rounded p-4 space-y-6">
           <div className="space-y-1">
             <div className="text-[10px] text-accent/40 uppercase tracking-widest flex items-center gap-2">
@@ -297,7 +314,6 @@ function MachineProjectView({ project }: { project: Project }) {
           </div>
         </div>
 
-        {/* System Logs / Raw Flow */}
         <div className="bg-black border border-accent/10 rounded p-4 flex flex-col h-full overflow-hidden">
           <div className="text-[10px] text-accent/40 uppercase tracking-widest mb-4 flex items-center gap-2">
             <TerminalIcon size={10} /> SYSTEM_LOGS / ARCH_FLOW

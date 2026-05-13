@@ -95,6 +95,8 @@ const ProjectCard = ({
         onMouseLeave={() => setIsHovered(false)}
         style={{ 
           scale,
+          contain: "paint layout",
+          transform: "translateZ(0)"
         }}
         className="relative h-auto w-full bg-[#050505] border border-white/5 rounded-[40px] p-6 sm:p-10 flex flex-col gap-8 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,1)] group will-change-transform glass-shine"
       >
@@ -245,10 +247,10 @@ const ProjectCard = ({
               exit={{ opacity: 0 }}
               className="absolute inset-x-10 bottom-10 pointer-events-none flex justify-between mono text-[7px] text-accent/60"
             >
-               <span>ARCH_VERSION: V{index + 1}.0.2</span>
-               <span className="animate-pulse">MD_NEGOTIATION: READY</span>
-               <span>SYSTEM_REDUNDANCY: ACTIVE</span>
-               <span>DATA_FLOW_VERIFIED: TRUE</span>
+               <span>SYS_VERSION: V{index + 1}.4.2</span>
+               <span className="animate-pulse">LOAD_BALANCING: OPTIMAL</span>
+               <span>CACHE_REDUNDANCY: ACTIVE</span>
+               <span>SCHEMA_VALIDATION: PASSED</span>
             </motion.div>
           )}
         </AnimatePresence>

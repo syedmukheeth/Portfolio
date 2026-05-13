@@ -24,7 +24,7 @@ const ASSET_ITEMS = [
   { url: "https://res.cloudinary.com/dcqbcjrsp/video/upload/f_auto,q_auto,w_800/v1778519206/SJDC-2_hq7doz.mp4" },
 ];
 
-const LazyMarqueeVideo = ({ url }: { url: string }) => {
+const LazyMarqueeVideo = ({ url, priority = false }: { url: string, priority?: boolean }) => {
   const [isHovered, setIsHovered] = React.useState(false);
   
   // Use a much smaller width for marquee items
@@ -39,6 +39,7 @@ const LazyMarqueeVideo = ({ url }: { url: string }) => {
       <LazyVideo 
         src={marqueeUrl} 
         active={isHovered}
+        priority={priority}
         className="w-full h-full object-cover transition-all duration-700"
       />
       {/* Subtle overlay for depth */}
@@ -75,7 +76,7 @@ export const MarqueeSection = () => {
         style={{ x }}
       >
         {[...items, ...items].map((item, i) => (
-          <LazyMarqueeVideo key={i} url={item.url} />
+          <LazyMarqueeVideo key={i} url={item.url} priority={i < 2} />
         ))}
       </motion.div>
     </div>

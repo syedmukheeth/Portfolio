@@ -142,32 +142,17 @@ export const LiveProjectButton = () => {
   );
 };
 
-/**
- * AnimatedText Component
- * Word-by-word reveal animation optimized for performance.
- */
 export const AnimatedText = ({ text, className = "" }: { text: string; className?: string }) => {
-  const words = text.split(" ");
-
   return (
-    <p className={cn("relative flex flex-wrap justify-center", className)}>
-      {words.map((word, index) => (
-        <motion.span 
-          key={index} 
-          initial={{ opacity: 0, y: 5 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ 
-            duration: 0.4, 
-            delay: Math.min(index * 0.01, 2), // Cap delay for long texts
-            ease: "easeOut" 
-          }}
-          className="relative inline-block mr-[0.3em]"
-        >
-          {word}
-        </motion.span>
-      ))}
-    </p>
+    <motion.p 
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={cn("relative flex flex-wrap justify-center", className)}
+    >
+      {text}
+    </motion.p>
   );
 };
 

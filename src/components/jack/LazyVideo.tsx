@@ -58,7 +58,7 @@ export default function LazyVideo({
         }
       },
       { 
-        rootMargin: priority ? "1000px" : "400px", // Preload buffer
+        rootMargin: priority ? "400px" : "100px", // Reduced buffer to save bandwidth/CPU
         threshold: 0.01 
       }
     );
@@ -67,7 +67,7 @@ export default function LazyVideo({
     return () => observer.disconnect();
   }, [priority, hasIntersected]);
 
-  // Handle Play/Pause logic centrally to avoid "jerkiness" from competing props
+  // Handle Play/Pause logic centrally
   useEffect(() => {
     if (!videoRef.current) return;
 
@@ -76,13 +76,10 @@ export default function LazyVideo({
     if (shouldPlay) {
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Auto-play might be blocked by browser
-        });
+        playPromise.catch(() => {});
       }
     } else {
       videoRef.current.pause();
-      // REMOVED: currentTime = 0; // This causes the "jerk" when re-entering viewport
     }
   }, [isIntersecting, active]);
 
@@ -111,7 +108,7 @@ export default function LazyVideo({
         {...props}
       />
       
-      {/* Background fill to prevent white flash/layout shift */}
+      {/* Background fill with lazy loading */}
       {!isLoaded && optimizedPoster && (
         <img 
           src={optimizedPoster} 
@@ -119,9 +116,10 @@ export default function LazyVideo({
           width="1920"
           height="1080"
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover opacity-50 blur-sm"
+          className="absolute inset-0 w-full h-full object-cover opacity-50 blur-sm transition-opacity duration-500"
         />
       )}
+
     </div>
   );
 }

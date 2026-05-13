@@ -34,7 +34,11 @@ export const OSNavbar = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-transparent h-40 -z-10 pointer-events-none" />
 
       {/* Brand Identity / Logo */}
-      <FadeIn delay={0.1} y={-10} className="pointer-events-auto">
+      <motion.div 
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="pointer-events-auto"
+      >
         <a 
           href="#hero" 
           aria-label="Back to home"
@@ -58,10 +62,14 @@ export const OSNavbar = () => {
             </div>
           </div>
         </a>
-      </FadeIn>
+      </motion.div>
 
       {/* Desktop Navigation */}
-      <FadeIn delay={0.2} y={-10} className="pointer-events-auto hidden lg:flex items-center gap-10 glass-heavy px-10 py-4 rounded-full border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] relative overflow-hidden group/nav">
+      <motion.div 
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="pointer-events-auto hidden lg:flex items-center gap-10 glass-heavy px-10 py-4 rounded-full border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] relative overflow-hidden group/nav"
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent -translate-x-full group-hover/nav:animate-[shimmer_3s_infinite] pointer-events-none" />
         
         {navLinks.map((item) => (
@@ -74,11 +82,15 @@ export const OSNavbar = () => {
             <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-accent shadow-[0_0_10px_rgba(255,77,0,0.8)] transition-all duration-300 group-hover/link:w-full" />
           </a>
         ))}
-      </FadeIn>
+      </motion.div>
 
       <div className="flex items-center gap-4 md:gap-8 pointer-events-auto">
         {/* Burger Button - Improved visibility */}
-        <FadeIn delay={0.3} y={-10} className="lg:hidden">
+        <motion.div 
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="lg:hidden"
+        >
           <button 
             onClick={() => setIsMenuOpen(true)}
             aria-label="Open Navigation Menu"
@@ -88,10 +100,13 @@ export const OSNavbar = () => {
           >
             <Menu className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
           </button>
-        </FadeIn>
+        </motion.div>
 
         {/* Mode Switcher - Systems Mode Toggle */}
-        <FadeIn delay={0.4} y={-10}>
+        <motion.div 
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <button 
             onClick={toggleMode}
             aria-label={`Switch to ${mode === 'human' ? 'machine' : 'human'} mode`}
@@ -102,7 +117,7 @@ export const OSNavbar = () => {
               {mode}
             </span>
           </button>
-        </FadeIn>
+        </motion.div>
       </div>
 
       {/* Mobile Menu - "Floating Island" Architecture */}
