@@ -35,7 +35,11 @@ export const OSNavbar = () => {
 
       {/* Brand Identity / Logo */}
       <FadeIn delay={0.1} y={-10} className="pointer-events-auto">
-        <a href="#hero" className="flex items-center gap-4 group cursor-pointer transition-transform duration-300">
+        <a 
+          href="#hero" 
+          aria-label="Back to home"
+          className="flex items-center gap-4 group cursor-pointer transition-transform duration-300"
+        >
           <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)] group-hover:border-accent/50 transition-all duration-500 group-hover:scale-110">
             <Image 
               src="https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_64/avatar_kyjo2q.png" 
@@ -78,6 +82,8 @@ export const OSNavbar = () => {
           <button 
             onClick={() => setIsMenuOpen(true)}
             aria-label="Open Navigation Menu"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
             className="p-3.5 rounded-full bg-accent/10 border border-accent/20 hover:bg-accent/20 transition-all duration-300 group"
           >
             <Menu className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
@@ -88,6 +94,7 @@ export const OSNavbar = () => {
         <FadeIn delay={0.4} y={-10}>
           <button 
             onClick={toggleMode}
+            aria-label={`Switch to ${mode === 'human' ? 'machine' : 'human'} mode`}
             className="flex items-center gap-3 px-6 py-3 rounded-full glass-heavy border border-white/10 hover:border-accent/50 transition-all duration-500 group shadow-[0_0_20px_rgba(0,0,0,0.4)] relative overflow-hidden"
           >
             <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_rgba(255,77,0,0.9)] animate-pulse" />
@@ -111,6 +118,10 @@ export const OSNavbar = () => {
             />
             
             <motion.div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation Menu"
               initial={{ opacity: 0, scale: 0.9, y: -20, x: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -20, x: 20 }}

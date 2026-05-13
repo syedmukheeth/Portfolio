@@ -97,13 +97,25 @@ export const ProjectDetailsModal = ({ project, isOpen, onClose }: ProjectDetails
                     </p>
                     <div className="flex flex-wrap gap-8 pt-4">
                        {project.github && (
-                         <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white hover:text-accent transition-colors group">
+                         <a 
+                           href={project.github} 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           aria-label={`View ${project.title} source code on GitHub`}
+                           className="flex items-center gap-3 text-white hover:text-accent transition-colors group"
+                         >
                             <Github className="w-5 h-5" />
                             <span className="mono text-xs uppercase tracking-widest font-bold">Repository</span>
                          </a>
                        )}
                        {project.demo && (
-                         <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-accent hover:text-white transition-colors group">
+                         <a 
+                           href={project.demo} 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           aria-label={`View ${project.title} live interface`}
+                           className="flex items-center gap-3 text-accent hover:text-white transition-colors group"
+                         >
                             <ExternalLink className="w-5 h-5" />
                             <span className="mono text-xs uppercase tracking-widest font-bold">Live_Demo</span>
                          </a>

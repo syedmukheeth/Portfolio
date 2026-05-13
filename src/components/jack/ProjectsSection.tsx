@@ -118,6 +118,7 @@ const ProjectCard = ({
                     onClick={onOpenDetails}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
+                    aria-label={`View details for ${project.title}`}
                     className={cn(
                       "px-8 py-3.5 rounded-full mono text-[11px] font-black uppercase tracking-widest transition-all duration-300 shadow-xl active:scale-95",
                       isHovered ? "bg-[#FF4D00] text-white" : "bg-white text-black"
@@ -127,12 +128,24 @@ const ProjectCard = ({
                   </button>
                   <div className="flex gap-6">
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="mono text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-colors flex items-center gap-2">
+                      <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label={`View ${project.title} source code on GitHub`}
+                        className="mono text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-colors flex items-center gap-2"
+                      >
                         <Github size={12} className="opacity-60" /> Source
                       </a>
                     )}
                     {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="mono text-[10px] uppercase tracking-widest text-accent/80 hover:text-accent transition-colors flex items-center gap-2">
+                      <a 
+                        href={project.demo} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label={`View ${project.title} live interface`}
+                        className="mono text-[10px] uppercase tracking-widest text-accent/80 hover:text-accent transition-colors flex items-center gap-2"
+                      >
                         <ExternalLink size={12} className="opacity-60" /> Interface
                       </a>
                     )}

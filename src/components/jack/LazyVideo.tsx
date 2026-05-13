@@ -96,6 +96,8 @@ export default function LazyVideo({
         muted
         loop
         playsInline
+        width="1920"
+        height="1080"
         title="Project demonstration video"
         aria-label="Project demonstration video"
         onLoadedData={() => setIsLoaded(true)}
@@ -114,6 +116,9 @@ export default function LazyVideo({
         <img 
           src={optimizedPoster} 
           alt="Video Preview" 
+          width="1920"
+          height="1080"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover opacity-50 blur-sm"
         />
       )}

@@ -57,6 +57,18 @@ export const ServicesSection = () => {
                     {service.description}
                   </p>
                 </div>
+
+                {/* TECHNICAL HUD DETAIL */}
+                <div className="hidden md:flex flex-col gap-2 items-end ml-auto self-center opacity-0 group-hover:opacity-40 transition-all duration-700 translate-x-4 group-hover:translate-x-0">
+                  <div className="flex flex-col items-end border-r-2 border-black/20 pr-4">
+                    <span className="mono text-[9px] uppercase tracking-[0.3em] font-black">SPEC_VERIFIED</span>
+                    <span className="mono text-[8px] uppercase tracking-[0.2em]">ENG_UNIT: {service.id}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+                    <span className="mono text-[7px] uppercase tracking-widest font-bold">NODE_ACTIVE</span>
+                  </div>
+                </div>
               </div>
             </FadeIn>
           ))}

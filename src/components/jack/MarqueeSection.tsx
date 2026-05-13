@@ -69,7 +69,7 @@ export const MarqueeSection = () => {
   const row2 = ASSET_ITEMS.slice(4, 8);
 
   const MarqueeRow = ({ items, x }: { items: typeof ASSET_ITEMS, x: any }) => (
-    <div className="flex gap-4 overflow-hidden whitespace-nowrap py-4">
+    <div className="flex gap-4 overflow-hidden whitespace-nowrap py-4" aria-hidden="true">
       <motion.div 
         className="flex gap-6"
         style={{ x }}
@@ -82,7 +82,11 @@ export const MarqueeSection = () => {
   );
 
   return (
-    <section ref={sectionRef} className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-20 overflow-hidden relative">
+    <section 
+      ref={sectionRef} 
+      aria-label="Project Visual Showcases"
+      className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-20 overflow-hidden relative"
+    >
       <div className="absolute top-10 left-10 z-10 pointer-events-none flex items-center gap-2">
          <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
          <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-white/60">Internal_System_Visuals // 01</span>

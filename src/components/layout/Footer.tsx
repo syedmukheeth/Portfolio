@@ -67,10 +67,13 @@ export default function Footer() {
                 )}>
                   <Cpu className={cn("w-6 h-6", mode === 'machine' ? 'text-accent' : 'text-white')} />
                 </div>
-                <h2 className={cn(
-                  "text-3xl md:text-5xl font-black uppercase tracking-tighter transition-colors",
-                  mode === 'machine' ? 'text-accent font-mono' : 'text-white'
-                )}>
+                <h2 
+                  id="contact-title"
+                  className={cn(
+                    "text-3xl md:text-5xl font-black uppercase tracking-tighter transition-colors",
+                    mode === 'machine' ? 'text-accent font-mono' : 'text-white'
+                  )}
+                >
                   {mode === 'machine' ? "CONNECT_HANDSHAKE" : "Let's Connect."}
                 </h2>
               </div>
@@ -84,6 +87,7 @@ export default function Footer() {
                 href={emailHref}
                 target={emailHref.startsWith('http') ? "_blank" : undefined}
                 rel={emailHref.startsWith('http') ? "noopener noreferrer" : undefined}
+                aria-label="Send email to Syed Mukheeth"
                 className="group flex items-center gap-6 text-white hover:text-accent transition-all duration-500"
               >
                 <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-500">
@@ -115,6 +119,8 @@ export default function Footer() {
                       key={social.name}
                       href={social.href}
                       target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit my ${social.name} profile`}
                       className="group flex items-center justify-between py-3 border-b border-white/10 hover:border-accent/30 transition-colors"
                     >
                       <div className="flex items-center gap-4 text-white/80 group-hover:text-white transition-colors">
@@ -139,6 +145,7 @@ export default function Footer() {
           <div className="flex items-center gap-8">
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              aria-label="Scroll back to the top of the page"
               className="mono text-[10px] uppercase tracking-[0.4em] text-white/80 hover:text-white transition-colors flex items-center gap-2 group font-black"
             >
               Back to Top
