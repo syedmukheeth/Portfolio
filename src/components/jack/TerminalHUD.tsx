@@ -108,7 +108,11 @@ export const TerminalHUD = () => {
             </div>
 
             {/* Terminal Content */}
-            <div ref={scrollRef} className="flex-1 p-4 mono text-[11px] leading-relaxed overflow-y-auto custom-scrollbar">
+            <div 
+              ref={scrollRef} 
+              className="flex-1 p-4 mono text-[11px] leading-relaxed overflow-y-auto custom-scrollbar"
+              data-lenis-prevent
+            >
               {history.map((line, i) => (
                 <div key={i} className={line.startsWith(">") ? "text-accent" : "text-white/60 whitespace-pre-wrap mb-2"}>
                   {line}

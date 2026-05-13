@@ -47,10 +47,15 @@ export default function LazyVideo({
     }
   };
 
+  const [hasIntersected, setHasIntersected] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsIntersecting(entry.isIntersecting);
+        if (entry.isIntersecting && !hasIntersected) {
+          setHasIntersected(true);
+        }
       },
       { 
         rootMargin: priority ? "1000px" : "400px", // Preload buffer
@@ -60,7 +65,7 @@ export default function LazyVideo({
 
     if (videoRef.current) observer.observe(videoRef.current);
     return () => observer.disconnect();
-  }, [priority]);
+  }, [priority, hasIntersected]);
 
   // Handle Play/Pause logic centrally to avoid "jerkiness" from competing props
   useEffect(() => {
@@ -85,9 +90,9 @@ export default function LazyVideo({
     <div className={cn("video-wrapper w-full overflow-hidden bg-black", className)}>
       <video
         ref={videoRef}
-        src={videoSrc}
+        src={hasIntersected || priority ? videoSrc : undefined}
         poster={optimizedPoster}
-        preload={priority ? "auto" : "metadata"}
+        preload={priority ? "auto" : "none"}
         muted
         loop
         playsInline

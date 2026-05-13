@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/layout/SmoothScroll";
 import TransitionOverlay from "@/components/layout/TransitionOverlay";
 import { ModeProvider } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
@@ -93,11 +92,9 @@ export default function RootLayout({
         <ModeProvider>
           <TransitionOverlay />
           <div className="relative min-h-screen">
-            <SmoothScroll>
-              <main id="main-content" className="relative z-10 outline-none" tabIndex={-1}>
-                {children}
-              </main>
-            </SmoothScroll>
+            <main id="main-content" className="relative z-10 outline-none" tabIndex={-1}>
+              {children}
+            </main>
           </div>
           <script
             type="application/ld+json"
