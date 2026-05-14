@@ -79,6 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("dark", inter.variable, mono.variable)} suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="12ecf9f26541f5c1" />
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
