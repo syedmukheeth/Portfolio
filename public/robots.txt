@@ -1,6 +1,13 @@
 User-agent: *
 Allow: /
 
+# AI Agent Manifest
+# Plain-text summary for AI engines (ChatGPT, Perplexity, Claude, Gemini)
+LLMs: https://syedmukheeth.is-a.dev/llms.txt
+
+# Sitemap
+Sitemap: https://syedmukheeth.is-a.dev/sitemap.xml
+
 # AI Agent Configuration
 # This site supports Content Negotiation for AI Bots.
 # Request 'text/markdown' via Accept header for optimized ingestion.

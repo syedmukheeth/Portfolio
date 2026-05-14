@@ -82,6 +82,35 @@ export default function RootLayout({
         <meta name="google-site-verification" content="12ecf9f26541f5c1" />
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Syed Mukheeth",
+              "jobTitle": "Software Engineer",
+              "email": "syedmukheeth09@gmail.com",
+              "url": "https://syedmukheeth.is-a.dev",
+              "sameAs": [
+                "https://github.com/syedmukheeth",
+                "https://linkedin.com/in/syedmukheeth",
+                "https://twitter.com/syed_mukheeth"
+              ],
+              "knowsAbout": [
+                "Backend Architecture",
+                "Distributed Systems",
+                "WebSockets",
+                "Redis",
+                "Docker",
+                "Real-time Infrastructure",
+                "Product Engineering",
+                "AI Tooling",
+                "Secure Architectures"
+              ]
+            })
+          }}
+        />
       </head>
       <body className={cn(inter.variable, mono.variable, "antialiased selection:bg-accent selection:text-white bg-black")}>
         <a 
@@ -97,31 +126,6 @@ export default function RootLayout({
               {children}
             </main>
           </div>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Person",
-                "name": "Syed Mukheeth",
-                "jobTitle": "Software Engineer",
-                "email": "syedmukheeth09@gmail.com",
-                "url": "https://syedmukheeth.is-a.dev",
-                "sameAs": [
-                  "https://github.com/syedmukheeth",
-                  "https://linkedin.com/in/syedmukheeth",
-                  "https://twitter.com/syed_mukheeth"
-                ],
-                "knowsAbout": [
-                  "Distributed Systems",
-                  "Real-time Infrastructure",
-                  "Product Engineering",
-                  "AI Tooling",
-                  "Secure Architectures"
-                ]
-              })
-            }}
-          />
         </ModeProvider>
       </body>
     </html>

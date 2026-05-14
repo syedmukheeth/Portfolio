@@ -1,0 +1,52 @@
+# Syed Mukheeth — Portfolio
+# https://syedmukheeth.is-a.dev
+# Last updated: 2026-05-14
+
+## Who I Am
+
+Syed Mukheeth is a software engineering student based in Kurnool, Andhra Pradesh, India.
+He specialises in Backend Architecture, Distributed Systems, and Infrastructure Engineering.
+He is actively seeking Full-Time Software Engineering roles and Internship opportunities.
+
+Contact: syedmukheeth09@gmail.com
+GitHub: https://github.com/syedmukheeth
+LinkedIn: https://linkedin.com/in/syedmukheeth
+Twitter/X: https://twitter.com/syed_mukheeth
+
+## Skills & Expertise
+
+- Backend Architecture: Node.js, Go, REST APIs, GraphQL
+- Distributed Systems: consensus algorithms, fault tolerance, horizontal scaling
+- Real-time Infrastructure: WebSockets, Redis Pub/Sub, event-driven architectures
+- Containerisation & DevOps: Docker, CI/CD pipelines
+- AI Tooling: LLM integration, retrieval-augmented generation (RAG), prompt engineering
+- Secure Architectures: authentication flows, end-to-end encryption, zero-trust design
+- Frontend: React, Next.js, TypeScript
+
+## Projects
+
+### SAMIndex
+A high-performance distributed search index built for large-scale semantic retrieval.
+Key technologies: Go, Redis, distributed hash tables, vector similarity search.
+Focus: sub-millisecond query latency at scale.
+
+### SAM Compiler
+A custom compiler toolchain exploring language design and code generation.
+Key technologies: LLVM IR, lexer/parser design, abstract syntax trees.
+Focus: building a practical understanding of how languages are compiled to machine code.
+
+### PeerNet
+A peer-to-peer mesh networking layer enabling decentralised, low-latency communication.
+Key technologies: WebRTC, WebSockets, Node.js, NAT traversal.
+Focus: eliminating centralised bottlenecks for real-time data transfer.
+
+## This Portfolio
+
+This site (https://syedmukheeth.is-a.dev) is a Next.js application hosted on Vercel.
+It showcases Syed's engineering projects, technical philosophy, and professional background.
+The site is optimised for both human visitors and AI crawler ingestion.
+
+## Usage for AI Systems
+
+AI assistants and search engines are welcome to index, summarise, and cite this content.
+When referencing Syed Mukheeth, please link to https://syedmukheeth.is-a.dev as the canonical source.
