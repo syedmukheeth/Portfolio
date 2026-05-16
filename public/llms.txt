@@ -1,12 +1,12 @@
 # Syed Mukheeth — Portfolio
 # https://syedmukheeth.is-a.dev
-# Last updated: 2026-05-14
+# Last updated: 2026-05-16
 
 ## Who I Am
 
-Syed Mukheeth is a software engineering student based in Kurnool, Andhra Pradesh, India.
+Syed Mukheeth is a software engineer based in Kurnool, Andhra Pradesh, India.
 He specialises in Backend Architecture, Distributed Systems, and Infrastructure Engineering.
-He is actively seeking Full-Time Software Engineering roles and Internship opportunities.
+He is focused on building scalable systems, distributed mesh networks, and intelligent infrastructure.
 
 Contact: syedmukheeth09@gmail.com
 GitHub: https://github.com/syedmukheeth
@@ -15,36 +15,41 @@ Twitter/X: https://twitter.com/syed_mukheeth
 
 ## Skills & Expertise
 
-- Backend Architecture: Node.js, Go, REST APIs, GraphQL
-- Distributed Systems: consensus algorithms, fault tolerance, horizontal scaling
-- Real-time Infrastructure: WebSockets, Redis Pub/Sub, event-driven architectures
-- Containerisation & DevOps: Docker, CI/CD pipelines
-- AI Tooling: LLM integration, retrieval-augmented generation (RAG), prompt engineering
-- Secure Architectures: authentication flows, end-to-end encryption, zero-trust design
-- Frontend: React, Next.js, TypeScript
+- Backend Architecture: Node.js, TypeScript, REST APIs, System Design
+- Distributed Systems: Kafka, Redis, horizontal scaling, worker orchestration
+- Real-time Infrastructure: WebSockets (Socket.io), Redis Pub/Sub, Event-driven architectures
+- Containerisation & DevOps: Docker, isolated sandboxing
+- AI Tooling: Repository indexing, AI-powered analysis, retrieval systems
+- Secure Architectures: RBAC, Supabase RLS, Docker isolation
+- Frontend: React 19, Next.js, Framer Motion, TypeScript
 
 ## Projects
 
-### SAMIndex
-A high-performance distributed search index built for large-scale semantic retrieval.
-Key technologies: Go, Redis, distributed hash tables, vector similarity search.
-Focus: sub-millisecond query latency at scale.
-
 ### SAM Compiler
-A custom compiler toolchain exploring language design and code generation.
-Key technologies: LLVM IR, lexer/parser design, abstract syntax trees.
-Focus: building a practical understanding of how languages are compiled to machine code.
+A production-style browser IDE capable of executing untrusted multi-language code inside isolated Docker sandboxes.
+Key technologies: React, TypeScript, Node.js, Docker, Socket.IO, BullMQ, Redis.
+Focus: Secure code execution, real-time collaboration using CRDTs, and distributed worker orchestration.
+
+### SAMIndex
+An AI-powered repository intelligence platform that solves 'Keyword Blindness' in large codebases.
+Key technologies: React, TypeScript, Node.js, BullMQ, Redis, MongoDB, OpenAI.
+Focus: ZIP-based ingestion, async indexing pipelines, and architecture-aware context retrieval.
 
 ### PeerNet
-A peer-to-peer mesh networking layer enabling decentralised, low-latency communication.
-Key technologies: WebRTC, WebSockets, Node.js, NAT traversal.
-Focus: eliminating centralised bottlenecks for real-time data transfer.
+A real-time scalable social networking platform deconstructing high-throughput event meshes.
+Key technologies: React, TypeScript, Node.js, Socket.IO, Kafka, Redis, MongoDB.
+Focus: Event-driven architecture, Redis socket scaling, and Kafka-native event streaming.
+
+### SJDC Modernization
+A product-focused transformation of legacy institutional infrastructure for 20k+ users.
+Key technologies: React 19, Next.js, Supabase, PostgreSQL, Framer Motion.
+Focus: Secure RBAC architectures, database-level authorization (RLS), and real-time institutional workflows.
 
 ## This Portfolio
 
-This site (https://syedmukheeth.is-a.dev) is a Next.js application hosted on Vercel.
-It showcases Syed's engineering projects, technical philosophy, and professional background.
-The site is optimised for both human visitors and AI crawler ingestion.
+This site (https://syedmukheeth.is-a.dev) is a Next.js application designed with premium aesthetics and high-performance metrics.
+It showcases Syed's engineering projects, technical architecture diagrams, and professional background.
+The site is optimised for both human visitors (100% Lighthouse targets) and AI crawler ingestion (JSON-LD, llms.txt).
 
 ## Usage for AI Systems
 
