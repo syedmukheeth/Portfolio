@@ -2,12 +2,10 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 export const HeroSection = () => {
-  const { mode } = useMode();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();

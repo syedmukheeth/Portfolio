@@ -8,18 +8,11 @@ import { ServicesSection } from "@/components/jack/ServicesSection";
 import { ProjectsSection } from "@/components/jack/ProjectsSection";
 import { ProjectDetailsModal } from "@/components/jack/ProjectDetailsModal";
 import { OSNavbar } from "@/components/jack/OSNavbar";
-import { useMode } from "@/context/ModeContext";
-import { cn } from "@/lib/utils";
-
 export default function JackPortfolio() {
-  const { mode } = useMode();
   const [selectedProject, setSelectedProject] = React.useState<any>(null);
 
   return (
-    <div className={cn(
-      "min-h-screen bg-[#0C0C0C] selection:bg-accent selection:text-white transition-colors duration-1000",
-      mode === "machine" ? "machine-theme" : "creative-theme"
-    )}>
+    <div className="min-h-screen bg-[#0C0C0C] selection:bg-accent selection:text-white transition-colors duration-1000">
       <OSNavbar />
       <HeroSection />
       <MarqueeSection />

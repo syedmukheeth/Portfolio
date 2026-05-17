@@ -9,11 +9,9 @@
 import React from 'react';
 import { Github, Twitter, Linkedin, Mail, ArrowUpRight, Globe, Cpu, Database, FileText } from 'lucide-react';
 import { FadeIn } from '@/components/jack/JackComponents';
-import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 
 export default function Footer() {
-  const { mode } = useMode();
   const currentYear = new Date().getFullYear();
   const email = "syedmukheeth09@gmail.com";
   const [emailHref, setEmailHref] = React.useState(`mailto:${email}`);
@@ -55,10 +53,7 @@ export default function Footer() {
   return (
     <footer 
       id="contact"
-      className={cn(
-        "relative pt-32 pb-12 overflow-hidden transition-colors duration-1000",
-        mode === 'machine' ? 'bg-black border-t border-accent/20' : 'bg-black border-t border-white/5'
-      )}
+      className="relative pt-32 pb-12 overflow-hidden bg-black border-t border-white/5"
     >
       {/* Background Grid Accent */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
@@ -74,27 +69,21 @@ export default function Footer() {
             <FadeIn delay={0.1} y={20}>
               <div className="flex flex-col gap-6">
                 <div className="flex items-center gap-5">
-                  <div className={cn(
-                    "relative w-14 h-14 flex items-center justify-center transition-all duration-500 group",
-                    mode === 'machine' ? 'bg-accent/5' : 'bg-white/[0.02]'
-                  )}>
+                  <div className="relative w-14 h-14 flex items-center justify-center transition-all duration-500 group bg-white/[0.02]">
                     {/* Technical Corners */}
                     <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-accent/50" />
                     <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-accent/50" />
                     <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-accent/50" />
                     <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-accent/50" />
                     
-                    <Cpu className={cn("w-7 h-7 animate-pulse", mode === 'machine' ? 'text-accent' : 'text-white/80')} />
+                    <Cpu className="w-7 h-7 animate-pulse text-white/80" />
                   </div>
                   
                   <h2 
                     id="contact-title"
-                    className={cn(
-                      "text-4xl md:text-6xl font-black uppercase tracking-tighter transition-colors",
-                      mode === 'machine' ? 'text-accent font-mono' : 'text-white'
-                    )}
+                    className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white"
                   >
-                    {mode === 'machine' ? "NODE_HANDSHAKE" : "Let's Connect."}
+                    Let's Connect.
                   </h2>
                 </div>
                 
@@ -123,10 +112,7 @@ export default function Footer() {
                     <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
                     <span className="mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-accent/80 font-black truncate">Secure_Protocol // Email</span>
                   </div>
-                  <span className={cn(
-                    "text-lg md:text-3xl font-black tracking-tight text-white/90 group-hover:text-white transition-colors truncate",
-                    mode === 'machine' && 'font-mono'
-                  )}>syedmukheeth09@gmail.com</span>
+                  <span className="text-lg md:text-3xl font-black tracking-tight text-white/90 group-hover:text-white transition-colors truncate">syedmukheeth09@gmail.com</span>
                 </div>
                 
                 <ArrowUpRight className="hidden sm:block opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 text-accent ml-2" size={24} />

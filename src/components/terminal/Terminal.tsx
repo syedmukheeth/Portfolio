@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 import { PROJECTS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +11,6 @@ interface Log {
 }
 
 export default function Terminal() {
-  const { mode } = useMode();
   const [input, setInput] = useState("");
   const [logs, setLogs] = useState<Log[]>([
     { type: "output", content: "System Terminal v2.4.0-stable" },
@@ -47,7 +45,7 @@ export default function Terminal() {
       }
     } else if (cleanCmd === "status") {
       newLogs.push({ type: "output", content: "System: Operational" });
-      newLogs.push({ type: "output", content: `Active Mode: ${mode.toUpperCase()}` });
+      newLogs.push({ type: "output", content: "Active Mode: HUMAN" });
       newLogs.push({ type: "output", content: "Infrastructure: Multi-cloud distributed" });
     } else if (cleanCmd === "reveal stack") {
       newLogs.push({ type: "output", content: "Tech Ecosystem: React, Next.js, TypeScript, Tailwind, Node.js, Redis, Kafka, Docker, Supabase" });

@@ -2,9 +2,8 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useInView, useSpring } from "framer-motion";
-import { FadeIn } from "./JackComponents";
-import { useMode } from "@/context/ModeContext";
 import { PROJECTS as LIB_PROJECTS } from "@/lib/data";
+import { FadeIn } from "./JackComponents";
 import { cn } from "@/lib/utils";
 import { Github, ExternalLink } from "lucide-react";
 import LazyVideo from "./LazyVideo";
@@ -75,8 +74,6 @@ const ProjectCard = ({
     damping: 30,
     restDelta: 0.001
   });
-  
-  const { mode } = useMode();
   const [isHovered, setIsHovered] = React.useState(false);
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { 
@@ -227,22 +224,7 @@ const ProjectCard = ({
 
         </div>
 
-        {/* Machine Mode Technical HUD */}
-        <AnimatePresence>
-          {mode === "machine" && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-x-10 bottom-10 pointer-events-none flex justify-between mono text-[7px] text-accent/60"
-            >
-               <span>SYS_VERSION: V{index + 1}.4.2</span>
-               <span className="animate-pulse">LOAD_BALANCING: OPTIMAL</span>
-               <span>CACHE_REDUNDANCY: ACTIVE</span>
-               <span>SCHEMA_VALIDATION: PASSED</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
       </motion.div>
     </div>
   );

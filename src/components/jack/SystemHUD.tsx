@@ -2,11 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 
 export const SystemHUD = () => {
-  const { mode } = useMode();
   const [latency, setLatency] = useState(18);
 
   useEffect(() => {
@@ -32,7 +30,7 @@ export const SystemHUD = () => {
         </div>
 
         <div className="flex flex-col items-end gap-1">
-          <span className={cn("transition-colors duration-500", mode === "machine" ? "text-accent" : "text-white/70")}>Mode: {mode}</span>
+          <span className="text-white/70">Mode: HUMAN</span>
           <span className="hidden sm:inline text-white/70">Region: Global_Edge</span>
           <span className="hidden sm:inline text-white/70">Build: v2.4.1</span>
         </div>

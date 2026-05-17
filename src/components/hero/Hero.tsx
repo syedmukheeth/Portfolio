@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
-import { Terminal as TerminalIcon, Cpu, Globe, Database, Shield } from "lucide-react";
 
 const BOOT_SEQUENCE = [
   "Initializing developer kernel...",
@@ -17,7 +15,6 @@ const BOOT_SEQUENCE = [
 ];
 
 export default function Hero() {
-  const { mode } = useMode();
   const [bootStep, setBootStep] = useState(0);
   const [isBooted, setIsBooted] = useState(false);
 
@@ -37,24 +34,18 @@ export default function Hero() {
          <motion.div 
             animate={{ 
               scale: [1, 1.2, 1],
-              opacity: mode === "human" ? [0.1, 0.2, 0.1] : [0.05, 0.1, 0.05]
+              opacity: [0.1, 0.2, 0.1]
             }}
             transition={{ duration: 10, repeat: Infinity }}
-            className={cn(
-              "absolute -top-1/4 -right-1/4 w-1/2 h-1/2 blur-[120px] rounded-full transition-colors duration-1000",
-              mode === "human" ? "bg-accent/20" : "bg-accent/5"
-            )}
+            className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 blur-[120px] rounded-full transition-colors duration-1000 bg-accent/20"
          />
          <motion.div 
             animate={{ 
               scale: [1, 1.1, 1],
-              opacity: mode === "human" ? [0.05, 0.1, 0.05] : [0.02, 0.05, 0.02]
+              opacity: [0.05, 0.1, 0.05]
             }}
             transition={{ duration: 8, repeat: Infinity, delay: 2 }}
-            className={cn(
-              "absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 blur-[120px] rounded-full transition-colors duration-1000",
-              mode === "human" ? "bg-blue-500/10" : "bg-accent/5"
-            )}
+            className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 blur-[120px] rounded-full transition-colors duration-1000 bg-blue-500/10"
          />
       </div>
 
@@ -92,13 +83,7 @@ export default function Hero() {
             </motion.div>
           ) : (
             <div key="content" className="w-full">
-              <AnimatePresence mode="wait">
-                {mode === "human" ? (
-                  <HumanHero key="human" />
-                ) : (
-                  <MachineHero key="machine" />
-                )}
-              </AnimatePresence>
+              <HumanHero />
             </div>
           )}
         </AnimatePresence>
@@ -112,19 +97,13 @@ export default function Hero() {
           transition={{ delay: 1.5 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className={cn(
-            "text-[10px] uppercase tracking-[0.3em] transition-colors duration-500",
-            mode === "human" ? "text-white/20" : "text-accent/40 font-mono"
-          )}>
-            {mode === "human" ? "Scroll to inspect" : "SCAN_FOR_INFRASTRUCTURE"}
+          <span className="text-[10px] uppercase tracking-[0.3em] transition-colors duration-500 text-white/20">
+            Scroll to inspect
           </span>
           <motion.div 
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className={cn(
-              "w-px h-12 bg-gradient-to-b from-accent to-transparent transition-opacity duration-500",
-              mode === "machine" ? "opacity-100" : "opacity-50"
-            )}
+            className="w-px h-12 bg-gradient-to-b from-accent to-transparent transition-opacity duration-500 opacity-50"
           />
         </motion.div>
       )}
@@ -172,75 +151,5 @@ function HumanHero() {
         </button>
       </div>
     </motion.div>
-  );
-}
-
-function MachineHero() {
-  return (
-    <motion.div 
-      initial={{ opacity: 0, scale: 1.05 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.6 }}
-      className="w-full max-w-4xl mx-auto font-mono text-accent"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-        <StatBox icon={<Cpu size={14}/>} label="CPU_LOAD" value="14.2%" />
-        <StatBox icon={<Globe size={14}/>} label="NETWORK_NODES" value="1,024" />
-        <StatBox icon={<Database size={14}/>} label="DB_LATENCY" value="2.4ms" />
-      </div>
-
-      <div className="border border-accent/20 bg-accent/[0.02] p-8 md:p-12 rounded-lg relative overflow-hidden group transition-all hover:bg-accent/[0.04]">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-20" />
-        
-        <div className="flex items-center gap-4 mb-8 text-accent/40">
-           <TerminalIcon size={18} />
-           <span className="text-xs tracking-widest uppercase font-bold">Identity::SYED_MUKHEETH</span>
-        </div>
-
-        <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight tracking-tighter uppercase">
-          FULL_STACK_SYSTEMS_ENGINEER <br />
-          <span className="text-accent/30 text-2xl md:text-4xl">@v2.4.0-stable</span>
-        </h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-           <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                 <Shield size={14} className="text-accent/60" />
-                 <span className="text-accent/40 uppercase tracking-widest text-[10px]">CORE_SPECIALIZATION:</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                 {["DISTRIBUTED_SYSTEMS", "REAL_TIME_PROTOCOLS", "SECURE_GATEWAYS"].map(tag => (
-                   <span key={tag} className="px-2 py-1 border border-accent/20 text-[10px] bg-accent/5">{tag}</span>
-                 ))}
-              </div>
-           </div>
-           <div className="space-y-2 text-[10px] text-accent/40 leading-relaxed uppercase tracking-widest">
-              <div>// PRIMARY_DIRECTIVE: ARCHITECT_SCALABLE_SOLUTIONS</div>
-              <div>// CURRENT_STATE: READY_FOR_DEPLOYMENT</div>
-              <div>// LATENCY_OPTIMIZATION: ENABLED</div>
-           </div>
-        </div>
-        
-        <div className="mt-12 flex gap-4">
-           <div className="h-px flex-1 bg-accent/10" />
-           <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function StatBox({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
-  return (
-    <div className="border border-accent/10 bg-black p-4 rounded flex items-center gap-4 group hover:border-accent/30 transition-colors">
-      <div className="p-2 bg-accent/5 text-accent/60 group-hover:text-accent transition-colors">
-        {icon}
-      </div>
-      <div>
-        <div className="text-[9px] uppercase tracking-widest text-accent/40 mb-1">{label}</div>
-        <div className="text-sm font-bold tracking-tighter">{value}</div>
-      </div>
-    </div>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import { 
   Zap, 
@@ -24,7 +23,6 @@ import { PROJECTS } from "@/lib/data";
 import LazyVideo from "@/components/jack/LazyVideo";
 
 export default function PeerNetPage() {
-  const { mode } = useMode();
   const project = PROJECTS.find(p => p.id === "peer-net");
   const clips = project?.clips || [];
 
@@ -55,10 +53,7 @@ export default function PeerNetPage() {
               Real-time Social Infrastructure
             </div>
             
-            <h1 className={cn(
-              "text-6xl md:text-9xl font-bold tracking-tighter leading-[0.9]",
-              mode === "machine" ? "font-mono uppercase" : "font-sans"
-            )}>
+            <h1 className="text-6xl md:text-9xl font-bold tracking-tighter leading-[0.9] font-sans">
               PEER <br />
               <span className="text-white/20 italic">Net.</span>
             </h1>

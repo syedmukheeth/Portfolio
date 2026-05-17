@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import TransitionOverlay from "@/components/layout/TransitionOverlay";
-import { ModeProvider } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({
@@ -216,14 +214,11 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <ModeProvider>
-          <TransitionOverlay />
-          <div className="relative min-h-screen">
-            <main id="main-content" className="relative z-10 outline-none" tabIndex={-1}>
-              {children}
-            </main>
-          </div>
-        </ModeProvider>
+        <div className="relative min-h-screen">
+          <main id="main-content" className="relative z-10 outline-none" tabIndex={-1}>
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

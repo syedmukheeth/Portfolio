@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 import { FadeIn } from "./JackComponents";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -18,7 +17,6 @@ import Image from "next/image";
  * - Shimmer animations and hover states
  */
 export const OSNavbar = () => {
-  const { mode, toggleMode } = useMode();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const navLinks = [
@@ -99,23 +97,6 @@ export const OSNavbar = () => {
             className="p-3.5 rounded-full bg-accent/10 border border-accent/20 hover:bg-accent/20 transition-all duration-300 group"
           >
             <Menu className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
-          </button>
-        </motion.div>
-
-        {/* Mode Switcher - Systems Mode Toggle */}
-        <motion.div 
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <button 
-            onClick={toggleMode}
-            aria-label={`Switch to ${mode === 'human' ? 'machine' : 'human'} mode`}
-            className="flex items-center gap-3 px-6 py-3 rounded-full glass-heavy border border-white/10 hover:border-accent/50 transition-all duration-500 group shadow-[0_0_20px_rgba(0,0,0,0.4)] relative overflow-hidden"
-          >
-            <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_rgba(255,77,0,0.9)] animate-pulse" />
-            <span className="mono text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.5em] font-black bg-gradient-to-r from-white via-accent/50 to-white bg-[length:200%_auto] animate-[text-shimmer_3s_linear_infinite] bg-clip-text text-transparent group-hover:text-accent transition-colors">
-              {mode}
-            </span>
           </button>
         </motion.div>
       </div>

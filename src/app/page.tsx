@@ -7,7 +7,6 @@ import { MarqueeSection } from "@/components/jack/MarqueeSection";
 import { AboutSection } from "@/components/jack/AboutSection";
 import { ServicesSection } from "@/components/jack/ServicesSection";
 import { ProjectsSection } from "@/components/jack/ProjectsSection";
-import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import { OSNavbar } from "@/components/jack/OSNavbar";
 
@@ -17,14 +16,10 @@ const ProjectDetailsModal = dynamic(() => import("@/components/jack/ProjectDetai
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: false });
 
 export default function Home() {
-  const { mode } = useMode();
   const [selectedProject, setSelectedProject] = React.useState<any>(null);
 
   return (
-    <div className={cn(
-      "min-h-screen bg-black selection:bg-accent selection:text-white transition-colors duration-1000",
-      mode === "machine" ? "machine-theme" : ""
-    )}>
+    <div className="min-h-screen bg-black selection:bg-accent selection:text-white">
       <OSNavbar />
       <HeroSection />
       <MarqueeSection />

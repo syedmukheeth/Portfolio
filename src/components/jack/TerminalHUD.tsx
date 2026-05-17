@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 
 const KNOWLEDGE_BASE = {
   whois: "NAME: SYED MUKHEETH\nROLE: SOFTWARE ENGINEER\nSTATUS: ACTIVE_DEVELOPMENT\nLOCATION: KURNOOL, ANDHRA PRADESH\n\nI build software that deconstructs complex systems. My work focuses on backend architecture, distributed performance, and bridging the 'Context Gap' in developer tooling.",
@@ -21,7 +20,6 @@ const KNOWLEDGE_BASE = {
 };
 
 export const TerminalHUD = () => {
-  const { mode } = useMode();
   const [isOpen, setIsOpen] = useState(false);
   const [history, setHistory] = useState<string[]>(["welcome to symuk//os terminal.", "type 'help' for available commands."]);
   const [inputValue, setInputValue] = useState("");

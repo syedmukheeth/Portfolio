@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useMode } from "@/context/ModeContext";
 import { PROJECTS, Project } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { 
@@ -34,8 +33,6 @@ const NODE_ICON_MAP: Record<string, any> = {
 };
 
 export default function Projects() {
-  const { mode } = useMode();
-
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
       <div className="container max-w-6xl mx-auto px-4">
@@ -43,32 +40,14 @@ export default function Projects() {
           <div>
             <motion.h2 
               layout
-              className={cn(
-                "text-3xl md:text-6xl font-bold tracking-tight mb-4 transition-all duration-500",
-                mode === "machine" ? "font-mono uppercase text-accent" : "font-sans text-white"
-              )}
+              className="text-3xl md:text-6xl font-bold tracking-tight mb-4 font-sans text-white"
             >
-              {mode === "machine" ? "SYSTEM_REPOSITORIES" : "Engineering Systems"}
+              Engineering Systems
             </motion.h2>
-            <p className={cn(
-              "max-w-xl text-sm md:text-base transition-colors duration-500",
-              mode === "machine" ? "text-accent/60 font-mono" : "text-white/40"
-            )}>
-              {mode === "machine" 
-                ? "[ROOT] /dev/portfolio/infrastructure" 
-                : "Detailed case studies on infrastructure, distributed computing, and product engineering."}
+            <p className="max-w-xl text-sm md:text-base text-white/40">
+              Detailed case studies on infrastructure, distributed computing, and product engineering.
             </p>
           </div>
-          
-          {mode === "machine" && (
-            <div className="flex gap-4 font-mono text-[10px] text-accent/40">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span>LIVE_INDEXING</span>
-              </div>
-              <div>COMMIT_HASH: 7f3a2b1</div>
-            </div>
-          )}
         </div>
 
         <div className="grid grid-cols-1 gap-40">
@@ -82,7 +61,6 @@ export default function Projects() {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const { mode } = useMode();
   const isEven = index % 2 === 0;
 
   return (
@@ -93,17 +71,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       viewport={{ once: true, margin: "-100px" }}
       className={cn(
         "flex flex-col gap-12 transition-all duration-700",
-        isEven ? "md:flex-row" : "md:flex-row-reverse",
-        mode === "machine" && "gap-4"
+        isEven ? "md:flex-row" : "md:flex-row-reverse"
       )}
     >
-      <AnimatePresence mode="wait">
-        {mode === "human" ? (
-          <HumanProjectView key="human" project={project} />
-        ) : (
-          <MachineProjectView key="machine" project={project} />
-        )}
-      </AnimatePresence>
+      <HumanProjectView project={project} />
     </motion.div>
   );
 }
@@ -240,120 +211,6 @@ function HumanProjectView({ project }: { project: Project }) {
           )}
 
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function MachineProjectView({ project }: { project: Project }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 20 }}
-      className="flex flex-col gap-4 w-full font-mono text-accent"
-    >
-      <div className="flex items-center justify-between border-b border-accent/20 pb-2">
-        <div className="flex items-center gap-2">
-          <TerminalIcon size={14} />
-          <span className="text-xs font-bold uppercase tracking-widest">Repository::{project.title.replace(/\s+/g, '_').toUpperCase()}</span>
-        </div>
-        <div className="text-[10px] text-accent/40">ID: {project.id}</div>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-accent/[0.02] border border-accent/10 rounded p-4 space-y-6">
-          <div className="space-y-1">
-            <div className="text-[10px] text-accent/40 uppercase tracking-widest flex items-center gap-2">
-              <FileJson size={10} /> Schema Definition
-            </div>
-            <pre className="text-[11px] text-accent/80 leading-relaxed overflow-x-auto p-3 bg-black/50 rounded border border-accent/5">
-{`{
-  "project": "${project.title}",
-  "version": "2.4.0",
-  "status": "PRODUCTION_ACTIVE",
-  "role": "${project.role}",
-  "stack": ${JSON.stringify(project.stack)},
-  "meta": {
-    "latency": "14ms",
-    "uptime": "99.99%",
-    "scaling": "AUTO"
-  }
-}`}
-            </pre>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <div className="text-[10px] text-accent/40 uppercase tracking-widest flex items-center gap-2">
-                <BarChart3 size={10} /> Metrics
-              </div>
-              <div className="space-y-1">
-                {project.stats.map(stat => (
-                  <div key={stat.label} className="flex justify-between text-[11px]">
-                    <span className="text-accent/60">{stat.label}:</span>
-                    <span>{stat.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-[10px] text-accent/40 uppercase tracking-widest flex items-center gap-2">
-                <Activity size={10} /> Infrastructure
-              </div>
-              <div className="space-y-1">
-                {project.architecture.nodes.map(node => (
-                  <div key={node} className="flex items-center gap-2 text-[11px]">
-                    <div className="w-1 h-1 bg-accent/40 rounded-full" />
-                    <span>{node}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-black border border-accent/10 rounded p-4 flex flex-col h-full overflow-hidden">
-          <div className="text-[10px] text-accent/40 uppercase tracking-widest mb-4 flex items-center gap-2">
-            <TerminalIcon size={10} /> SYSTEM_LOGS / ARCH_FLOW
-          </div>
-          <div className="flex-1 font-mono text-[11px] space-y-2 overflow-y-auto max-h-[300px] scrollbar-hide">
-            <div className="text-accent/40">[SYS] Initializing infrastructure trace...</div>
-            {project.architecture.flow.map((step, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4"
-              >
-                <span className="text-accent/20">00:{i+10}</span>
-                <span className="text-accent/80 font-bold tracking-tighter">[{step}]</span>
-                <span className="text-accent/40">-- protocol: gRPC | status: 200</span>
-              </motion.div>
-            ))}
-            <div className="text-accent/60 mt-4 animate-pulse">_ EXECUTION_COMPLETE (0.14ms)</div>
-            
-            <div className="mt-8 space-y-1">
-               <div className="text-accent/20 text-[9px]">DEBUG_OUTPUT:</div>
-               <div className="w-full h-2 bg-accent/5 rounded-full overflow-hidden">
-                  <motion.div 
-                    animate={{ width: ["0%", "85%", "40%", "95%"] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                    className="h-full bg-accent/30"
-                  />
-               </div>
-            </div>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-accent/10 flex gap-4">
-             <a href={project.github} target="_blank" className="text-[10px] hover:bg-accent hover:text-black px-2 py-1 border border-accent/20 transition-all">GIT_FETCH</a>
-             <a href={project.demo} target="_blank" className="text-[10px] hover:bg-accent hover:text-black px-2 py-1 border border-accent/20 transition-all">SYS_EXEC</a>
-             {(project.id === "sam-compiler" || project.id === "sam-index" || project.id === "peer-net" || project.id === "sjdc-modernization") && (
-               <Link href={`/projects/${project.id}`} className="text-[10px] bg-accent text-black px-2 py-1 border border-accent/20 transition-all font-bold uppercase tracking-widest">READ_CASE_STUDY</Link>
-             )}
-          </div>
         </div>
       </div>
     </motion.div>

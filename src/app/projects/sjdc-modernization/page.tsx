@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import { 
   ShieldCheck, 
@@ -26,7 +25,6 @@ import { PROJECTS } from "@/lib/data";
 import LazyVideo from "@/components/jack/LazyVideo";
 
 export default function SjdcModernizationPage() {
-  const { mode } = useMode();
   const project = PROJECTS.find(p => p.id === "sjdc-modernization");
   const clips = project?.clips || [];
 
@@ -57,10 +55,7 @@ export default function SjdcModernizationPage() {
               Enterprise Modernization Initiative
             </div>
             
-            <h1 className={cn(
-              "text-6xl md:text-9xl font-bold tracking-tighter leading-[0.9]",
-              mode === "machine" ? "font-mono uppercase" : "font-sans"
-            )}>
+            <h1 className="text-6xl md:text-9xl font-bold tracking-tighter leading-[0.9] font-sans">
               SJDC <br />
               <span className="text-foreground/20 italic">Modern.</span>
             </h1>

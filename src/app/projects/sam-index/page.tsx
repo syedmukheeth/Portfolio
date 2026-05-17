@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useMode } from "@/context/ModeContext";
 import { cn } from "@/lib/utils";
 import { 
   Cpu, 
@@ -25,7 +24,6 @@ import { PROJECTS } from "@/lib/data";
 import LazyVideo from "@/components/jack/LazyVideo";
 
 export default function SamIndexPage() {
-  const { mode } = useMode();
   const project = PROJECTS.find(p => p.id === "sam-index");
   const clips = project?.clips || [];
 
@@ -56,10 +54,7 @@ export default function SamIndexPage() {
               Intelligence Infrastructure
             </div>
             
-            <h1 className={cn(
-              "text-6xl md:text-9xl font-bold tracking-tighter leading-[0.9]",
-              mode === "machine" ? "font-mono uppercase" : "font-sans"
-            )}>
+            <h1 className="text-6xl md:text-9xl font-bold tracking-tighter leading-[0.9] font-sans">
               SAM <br />
               <span className="text-white/20 italic">Index.</span>
             </h1>
