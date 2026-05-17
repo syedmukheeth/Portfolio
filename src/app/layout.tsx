@@ -19,8 +19,10 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://syedmukheeth.is-a.dev"),
-  title: "Syed Mukheeth | Software Engineer",
-  description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure. Focused on high-performance backend architecture.",
+  title: "Syed Abdul Mukheeth | Software Engineer — Backend & Distributed Systems",
+  description: "Syed Abdul Mukheeth (Syed Mukheeth) — software engineering student building high-performance backend systems, distributed architecture, and real-time infrastructure. Creator of SAM Compiler, SAMIndex, and PeerNet.",
+  keywords: ["Syed Mukheeth", "Syed Abdul Mukheeth", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "SAMIndex", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
+  authors: [{ name: "Syed Abdul Mukheeth" }],
   icons: {
     icon: [
       { url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_32/avatar_kyjo2q.png", type: "image/png" },
@@ -30,27 +32,33 @@ export const metadata: Metadata = {
     apple: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_180/avatar_kyjo2q.png",
   },
   openGraph: {
-    title: "Syed Mukheeth | Portfolio",
-    description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure.",
+    title: "Syed Abdul Mukheeth | Software Engineer",
+    description: "Building high-performance backend systems, distributed architecture, and real-time infrastructure. Creator of SAM Compiler, SAMIndex, and PeerNet.",
     url: "https://syedmukheeth.is-a.dev",
-    siteName: "Syed Mukheeth",
+    siteName: "Syed Abdul Mukheeth",
     images: [
       {
         url: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/avatar_kyjo2q.png",
         width: 1200,
         height: 630,
-        alt: "Syed Mukheeth | Software Engineer",
+        alt: "Syed Abdul Mukheeth | Software Engineer",
       },
     ],
     locale: "en_US",
-    type: "website",
+    type: "profile",
+    firstName: "Syed Abdul",
+    lastName: "Mukheeth",
+    username: "syedmukheeth"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Syed Mukheeth | Software Engineer",
-    description: "Engineering scalable systems, distributed mesh networks, and intelligent infrastructure.",
+    title: "Syed Abdul Mukheeth | Software Engineer",
+    description: "Building high-performance backend systems, distributed architecture, and real-time infrastructure.",
     images: ["https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/avatar_kyjo2q.png"],
     creator: "@syed_mukheeth",
+  },
+  alternates: {
+    canonical: "https://syedmukheeth.is-a.dev"
   },
   robots: {
     index: true,
@@ -87,26 +95,115 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Syed Mukheeth",
-              "jobTitle": "Software Engineer",
-              "email": "syedmukheeth09@gmail.com",
-              "url": "https://syedmukheeth.is-a.dev",
-              "sameAs": [
-                "https://github.com/syedmukheeth",
-                "https://linkedin.com/in/syedmukheeth",
-                "https://twitter.com/syed_mukheeth"
-              ],
-              "knowsAbout": [
-                "Backend Architecture",
-                "Distributed Systems",
-                "WebSockets",
-                "Redis",
-                "Docker",
-                "Real-time Infrastructure",
-                "Product Engineering",
-                "AI Tooling",
-                "Secure Architectures"
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "@id": "https://syedmukheeth.is-a.dev/#person",
+                  "name": "Syed Abdul Mukheeth",
+                  "alternateName": ["Syed Mukheeth", "Abdul Mukheeth"],
+                  "url": "https://syedmukheeth.is-a.dev",
+                  "image": "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_800/avatar_kyjo2q.png",
+                  "jobTitle": "Software Engineer",
+                  "description": "Software engineering student and engineer specializing in high-performance backend architecture, distributed systems, and real-time infrastructure. Creator of SAM Compiler, SAMIndex, and PeerNet.",
+                  "knowsAbout": [
+                    "Backend Architecture",
+                    "Distributed Systems",
+                    "Real-time Systems",
+                    "Node.js",
+                    "TypeScript",
+                    "Redis",
+                    "Kafka",
+                    "Docker",
+                    "WebSockets",
+                    "CRDT / Yjs",
+                    "BullMQ",
+                    "MongoDB",
+                    "React",
+                    "Supabase",
+                    "PostgreSQL"
+                  ],
+                  "sameAs": [
+                    "https://github.com/syedmukheeth",
+                    "https://twitter.com/syed_mukheeth",
+                    "https://linkedin.com/in/syedmukheeth"
+                  ],
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://syedmukheeth.is-a.dev"
+                  }
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "SAM Compiler",
+                  "description": "A distributed cloud IDE with secure, isolated Docker sandbox execution. Supports real-time multi-user collaboration via CRDT/Yjs and WebSockets, with scalable worker orchestration using BullMQ and Redis.",
+                  "url": "https://sam-compiler-web.vercel.app",
+                  "codeRepository": "https://github.com/syedmukheeth/SAM-Compiler",
+                  "applicationCategory": "DeveloperApplication",
+                  "author": { "@id": "https://syedmukheeth.is-a.dev/#person" },
+                  "programmingLanguage": ["TypeScript", "JavaScript"],
+                  "keywords": "cloud IDE, Docker sandboxing, real-time collaboration, CRDT, Yjs, BullMQ"
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "SAMIndex",
+                  "description": "An AI-powered repository intelligence platform. Analyzes GitHub codebases via ZIP ingestion pipelines, Redis queues, and OpenAI-backed architecture-aware retrieval for AI-assisted code analysis.",
+                  "url": "https://sam-index.vercel.app",
+                  "codeRepository": "https://github.com/syedmukheeth/SAMIndex",
+                  "applicationCategory": "DeveloperApplication",
+                  "author": { "@id": "https://syedmukheeth.is-a.dev/#person" },
+                  "programmingLanguage": ["TypeScript", "JavaScript"],
+                  "keywords": "AI code analysis, repository indexing, OpenAI, BullMQ, Redis, codebase intelligence"
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "PeerNet",
+                  "description": "A real-time scalable social networking platform built with event-driven architecture using Kafka, Redis adapters, Socket.IO, and WebSocket infrastructure for low-latency social interactions.",
+                  "url": "https://peer-net-indol.vercel.app",
+                  "codeRepository": "https://github.com/syedmukheeth/PeerNet",
+                  "applicationCategory": "SocialNetworkingApplication",
+                  "author": { "@id": "https://syedmukheeth.is-a.dev/#person" },
+                  "programmingLanguage": ["TypeScript", "JavaScript"],
+                  "keywords": "real-time social platform, Kafka, Redis, Socket.IO, event-driven architecture"
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "SJDC Academic Platform Modernization",
+                  "description": "Modernization of a legacy institutional system into a secure, real-time academic platform using React 19, Next.js, Supabase row-level security (RLS), and PostgreSQL for student, faculty, and admin workflows.",
+                  "codeRepository": "https://github.com/syedmukheeth/SJDC",
+                  "applicationCategory": "EducationalApplication",
+                  "author": { "@id": "https://syedmukheeth.is-a.dev/#person" },
+                  "programmingLanguage": ["TypeScript", "JavaScript"],
+                  "keywords": "academic platform, legacy modernization, Next.js, Supabase, RLS, React 19"
+                },
+                {
+                  "@type": "FAQPage",
+                  "mainEntity": [
+                    {
+                      "@type": "Question",
+                      "name": "Who is Syed Mukheeth?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Syed Abdul Mukheeth (also known as Syed Mukheeth) is a software engineering student and engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He has built projects including SAM Compiler (a distributed cloud IDE), SAMIndex (an AI-powered repository intelligence platform), and PeerNet (a real-time social networking platform). He is actively seeking full-time and internship roles in software engineering."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "What has Syed Mukheeth built?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Syed Mukheeth has built SAM Compiler (a distributed cloud IDE with Docker sandboxing and real-time collaboration), SAMIndex (an AI-powered GitHub repository analysis engine using OpenAI and Redis), PeerNet (a Kafka-powered real-time social platform), and the SJDC Academic Platform (a modernized institutional system using Next.js and Supabase)."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "What technologies does Syed Mukheeth use?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Syed Mukheeth works primarily with TypeScript, Node.js, React, Docker, Redis, Kafka, BullMQ, MongoDB, PostgreSQL, Supabase, Socket.IO, WebSockets, CRDT/Yjs, and OpenAI APIs."
+                      }
+                    }
+                  ]
+                }
               ]
             })
           }}

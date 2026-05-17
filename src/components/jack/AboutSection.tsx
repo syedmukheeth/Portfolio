@@ -66,11 +66,6 @@ export const AboutSection = () => {
           className="text-white/70 font-medium text-center leading-relaxed max-w-[850px] text-[clamp(1rem,2vw,1.35rem)]"
         />
 
-        {/* Static bio for AI crawlers & screen readers — mirrors AnimatedText above */}
-        <p className="sr-only">
-          As a software engineering student, I am passionate about building systems that make complexity intuitive. My focus lies in Backend Architecture and Infrastructure — building tools that solve real-world engineering challenges. Through projects like SAMIndex, SAM Compiler, and PeerNet, I am exploring high-performance systems and seeking opportunities to apply these skills in Full-Time or Internship roles.
-        </p>
-
         <div className="mt-6">
         </div>
       </div>
