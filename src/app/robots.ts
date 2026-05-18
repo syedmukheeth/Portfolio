@@ -18,7 +18,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Googlebot', allow: '/' },
       { userAgent: 'CCBot', allow: '/' },
     ],
-    sitemap: 'https://syedmukheeth.is-a.dev/sitemap.xml',
-    host: 'https://syedmukheeth.is-a.dev',
+    sitemap: 'https://www.syedmukheeth.is-a.dev/sitemap.xml',
+    host: 'https://www.syedmukheeth.is-a.dev',
   }
 }

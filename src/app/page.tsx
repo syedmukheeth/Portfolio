@@ -82,7 +82,7 @@ export default function Home() {
         <p>
           GitHub: github.com/syedmukheeth |
           Twitter: @syed_mukheeth |
-          Portfolio: syedmukheeth.is-a.dev
+          Portfolio: www.syedmukheeth.is-a.dev
         </p>
       </section>
 

@@ -16,7 +16,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://syedmukheeth.is-a.dev"),
+  metadataBase: new URL("https://www.syedmukheeth.is-a.dev"),
   title: "Syed Abdul Mukheeth | Software Engineer — Backend & Distributed Systems",
   description: "Syed Abdul Mukheeth (Syed Mukheeth) — software engineering student building high-performance backend systems, distributed architecture, and real-time infrastructure. Creator of SAM Compiler, SAMIndex, and PeerNet.",
   keywords: ["Syed Mukheeth", "Syed Abdul Mukheeth", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "SAMIndex", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Syed Abdul Mukheeth | Software Engineer",
     description: "Building high-performance backend systems, distributed architecture, and real-time infrastructure. Creator of SAM Compiler, SAMIndex, and PeerNet.",
-    url: "https://syedmukheeth.is-a.dev",
+    url: "https://www.syedmukheeth.is-a.dev",
     siteName: "Syed Abdul Mukheeth",
     images: [
       {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     creator: "@syed_mukheeth",
   },
   alternates: {
-    canonical: "https://syedmukheeth.is-a.dev"
+    canonical: "https://www.syedmukheeth.is-a.dev"
   },
   robots: {
     index: true,
@@ -96,10 +96,10 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "Person",
-                  "@id": "https://syedmukheeth.is-a.dev/#person",
+                  "@id": "https://www.syedmukheeth.is-a.dev/#person",
                   "name": "Syed Abdul Mukheeth",
                   "alternateName": ["Syed Mukheeth", "Abdul Mukheeth"],
-                  "url": "https://syedmukheeth.is-a.dev",
+                  "url": "https://www.syedmukheeth.is-a.dev",
                   "image": "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_800/avatar_kyjo2q.png",
                   "jobTitle": "Software Engineer",
                   "description": "Software engineering student and engineer specializing in high-performance backend architecture, distributed systems, and real-time infrastructure. Creator of SAM Compiler, SAMIndex, and PeerNet.",
@@ -127,7 +127,7 @@ export default function RootLayout({
                   ],
                   "mainEntityOfPage": {
                     "@type": "WebPage",
-                    "@id": "https://syedmukheeth.is-a.dev"
+                    "@id": "https://www.syedmukheeth.is-a.dev"
                   }
                 },
                 {
@@ -137,7 +137,7 @@ export default function RootLayout({
                   "url": "https://sam-compiler-web.vercel.app",
                   "codeRepository": "https://github.com/syedmukheeth/SAM-Compiler",
                   "applicationCategory": "DeveloperApplication",
-                  "author": { "@id": "https://syedmukheeth.is-a.dev/#person" },
+                  "author": { "@id": "https://www.syedmukheeth.is-a.dev/#person" },
                   "programmingLanguage": ["TypeScript", "JavaScript"],
                   "keywords": "cloud IDE, Docker sandboxing, real-time collaboration, CRDT, Yjs, BullMQ"
                 },
@@ -148,7 +148,7 @@ export default function RootLayout({
                   "url": "https://sam-index.vercel.app",
                   "codeRepository": "https://github.com/syedmukheeth/SAMIndex",
                   "applicationCategory": "DeveloperApplication",
-                  "author": { "@id": "https://syedmukheeth.is-a.dev/#person" },
+                  "author": { "@id": "https://www.syedmukheeth.is-a.dev/#person" },
                   "programmingLanguage": ["TypeScript", "JavaScript"],
                   "keywords": "AI code analysis, repository indexing, OpenAI, BullMQ, Redis, codebase intelligence"
                 },
@@ -159,7 +159,7 @@ export default function RootLayout({
                   "url": "https://peer-net-indol.vercel.app",
                   "codeRepository": "https://github.com/syedmukheeth/PeerNet",
                   "applicationCategory": "SocialNetworkingApplication",
-                  "author": { "@id": "https://syedmukheeth.is-a.dev/#person" },
+                  "author": { "@id": "https://www.syedmukheeth.is-a.dev/#person" },
                   "programmingLanguage": ["TypeScript", "JavaScript"],
                   "keywords": "real-time social platform, Kafka, Redis, Socket.IO, event-driven architecture"
                 },
@@ -169,7 +169,7 @@ export default function RootLayout({
                   "description": "Modernization of a legacy institutional system into a secure, real-time academic platform using React 19, Next.js, Supabase row-level security (RLS), and PostgreSQL for student, faculty, and admin workflows.",
                   "codeRepository": "https://github.com/syedmukheeth/SJDC",
                   "applicationCategory": "EducationalApplication",
-                  "author": { "@id": "https://syedmukheeth.is-a.dev/#person" },
+                  "author": { "@id": "https://www.syedmukheeth.is-a.dev/#person" },
                   "programmingLanguage": ["TypeScript", "JavaScript"],
                   "keywords": "academic platform, legacy modernization, Next.js, Supabase, RLS, React 19"
                 },

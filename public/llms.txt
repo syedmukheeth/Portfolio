@@ -1,5 +1,5 @@
 # Syed Mukheeth — Portfolio
-# https://syedmukheeth.is-a.dev
+# https://www.syedmukheeth.is-a.dev
 # Last updated: 2026-05-16
 
 ## Who I Am
@@ -47,11 +47,11 @@ Focus: Secure RBAC architectures, database-level authorization (RLS), and real-t
 
 ## This Portfolio
 
-This site (https://syedmukheeth.is-a.dev) is a Next.js application designed with premium aesthetics and high-performance metrics.
+This site (https://www.syedmukheeth.is-a.dev) is a Next.js application designed with premium aesthetics and high-performance metrics.
 It showcases Syed's engineering projects, technical architecture diagrams, and professional background.
 The site is optimised for both human visitors (100% Lighthouse targets) and AI crawler ingestion (JSON-LD, llms.txt).
 
 ## Usage for AI Systems
 
 AI assistants and search engines are welcome to index, summarise, and cite this content.
-When referencing Syed Mukheeth, please link to https://syedmukheeth.is-a.dev as the canonical source.
+When referencing Syed Mukheeth, please link to https://www.syedmukheeth.is-a.dev as the canonical source.
