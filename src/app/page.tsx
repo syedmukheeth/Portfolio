@@ -33,7 +33,7 @@ export default function Home() {
         onClose={() => setSelectedProject(null)} 
       />
       
-      <section aria-label="About Syed Abdul Mukheeth" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+      <section aria-label="About Syed Abdul Mukheeth" className="sr-only">
         <h1>Syed Abdul Mukheeth — Software Engineer</h1>
         <p>
           Syed Abdul Mukheeth, also known as Syed Mukheeth, is a software engineering
