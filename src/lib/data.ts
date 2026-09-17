@@ -25,7 +25,7 @@ type Icon = ComponentType<{ className?: string }>;
 export const SITE_URL = "https://www.syedmukheeth.is-a.dev";
 
 export const PROFILE = {
-  name: "Syed Abdul Mukheeth",
+  name: "Syed Abdul Mukheeth Peer",
   shortName: "Syed",
   role: "Software Engineer",
   focus: "Backend & Distributed Systems",
@@ -39,7 +39,15 @@ export const PROFILE = {
   github: "syedmukheeth",
   twitter: "@syed_mukheeth",
   description:
-    "Software engineering student building high-performance backend systems, distributed architecture, and real-time infrastructure. Creator of SAM Compiler, SAMIndex, and PeerNet.",
+    "Software engineering student building high-performance backend systems, distributed architecture, and real-time infrastructure. Creator of SAM Compiler and PeerNet.",
+};
+
+/** Header banner. Free under the Unsplash License; served from Unsplash's CDN as they recommend. */
+export const BANNER = {
+  src: "https://images.unsplash.com/photo-1741926677837-8dcaf4391dbe?w=1600&q=80&auto=format&fit=crop",
+  alt: "Mountains under a cloudy sky over dark water",
+  credit: "Zeg Young",
+  creditHref: "https://unsplash.com/photos/mountains-loom-under-a-cloudy-sky-over-dark-water-ZkakvSQRFzw",
 };
 
 export interface Social {
@@ -111,6 +119,8 @@ export interface Project {
   challenges: string[];
   demonstrates: string[];
   sections: CaseSection[];
+  /** Screenshot of the live site in /public, 1440×900. */
+  thumbnail: string;
   /** Two colors for the card preview gradient. */
   tint: [string, string];
   category: string;
@@ -187,71 +197,13 @@ export const PROJECTS: Project[] = [
         ],
       },
     ],
-    tint: ["#34D399", "#0F766E"],
+    thumbnail: "/projects/sam-compiler.webp",
+    tint: ["#FB923C", "#B91C1C"],
     category: "DeveloperApplication",
     keywords: "cloud IDE, Docker sandboxing, real-time collaboration, CRDT, Yjs, BullMQ",
     github: "https://github.com/syedmukheeth/SAM-Compiler",
     demo: "https://sam-compiler-web.vercel.app",
     clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamCompiler-1_dotu4m.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519210/SamCompiler-2_hdkgnc.mp4"]
-  },
-  {
-    id: "sam-index",
-    title: "SAMIndex",
-    tagline: "AI Repository Intelligence & Analysis Engine",
-    role: "Infrastructure Engineering",
-    description: "Developed an AI-powered repository intelligence platform that analyzes GitHub repositories using scalable indexing pipelines, async processing, and architecture-aware retrieval systems.",
-    fullOverview: "SAMIndex solves 'Keyword Blindness' in large repositories by bridging the Context Gap between raw code and developer intent. It features a ZIP-based ingestion pipeline that reduced API overhead and implemented a provider-independent AI architecture for high-throughput indexing.",
-    architecture: {
-      nodes: ["ZIP Ingestion", "Extraction", "Redis Queue", "AI Context Engine"],
-      flow: ["Async Indexing", "Architecture Mapping", "Context Retrieval"],
-    },
-    stats: [
-      { label: "Pipeline", value: "Automated" },
-      { label: "Processing", value: "Queue-based" },
-      { label: "AI Layer", value: "Provider-Agnostic" },
-    ],
-    stack: ["React", "TypeScript", "Node.js", "Express", "BullMQ", "Redis", "MongoDB", "OpenAI"],
-    features: [
-      "ZIP-based repository ingestion",
-      "Async indexing architecture",
-      "AI-powered repo analysis",
-      "Redis-backed orchestration",
-      "Scalable bulk processing",
-      "Architecture-aware search"
-    ],
-    challenges: [
-      "Efficient large-repo processing",
-      "High-throughput indexing optimization",
-      "Scalable async architecture design"
-    ],
-    demonstrates: [
-      "AI Tooling Engineering",
-      "Backend Systems Design",
-      "Infrastructure Thinking",
-      "Queue Architecture"
-    ],
-    sections: [
-      {
-        title: "The problem",
-        body: "Indexing tools that crawl repositories file by file run into API rate limits and slow down on large codebases, and plain keyword search misses what a developer is actually looking for.",
-      },
-      {
-        title: "The approach",
-        body: "SAMIndex downloads the whole repository as a ZIP archive, extracts it locally and processes files in parallel. Every indexed repository is prepared for LLM context with semantic chunking, metadata enrichment and filtering of non-essential files.",
-        points: [
-          { title: "ZIP streaming engine", body: "Stream-to-disk extraction processes files as they unzip, so large repositories don't exhaust server memory." },
-          { title: "Multi-stage queue", body: "BullMQ separates IO-heavy extraction from CPU-heavy AI processing, so each worker pool scales independently." },
-          { title: "Fault tolerance", body: "Jobs are tracked in Redis; if a worker fails, the job is re-enqueued with its progress." },
-          { title: "AI-native storage", body: "Files are stored with metadata about their place in the project, ready for retrieval-augmented generation." },
-        ],
-      },
-    ],
-    tint: ["#A78BFA", "#4338CA"],
-    category: "DeveloperApplication",
-    keywords: "AI code analysis, repository indexing, OpenAI, BullMQ, Redis, codebase intelligence",
-    github: "https://github.com/syedmukheeth/SAMIndex",
-    demo: "https://sam-index.vercel.app/",
-    clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamIndex-1_srrmp2.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/SamIndex-2_rz4747.mp4"]
   },
   {
     id: "peer-net",
@@ -305,68 +257,12 @@ export const PROJECTS: Project[] = [
         ],
       },
     ],
-    tint: ["#38BDF8", "#1D4ED8"],
+    thumbnail: "/projects/peer-net.webp",
+    tint: ["#C4B5FD", "#6D28D9"],
     category: "SocialNetworkingApplication",
     keywords: "real-time social platform, Kafka, Redis, Socket.IO, event-driven architecture",
     github: "https://github.com/syedmukheeth/PeerNet",
     demo: "https://peer-net-indol.vercel.app",
     clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519205/PeerNet-1_ysx8lh.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/PeerNet-2_pznwtj.mp4"]
-  },
-  {
-    id: "sjdc-modernization",
-    title: "SJDC Modernization",
-    tagline: "Modern Academic Infrastructure Platform",
-    role: "Product Engineering",
-    description: "Modernized a legacy institutional system into a scalable, realtime, and secure academic platform focused on improving student, faculty, and administrative workflows.",
-    fullOverview: "A product-focused transformation of legacy institutional infrastructure for 20k+ users. Prioritized secure RBAC architectures and implemented database-level authorization using Supabase RLS while maintaining operational continuity during migration.",
-    architecture: {
-      nodes: ["Legacy Infrastructure", "Migration Layer", "React SPA", "Realtime Engine"],
-      flow: ["Modernization Pipeline", "RBAC/RLS Security", "Realtime Subscriptions"],
-    },
-    stats: [
-      { label: "Security", value: "RLS-Native" },
-      { label: "Scale", value: "20k+ Users" },
-      { label: "Frontend", value: "React 19" },
-    ],
-    stack: ["React 19", "TypeScript", "Next.js", "Supabase", "PostgreSQL", "Framer Motion"],
-    features: [
-      "Legacy to Modern migration",
-      "Realtime attendance system",
-      "Dynamic headless CMS",
-      "AI institutional assistant",
-      "Secure RBAC architecture",
-      "Responsive SPA architecture"
-    ],
-    challenges: [
-      "Legacy infrastructure migration",
-      "Secure academic data handling",
-      "Maintaining operational continuity"
-    ],
-    demonstrates: [
-      "Enterprise Modernization",
-      "Frontend Architecture",
-      "Security Engineering",
-      "Realtime Systems"
-    ],
-    sections: [
-      {
-        title: "The problem",
-        body: "The platform was in daily use by students, faculty and administrators. It had to be modernized without interrupting any of those workflows.",
-      },
-      {
-        title: "The approach",
-        body: "A progressive migration: legacy endpoints were wrapped in a unified API layer so the new React frontend could ship while the backend was still being refactored and data moved over in parallel.",
-        points: [
-          { title: "Row Level Security", body: "Authorization lives in the database via Supabase RLS, so grades and records are filtered at the source for each session." },
-          { title: "Realtime workflows", body: "Postgres change subscriptions push notifications and status updates across campus without page refreshes." },
-          { title: "AI-powered retrieval", body: "Faculty can query institutional documentation through semantic search." },
-        ],
-      },
-    ],
-    tint: ["#FBBF24", "#EA580C"],
-    category: "EducationalApplication",
-    keywords: "academic platform, legacy modernization, Next.js, Supabase, RLS, React 19",
-    github: "https://github.com/syedmukheeth/SJDC",
-    clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519206/SJDC-1_gz4t3w.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519206/SJDC-2_hq7doz.mp4"]
   },
 ];

@@ -27,9 +27,9 @@ export function About() {
       sync and sandboxed code execution.
     </>,
     <>
-      Through <ProjectLink slug="sam-compiler">SAM Compiler</ProjectLink>,{" "}
-      <ProjectLink slug="sam-index">SAMIndex</ProjectLink> and <ProjectLink slug="peer-net">PeerNet</ProjectLink> I
-      explore high-performance systems, and I&apos;m looking for <Em>full-time or internship roles</Em> to apply them.
+      Through <ProjectLink slug="sam-compiler">SAM Compiler</ProjectLink> and{" "}
+      <ProjectLink slug="peer-net">PeerNet</ProjectLink> I explore high-performance systems, and I&apos;m looking for{" "}
+      <Em>full-time or internship roles</Em> to apply them.
     </>,
   ];
 

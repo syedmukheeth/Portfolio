@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/projects/sam-index", destination: "/projects", permanent: true },
+      { source: "/projects/sjdc-modernization", destination: "/projects", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

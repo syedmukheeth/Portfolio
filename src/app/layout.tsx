@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: `%s | ${PROFILE.name}`,
   },
   description: PROFILE.description,
-  keywords: ["Syed Mukheeth", "Syed Abdul Mukheeth", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "SAMIndex", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
+  keywords: ["Syed Abdul Mukheeth Peer", "Syed Abdul Mukheeth", "Syed Mukheeth", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
   authors: [{ name: PROFILE.name, url: SITE_URL }],
   icons: {
     icon: [
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "profile",
     firstName: "Syed Abdul",
-    lastName: "Mukheeth",
+    lastName: "Mukheeth Peer",
     username: PROFILE.github,
   },
   twitter: {

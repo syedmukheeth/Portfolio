@@ -3,7 +3,7 @@ import { PROJECTS } from '@/lib/data';
 
 export async function GET() {
   const markdown = `
-# SYED MUKHEETH | SOFTWARE ENGINEER
+# SYED ABDUL MUKHEETH PEER | SOFTWARE ENGINEER
 Engineering scalable systems, distributed mesh networks, and intelligent infrastructure.
 
 ## CORE_IDENTITY

@@ -10,7 +10,7 @@ export function buildJsonLd() {
         "@type": "Person",
         "@id": PERSON_ID,
         name: PROFILE.name,
-        alternateName: ["Syed Mukheeth", "Abdul Mukheeth"],
+        alternateName: ["Syed Abdul Mukheeth", "Syed Mukheeth", "Abdul Mukheeth"],
         url: SITE_URL,
         image: PROFILE.avatar,
         jobTitle: PROFILE.role,
@@ -39,7 +39,7 @@ export function buildJsonLd() {
             name: "Who is Syed Mukheeth?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Syed Abdul Mukheeth (also known as Syed Mukheeth) is a software engineering student and engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He has built projects including SAM Compiler (a distributed cloud IDE), SAMIndex (an AI-powered repository intelligence platform), and PeerNet (a real-time social networking platform). He is actively seeking full-time and internship roles in software engineering.",
+              text: "Syed Abdul Mukheeth Peer (also known as Syed Mukheeth) is a software engineering student and engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He has built projects including SAM Compiler (a distributed cloud IDE) and PeerNet (a real-time social networking platform). He is actively seeking full-time and internship roles in software engineering.",
             },
           },
           {
@@ -47,7 +47,7 @@ export function buildJsonLd() {
             name: "What has Syed Mukheeth built?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Syed Mukheeth has built SAM Compiler (a distributed cloud IDE with Docker sandboxing and real-time collaboration), SAMIndex (an AI-powered GitHub repository analysis engine using OpenAI and Redis), PeerNet (a Kafka-powered real-time social platform), and the SJDC Academic Platform (a modernized institutional system using Next.js and Supabase).",
+              text: "Syed Mukheeth has built SAM Compiler (a distributed cloud IDE with Docker sandboxing and real-time collaboration) and PeerNet (a Kafka-powered real-time social platform).",
             },
           },
           {
@@ -55,7 +55,7 @@ export function buildJsonLd() {
             name: "What technologies does Syed Mukheeth use?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Syed Mukheeth works primarily with TypeScript, Node.js, React, Docker, Redis, Kafka, BullMQ, MongoDB, PostgreSQL, Supabase, Socket.IO, WebSockets, CRDT/Yjs, and OpenAI APIs.",
+              text: "Syed Mukheeth works primarily with TypeScript, Node.js, React, Docker, Redis, Kafka, BullMQ, MongoDB, PostgreSQL, Supabase, Socket.IO, WebSockets, and CRDT/Yjs.",
             },
           },
         ],

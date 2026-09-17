@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Globe } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { Chip } from "@/components/ui/chip";
-import { posterFor, type Project } from "@/lib/data";
+import type { Project } from "@/lib/data";
 
 const MAX_CHIPS = 3;
 
@@ -32,7 +32,6 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
 
 export function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
   const href = `/projects/${project.id}`;
-  const poster = posterFor(project);
   const extra = project.stack.length - MAX_CHIPS;
 
   return (
@@ -45,17 +44,15 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
         style={{ backgroundImage: `linear-gradient(135deg, ${project.tint[0]}, ${project.tint[1]})` }}
       >
         <div aria-hidden className="dot-grid absolute inset-0 opacity-40 mix-blend-overlay" />
-        {poster && (
-          <Image
-            src={poster}
-            alt=""
-            width={1200}
-            height={675}
-            priority={priority}
-            unoptimized
-            className="absolute -right-10 -bottom-8 w-[88%] rounded-lg border-4 border-white/30 shadow-2xl shadow-black/30 transition-transform duration-300 ease-out group-hover:-translate-x-2 group-hover:-translate-y-2"
-          />
-        )}
+        <Image
+          src={project.thumbnail}
+          alt=""
+          width={1440}
+          height={900}
+          priority={priority}
+          unoptimized
+          className="absolute top-10 left-10 w-[92%] max-w-none rounded-lg border-4 border-white/25 shadow-2xl shadow-black/40 transition-transform duration-300 ease-out group-hover:-translate-x-1.5 group-hover:-translate-y-1.5"
+        />
       </Link>
 
       <div className="mt-4 flex items-start justify-between gap-3">

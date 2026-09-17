@@ -1,4 +1,4 @@
-# Syed Abdul Mukheeth — Portfolio
+# Syed Abdul Mukheeth Peer — Portfolio
 
 A minimal, document-style portfolio. Built with Next.js 16 (App Router), React 19 and Tailwind CSS v4.
 
@@ -23,5 +23,7 @@ npm run dev
 npm run build
 npm run lint
 ```
+
+Project thumbnails in `public/projects` are 1440×900 screenshots of the live sites. The header banner is a free Unsplash photo by Zeg Young.
 
 GitHub contributions are fetched from `github-contributions-api.jogruber.de` and cached for 24 hours. If the request fails, the section is hidden.
