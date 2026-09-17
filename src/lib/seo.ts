@@ -12,7 +12,7 @@ export function buildJsonLd() {
         name: PROFILE.name,
         alternateName: ["Syed Abdul Mukheeth", "Syed Mukheeth", "Abdul Mukheeth"],
         url: SITE_URL,
-        image: PROFILE.avatar,
+        image: `${SITE_URL}${PROFILE.avatar}`,
         jobTitle: PROFILE.role,
         description: PROFILE.description,
         email: `mailto:${PROFILE.email}`,

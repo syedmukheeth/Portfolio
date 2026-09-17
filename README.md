@@ -24,6 +24,6 @@ npm run build
 npm run lint
 ```
 
-Project thumbnails in `public/projects` are 1440×900 screenshots of the live sites. The header banner is a free Unsplash photo by Zeg Young.
+Project thumbnails in `public/projects` are 1440×900 screenshots of the live sites. Profile photos live in `public/images`; the favicon is `src/app/icon.png`.
 
 GitHub contributions are fetched from `github-contributions-api.jogruber.de` and cached for 24 hours. If the request fails, the section is hidden.

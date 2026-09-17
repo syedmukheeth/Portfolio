@@ -11,21 +11,13 @@ function Banner() {
         fill
         priority
         unoptimized
-        className="object-cover object-[50%_40%]"
+        className="object-cover object-[50%_60%]"
       />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-black/25" />
-      <p className="absolute top-3 left-4 font-mono text-[11px] text-white/80 sm:top-4">~/{PROFILE.github}</p>
-      <p className="absolute right-4 bottom-3 font-mono text-[11px] text-white/80 sm:bottom-4">
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/35" />
+      <p className="absolute top-3 left-4 font-mono text-[11px] text-white/85 sm:top-4">~/{PROFILE.github}</p>
+      <p className="absolute right-4 bottom-4 hidden font-mono text-[11px] text-white/85 sm:block">
         {PROFILE.coordinates}
       </p>
-      <a
-        href={BANNER.creditHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute bottom-3 left-4 font-mono text-[10px] text-white/50 transition-colors hover:text-white sm:bottom-4"
-      >
-        Photo · {BANNER.credit} / Unsplash
-      </a>
     </div>
   );
 }

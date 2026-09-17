@@ -27,9 +27,6 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const avatar = (width: number) =>
-  `https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_${width}/avatar_kyjo2q.png`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -39,14 +36,6 @@ export const metadata: Metadata = {
   description: PROFILE.description,
   keywords: ["Syed Abdul Mukheeth Peer", "Syed Abdul Mukheeth", "Syed Mukheeth", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
   authors: [{ name: PROFILE.name, url: SITE_URL }],
-  icons: {
-    icon: [
-      { url: avatar(32), type: "image/png" },
-      { url: avatar(128), type: "image/png", rel: "icon" },
-    ],
-    shortcut: avatar(192),
-    apple: avatar(180),
-  },
   openGraph: {
     title: `${PROFILE.name} | ${PROFILE.role}`,
     description: PROFILE.description,

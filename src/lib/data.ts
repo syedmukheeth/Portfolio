@@ -35,19 +35,16 @@ export const PROFILE = {
   availability: "Open to work",
   email: "syedmukheeth09@gmail.com",
   resume: "https://drive.google.com/file/d/1SMFd_ADTNeYjBQ-6IH7RHT_UzzAPrTBy/view?usp=sharing",
-  avatar: "https://res.cloudinary.com/dcqbcjrsp/image/upload/f_auto,q_auto,w_320/avatar_kyjo2q.png",
+  avatar: "/images/avatar.jpg",
   github: "syedmukheeth",
   twitter: "@syed_mukheeth",
   description:
     "Software engineering student building high-performance backend systems, distributed architecture, and real-time infrastructure. Creator of SAM Compiler and PeerNet.",
 };
 
-/** Header banner. Free under the Unsplash License; served from Unsplash's CDN as they recommend. */
 export const BANNER = {
-  src: "https://images.unsplash.com/photo-1741926677837-8dcaf4391dbe?w=1600&q=80&auto=format&fit=crop",
-  alt: "Mountains under a cloudy sky over dark water",
-  credit: "Zeg Young",
-  creditHref: "https://unsplash.com/photos/mountains-loom-under-a-cloudy-sky-over-dark-water-ZkakvSQRFzw",
+  src: "/images/banner.jpg",
+  alt: "Syed Mukheeth under a stone archway",
 };
 
 export interface Social {
