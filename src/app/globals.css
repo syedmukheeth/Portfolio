@@ -1,236 +1,96 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #000000;
-  --foreground: #FFFFFF;
-  --accent: #FF4D00;
-  --secondary: #888888;
-  --graphite: #050505;
-  --font-inter: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --bg: #fafaf9;
+  --fg: #0a0a0a;
+  --muted: #6b6b6b;
+  --faint: #a3a3a3;
+  --line: #e2e2e0;
+  --surface: #f2f2f0;
+  --live: #16a34a;
 }
 
-[data-mode="machine"] {
-  --background: #000000;
-  --foreground: #FF4D00;
-  --accent: #FF4D00;
-  --secondary: #FF4D00;
+.dark {
+  --bg: #0f0e0e;
+  --fg: #fafafa;
+  --muted: #a1a1a1;
+  --faint: #525252;
+  --line: #272727;
+  --surface: #161515;
+  --live: #22c55e;
 }
 
-html,
-body,
-#root {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) var(--background);
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-live: var(--live);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --animate-rise: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
 }
 
-/* Premium Focus State */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  ::selection {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-.hero-heading {
-  background: linear-gradient(180deg, #FFFFFF 0%, #BBCCD7 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  transition: background 0.5s ease, filter 0.5s ease;
-}
-
-[data-mode="machine"] .hero-heading {
-  background: linear-gradient(180deg, #FF4D00 0%, #CC3D00 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
-
-.dot-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-[data-mode="machine"] .dot-grid {
-  background-image: radial-gradient(rgba(255, 77, 0, 0.05) 1px, transparent 1px);
-}
-
-.scanline {
-  width: 100%;
-  height: 100px;
-  z-index: 100;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0) 100%);
-  opacity: 0.1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  will-change: transform;
-  animation: scanline 8s linear infinite;
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); opacity: 0; }
-  5% { opacity: 0.5; }
-  95% { opacity: 0.5; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  contain: layout paint;
-}
-
-.glass-heavy {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  contain: layout paint;
-}
-
-/* Glass Shine Animation - GPU Accelerated */
-.glass-shine {
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-shine::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.03) 30%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.03) 70%,
-    transparent 100%
-  );
-  transform: rotate(-45deg);
-  pointer-events: none;
-  will-change: transform;
-  animation: shine 6s infinite linear;
-}
-
-@keyframes shine {
-  0% { transform: translate3d(-30%, -30%, 0) rotate(-45deg); }
-  100% { transform: translate3d(30%, 30%, 0) rotate(-45deg); }
-}
-
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes text-shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-.mono {
-  font-family: var(--font-mono);
-}
-
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.015;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEV0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHT3OInmAAAABnRSTlMAAAAAAAAAY8v7VQAAAEhJREFUeNpjYGRkZGJmYWVjZ2Dk4OTi5uHl4+XjFxAUEhYRFRIWERUTFRMVExUTFRMVExUTFRMVExUTFRMVExUTFRMVExUTFRP9BwADmQA39v5iAAAAAElFTkSuQmCC");
-  background-repeat: repeat;
-  will-change: transform;
-}
-
-.topology-bg {
-  mask-image: radial-gradient(circle at center, black, transparent 80%);
-  contain: strict;
-}
-
-.mesh-grid {
-  background-image:
-    linear-gradient(rgba(255, 77, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 77, 0, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-/* 🎨 GPU ACCELERATION */
-html, body {
-  overflow-x: hidden;
-  overscroll-behavior-y: none; /* Prevent scroll bounce conflicts with Lenis */
-}
-
-/* GPU accelerate and ensure layout stability */
-.hero-heading, .glass, .glass-heavy, .video-wrapper {
-  will-change: transform, opacity;
-}
-
-.video-wrapper {
-  will-change: transform;
-  transform: translateZ(0);   /* Force GPU layer */
-  contain: layout paint;      /* Isolate repaint */
-  background: #000;           /* Solid background to prevent flickering */
-}
-
-video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 16 / 9;      /* Reserve space to prevent CLS */
-  object-fit: cover;
-  background: #000;           /* Prevent flickering during buffer resets */
-  will-change: transform;     /* Force GPU */
-  transform: translateZ(0); 
-}
-
-/* Ensure wrappers don't collapse */
-.video-wrapper {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  position: relative;
-  background: #000;
-}
-
-/* CUSTOM SCROLLBAR FIX FOR SMOOTHNESS */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@utility dot-grid {
+  background-image: radial-gradient(color-mix(in oklab, var(--fg) 22%, transparent) 1px, transparent 1px);
+  background-size: 14px 14px;
 }

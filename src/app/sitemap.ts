@@ -1,36 +1,17 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { PROJECTS, SITE_URL } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+
   return [
-    {
-      url: 'https://www.syedmukheeth.is-a.dev',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: 'https://www.syedmukheeth.is-a.dev/projects/sam-compiler',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+    { url: SITE_URL, lastModified, changeFrequency: "monthly", priority: 1 },
+    { url: `${SITE_URL}/projects`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    ...PROJECTS.map((p) => ({
+      url: `${SITE_URL}/projects/${p.id}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.9,
-    },
-    {
-      url: 'https://www.syedmukheeth.is-a.dev/projects/sam-index',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://www.syedmukheeth.is-a.dev/projects/peer-net',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://www.syedmukheeth.is-a.dev/projects/sjdc-modernization',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-  ]
+    })),
+  ];
 }

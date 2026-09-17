@@ -1,39 +1,27 @@
-# Engineering Portfolio v4.2.1-STABLE
+# Syed Abdul Mukheeth — Portfolio
 
-A high-performance, system-architected portfolio designed for the "Systems Thinker". Built with Next.js 15, React 19, and Framer Motion.
+A minimal, document-style portfolio. Built with Next.js 16 (App Router), React 19 and Tailwind CSS v4.
 
-### 🚀 Technical Highlights
-- **Framework**: Next.js 15 (App Router) + React 19.
-- **Performance**: 
-  - `95+` Lighthouse score (Targeted).
-  - **Dynamic Hydration**: Critical components like Modals, HUDs, and Footers are lazy-loaded via `next/dynamic`.
-  - **Media Pipeline**: Cloudinary-backed `LazyVideo` with intersection-observer logic and auto-fallback for range-request (416) errors.
-  - **Zero-Shift UX**: Skeleton states and aspect-ratio locking for all visual assets.
-- **Security**: Supabase RLS (Row Level Security) and isolated Docker-sandbox patterns (demonstrated in SAM-Compiler).
-- **Architecture**: Event-driven event meshes using Kafka and Redis (demonstrated in PeerNet).
+## Structure
 
-## 🛠 Features
+- `src/lib/data.ts` — all content: profile, socials, skills, projects and case-study copy
+- `src/app/page.tsx` — home: header, about, contact, projects, tech stack, GitHub activity
+- `src/app/projects/[slug]` — case-study pages, statically generated from `PROJECTS`
+- `src/components/site` — navbar, footer, theme toggle, dashed rules
+- `src/proxy.ts` + `src/app/api/ai-markdown` — markdown version of the profile for AI crawlers
 
-- **Dual-Mode Interface**: Switch between "Human" (Visual/Aesthetic) and "Machine" (Technical/Metadata) modes.
-- **Zero-Latency Video**: Optimized Cloudinary pipeline with Intersection Observer lazy-loading.
-- **Floating Island Navigation**: Responsive, z-index managed mobile navigation.
-- **System HUD**: Real-time status indicators and system health monitoring.
-- **Dynamic Projects Section**: Fully data-driven project architecture with architecture diagrams.
+To add a project, append an entry to `PROJECTS` in `src/lib/data.ts`. The home grid, `/projects`, the case-study page, sitemap and JSON-LD pick it up automatically.
 
-## 📦 Installation
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## 🏗 Build & Deploy
-
 ```bash
 npm run build
+npm run lint
 ```
-The project is optimized for deployment on Vercel with automated build pipeline stability.
 
-## 📝 License
-
-Designed and Engineered by Syed Mukheeth.
+GitHub contributions are fetched from `github-contributions-api.jogruber.de` and cached for 24 hours. If the request fails, the section is hidden.
