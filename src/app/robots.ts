@@ -3,13 +3,13 @@ import { MetadataRoute } from 'next'
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // All crawlers — full access
+      // All crawlers: full access
       {
         userAgent: '*',
         allow: '/',
         crawlDelay: 1,
       },
-      // AI crawlers — explicit allow, no delay
+      // AI crawlers: explicit allow, no delay
       { userAgent: 'GPTBot', allow: '/' },
       { userAgent: 'ClaudeBot', allow: '/' },
       { userAgent: 'Claude-Web', allow: '/' },

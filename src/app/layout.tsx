@@ -30,7 +30,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${PROFILE.name} | ${PROFILE.role} — ${PROFILE.focus}`,
+    default: `${PROFILE.name} | ${PROFILE.role} · ${PROFILE.focus}`,
     template: `%s | ${PROFILE.name}`,
   },
   description: PROFILE.description,
