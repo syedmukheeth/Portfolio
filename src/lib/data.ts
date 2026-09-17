@@ -26,7 +26,7 @@ export const SITE_URL = "https://www.syedmukheeth.is-a.dev";
 
 export const PROFILE = {
   name: "Syed Abdul Mukheeth Peer",
-  shortName: "Syed",
+  shortName: "Syed Mukheeth",
   role: "Software Engineer",
   focus: "Backend & Distributed Systems",
   location: "Kurnool, India",
