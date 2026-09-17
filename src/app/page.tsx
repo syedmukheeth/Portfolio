@@ -1,6 +1,7 @@
 import { About } from "@/components/home/about";
 import { Contact } from "@/components/home/contact";
 import { Cta } from "@/components/home/cta";
+import { Experience } from "@/components/home/experience";
 import { GitHubActivity } from "@/components/home/github-activity";
 import { Header } from "@/components/home/header";
 import { Projects } from "@/components/home/projects";
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Header />
       <About />
+      <Experience />
       <Contact />
       <Projects />
       <TechStack />

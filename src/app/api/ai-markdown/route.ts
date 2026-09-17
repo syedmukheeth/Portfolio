@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { PROJECTS } from '@/lib/data';
+import { EXPERIENCE, PROJECTS } from '@/lib/data';
 
 export async function GET() {
   const markdown = `
@@ -12,6 +12,10 @@ Engineering scalable systems, distributed mesh networks, and intelligent infrast
 - **Location**: Kurnool, Andhra Pradesh
 - **Mission**: Deconstruct complex systems to build intuitive, high-performance solutions.
 - **Availability**: Open for Software Developer roles and Engineering Internships.
+- **Founder**: SAMPeer Studio (https://sampeer-studio.vercel.app)
+
+## EXPERIENCE
+${EXPERIENCE.map(e => `- **${e.role}**, ${e.company} (${e.type}), ${e.start} - ${e.end ?? 'Present'}, ${e.location}`).join('\n')}
 
 ## SYSTEMS_PROJECTS
 ${PROJECTS.map(p => `

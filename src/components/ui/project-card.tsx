@@ -4,6 +4,7 @@ import { Globe } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { Chip } from "@/components/ui/chip";
 import type { Project } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 const MAX_CHIPS = 3;
 
@@ -30,17 +31,25 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
   );
 }
 
-export function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
+interface ProjectCardProps {
+  project: Project;
+  priority?: boolean;
+  /** Full-width card with a taller preview. */
+  featured?: boolean;
+  className?: string;
+}
+
+export function ProjectCard({ project, priority = false, featured = false, className }: ProjectCardProps) {
   const href = `/projects/${project.id}`;
   const extra = project.stack.length - MAX_CHIPS;
 
   return (
-    <article className="group flex flex-col border-b border-dashed border-line p-3 sm:p-4 md:odd:border-r">
+    <article className={cn("group flex flex-col border-b border-dashed border-line p-3 sm:p-4", className)}>
       <Link
         href={href}
         tabIndex={-1}
         aria-hidden
-        className="relative block h-48 overflow-hidden rounded-md sm:h-56"
+        className={cn("relative block h-48 overflow-hidden rounded-md", featured ? "sm:h-80" : "sm:h-56")}
         style={{ backgroundImage: `linear-gradient(135deg, ${project.tint[0]}, ${project.tint[1]})` }}
       >
         <div aria-hidden className="dot-grid absolute inset-0 opacity-40 mix-blend-overlay" />
@@ -51,7 +60,10 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
           height={900}
           priority={priority}
           unoptimized
-          className="absolute top-10 left-10 w-[92%] max-w-none rounded-lg border-4 border-white/25 shadow-2xl shadow-black/40 transition-transform duration-300 ease-out group-hover:-translate-x-1.5 group-hover:-translate-y-1.5"
+          className={cn(
+            "absolute max-w-none rounded-lg border-4 border-white/25 shadow-2xl shadow-black/40 transition-transform duration-300 ease-out group-hover:-translate-x-1.5 group-hover:-translate-y-1.5",
+            featured ? "top-10 left-[8%] w-[84%] sm:top-12" : "top-10 left-10 w-[92%]",
+          )}
         />
       </Link>
 

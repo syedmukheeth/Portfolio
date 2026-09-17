@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { ProjectCard } from "@/components/ui/project-card";
+import { ProjectGrid } from "@/components/ui/project-grid";
 import { Section } from "@/components/ui/section";
-import { PROJECTS } from "@/lib/data";
 
 export function Projects() {
   return (
@@ -19,10 +18,8 @@ export function Projects() {
         </Link>
       }
     >
-      <div className="grid grid-cols-1 border-t border-dashed border-line md:grid-cols-2">
-        {PROJECTS.map((project, i) => (
-          <ProjectCard key={project.id} project={project} priority={i < 2} />
-        ))}
+      <div className="border-t border-dashed border-line">
+        <ProjectGrid />
       </div>
     </Section>
   );

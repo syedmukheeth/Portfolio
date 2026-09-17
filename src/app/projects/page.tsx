@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Rule } from "@/components/site/rule";
-import { ProjectCard } from "@/components/ui/project-card";
+import { ProjectGrid } from "@/components/ui/project-grid";
 import { PROJECTS } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -16,16 +16,13 @@ export default function ProjectsPage() {
         <p className="font-mono text-xs text-muted">{String(PROJECTS.length).padStart(2, "0")} projects</p>
         <h1 className="mt-2 font-serif text-5xl leading-none tracking-tight">Projects</h1>
         <p className="mt-3 max-w-lg text-[15px] leading-7 text-muted">
-          Systems I&apos;ve designed and built, from sandboxed code execution to event-driven realtime platforms.
+          Things I&apos;ve founded, designed and built, from a growth studio to sandboxed code execution and
+          event-driven realtime platforms.
         </p>
       </header>
       <section aria-label="All projects" className="relative">
         <Rule />
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {PROJECTS.map((project, i) => (
-            <ProjectCard key={project.id} project={project} priority={i < 2} />
-          ))}
-        </div>
+        <ProjectGrid />
       </section>
     </>
   );

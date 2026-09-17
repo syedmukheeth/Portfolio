@@ -1,4 +1,4 @@
-import { PROFILE, PROJECTS, SITE_URL, SKILLS, SOCIALS } from "./data";
+import { PROFILE, PROJECTS, SITE_URL, SKILLS, SOCIALS, STUDIO } from "./data";
 
 const PERSON_ID = `${SITE_URL}/#person`;
 
@@ -16,6 +16,13 @@ export function buildJsonLd() {
         jobTitle: PROFILE.role,
         description: PROFILE.description,
         email: `mailto:${PROFILE.email}`,
+        worksFor: {
+          "@type": "Organization",
+          name: STUDIO.name,
+          url: STUDIO.url,
+          sameAs: [STUDIO.instagram],
+          founder: { "@id": PERSON_ID },
+        },
         knowsAbout: ["Backend Architecture", "Distributed Systems", "Real-time Systems", ...SKILLS.map((s) => s.name)],
         sameAs: SOCIALS.map((s) => s.href),
         mainEntityOfPage: { "@type": "WebPage", "@id": SITE_URL },
@@ -39,7 +46,7 @@ export function buildJsonLd() {
             name: "Who is Syed Mukheeth?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Syed Abdul Mukheeth Peer (also known as Syed Mukheeth) is a software engineering student and engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He has built projects including SAM Compiler (a distributed cloud IDE) and PeerNet (a real-time social networking platform). He is actively seeking full-time and internship roles in software engineering.",
+              text: "Syed Abdul Mukheeth Peer (also known as Syed Mukheeth) is a software engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He is the founder of SAMPeer Studio, which builds storytelling websites, growth systems and AI automation for founders. He has built projects including SAM Compiler (a distributed cloud IDE) and PeerNet (a real-time social networking platform). He is actively seeking full-time and internship roles in software engineering.",
             },
           },
           {
@@ -47,7 +54,7 @@ export function buildJsonLd() {
             name: "What has Syed Mukheeth built?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Syed Mukheeth has built SAM Compiler (a distributed cloud IDE with Docker sandboxing and real-time collaboration) and PeerNet (a Kafka-powered real-time social platform).",
+              text: "Syed Mukheeth founded SAMPeer Studio (storytelling websites, growth systems and AI automation) and has built SAM Compiler (a distributed cloud IDE with Docker sandboxing and real-time collaboration) and PeerNet (a Kafka-powered real-time social platform).",
             },
           },
           {

@@ -27,6 +27,10 @@ export function About() {
       sync and sandboxed code execution.
     </>,
     <>
+      I founded <ProjectLink slug="sampeer-studio">SAMPeer Studio</ProjectLink>, where I build storytelling websites,
+      growth systems and AI automation that help founders get noticed.
+    </>,
+    <>
       Through <ProjectLink slug="sam-compiler">SAM Compiler</ProjectLink> and{" "}
       <ProjectLink slug="peer-net">PeerNet</ProjectLink> I explore high-performance systems, and I&apos;m looking for{" "}
       <Em>full-time or internship roles</Em> to apply them.

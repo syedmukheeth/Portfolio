@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { Database, Layers } from "lucide-react";
+import { Briefcase, Database, Layers, PenLine, Sparkles } from "lucide-react";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import {
   SiApachekafka,
@@ -39,7 +39,7 @@ export const PROFILE = {
   github: "syedmukheeth",
   twitter: "@syed_mukheeth",
   description:
-    "Software engineering student building high-performance backend systems, distributed architecture, and real-time infrastructure. Creator of SAM Compiler and PeerNet.",
+    "Software engineer building high-performance backend systems, distributed architecture, and real-time infrastructure. Founder of SAMPeer Studio and creator of SAM Compiler and PeerNet.",
 };
 
 export const BANNER = {
@@ -59,7 +59,79 @@ export const SOCIALS: Social[] = [
   { label: "X", href: "https://x.com/syed_mukheeth", icon: FaXTwitter },
 ];
 
-export const SKILL_CATEGORIES = ["Languages", "Frontend", "Backend", "Infra", "Database"] as const;
+export interface ExperienceDocument {
+  label: string;
+  src: string;
+  thumb: string;
+}
+
+export interface Experience {
+  role: string;
+  company: string;
+  type: string;
+  start: string;
+  /** Omit for a current role. */
+  end?: string;
+  location: string;
+  icon: Icon;
+  skills?: string[];
+  links?: { label: string; href: string }[];
+  documents?: ExperienceDocument[];
+}
+
+export const STUDIO = {
+  name: "SAMPeer Studio",
+  url: "https://sampeer-studio.vercel.app",
+  instagram: "https://www.instagram.com/sampeer.studio/",
+};
+
+export const EXPERIENCE: Experience[] = [
+  {
+    role: "Founder & Full Stack Developer",
+    company: STUDIO.name,
+    type: "Self-employed",
+    start: "Jul 2026",
+    location: "Remote",
+    icon: Sparkles,
+    skills: ["Storytelling Websites", "Growth Systems", "AI Automation", "Founder Branding"],
+    links: [
+      { label: "Website", href: STUDIO.url },
+      { label: "Instagram", href: STUDIO.instagram },
+    ],
+  },
+  {
+    role: "Full Stack Developer",
+    company: "Freelance",
+    type: "Self-employed",
+    start: "May 2026",
+    location: "Remote",
+    icon: Briefcase,
+  },
+  {
+    role: "Web Content Writer",
+    company: "Fleckor Tech",
+    type: "Internship",
+    start: "Aug 2025",
+    end: "Sep 2025",
+    location: "Hyderabad, India · Remote",
+    icon: PenLine,
+    skills: ["Search Engine Optimization (SEO)", "Web Content Writing"],
+    documents: [
+      {
+        label: "Certificate of Internship",
+        src: "/experience/fleckor-certificate.jpg",
+        thumb: "/experience/fleckor-certificate-thumb.jpg",
+      },
+      {
+        label: "Letter of Recommendation",
+        src: "/experience/fleckor-recommendation.jpg",
+        thumb: "/experience/fleckor-recommendation-thumb.jpg",
+      },
+    ],
+  },
+];
+
+export const SKILL_CATEGORIES =["Languages", "Frontend", "Backend", "Infra", "Database"] as const;
 export type SkillCategory = (typeof SKILL_CATEGORIES)[number];
 
 export interface Skill {
@@ -137,6 +209,76 @@ export function posterFor(project: Project, second = 3): string | undefined {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    id: "sampeer-studio",
+    title: "SAMPeer Studio",
+    tagline: "Storytelling Websites, Growth Systems & AI Automation",
+    role: "Founder & Full Stack Developer",
+    description: "Founded a studio that helps startups and founders get noticed, with storytelling websites, AI-powered growth systems, founder branding and automation.",
+    fullOverview: "SAMPeer Studio helps founders build companies people notice, remember and trust. It runs three systems that stand alone and compound together: a storytelling website that earns belief, a growth system that turns that belief into booked calls, and a founder brand that opens doors before the founder knocks.",
+    architecture: {
+      nodes: ["Storytelling Website", "Lead Capture", "AI Qualification", "CRM", "Follow-up", "Booked Call"],
+      flow: ["Lead Capture", "Invoicing", "Cold Outreach", "Reporting"],
+    },
+    stats: [
+      { label: "Live client sites", value: "6" },
+      { label: "Automations", value: "16" },
+      { label: "Founded", value: "Jul 2026" },
+    ],
+    stack: ["Next.js", "React", "Tailwind CSS", "Lenis", "AI Automation"],
+    features: [
+      "Storytelling brand websites",
+      "Lead capture with AI qualification",
+      "CRM sync and automated follow-up",
+      "Automated invoicing and reconciliation",
+      "Personalized cold outreach",
+      "Live reporting dashboards"
+    ],
+    challenges: [
+      "Turning a good product into the obvious choice",
+      "Wiring capture, qualification and booking into one engine",
+      "Replacing manual follow-up and month-end work with automation"
+    ],
+    demonstrates: [
+      "Entrepreneurship",
+      "Product Engineering",
+      "Growth Automation",
+      "AI Workflows"
+    ],
+    sections: [
+      {
+        title: "The problem",
+        body: "Most startups don't fail, they go unnoticed. The product is good, but nobody has heard of it, nobody remembers it and nobody has a reason to trust it yet.",
+      },
+      {
+        title: "The approach",
+        body: "Three systems with one job: make a founder impossible to overlook. Each works alone; run together they compound.",
+        points: [
+          { title: "Storytelling Website", body: "Not a template. A site that carries the founder's vision and earns trust before the first call." },
+          { title: "Growth System", body: "Capture, CRM, AI qualification, follow-up and booking wired into one engine." },
+          { title: "Founder Brand", body: "Presence and authority that pull opportunities toward the founder." },
+          { title: "Automation Lab", body: "Lead capture, invoicing, cold outreach and reporting workflows that run without someone remembering." },
+        ],
+      },
+      {
+        title: "Client work",
+        body: "Six live client sites across construction, hospitality, fitness, law, healthcare and personal branding.",
+        points: [
+          { title: "ASRG Construction", body: "Construction & Civil, Kurnool. Brand site for a 46-year civil contracting firm." },
+          { title: "Aurum Resorts", body: "Luxury Hospitality, Maldives. A private-island resort experience." },
+          { title: "LIFT-X", body: "Fitness, Kurnool. A premium unisex gym site." },
+          { title: "Vantara & Rao", body: "Corporate Law, Hyderabad. A law firm positioned as a strategic partner." },
+          { title: "NovaCare Medical Center", body: "Healthcare, Hyderabad. A multi-specialty hospital site." },
+          { title: "Uniquirk Solutions", body: "Personal Branding, B2B. LinkedIn authority engineering for CXOs." },
+        ],
+      },
+    ],
+    thumbnail: "/projects/sampeer-studio.webp",
+    tint: ["#7C3AED", "#1E1B4B"],
+    category: "BusinessApplication",
+    keywords: "storytelling websites, growth systems, AI automation, founder branding, web studio",
+    demo: STUDIO.url,
+  },
   {
     id: "sam-compiler",
     title: "SAM Compiler",
