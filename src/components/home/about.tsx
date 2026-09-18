@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Tag } from "@/components/ui/tag";
 import { LOKHA, PROFILE, STUDIO } from "@/lib/data";
 
 function Strong({ children }: { children: React.ReactNode }) {
@@ -24,7 +23,13 @@ const FACTS: { label: string; value: string; href?: string }[] = [
   { label: "Focus", value: "Backend and distributed systems" },
 ];
 
-const MARKETING_TOPICS = ["SEO & content", "Personal branding", "Positioning & messaging", "Growth & distribution"];
+/** Each topic paired with the job it does for a product, in the order a product meets its audience. */
+const MARKETING_TOPICS = [
+  { topic: "SEO & content", role: "Getting found" },
+  { topic: "Positioning & messaging", role: "Being understood" },
+  { topic: "Personal branding", role: "Earning trust" },
+  { topic: "Growth & distribution", role: "Reaching people" },
+];
 
 export function About() {
   return (
@@ -60,17 +65,18 @@ export function About() {
               </p>
             </div>
 
-            <aside aria-labelledby="learning-title" className="mt-10 rounded-xl border border-line bg-surface p-6 sm:p-8">
-              <p className="inline-flex items-center gap-2 text-sm text-muted">
-                <span aria-hidden className="size-2 rounded-full bg-accent ring-4 ring-accent/15" />
-                Now learning
-              </p>
-              <h3 id="learning-title" className="mt-3 text-xl font-semibold tracking-tight">
+            <aside aria-labelledby="learning-title" className="mt-12 border-t border-line pt-10">
+              <p className="font-mono text-xs tracking-[0.08em] text-muted uppercase">Learning in public</p>
+              <h3 id="learning-title" className="mt-3 text-2xl font-semibold tracking-tight">
                 Tech marketing
+                <span
+                  aria-hidden
+                  className="caret ml-1.5 inline-block h-[0.85em] w-[0.42em] translate-y-[0.1em] rounded-[1px] bg-accent-text"
+                />
               </h3>
-              <p className="mt-2 max-w-[60ch] text-[15px] leading-7 text-muted">
-                I&apos;m early in my tech marketing journey and all in on it. I&apos;m studying how technical products get
-                found, understood and trusted. I practice in public on LinkedIn, where{" "}
+              <p className="mt-3 max-w-[60ch] text-[15px] leading-7 text-muted">
+                I&apos;m early in my tech marketing journey and all in on it. I&apos;m studying how technical products reach
+                the right people, and I practice in public on LinkedIn, where{" "}
                 <a
                   href={PROFILE.linkedin}
                   target="_blank"
@@ -79,15 +85,20 @@ export function About() {
                 >
                   {PROFILE.linkedinFollowers} people
                 </a>{" "}
-                follow along, and bring what I learn into the growth systems I build for founders.
+                follow along. What I learn goes straight into the growth systems I build for founders.
               </p>
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {MARKETING_TOPICS.map((topic) => (
-                  <li key={topic}>
-                    <Tag className="h-7 text-sm">{topic}</Tag>
+              <ol className="mt-8 border-b border-line">
+                {MARKETING_TOPICS.map(({ topic, role }, i) => (
+                  <li
+                    key={topic}
+                    className="grid grid-cols-[2.25rem_1fr] items-baseline gap-x-3 border-t border-line py-4 sm:grid-cols-[2.25rem_1fr_auto]"
+                  >
+                    <span className="font-mono text-xs text-faint tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="text-[15px] font-medium">{topic}</span>
+                    <span className="col-start-2 mt-0.5 text-sm text-muted sm:col-start-auto sm:mt-0">{role}</span>
                   </li>
                 ))}
-              </ul>
+              </ol>
             </aside>
           </div>
 
