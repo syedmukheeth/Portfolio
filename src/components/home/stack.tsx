@@ -36,7 +36,7 @@ export function Stack() {
                         <span
                           id={tipId}
                           role="tooltip"
-                          className="pointer-events-none absolute bottom-full left-0 z-10 mb-2 translate-y-1 rounded-md border border-line bg-elevated px-2 py-1 text-xs whitespace-nowrap text-muted opacity-0 shadow-lg shadow-black/20 transition duration-[var(--dur-micro)] group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0"
+                          className="pointer-events-none absolute bottom-full left-0 z-10 mb-2 translate-y-1 pointer-coarse:hidden rounded-md border border-line bg-elevated px-2 py-1 text-xs whitespace-nowrap text-muted opacity-0 shadow-lg shadow-black/20 transition duration-[var(--dur-micro)] group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0"
                         >
                           Used in {usedIn.join(", ")}
                         </span>

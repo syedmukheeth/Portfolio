@@ -234,7 +234,7 @@ export function CommandPalette() {
       }}
       onClose={() => returnFocus.current?.focus({ preventScroll: true })}
       onClick={(event) => event.target === event.currentTarget && close()}
-      className="overlay mx-auto mt-[12vh] w-[min(36rem,calc(100vw-2rem))] max-w-none overflow-hidden rounded-xl border border-line bg-surface p-0 text-fg shadow-2xl shadow-black/40"
+      className="overlay mx-auto mt-[8vh] w-[min(36rem,calc(100vw-2rem))] max-w-none sm:mt-[12vh] overflow-hidden rounded-xl border border-line bg-surface p-0 text-fg shadow-2xl shadow-black/40"
     >
       <div className="flex items-center gap-3 border-b border-line px-4">
         <Search className="size-4 shrink-0 text-muted" aria-hidden />
@@ -253,9 +253,17 @@ export function CommandPalette() {
           aria-activedescendant={active ? `${listId}-${active.id}` : undefined}
           aria-label="Search sections, projects and actions"
           placeholder="Search or jump to..."
-          className="h-12 flex-1 bg-transparent text-[15px] outline-none placeholder:text-muted"
+          className="h-12 min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-muted sm:text-[15px]"
         />
-        <kbd className="rounded-md border border-line bg-elevated px-1.5 font-mono text-[11px] leading-5 text-muted">esc</kbd>
+        {/* A button, not just a hint: touch has no Escape key. */}
+        <button
+          type="button"
+          onClick={close}
+          aria-label="Close"
+          className="press shrink-0 rounded-md border border-line bg-elevated px-1.5 font-mono text-[11px] leading-5 text-muted hover:text-fg pointer-coarse:px-2.5 pointer-coarse:py-1"
+        >
+          esc
+        </button>
       </div>
 
       <div id={listId} role="listbox" aria-label="Results" className="max-h-[min(24rem,60vh)] overflow-y-auto p-2">
@@ -282,7 +290,7 @@ export function CommandPalette() {
                   onPointerMove={() => setActiveIndex(index)}
                   onClick={() => run(command)}
                   className={cn(
-                    "flex cursor-pointer items-center gap-3 rounded-lg px-2.5 py-2 text-sm",
+                    "flex cursor-pointer items-center gap-3 rounded-lg px-2.5 py-2 text-sm pointer-coarse:py-3",
                     selected ? "bg-elevated text-fg" : "text-muted",
                   )}
                 >
@@ -296,7 +304,7 @@ export function CommandPalette() {
         ))}
       </div>
 
-      <div aria-hidden className="flex items-center gap-4 border-t border-line px-4 py-2.5 text-xs text-muted">
+      <div aria-hidden className="flex items-center gap-4 border-t border-line px-4 py-2.5 text-xs text-muted pointer-coarse:hidden">
         <span className="flex items-center gap-1">
           <Kbd>↑</Kbd>
           <Kbd>↓</Kbd> to move

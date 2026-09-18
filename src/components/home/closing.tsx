@@ -9,7 +9,7 @@ export function Closing() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="reveal pt-10 pb-24 md:pb-32">
       <Container>
-        <div className="rounded-xl border border-line bg-surface p-8 sm:p-12 md:p-16">
+        <div className="rounded-xl border border-line bg-surface p-6 min-[375px]:p-8 sm:p-12 md:p-16">
           <h2
             id="contact-title"
             tabIndex={-1}

@@ -156,13 +156,14 @@ export default async function ProjectPage({ params }: Props) {
           </div>
 
           <dl
-            className="enter grid grid-cols-3 gap-4 border-t border-line pt-6 md:col-span-4 md:grid-cols-1 md:gap-5 md:border-t-0 md:border-l md:pt-0 md:pl-8"
+            className="enter grid gap-3 border-t border-line pt-6 sm:grid-cols-3 sm:gap-4 md:col-span-4 md:grid-cols-1 md:gap-5 md:border-t-0 md:border-l md:pt-0 md:pl-8"
             style={step(2)}
           >
+            {/* Phones: one "label ... value" row per stat, since three columns can't fit "Kafka-Native". */}
             {project.stats.map(({ label, value }) => (
-              <div key={label}>
-                <dd className="text-xl font-semibold tracking-tight tabular-nums sm:text-2xl">{value}</dd>
-                <dt className="mt-0.5 text-sm text-muted">{label}</dt>
+              <div key={label} className="flex flex-row-reverse items-baseline justify-between gap-4 sm:block">
+                <dd className="text-lg font-semibold tracking-tight tabular-nums sm:text-2xl">{value}</dd>
+                <dt className="text-sm text-muted sm:mt-0.5">{label}</dt>
               </div>
             ))}
           </dl>

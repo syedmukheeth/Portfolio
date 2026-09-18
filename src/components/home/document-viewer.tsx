@@ -24,11 +24,11 @@ export function DocumentViewer({ documents }: { documents: ExperienceDocument[] 
 
   return (
     <>
-      <ul className="mt-5 flex flex-wrap gap-3">
+      <ul className="mt-5 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
         {documents.map((d, i) => (
           <li key={d.src}>
-            <button type="button" onClick={() => open(i)} className="press group block w-44 text-left">
-              <span className="block h-28 overflow-hidden rounded-lg border border-line bg-surface">
+            <button type="button" onClick={() => open(i)} className="press group block w-full text-left sm:w-44">
+              <span className="block aspect-[11/7] overflow-hidden rounded-lg border border-line bg-surface">
                 {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static thumbnail */}
                 <img
                   src={d.thumb}

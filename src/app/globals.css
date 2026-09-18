@@ -68,13 +68,17 @@
     color-scheme: light;
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
   }
 
   html.dark {
     color-scheme: dark;
   }
 
+  /* clip, not hidden: stray overflow can never cause sideways scroll on phones, and
+     unlike hidden it creates no scroll container, so the sticky nav keeps working. */
   body {
+    overflow-x: clip;
     background: var(--bg);
     color: var(--fg);
     font-feature-settings: "ss01", "cv11";
