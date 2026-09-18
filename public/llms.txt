@@ -25,7 +25,7 @@ Twitter/X: https://twitter.com/syed_mukheeth
 - Frontend: React 19, Next.js, Framer Motion, TypeScript
 - AI-Assisted Development: Claude Code, Codex, Antigravity; designs AI workflows and automations
 
-A constant learner, always curious about new things in tech. Currently learning tech marketing: how good products find their audience.
+Currently learning tech marketing (SEO and content, personal branding, positioning and messaging, growth and distribution) and practising in public on LinkedIn.
 Community: nearly 8,800 followers on LinkedIn (https://www.linkedin.com/in/syedmukheeth/).
 
 ## Experience
