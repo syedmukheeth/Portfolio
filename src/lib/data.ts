@@ -33,14 +33,14 @@ export const PROFILE = {
   timezone: "IST",
   availability: "Open to full-time roles",
   /** Hero line. Keep it under 20 words. */
-  intro: "Software engineer building backend and realtime systems. Founder of SAMPeer Studio.",
+  intro: "Software engineer building backend and realtime systems. Tech Lead at Lokha Innovation, founder of SAMPeer Studio.",
   email: "syedmukheeth09@gmail.com",
   resume: "https://drive.google.com/file/d/1SMFd_ADTNeYjBQ-6IH7RHT_UzzAPrTBy/view?usp=sharing",
   avatar: "/images/avatar.jpg",
   github: "syedmukheeth",
   twitter: "@syed_mukheeth",
   description:
-    "Software engineer building high-performance backend systems, distributed architecture, and real-time infrastructure. Founder of SAMPeer Studio and creator of SAM Compiler and PeerNet.",
+    "Software engineer and Tech Lead at Lokha Innovation, building high-performance backend systems, distributed architecture, and real-time infrastructure. Founder of SAMPeer Studio and creator of SAM Compiler and PeerNet.",
 };
 
 export const PORTRAIT = {
@@ -89,6 +89,16 @@ export const STUDIO = {
   instagram: "https://www.instagram.com/sampeer.studio/",
 };
 
+export const LOKHA = {
+  name: "Lokha Innovation",
+  url: "https://lokha.net",
+  linkedin: "https://www.linkedin.com/company/lokha-innovation-ecosystem/",
+  x: "https://x.com/lokhainnovation",
+  instagram: "https://www.instagram.com/lokhainnovation",
+  locality: "Kurnool",
+  region: "Andhra Pradesh",
+};
+
 export const EXPERIENCE: Experience[] = [
   {
     role: "Founder & Full Stack Developer",
@@ -100,6 +110,18 @@ export const EXPERIENCE: Experience[] = [
     links: [
       { label: "Website", href: STUDIO.url },
       { label: "Instagram", href: STUDIO.instagram },
+    ],
+  },
+  {
+    role: "Tech Lead, Website Development",
+    company: LOKHA.name,
+    type: "Full-time",
+    start: "May 2026",
+    location: `${LOKHA.locality}, India`,
+    skills: ["Technical Leadership", "Website Development", "Product Development", "Startup Incubation"],
+    links: [
+      { label: "Website", href: LOKHA.url },
+      { label: "LinkedIn", href: LOKHA.linkedin },
     ],
   },
   {

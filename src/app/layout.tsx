@@ -22,17 +22,20 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+/** Both spellings people search for, exactly, in the first 60 characters. */
+const HOME_TITLE = `${PROFILE.name} (${PROFILE.shortName}) | ${PROFILE.role}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${PROFILE.name} | ${PROFILE.role} · ${PROFILE.focus}`,
+    default: HOME_TITLE,
     template: `%s | ${PROFILE.name}`,
   },
   description: PROFILE.description,
-  keywords: ["Syed Abdul Mukheeth Peer", "Syed Abdul Mukheeth", "Syed Mukheeth", "SAMPeer Studio", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
+  keywords: ["Syed Abdul Mukheeth Peer", "Syed Abdul Mukheeth", "Syed Mukheeth", "Lokha Innovation", "Tech Lead", "Lokha Innovation Tech Lead", "SAMPeer Studio", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
   authors: [{ name: PROFILE.name, url: SITE_URL }],
   openGraph: {
-    title: `${PROFILE.name} | ${PROFILE.role}`,
+    title: HOME_TITLE,
     description: PROFILE.description,
     url: SITE_URL,
     siteName: PROFILE.name,
@@ -44,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${PROFILE.name} | ${PROFILE.role}`,
+    title: HOME_TITLE,
     description: PROFILE.description,
     creator: PROFILE.twitter,
   },

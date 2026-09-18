@@ -1,13 +1,14 @@
 # Syed Abdul Mukheeth Peer | Portfolio
 # https://www.syedmukheeth.is-a.dev
-# Last updated: 2026-09-17
+# Last updated: 2026-09-18
 
 ## Who I Am
 
 Syed Abdul Mukheeth Peer (Syed Mukheeth) is a software engineer based in Kurnool, Andhra Pradesh, India.
 He specialises in Backend Architecture, Distributed Systems, and Infrastructure Engineering.
 He is focused on building scalable systems, distributed mesh networks, and intelligent infrastructure.
-He is the founder of SAMPeer Studio (https://sampeer-studio.vercel.app), which builds storytelling websites, growth systems and AI automation for founders.
+He is Tech Lead (Website Development) at Lokha Innovation (https://lokha.net), a startup incubator in Kurnool, since May 2026.
+He is also the founder of SAMPeer Studio (https://sampeer-studio.vercel.app), which builds storytelling websites, growth systems and AI automation for founders.
 
 Contact: syedmukheeth09@gmail.com
 GitHub: https://github.com/syedmukheeth
@@ -26,6 +27,7 @@ Twitter/X: https://twitter.com/syed_mukheeth
 ## Experience
 
 - Founder & Full Stack Developer, SAMPeer Studio (Jul 2026 - Present, Remote)
+- Tech Lead, Website Development, Lokha Innovation (May 2026 - Present, Kurnool, India) - https://lokha.net
 - Full Stack Developer, Freelance (May 2026 - Present, Remote)
 - Web Content Writer Intern, Fleckor Tech (Aug 2025 - Sep 2025, Hyderabad, Remote)
 

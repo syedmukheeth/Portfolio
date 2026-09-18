@@ -1,31 +1,89 @@
-import { PROFILE, PROJECTS, SITE_URL, SKILLS, SOCIALS, STUDIO } from "./data";
+import { LOKHA, PORTRAIT, PROFILE, PROJECTS, SITE_URL, SKILLS, SOCIALS, STUDIO } from "./data";
 
 const PERSON_ID = `${SITE_URL}/#person`;
+const PROFILE_PAGE_ID = `${SITE_URL}/#profile`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+const LOKHA_ID = `${SITE_URL}/#lokha-innovation`;
 
 export function buildJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      // Site name shown in Google results, with the short form people type.
+      {
+        "@type": "WebSite",
+        "@id": WEBSITE_ID,
+        url: `${SITE_URL}/`,
+        name: PROFILE.name,
+        alternateName: [PROFILE.shortName, PROFILE.github],
+        publisher: { "@id": PERSON_ID },
+        inLanguage: "en",
+      },
+      // Google's profile-page markup: tells search this page is about one person.
+      {
+        "@type": "ProfilePage",
+        "@id": PROFILE_PAGE_ID,
+        url: SITE_URL,
+        name: `${PROFILE.name} (${PROFILE.shortName})`,
+        isPartOf: { "@id": WEBSITE_ID },
+        dateModified: new Date().toISOString(),
+        mainEntity: { "@id": PERSON_ID },
+      },
       {
         "@type": "Person",
         "@id": PERSON_ID,
         name: PROFILE.name,
-        alternateName: ["Syed Abdul Mukheeth", "Syed Mukheeth", "Abdul Mukheeth"],
+        alternateName: ["Syed Mukheeth", "Syed Abdul Mukheeth", "Abdul Mukheeth", "Mukheeth Peer", PROFILE.github],
+        givenName: "Syed Abdul",
+        familyName: "Mukheeth Peer",
         url: SITE_URL,
-        image: `${SITE_URL}${PROFILE.avatar}`,
-        jobTitle: PROFILE.role,
+        image: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}${PORTRAIT.src}`,
+          width: PORTRAIT.width,
+          height: PORTRAIT.height,
+          caption: PROFILE.name,
+        },
+        homeLocation: {
+          "@type": "Place",
+          address: { "@type": "PostalAddress", addressLocality: "Kurnool", addressRegion: "Andhra Pradesh", addressCountry: "IN" },
+        },
+        jobTitle: [PROFILE.role, "Tech Lead"],
         description: PROFILE.description,
         email: `mailto:${PROFILE.email}`,
-        worksFor: {
-          "@type": "Organization",
-          name: STUDIO.name,
-          url: STUDIO.url,
-          sameAs: [STUDIO.instagram],
-          founder: { "@id": PERSON_ID },
-        },
+        worksFor: [
+          { "@id": LOKHA_ID },
+          {
+            "@type": "Organization",
+            name: STUDIO.name,
+            url: STUDIO.url,
+            sameAs: [STUDIO.instagram],
+            founder: { "@id": PERSON_ID },
+          },
+        ],
         knowsAbout: ["Backend Architecture", "Distributed Systems", "Real-time Systems", ...SKILLS.map((s) => s.name)],
         sameAs: SOCIALS.map((s) => s.href),
-        mainEntityOfPage: { "@type": "WebPage", "@id": SITE_URL },
+        mainEntityOfPage: { "@id": PROFILE_PAGE_ID },
+      },
+      {
+        "@type": "Organization",
+        "@id": LOKHA_ID,
+        name: LOKHA.name,
+        url: LOKHA.url,
+        description: "Startup incubator helping founders build, launch and scale through mentorship, incubation and technical support.",
+        sameAs: [LOKHA.linkedin, LOKHA.x, LOKHA.instagram],
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: LOKHA.locality,
+          addressRegion: LOKHA.region,
+          addressCountry: "IN",
+        },
+        employee: {
+          "@type": "OrganizationRole",
+          roleName: "Tech Lead, Website Development",
+          startDate: "2026-05",
+          employee: { "@id": PERSON_ID },
+        },
       },
       ...PROJECTS.map((p) => ({
         "@type": "SoftwareApplication",
@@ -46,7 +104,15 @@ export function buildJsonLd() {
             name: "Who is Syed Mukheeth?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Syed Abdul Mukheeth Peer (also known as Syed Mukheeth) is a software engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He is the founder of SAMPeer Studio, which builds storytelling websites, growth systems and AI automation for founders. He has built projects including SAM Compiler (a distributed cloud IDE) and PeerNet (a real-time social networking platform). He is actively seeking full-time and internship roles in software engineering.",
+              text: "Syed Abdul Mukheeth Peer (also known as Syed Mukheeth) is a software engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He is Tech Lead at Lokha Innovation, a startup incubator in Kurnool, and the founder of SAMPeer Studio, which builds storytelling websites, growth systems and AI automation for founders. He has built projects including SAM Compiler (a distributed cloud IDE) and PeerNet (a real-time social networking platform). He is actively seeking full-time and internship roles in software engineering.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Where does Syed Mukheeth work?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Since May 2026, Syed Mukheeth has been Tech Lead for Website Development at Lokha Innovation (https://lokha.net), a startup incubator in Kurnool, Andhra Pradesh that helps founders build, launch and scale. He also runs SAMPeer Studio, his own growth studio for founders.",
             },
           },
           {

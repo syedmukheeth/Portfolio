@@ -12,6 +12,7 @@ Engineering scalable systems, distributed mesh networks, and intelligent infrast
 - **Location**: Kurnool, Andhra Pradesh
 - **Mission**: Deconstruct complex systems to build intuitive, high-performance solutions.
 - **Availability**: Open for Software Developer roles and Engineering Internships.
+- **Tech Lead**: Lokha Innovation, Website Development (https://lokha.net)
 - **Founder**: SAMPeer Studio (https://sampeer-studio.vercel.app)
 
 ## EXPERIENCE
