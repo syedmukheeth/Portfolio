@@ -1,29 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { CommandPalette } from "@/components/site/command-palette";
 import { Footer } from "@/components/site/footer";
-import { Navbar } from "@/components/site/navbar";
+import { Nav } from "@/components/site/nav";
 import { ThemeProvider } from "@/components/site/theme-provider";
+import { Toaster } from "@/components/site/toaster";
 import { PROFILE, SITE_URL } from "@/lib/data";
 import { buildJsonLd } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
@@ -34,7 +29,7 @@ export const metadata: Metadata = {
     template: `%s | ${PROFILE.name}`,
   },
   description: PROFILE.description,
-  keywords: ["Syed Abdul Mukheeth Peer", "Syed Abdul Mukheeth", "Syed Mukheeth", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
+  keywords: ["Syed Abdul Mukheeth Peer", "Syed Abdul Mukheeth", "Syed Mukheeth", "SAMPeer Studio", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
   authors: [{ name: PROFILE.name, url: SITE_URL }],
   openGraph: {
     title: `${PROFILE.name} | ${PROFILE.role}`,
@@ -74,8 +69,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f0e0e" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f7f8" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0b0c" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -85,7 +80,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={cn(inter.variable, instrumentSerif.variable, mono.variable)}
+      className={cn(geist.variable, geistMono.variable)}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>
@@ -97,25 +93,20 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider>
+          <div id="top" aria-hidden className="absolute top-0 h-px w-px" />
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:rounded-md focus:bg-fg focus:px-3 focus:py-2 focus:text-sm focus:text-bg"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:text-accent-ink"
           >
             Skip to content
           </a>
-          <Navbar />
-          <div className="relative min-h-screen overflow-x-clip">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-full max-w-[50rem] -translate-x-1/2 border-x border-dashed border-line"
-            />
-            <div className="mx-auto flex min-h-screen max-w-[50rem] flex-col pt-12">
-              <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </div>
+          <Nav />
+          <main id="main-content" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+          <Footer />
+          <CommandPalette />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

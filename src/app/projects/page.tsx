@@ -1,29 +1,25 @@
 import type { Metadata } from "next";
-import { Rule } from "@/components/site/rule";
-import { ProjectGrid } from "@/components/ui/project-grid";
-import { PROJECTS } from "@/lib/data";
+import { Work } from "@/components/home/work";
+import { Container } from "@/components/ui/container";
+import { STUDIO } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Distributed systems, realtime infrastructure and developer tooling projects by Syed Abdul Mukheeth.",
+  description: `${STUDIO.name}, SAM Compiler and PeerNet: a growth studio, a distributed cloud IDE and a realtime social platform by Syed Abdul Mukheeth Peer.`,
   alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {
   return (
     <>
-      <header className="px-4 pt-10 pb-8 motion-safe:animate-rise sm:px-6">
-        <p className="font-mono text-xs text-muted">{String(PROJECTS.length).padStart(2, "0")} projects</p>
-        <h1 className="mt-2 font-serif text-5xl leading-none tracking-tight">Projects</h1>
-        <p className="mt-3 max-w-lg text-[15px] leading-7 text-muted">
+      <Container className="pt-10 md:pt-16">
+        <h1 className="enter text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">Projects</h1>
+        <p className="enter mt-4 max-w-[52ch] text-lg leading-8 text-muted" style={{ "--i": 1 } as React.CSSProperties}>
           Things I&apos;ve founded, designed and built, from a growth studio to sandboxed code execution and
           event-driven realtime platforms.
         </p>
-      </header>
-      <section aria-label="All projects" className="relative">
-        <Rule />
-        <ProjectGrid />
-      </section>
+      </Container>
+      <Work heading={false} />
     </>
   );
 }

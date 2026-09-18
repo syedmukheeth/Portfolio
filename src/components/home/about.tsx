@@ -1,54 +1,59 @@
 import Link from "next/link";
-import { Section } from "@/components/ui/section";
+import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { PROFILE, STUDIO } from "@/lib/data";
 
-function Em({ children }: { children: React.ReactNode }) {
-  return <strong className="font-semibold text-fg">{children}</strong>;
+function Strong({ children }: { children: React.ReactNode }) {
+  return <strong className="font-medium text-fg">{children}</strong>;
 }
 
-function ProjectLink({ slug, children }: { slug: string; children: React.ReactNode }) {
+function InlineLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link
-      href={`/projects/${slug}`}
-      className="font-semibold text-fg underline decoration-faint underline-offset-4 transition-colors hover:decoration-fg"
-    >
+    <Link href={href} className="link font-medium text-fg hover:text-accent-text">
       {children}
     </Link>
   );
 }
 
-export function About() {
-  const bullets = [
-    <>
-      I&apos;m a <Em>software engineer</Em> focused on <Em>backend architecture</Em> and{" "}
-      <Em>distributed systems</Em>, building infrastructure that makes complexity feel simple.
-    </>,
-    <>
-      I work mostly with <Em>TypeScript, Node.js, Redis, Kafka and Docker</Em>: queue-driven pipelines, realtime
-      sync and sandboxed code execution.
-    </>,
-    <>
-      I founded <ProjectLink slug="sampeer-studio">SAMPeer Studio</ProjectLink>, where I build storytelling websites,
-      growth systems and AI automation that help founders get noticed.
-    </>,
-    <>
-      Through <ProjectLink slug="sam-compiler">SAM Compiler</ProjectLink> and{" "}
-      <ProjectLink slug="peer-net">PeerNet</ProjectLink> I explore high-performance systems, and I&apos;m looking for{" "}
-      <Em>full-time or internship roles</Em> to apply them.
-    </>,
-  ];
+const FACTS = [
+  { label: "Based in", value: `${PROFILE.location} (${PROFILE.timezone})` },
+  { label: "Building", value: STUDIO.name },
+  { label: "Looking for", value: "Full-time roles and internships" },
+  { label: "Focus", value: "Backend and distributed systems" },
+];
 
+export function About() {
   return (
-    <Section id="about" title="About">
-      <ul className="space-y-3 px-4 text-[15px] leading-7 text-muted sm:px-6">
-        {bullets.map((content, i) => (
-          <li key={i} className="flex gap-3">
-            <span aria-hidden className="text-faint">
-              •
-            </span>
-            <p>{content}</p>
-          </li>
-        ))}
-      </ul>
-    </Section>
+    <section id="about" aria-labelledby="about-title" className="reveal py-16 md:py-20">
+      <Container>
+        <SectionHeading id="about" title="About" />
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="space-y-5 text-[17px] leading-8 text-muted md:col-span-7">
+            <p>
+              I&apos;m a software engineer focused on <Strong>backend architecture</Strong> and{" "}
+              <Strong>distributed systems</Strong>, building infrastructure that makes complexity feel simple.
+            </p>
+            <p>
+              I work mostly with <Strong>TypeScript, Node.js, Redis, Kafka and Docker</Strong>: queue-driven pipelines,
+              realtime sync and sandboxed code execution. <InlineLink href="/projects/sam-compiler">SAM Compiler</InlineLink>{" "}
+              and <InlineLink href="/projects/peer-net">PeerNet</InlineLink> are where I push on those ideas.
+            </p>
+            <p>
+              I also founded <InlineLink href="/projects/sampeer-studio">{STUDIO.name}</InlineLink>, where I build
+              storytelling websites, growth systems and AI automation that help founders get noticed.
+            </p>
+          </div>
+
+          <dl className="grid content-start gap-6 border-t border-line pt-8 md:col-span-4 md:col-start-9 md:border-t-0 md:border-l md:pt-0 md:pl-8">
+            {FACTS.map(({ label, value }) => (
+              <div key={label}>
+                <dt className="text-sm text-muted">{label}</dt>
+                <dd className="mt-1 text-[15px] font-medium">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Container>
+    </section>
   );
 }

@@ -1,23 +1,21 @@
 import { About } from "@/components/home/about";
-import { Contact } from "@/components/home/contact";
-import { Cta } from "@/components/home/cta";
+import { Activity } from "@/components/home/activity";
+import { Closing } from "@/components/home/closing";
 import { Experience } from "@/components/home/experience";
-import { GitHubActivity } from "@/components/home/github-activity";
-import { Header } from "@/components/home/header";
-import { Projects } from "@/components/home/projects";
-import { TechStack } from "@/components/home/tech-stack";
+import { Hero } from "@/components/home/hero";
+import { Stack } from "@/components/home/stack";
+import { Work } from "@/components/home/work";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <Hero />
       <About />
       <Experience />
-      <Contact />
-      <Projects />
-      <TechStack />
-      <GitHubActivity />
-      <Cta />
+      <Work />
+      <Stack />
+      <Activity />
+      <Closing />
     </>
   );
 }

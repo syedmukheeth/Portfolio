@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
-import { Rule } from "@/components/site/rule";
-import { Chip } from "@/components/ui/chip";
-import { Section } from "@/components/ui/section";
-import { posterFor, PROJECTS } from "@/lib/data";
+import { Toc, type TocItem } from "@/components/project/toc";
+import { Container } from "@/components/ui/container";
+import { Tag } from "@/components/ui/tag";
+import { posterFor, PROJECTS, type Project } from "@/lib/data";
 
 export const dynamicParams = false;
 
@@ -28,14 +29,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function Bullets({ items }: { items: string[] }) {
+const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
+const slug = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+/** "The problem" -> "Problem" for the compact table of contents. */
+const tocLabel = (title: string) => {
+  const label = title.replace(/^The /, "");
+  return label.charAt(0).toUpperCase() + label.slice(1);
+};
+
+function Block({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <ul className="grid gap-x-8 gap-y-2 px-4 text-[15px] leading-7 text-muted sm:grid-cols-2 sm:px-6">
+    <section id={id} aria-labelledby={`${id}-title`} className="reveal scroll-mt-24">
+      <h2 id={`${id}-title`} tabIndex={-1} className="mb-5 text-xl font-semibold tracking-tight outline-none">
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
+
+function List({ items }: { items: string[] }) {
+  return (
+    <ul className="grid gap-x-10 gap-y-3 text-[15px] leading-7 text-muted sm:grid-cols-2">
       {items.map((item) => (
         <li key={item} className="flex gap-3">
-          <span aria-hidden className="text-faint">
-            •
-          </span>
+          <span aria-hidden className="mt-3 size-1 shrink-0 rounded-full bg-faint" />
           {item}
         </li>
       ))}
@@ -43,160 +61,213 @@ function Bullets({ items }: { items: string[] }) {
   );
 }
 
+function Media({ project }: { project: Project }) {
+  const clip = project.clips?.[0];
+  const frame = "w-full rounded-xl border border-line bg-surface";
+
+  if (clip) {
+    return (
+      <video
+        src={clip}
+        poster={posterFor(project)}
+        controls
+        muted
+        playsInline
+        preload="none"
+        className={`${frame} aspect-video object-cover`}
+      />
+    );
+  }
+  return (
+    <Image
+      src={project.thumbnail}
+      alt={`${project.title} website`}
+      width={1440}
+      height={900}
+      priority
+      unoptimized
+      className={`${frame} aspect-[16/10] object-cover object-top`}
+    />
+  );
+}
+
 export default async function ProjectPage({ params }: Props) {
-  const { slug } = await params;
-  const index = PROJECTS.findIndex((p) => p.id === slug);
+  const { slug: projectId } = await params;
+  const index = PROJECTS.findIndex((p) => p.id === projectId);
   if (index === -1) notFound();
 
   const project = PROJECTS[index];
   const next = PROJECTS[(index + 1) % PROJECTS.length];
-  const clip = project.clips?.[0];
+
+  const toc: TocItem[] = [
+    { id: "overview", label: "Overview" },
+    ...project.sections.map((s) => ({ id: slug(s.title), label: tocLabel(s.title) })),
+    { id: "architecture", label: "Architecture" },
+    { id: "features", label: "Features" },
+    { id: "challenges", label: "Challenges" },
+    { id: "stack", label: "Stack" },
+  ];
 
   return (
     <article>
-      <header className="px-4 pt-6 pb-8 motion-safe:animate-rise sm:px-6">
-        <Link
-          href="/projects"
-          className="group inline-flex items-center gap-1.5 font-mono text-xs text-muted transition-colors hover:text-fg"
-        >
-          <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
-          Projects
+      <div aria-hidden className="reading-progress fixed inset-x-0 top-0 z-50 h-0.5 bg-accent-text" />
+
+      <Container className="pt-10 md:pt-14">
+        <Link href="/projects" className="link inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg">
+          <ArrowLeft className="size-4" aria-hidden />
+          All projects
         </Link>
-        <p className="mt-8 font-mono text-xs text-muted">{project.role}</p>
-        <h1 className="mt-2 font-serif text-5xl leading-none tracking-tight sm:text-6xl">{project.title}</h1>
-        <p className="mt-3 text-lg text-muted">{project.tagline}</p>
 
-        <div className="mt-6 flex flex-wrap gap-2">
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-9 items-center gap-1.5 rounded-full bg-fg px-4 text-sm font-medium text-bg transition-opacity hover:opacity-90"
-            >
-              Live demo
-              <ArrowUpRight className="size-4" />
-            </a>
-          )}
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-9 items-center gap-2 rounded-full border border-line px-4 text-sm text-muted transition-colors hover:bg-fg/5 hover:text-fg"
-            >
-              <FaGithub className="size-4" />
-              Source
-            </a>
-          )}
-        </div>
-      </header>
-
-      <div className="relative">
-        <Rule />
-        <dl className="grid grid-cols-3 border-b border-dashed border-line">
-          {project.stats.map(({ label, value }) => (
-            <div key={label} className="border-r border-dashed border-line px-4 py-4 last:border-r-0 sm:px-6">
-              <dt className="font-mono text-[11px] text-muted">{label}</dt>
-              <dd className="mt-1 text-sm font-medium sm:text-base">{value}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-
-      {clip && (
-        <figure className="px-2 py-3 sm:px-3">
-          <video
-            src={clip}
-            poster={posterFor(project)}
-            controls
-            muted
-            playsInline
-            preload="none"
-            className="aspect-video w-full rounded-sm border border-line bg-surface object-cover"
-          />
-        </figure>
-      )}
-
-      <Section id="overview" title="Overview">
-        <p className="px-4 text-[15px] leading-7 text-muted sm:px-6">{project.fullOverview}</p>
-      </Section>
-
-      {project.sections.map((section, i) => (
-        <Section key={section.title} id={`section-${i}`} title={section.title}>
-          <p className="px-4 text-[15px] leading-7 text-muted sm:px-6">{section.body}</p>
-          {section.points && (
-            <dl className="mt-5 grid border-t border-dashed border-line sm:grid-cols-2">
-              {section.points.map((point) => (
-                <div
-                  key={point.title}
-                  className="border-b border-dashed border-line px-4 py-4 sm:px-6 sm:odd:border-r"
+        <header className="mt-10 grid gap-10 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <p className="enter text-sm text-muted" style={step(0)}>
+              {project.role}
+            </p>
+            <h1 className="enter mt-3 text-4xl font-semibold tracking-[-0.03em] text-balance sm:text-5xl" style={step(1)}>
+              {project.title}
+            </h1>
+            <p className="enter mt-4 max-w-[46ch] text-lg leading-8 text-muted" style={step(2)}>
+              {project.tagline}
+            </p>
+            <div className="enter mt-8 flex flex-wrap gap-3" style={step(3)}>
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press inline-flex h-11 items-center gap-1.5 rounded-full bg-accent px-5 text-sm font-medium text-accent-ink hover:opacity-90"
                 >
-                  <dt className="text-sm font-medium">{point.title}</dt>
-                  <dd className="mt-1 text-sm leading-6 text-muted">{point.body}</dd>
-                </div>
+                  Visit site
+                  <ArrowUpRight className="size-4" aria-hidden />
+                </a>
+              )}
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press inline-flex h-11 items-center gap-2 rounded-full border border-line px-5 text-sm font-medium hover:border-faint hover:bg-surface"
+                >
+                  <FaGithub className="size-4" aria-hidden />
+                  Source
+                </a>
+              )}
+            </div>
+          </div>
+
+          <dl
+            className="enter grid grid-cols-3 gap-4 border-t border-line pt-6 md:col-span-4 md:grid-cols-1 md:gap-5 md:border-t-0 md:border-l md:pt-0 md:pl-8"
+            style={step(2)}
+          >
+            {project.stats.map(({ label, value }) => (
+              <div key={label}>
+                <dd className="text-xl font-semibold tracking-tight tabular-nums sm:text-2xl">{value}</dd>
+                <dt className="mt-0.5 text-sm text-muted">{label}</dt>
+              </div>
+            ))}
+          </dl>
+        </header>
+
+        <figure className="enter mt-12" style={step(3)}>
+          <Media project={project} />
+        </figure>
+      </Container>
+
+      <Container className="grid gap-12 py-20 lg:grid-cols-12">
+        <aside className="hidden lg:col-span-3 lg:block">
+          <Toc items={toc} />
+        </aside>
+
+        <div className="space-y-16 lg:col-span-9">
+          <Block id="overview" title="Overview">
+            <p className="max-w-[65ch] text-[17px] leading-8 text-muted">{project.fullOverview}</p>
+          </Block>
+
+          {project.sections.map((section) => (
+            <Block key={section.title} id={slug(section.title)} title={section.title}>
+              <p className="max-w-[65ch] text-[17px] leading-8 text-muted">{section.body}</p>
+              {section.points && (
+                <dl className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+                  {section.points.map((point) => (
+                    <div key={point.title} className="border-t border-line pt-4">
+                      <dt className="font-medium">{point.title}</dt>
+                      <dd className="mt-1.5 text-sm leading-6 text-muted">{point.body}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </Block>
+          ))}
+
+          <Block id="architecture" title="Architecture">
+            <ol className="flex flex-wrap items-center gap-2">
+              {project.architecture.nodes.map((node, i) => (
+                <li key={node} className="flex items-center gap-2">
+                  {i > 0 && <ArrowRight className="size-3.5 text-faint" aria-hidden />}
+                  <span className="rounded-md border border-line bg-surface px-2.5 py-1.5 font-mono text-xs">{node}</span>
+                </li>
               ))}
-            </dl>
-          )}
-        </Section>
-      ))}
+            </ol>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {project.architecture.flow.map((flow) => (
+                <li key={flow}>
+                  <Tag>{flow}</Tag>
+                </li>
+              ))}
+            </ul>
+          </Block>
 
-      <Section id="architecture" title="Architecture">
-        <ol className="flex flex-wrap items-center gap-2 px-4 font-mono text-xs sm:px-6">
-          {project.architecture.nodes.map((node, i) => (
-            <li key={node} className="flex items-center gap-2">
-              {i > 0 && <ArrowRight aria-hidden className="size-3.5 text-faint" />}
-              <span className="rounded-sm border border-line bg-surface px-2.5 py-1.5">{node}</span>
-            </li>
-          ))}
-        </ol>
-        <ul className="mt-4 flex flex-wrap gap-1.5 px-4 sm:px-6">
-          {project.architecture.flow.map((step) => (
-            <li key={step}>
-              <Chip>{step}</Chip>
-            </li>
-          ))}
-        </ul>
-      </Section>
+          <Block id="features" title="Features">
+            <List items={project.features} />
+          </Block>
 
-      <Section id="features" title="Features">
-        <Bullets items={project.features} />
-      </Section>
+          <Block id="challenges" title="Challenges">
+            <List items={project.challenges} />
+          </Block>
 
-      <Section id="challenges" title="Challenges">
-        <Bullets items={project.challenges} />
-      </Section>
+          <Block id="stack" title="Stack">
+            <ul className="flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <li key={tech}>
+                  <Tag className="h-7 text-sm text-fg">{tech}</Tag>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 text-sm text-muted">Demonstrates</p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {project.demonstrates.map((skill) => (
+                <li key={skill}>
+                  <Tag>{skill}</Tag>
+                </li>
+              ))}
+            </ul>
+          </Block>
+        </div>
+      </Container>
 
-      <Section id="stack" title="Stack">
-        <ul className="flex flex-wrap gap-1.5 px-4 sm:px-6">
-          {project.stack.map((tech) => (
-            <li key={tech}>
-              <Chip className="h-7 text-sm">{tech}</Chip>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 px-4 font-mono text-xs text-muted sm:px-6">Demonstrates</p>
-        <ul className="mt-2 flex flex-wrap gap-1.5 px-4 sm:px-6">
-          {project.demonstrates.map((skill) => (
-            <li key={skill}>
-              <Chip>{skill}</Chip>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <nav aria-label="Next project" className="relative">
-        <Rule />
-        <Link
-          href={`/projects/${next.id}`}
-          className="group flex items-center justify-between gap-4 px-4 py-6 transition-colors hover:bg-fg/[0.03] sm:px-6"
-        >
-          <span>
-            <span className="block font-mono text-xs text-muted">Next project</span>
-            <span className="mt-1 block font-serif text-3xl leading-none tracking-tight">{next.title}</span>
-          </span>
-          <ArrowRight className="size-5 text-muted transition-transform group-hover:translate-x-1 group-hover:text-fg" />
-        </Link>
+      <nav aria-label="Next project" className="border-t border-line">
+        <Container>
+          <Link href={`/projects/${next.id}`} className="group flex items-center gap-6 py-10">
+            <Image
+              src={next.thumbnail}
+              alt=""
+              width={1440}
+              height={900}
+              unoptimized
+              className="hidden aspect-[16/10] w-40 rounded-lg border border-line object-cover object-top sm:block"
+            />
+            <span className="flex-1">
+              <span className="block text-sm text-muted">Next project</span>
+              <span className="mt-1 block text-2xl font-semibold tracking-tight transition-colors duration-[var(--dur-micro)] group-hover:text-accent-text">
+                {next.title}
+              </span>
+            </span>
+            <ArrowRight
+              aria-hidden
+              className="size-6 text-faint transition-transform duration-[var(--dur-micro)] group-hover:translate-x-1 group-hover:text-fg motion-reduce:transition-none"
+            />
+          </Link>
+        </Container>
       </nav>
     </article>
   );

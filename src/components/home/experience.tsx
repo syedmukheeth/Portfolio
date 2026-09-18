@@ -1,86 +1,74 @@
 import { ArrowUpRight } from "lucide-react";
-import { Chip } from "@/components/ui/chip";
-import { Section } from "@/components/ui/section";
+import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { EXPERIENCE } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { DocumentViewer } from "./document-viewer";
+
+function Dates({ start, end, className }: { start: string; end?: string; className?: string }) {
+  return (
+    <p className={cn("font-mono text-sm text-muted tabular-nums", className)}>
+      {start} - {end ? end : <span className="text-accent-text">Present</span>}
+    </p>
+  );
+}
 
 export function Experience() {
   return (
-    <Section id="experience" title="Experience">
-      <ol className="border-t border-dashed border-line">
-        {EXPERIENCE.map(({ role, company, type, start, end, location, icon: Icon, skills, links, documents }) => (
-          <li key={`${role}-${company}`} className="flex gap-4 border-b border-dashed border-line px-4 py-5 sm:px-6">
-            <div className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-surface text-muted">
-              <Icon className="size-4" />
-            </div>
+    <section id="experience" aria-labelledby="experience-title" className="reveal py-16 md:py-20">
+      <Container>
+        <SectionHeading id="experience" title="Experience" />
+        <ol>
+          {EXPERIENCE.map((job) => {
+            const current = !job.end;
+            return (
+              <li key={`${job.role}-${job.company}`} className="grid md:grid-cols-12 md:gap-8">
+                <Dates start={job.start} end={job.end} className="hidden pt-0.5 md:col-span-3 md:block" />
 
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-                <h3 className="font-semibold tracking-tight">{role}</h3>
-                <p className="inline-flex items-center gap-1.5 font-mono text-xs text-muted">
-                  {!end && <span aria-hidden className="size-1.5 rounded-full bg-live" />}
-                  {start} - {end ?? "Present"}
-                </p>
-              </div>
-              <p className="text-sm text-muted">
-                {company} · {type}
-              </p>
-              <p className="mt-0.5 text-xs text-muted">{location}</p>
+                <div className="relative border-l border-line pb-12 pl-8 md:col-span-9">
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "absolute top-1.5 -left-[5px] size-[9px] rounded-full border",
+                      current ? "border-accent bg-accent ring-4 ring-accent/15" : "border-faint bg-bg",
+                    )}
+                  />
+                  <Dates start={job.start} end={job.end} className="mb-2 md:hidden" />
+                  <h3 className="text-lg font-semibold tracking-tight">{job.role}</h3>
+                  <p className="mt-1 text-[15px] text-muted">
+                    <span className="text-fg">{job.company}</span>, {job.type}
+                  </p>
+                  <p className="mt-0.5 text-sm text-muted">{job.location}</p>
 
-              {skills && (
-                <ul className="mt-3 flex flex-wrap gap-1.5">
-                  {skills.map((skill) => (
-                    <li key={skill}>
-                      <Chip>{skill}</Chip>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                  {job.skills && (
+                    <p className="mt-4 max-w-[60ch] text-sm leading-6 text-muted">{job.skills.join(", ")}</p>
+                  )}
 
-              {links && (
-                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-                  {links.map((link) => (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-0.5 text-sm text-muted transition-colors hover:text-fg"
-                      >
-                        {link.label}
-                        <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                  {job.links && (
+                    <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                      {job.links.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="link inline-flex items-center gap-0.5 text-sm font-medium text-fg hover:text-accent-text"
+                          >
+                            {link.label}
+                            <ArrowUpRight className="size-3.5" aria-hidden />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-              {documents && (
-                <ul className="mt-4 flex flex-wrap gap-3">
-                  {documents.map((doc) => (
-                    <li key={doc.src}>
-                      <a href={doc.src} target="_blank" rel="noopener noreferrer" className="group block w-36 sm:w-44">
-                        <div className="h-24 overflow-hidden rounded-md border border-line bg-surface">
-                          {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static thumbnail */}
-                          <img
-                            src={doc.thumb}
-                            alt={doc.label}
-                            loading="lazy"
-                            className="size-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
-                          />
-                        </div>
-                        <span className="mt-1.5 flex items-center gap-1 text-xs text-muted transition-colors group-hover:text-fg">
-                          {doc.label}
-                          <ArrowUpRight className="size-3 shrink-0" />
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </li>
-        ))}
-      </ol>
-    </Section>
+                  {job.documents && <DocumentViewer documents={job.documents} />}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Container>
+    </section>
   );
 }

@@ -1,14 +1,22 @@
+import { Container } from "@/components/ui/container";
 import { PROFILE } from "@/lib/data";
-import { Rule } from "./rule";
 
 export function Footer() {
   return (
-    <footer className="relative flex flex-col items-center justify-between gap-1 px-4 py-6 font-mono text-xs text-muted sm:flex-row sm:px-6">
-      <Rule />
-      <span>Designed &amp; built by {PROFILE.shortName}</span>
-      <span>
-        © {new Date().getFullYear()} {PROFILE.name}
-      </span>
+    <footer className="border-t border-line">
+      <Container className="flex flex-col gap-3 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          © {new Date().getFullYear()} {PROFILE.name}
+        </p>
+        <p className="hidden items-center gap-1.5 sm:flex">
+          Press
+          <kbd className="rounded-md border border-line bg-elevated px-1.5 font-mono text-[11px] leading-5">/</kbd>
+          to search
+        </p>
+        <a href="#top" className="link self-start sm:self-auto">
+          Back to top
+        </a>
+      </Container>
     </footer>
   );
 }

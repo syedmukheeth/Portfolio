@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { Briefcase, Database, Layers, PenLine, Sparkles } from "lucide-react";
+import { Database, Layers } from "lucide-react";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import {
   SiApachekafka,
@@ -20,7 +20,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 
-type Icon = ComponentType<{ className?: string }>;
+type Icon = ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
 
 export const SITE_URL = "https://www.syedmukheeth.is-a.dev";
 
@@ -30,9 +30,10 @@ export const PROFILE = {
   role: "Software Engineer",
   focus: "Backend & Distributed Systems",
   location: "Kurnool, India",
-  coordinates: "15.83°N 78.04°E",
   timezone: "IST",
-  availability: "Open to work",
+  availability: "Open to full-time roles",
+  /** Hero line. Keep it under 20 words. */
+  intro: "Software engineer building backend and realtime systems. Founder of SAMPeer Studio.",
   email: "syedmukheeth09@gmail.com",
   resume: "https://drive.google.com/file/d/1SMFd_ADTNeYjBQ-6IH7RHT_UzzAPrTBy/view?usp=sharing",
   avatar: "/images/avatar.jpg",
@@ -42,9 +43,11 @@ export const PROFILE = {
     "Software engineer building high-performance backend systems, distributed architecture, and real-time infrastructure. Founder of SAMPeer Studio and creator of SAM Compiler and PeerNet.",
 };
 
-export const BANNER = {
-  src: "/images/banner.jpg",
-  alt: "Syed Mukheeth under a stone archway",
+export const PORTRAIT = {
+  src: "/images/portrait.jpg",
+  alt: "Syed Mukheeth looking up beside a stone archway",
+  width: 1000,
+  height: 1250,
 };
 
 export interface Social {
@@ -63,6 +66,8 @@ export interface ExperienceDocument {
   label: string;
   src: string;
   thumb: string;
+  width: number;
+  height: number;
 }
 
 export interface Experience {
@@ -73,7 +78,6 @@ export interface Experience {
   /** Omit for a current role. */
   end?: string;
   location: string;
-  icon: Icon;
   skills?: string[];
   links?: { label: string; href: string }[];
   documents?: ExperienceDocument[];
@@ -92,7 +96,6 @@ export const EXPERIENCE: Experience[] = [
     type: "Self-employed",
     start: "Jul 2026",
     location: "Remote",
-    icon: Sparkles,
     skills: ["Storytelling Websites", "Growth Systems", "AI Automation", "Founder Branding"],
     links: [
       { label: "Website", href: STUDIO.url },
@@ -105,7 +108,6 @@ export const EXPERIENCE: Experience[] = [
     type: "Self-employed",
     start: "May 2026",
     location: "Remote",
-    icon: Briefcase,
   },
   {
     role: "Web Content Writer",
@@ -114,24 +116,27 @@ export const EXPERIENCE: Experience[] = [
     start: "Aug 2025",
     end: "Sep 2025",
     location: "Hyderabad, India · Remote",
-    icon: PenLine,
     skills: ["Search Engine Optimization (SEO)", "Web Content Writing"],
     documents: [
       {
         label: "Certificate of Internship",
         src: "/experience/fleckor-certificate.jpg",
         thumb: "/experience/fleckor-certificate-thumb.jpg",
+        width: 1930,
+        height: 1364,
       },
       {
         label: "Letter of Recommendation",
         src: "/experience/fleckor-recommendation.jpg",
         thumb: "/experience/fleckor-recommendation-thumb.jpg",
+        width: 1364,
+        height: 1930,
       },
     ],
   },
 ];
 
-export const SKILL_CATEGORIES =["Languages", "Frontend", "Backend", "Infra", "Database"] as const;
+export const SKILL_CATEGORIES = ["Languages", "Frontend", "Backend", "Infra", "Database"] as const;
 export type SkillCategory = (typeof SKILL_CATEGORIES)[number];
 
 export interface Skill {
@@ -190,8 +195,6 @@ export interface Project {
   sections: CaseSection[];
   /** Screenshot of the live site in /public, 1440×900. */
   thumbnail: string;
-  /** Two colors for the card preview gradient. */
-  tint: [string, string];
   category: string;
   keywords: string;
   github?: string;
@@ -274,7 +277,6 @@ export const PROJECTS: Project[] = [
       },
     ],
     thumbnail: "/projects/sampeer-studio.webp",
-    tint: ["#7C3AED", "#1E1B4B"],
     category: "BusinessApplication",
     keywords: "storytelling websites, growth systems, AI automation, founder branding, web studio",
     demo: STUDIO.url,
@@ -337,7 +339,6 @@ export const PROJECTS: Project[] = [
       },
     ],
     thumbnail: "/projects/sam-compiler.webp",
-    tint: ["#FB923C", "#B91C1C"],
     category: "DeveloperApplication",
     keywords: "cloud IDE, Docker sandboxing, real-time collaboration, CRDT, Yjs, BullMQ",
     github: "https://github.com/syedmukheeth/SAM-Compiler",
@@ -397,7 +398,6 @@ export const PROJECTS: Project[] = [
       },
     ],
     thumbnail: "/projects/peer-net.webp",
-    tint: ["#C4B5FD", "#6D28D9"],
     category: "SocialNetworkingApplication",
     keywords: "real-time social platform, Kafka, Redis, Socket.IO, event-driven architecture",
     github: "https://github.com/syedmukheeth/PeerNet",
@@ -405,3 +405,11 @@ export const PROJECTS: Project[] = [
     clips: ["https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519205/PeerNet-1_ysx8lh.mp4", "https://res.cloudinary.com/dcqbcjrsp/video/upload/v1778519207/PeerNet-2_pznwtj.mp4"]
   },
 ];
+
+const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+/** Projects whose stack includes a skill ("React" matches "React 19"). */
+export function projectsUsing(skill: string): Project[] {
+  const key = normalize(skill);
+  return PROJECTS.filter((project) => project.stack.some((tech) => normalize(tech).startsWith(key)));
+}
