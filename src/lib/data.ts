@@ -1,12 +1,14 @@
 import type { ComponentType } from "react";
-import { Database, Layers } from "lucide-react";
+import { Database, Layers, SquareTerminal, Workflow } from "lucide-react";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import {
   SiApachekafka,
+  SiClaude,
   SiCloudinary,
   SiDocker,
   SiExpress,
   SiFramer,
+  SiGoogle,
   SiJavascript,
   SiMongodb,
   SiNextdotjs,
@@ -39,6 +41,8 @@ export const PROFILE = {
   avatar: "/images/avatar.jpg",
   github: "syedmukheeth",
   twitter: "@syed_mukheeth",
+  linkedin: "https://www.linkedin.com/in/syedmukheeth/",
+  linkedinFollowers: "8.8K",
   description:
     "Software engineer and Tech Lead at Lokha Innovation, building high-performance backend systems, distributed architecture, and real-time infrastructure. Founder of SAMPeer Studio and creator of SAM Compiler and PeerNet.",
 };
@@ -58,7 +62,7 @@ export interface Social {
 
 export const SOCIALS: Social[] = [
   { label: "GitHub", href: "https://github.com/syedmukheeth", icon: FaGithub },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/syedmukheeth/", icon: FaLinkedin },
+  { label: "LinkedIn", href: PROFILE.linkedin, icon: FaLinkedin },
   { label: "X", href: "https://x.com/syed_mukheeth", icon: FaXTwitter },
 ];
 
@@ -158,7 +162,7 @@ export const EXPERIENCE: Experience[] = [
   },
 ];
 
-export const SKILL_CATEGORIES = ["Languages", "Frontend", "Backend", "Infra", "Database"] as const;
+export const SKILL_CATEGORIES = ["Languages", "Frontend", "Backend", "Infra", "Database", "AI"] as const;
 export type SkillCategory = (typeof SKILL_CATEGORIES)[number];
 
 export interface Skill {
@@ -187,6 +191,10 @@ export const SKILLS: Skill[] = [
   { name: "Cloudinary", category: "Infra", href: "https://cloudinary.com", icon: SiCloudinary },
   { name: "PostgreSQL", category: "Database", href: "https://www.postgresql.org", icon: SiPostgresql },
   { name: "MongoDB", category: "Database", href: "https://www.mongodb.com", icon: SiMongodb },
+  { name: "Claude Code", category: "AI", href: "https://claude.com/product/claude-code", icon: SiClaude },
+  { name: "Codex", category: "AI", href: "https://openai.com/codex", icon: SquareTerminal },
+  { name: "Antigravity", category: "AI", href: "https://antigravity.google", icon: SiGoogle },
+  { name: "AI Automation", category: "AI", href: STUDIO.url, icon: Workflow },
 ];
 
 export interface CaseSection {

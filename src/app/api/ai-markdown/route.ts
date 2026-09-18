@@ -32,6 +32,7 @@ ${PROJECTS.map(p => `
 - **Backend**: Node.js, Express, BullMQ, TypeScript
 - **Infrastructure**: Redis, Kafka, Docker, Supabase, Cloudinary
 - **Database**: PostgreSQL, SQL
+- **AI**: Claude Code, Codex, Antigravity, AI workflow automation
 
 ## CONNECT_NODES
 - **GitHub**: https://github.com/syedmukheeth

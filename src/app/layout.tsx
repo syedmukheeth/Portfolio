@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: `%s | ${PROFILE.name}`,
   },
   description: PROFILE.description,
-  keywords: ["Syed Abdul Mukheeth Peer", "Syed Abdul Mukheeth", "Syed Mukheeth", "Lokha Innovation", "Tech Lead", "Lokha Innovation Tech Lead", "SAMPeer Studio", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker"],
+  keywords: ["Syed Abdul Mukheeth Peer", "Syed Abdul Mukheeth", "Syed Mukheeth", "Lokha Innovation", "Tech Lead", "Lokha Innovation Tech Lead", "SAMPeer Studio", "software engineer", "backend engineer", "distributed systems", "real-time systems", "SAM Compiler", "PeerNet", "Node.js", "TypeScript", "Redis", "Kafka", "Docker", "AI-assisted development", "Claude Code", "AI workflows", "AI automation"],
   authors: [{ name: PROFILE.name, url: SITE_URL }],
   openGraph: {
     title: HOME_TITLE,

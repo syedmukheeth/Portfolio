@@ -61,7 +61,7 @@ export function buildJsonLd() {
             founder: { "@id": PERSON_ID },
           },
         ],
-        knowsAbout: ["Backend Architecture", "Distributed Systems", "Real-time Systems", ...SKILLS.map((s) => s.name)],
+        knowsAbout: ["Backend Architecture", "Distributed Systems", "Real-time Systems", "AI-Assisted Development", "AI Workflow Automation", "Tech Marketing", ...SKILLS.map((s) => s.name)],
         sameAs: SOCIALS.map((s) => s.href),
         mainEntityOfPage: { "@id": PROFILE_PAGE_ID },
       },
@@ -128,7 +128,7 @@ export function buildJsonLd() {
             name: "What technologies does Syed Mukheeth use?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Syed Mukheeth works primarily with TypeScript, Node.js, React, Docker, Redis, Kafka, BullMQ, MongoDB, PostgreSQL, Supabase, Socket.IO, WebSockets, and CRDT/Yjs.",
+              text: "Syed Mukheeth works primarily with TypeScript, Node.js, React, Docker, Redis, Kafka, BullMQ, MongoDB, PostgreSQL, Supabase, Socket.IO, WebSockets, and CRDT/Yjs. For AI-assisted development he uses Claude Code, Codex and Antigravity, and he designs AI workflows and automations.",
             },
           },
         ],
