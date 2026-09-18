@@ -16,7 +16,7 @@ export function Hero() {
             style={step(0)}
           >
             <span aria-hidden className="size-2 rounded-full bg-accent" />
-            {PROFILE.availability}
+            {PROFILE.status}
           </p>
 
           <h1

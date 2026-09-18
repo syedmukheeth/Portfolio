@@ -30,7 +30,7 @@ async function loadFont(name: string, weight: 400 | 600, text: string): Promise<
 export default async function OpengraphImage() {
   const subtitle = `${PROFILE.role} · Founder of SAMPeer Studio`;
   const [regular, semibold, portrait] = await Promise.all([
-    loadFont("Geist", 400, PROFILE.availability + subtitle),
+    loadFont("Geist", 400, PROFILE.status + subtitle),
     loadFont("Geist", 600, PROFILE.name),
     readFile(join(process.cwd(), "public/images/portrait.jpg")).catch(() => null),
   ]);
@@ -65,7 +65,7 @@ export default async function OpengraphImage() {
             }}
           >
             <div style={{ width: 12, height: 12, borderRadius: 6, background: COLORS.accent }} />
-            {PROFILE.availability}
+            {PROFILE.status}
           </div>
           <div style={{ marginTop: 36, fontSize: 76, fontWeight: 600, lineHeight: 1.02, letterSpacing: -3 }}>
             {PROFILE.name}

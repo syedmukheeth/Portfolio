@@ -33,9 +33,10 @@ export const PROFILE = {
   focus: "Backend & Distributed Systems",
   location: "Kurnool, India",
   timezone: "IST",
-  availability: "Open to full-time roles",
+  /** Hero badge: where Syed is right now. */
+  status: "Tech Lead at Lokha Innovation",
   /** Hero line. Keep it under 20 words. */
-  intro: "Software engineer building backend and realtime systems. Tech Lead at Lokha Innovation, founder of SAMPeer Studio.",
+  intro: "Software engineer building backend, realtime and AI-powered systems. Founder of SAMPeer Studio.",
   email: "syedmukheeth09@gmail.com",
   resume: "https://drive.google.com/file/d/1SMFd_ADTNeYjBQ-6IH7RHT_UzzAPrTBy/view?usp=sharing",
   avatar: "/images/avatar.jpg",

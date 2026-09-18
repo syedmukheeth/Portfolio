@@ -15,10 +15,11 @@ export function Closing() {
             tabIndex={-1}
             className="max-w-[18ch] text-4xl font-semibold tracking-tight text-balance outline-none sm:text-5xl"
           >
-            Have a role or a project in mind?
+            Have an idea worth building?
           </h2>
           <p className="mt-4 max-w-[52ch] leading-7 text-muted">
-            I&apos;m open to full-time roles and internships, and {STUDIO.name} takes on founder projects.
+            {STUDIO.name} partners with founders on products, systems and growth. And I&apos;m always up for a good
+            conversation about engineering, AI or marketing.
           </p>
 
           <div className="mt-10">

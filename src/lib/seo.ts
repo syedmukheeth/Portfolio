@@ -104,7 +104,7 @@ export function buildJsonLd() {
             name: "Who is Syed Mukheeth?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Syed Abdul Mukheeth Peer (also known as Syed Mukheeth) is a software engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He is Tech Lead at Lokha Innovation, a startup incubator in Kurnool, and the founder of SAMPeer Studio, which builds storytelling websites, growth systems and AI automation for founders. He has built projects including SAM Compiler (a distributed cloud IDE) and PeerNet (a real-time social networking platform). He is actively seeking full-time and internship roles in software engineering.",
+              text: "Syed Abdul Mukheeth Peer (also known as Syed Mukheeth) is a software engineer focused on high-performance backend architecture, distributed systems, and real-time infrastructure. He is Tech Lead at Lokha Innovation, a startup incubator in Kurnool, and the founder of SAMPeer Studio, which builds storytelling websites, growth systems and AI automation for founders. He has built projects including SAM Compiler (a distributed cloud IDE) and PeerNet (a real-time social networking platform).",
             },
           },
           {

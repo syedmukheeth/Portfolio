@@ -21,7 +21,6 @@ const FACTS: { label: string; value: string; href?: string }[] = [
   { label: "Building", value: STUDIO.name },
   { label: "Learning", value: "Tech marketing" },
   { label: "Community", value: `${PROFILE.linkedinFollowers} followers on LinkedIn`, href: PROFILE.linkedin },
-  { label: "Looking for", value: "Full-time roles and internships" },
   { label: "Focus", value: "Backend and distributed systems" },
 ];
 
