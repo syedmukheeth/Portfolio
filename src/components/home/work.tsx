@@ -10,8 +10,8 @@ function Featured({ project }: { project: Project }) {
   const href = `/projects/${project.id}`;
 
   return (
-    <article className="group grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
-      <Link href={href} tabIndex={-1} aria-hidden className="block overflow-hidden rounded-xl border border-line bg-surface lg:col-span-7">
+    <article className="group grid gap-6 sm:gap-8 md:grid-cols-12 md:items-center lg:gap-12">
+      <Link href={href} tabIndex={-1} aria-hidden className="block overflow-hidden rounded-xl border border-line bg-surface md:col-span-6 lg:col-span-7">
         <Image
           src={project.thumbnail}
           alt=""
@@ -22,19 +22,19 @@ function Featured({ project }: { project: Project }) {
         />
       </Link>
 
-      <div className="lg:col-span-5">
+      <div className="md:col-span-6 lg:col-span-5">
         <p className="text-sm text-muted">{project.role}</p>
-        <h3 className="mt-2 text-3xl font-semibold tracking-tight">
+        <h3 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
           <Link href={href} className="link hover:text-accent-text">
             {project.title}
           </Link>
         </h3>
         <p className="mt-3 max-w-[60ch] leading-7 text-muted">{project.description}</p>
 
-        <dl className="mt-6 grid max-w-md grid-cols-2 gap-4 border-t border-line pt-6 lg:max-w-none">
+        <dl className="mt-6 grid max-w-md grid-cols-2 gap-4 border-t border-line pt-6 md:max-w-none">
           {project.stats.slice(0, 2).map(({ label, value }) => (
             <div key={label}>
-              <dd className="text-3xl font-semibold tracking-tight tabular-nums">{value}</dd>
+              <dd className="text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">{value}</dd>
               <dt className="mt-1 text-sm text-muted">{label}</dt>
             </div>
           ))}
@@ -80,7 +80,7 @@ export function Work({ heading = true }: { heading?: boolean }) {
           />
         )}
         <Featured project={featured} />
-        <div className="mt-16">
+        <div className="mt-12 lg:mt-16">
           <WorkList projects={rest} />
         </div>
       </Container>

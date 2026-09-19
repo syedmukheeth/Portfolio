@@ -22,10 +22,10 @@ export function Experience() {
           {EXPERIENCE.map((job) => {
             const current = !job.end;
             return (
-              <li key={`${job.role}-${job.company}`} className="grid md:grid-cols-12 md:gap-8">
-                <Dates start={job.start} end={job.end} className="hidden pt-0.5 md:col-span-3 md:block" />
+              <li key={`${job.role}-${job.company}`} className="grid lg:grid-cols-12 lg:gap-8">
+                <Dates start={job.start} end={job.end} className="hidden pt-0.5 lg:col-span-3 lg:block" />
 
-                <div className="relative border-l border-line pb-12 pl-8 md:col-span-9">
+                <div className="relative border-l border-line pb-10 pl-6 sm:pb-12 sm:pl-8 lg:col-span-9">
                   <span
                     aria-hidden
                     className={cn(
@@ -33,7 +33,7 @@ export function Experience() {
                       current ? "border-accent bg-accent ring-4 ring-accent/15" : "border-faint bg-bg",
                     )}
                   />
-                  <Dates start={job.start} end={job.end} className="mb-2 md:hidden" />
+                  <Dates start={job.start} end={job.end} className="mb-2 lg:hidden" />
                   <h3 className="text-lg font-semibold tracking-tight">{job.role}</h3>
                   <p className="mt-1 text-[15px] text-muted">
                     <span className="text-fg">{job.company}</span>, {job.type}

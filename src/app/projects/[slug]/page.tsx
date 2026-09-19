@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
-import { Toc, type TocItem } from "@/components/project/toc";
+import { Toc, TocChips, type TocItem } from "@/components/project/toc";
 import { Container } from "@/components/ui/container";
 import { Tag } from "@/components/ui/tag";
 import { posterFor, PROJECTS, type Project } from "@/lib/data";
@@ -129,13 +129,14 @@ export default async function ProjectPage({ params }: Props) {
             <p className="enter mt-4 max-w-[46ch] text-lg leading-8 text-muted" style={step(2)}>
               {project.tagline}
             </p>
-            <div className="enter mt-8 flex flex-wrap gap-3" style={step(3)}>
+            {/* Phones: equal, thumb-sized buttons across the full width, as in the home hero. */}
+            <div className="enter mt-8 grid auto-cols-fr grid-flow-col gap-3 sm:flex sm:flex-wrap" style={step(3)}>
               {project.demo && (
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="press inline-flex h-11 items-center gap-1.5 rounded-full bg-accent px-5 text-sm font-medium text-accent-ink hover:opacity-90"
+                  className="press inline-flex h-11 items-center justify-center gap-1.5 rounded-full bg-accent px-5 text-sm font-medium text-accent-ink hover:opacity-90 max-sm:h-12"
                 >
                   Visit site
                   <ArrowUpRight className="size-4" aria-hidden />
@@ -146,7 +147,7 @@ export default async function ProjectPage({ params }: Props) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="press inline-flex h-11 items-center gap-2 rounded-full border border-line px-5 text-sm font-medium hover:border-faint hover:bg-surface"
+                  className="press inline-flex h-11 items-center justify-center gap-2 rounded-full border border-line px-5 text-sm font-medium hover:border-faint hover:bg-surface max-sm:h-12"
                 >
                   <FaGithub className="size-4" aria-hidden />
                   Source
@@ -174,77 +175,81 @@ export default async function ProjectPage({ params }: Props) {
         </figure>
       </Container>
 
-      <Container className="grid gap-12 py-20 lg:grid-cols-12">
-        <aside className="hidden lg:col-span-3 lg:block">
-          <Toc items={toc} />
-        </aside>
+      {/* One wrapper, so the chip row sticks only while the case study body is on screen. */}
+      <div className="mt-12 lg:mt-0">
+        <TocChips items={toc} />
+        <Container className="grid gap-12 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
+          <aside className="hidden lg:col-span-3 lg:block">
+            <Toc items={toc} />
+          </aside>
 
-        <div className="space-y-16 lg:col-span-9">
-          <Block id="overview" title="Overview">
-            <p className="max-w-[65ch] text-[17px] leading-8 text-muted">{project.fullOverview}</p>
-          </Block>
-
-          {project.sections.map((section) => (
-            <Block key={section.title} id={slug(section.title)} title={section.title}>
-              <p className="max-w-[65ch] text-[17px] leading-8 text-muted">{section.body}</p>
-              {section.points && (
-                <dl className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2">
-                  {section.points.map((point) => (
-                    <div key={point.title} className="border-t border-line pt-4">
-                      <dt className="font-medium">{point.title}</dt>
-                      <dd className="mt-1.5 text-sm leading-6 text-muted">{point.body}</dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
+          <div className="space-y-16 lg:col-span-9">
+            <Block id="overview" title="Overview">
+              <p className="max-w-[65ch] text-[17px] leading-8 text-muted">{project.fullOverview}</p>
             </Block>
-          ))}
 
-          <Block id="architecture" title="Architecture">
-            <ol className="flex flex-wrap items-center gap-2">
-              {project.architecture.nodes.map((node, i) => (
-                <li key={node} className="flex items-center gap-2">
-                  {i > 0 && <ArrowRight className="size-3.5 text-faint" aria-hidden />}
-                  <span className="rounded-md border border-line bg-surface px-2.5 py-1.5 font-mono text-xs">{node}</span>
-                </li>
-              ))}
-            </ol>
-            <ul className="mt-5 flex flex-wrap gap-2">
-              {project.architecture.flow.map((flow) => (
-                <li key={flow}>
-                  <Tag>{flow}</Tag>
-                </li>
-              ))}
-            </ul>
-          </Block>
+            {project.sections.map((section) => (
+              <Block key={section.title} id={slug(section.title)} title={section.title}>
+                <p className="max-w-[65ch] text-[17px] leading-8 text-muted">{section.body}</p>
+                {section.points && (
+                  <dl className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+                    {section.points.map((point) => (
+                      <div key={point.title} className="border-t border-line pt-4">
+                        <dt className="font-medium">{point.title}</dt>
+                        <dd className="mt-1.5 text-sm leading-6 text-muted">{point.body}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+              </Block>
+            ))}
 
-          <Block id="features" title="Features">
-            <List items={project.features} />
-          </Block>
+            <Block id="architecture" title="Architecture">
+              <ol className="flex flex-wrap items-center gap-2">
+                {project.architecture.nodes.map((node, i) => (
+                  <li key={node} className="flex items-center gap-2">
+                    {i > 0 && <ArrowRight className="size-3.5 text-faint" aria-hidden />}
+                    <span className="rounded-md border border-line bg-surface px-2.5 py-1.5 font-mono text-xs">{node}</span>
+                  </li>
+                ))}
+              </ol>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {project.architecture.flow.map((flow) => (
+                  <li key={flow}>
+                    <Tag>{flow}</Tag>
+                  </li>
+                ))}
+              </ul>
+            </Block>
 
-          <Block id="challenges" title="Challenges">
-            <List items={project.challenges} />
-          </Block>
+            <Block id="features" title="Features">
+              <List items={project.features} />
+            </Block>
 
-          <Block id="stack" title="Stack">
-            <ul className="flex flex-wrap gap-2">
-              {project.stack.map((tech) => (
-                <li key={tech}>
-                  <Tag className="h-7 text-sm text-fg">{tech}</Tag>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 text-sm text-muted">Demonstrates</p>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {project.demonstrates.map((skill) => (
-                <li key={skill}>
-                  <Tag>{skill}</Tag>
-                </li>
-              ))}
-            </ul>
-          </Block>
-        </div>
-      </Container>
+            <Block id="challenges" title="Challenges">
+              <List items={project.challenges} />
+            </Block>
+
+            <Block id="stack" title="Stack">
+              <ul className="flex flex-wrap gap-2">
+                {project.stack.map((tech) => (
+                  <li key={tech}>
+                    <Tag className="h-7 text-sm text-fg">{tech}</Tag>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 text-sm text-muted">Demonstrates</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {project.demonstrates.map((skill) => (
+                  <li key={skill}>
+                    <Tag>{skill}</Tag>
+                  </li>
+                ))}
+              </ul>
+            </Block>
+          </div>
+        </Container>
+      </div>
 
       <nav aria-label="Next project" className="border-t border-line">
         <Container>

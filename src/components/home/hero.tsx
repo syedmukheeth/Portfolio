@@ -33,20 +33,21 @@ export function Hero() {
           {PROFILE.name}
         </h1>
 
-        {/* Two columns only from lg: on tablets the photo would shrink to a thumbnail beside a narrow column. */}
-        <div className="mt-10 grid gap-10 md:mt-12 md:border-t md:border-line md:pt-12 lg:grid-cols-12 lg:items-center lg:gap-12">
-          <div className="lg:col-span-7">
+        {/* Two columns from md: tablets get the portrait beside the intro instead of a wide banner under it. */}
+        <div className="mt-10 grid gap-10 md:mt-12 md:grid-cols-12 md:items-center md:gap-8 md:border-t md:border-line md:pt-12 lg:gap-12">
+          <div className="md:col-span-7">
             <p className="enter max-w-[40ch] text-lg leading-8 text-muted sm:text-xl sm:leading-9" style={step(1)}>
               {keepHyphenatedWords(PROFILE.intro)}
             </p>
 
-            <div className="enter mt-8 flex flex-wrap items-center gap-3" style={step(2)}>
-              <CopyEmailButton />
+            {/* Phones: two equal, thumb-sized buttons across the full width. */}
+            <div className="enter mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center" style={step(2)}>
+              <CopyEmailButton className="justify-center max-sm:h-12" />
               <a
                 href={PROFILE.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="press inline-flex h-11 items-center gap-1.5 rounded-full border border-line px-5 text-sm font-medium text-fg hover:border-faint hover:bg-surface"
+                className="press inline-flex h-11 items-center justify-center gap-1.5 rounded-full border border-line px-5 text-sm font-medium text-fg hover:border-faint hover:bg-surface max-sm:h-12"
               >
                 Resume
                 <ArrowUpRight className="size-4" aria-hidden />
@@ -80,8 +81,9 @@ export function Hero() {
             </ul>
           </div>
 
-          {/* Phones: portrait crop, left-aligned with the text. sm+: landscape crop framed on the face; wider on tablets, where it spans the full column. */}
-          <figure className="enter w-full max-w-sm sm:max-w-none lg:col-span-5" style={step(1)}>
+          {/* Phones: square crop on the face, so the photo doesn't cost a whole screen. sm: landscape
+              banner under the text. md: tall portrait beside the intro. lg: back to landscape. */}
+          <figure className="enter w-full md:col-span-5" style={step(1)}>
             <Image
               src={PORTRAIT.src}
               alt={PORTRAIT.alt}
@@ -89,7 +91,7 @@ export function Hero() {
               height={PORTRAIT.height}
               priority
               unoptimized
-              className="aspect-[4/5] w-full rounded-xl border border-line object-cover sm:aspect-[4/3] sm:object-[50%_25%] md:aspect-[16/9] lg:aspect-[4/3]"
+              className="aspect-square w-full rounded-xl border border-line object-cover object-[50%_30%] sm:aspect-[16/10] sm:object-[50%_25%] md:aspect-[4/5] md:object-center lg:aspect-[4/3] lg:object-[50%_25%]"
             />
           </figure>
         </div>

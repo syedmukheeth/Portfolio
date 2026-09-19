@@ -88,7 +88,7 @@ export function DocumentViewer({ documents }: { documents: ExperienceDocument[] 
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open original in a new tab"
-              className="press grid size-8 place-items-center rounded-full text-muted hover:bg-elevated hover:text-fg"
+              className="press grid size-8 place-items-center rounded-full text-muted hover:bg-elevated hover:text-fg pointer-coarse:size-10"
             >
               <ExternalLink className="size-4" aria-hidden />
             </a>
@@ -107,7 +107,7 @@ export function DocumentViewer({ documents }: { documents: ExperienceDocument[] 
               alt={doc.label}
               width={doc.width}
               height={doc.height}
-              className="h-auto max-h-[calc(90vh-3.5rem)] w-auto max-w-full object-contain"
+              className="h-auto max-h-[calc(90dvh-3.5rem)] w-auto max-w-full object-contain"
             />
           )}
         </div>
@@ -122,7 +122,7 @@ function IconButton({ label, onClick, children }: { label: string; onClick: () =
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="press grid size-8 place-items-center rounded-full text-muted hover:bg-elevated hover:text-fg"
+      className="press grid size-8 place-items-center rounded-full text-muted hover:bg-elevated hover:text-fg pointer-coarse:size-10"
     >
       {children}
     </button>

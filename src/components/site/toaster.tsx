@@ -28,7 +28,7 @@ export function Toaster() {
   }, []);
 
   return (
-    <div role="status" aria-live="polite" className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center px-4">
+    <div role="status" aria-live="polite" className="pointer-events-none fixed inset-x-0 bottom-[calc(1.5rem+var(--dock))] z-50 flex justify-center px-4">
       {message && (
         <p key={message} className="pop rounded-full border border-line bg-elevated px-4 py-2 text-sm text-fg shadow-lg shadow-black/20">
           {message}

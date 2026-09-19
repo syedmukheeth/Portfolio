@@ -266,7 +266,7 @@ export function CommandPalette() {
         </button>
       </div>
 
-      <div id={listId} role="listbox" aria-label="Results" className="max-h-[min(24rem,60vh)] overflow-y-auto p-2">
+      <div id={listId} role="listbox" aria-label="Results" className="max-h-[min(24rem,50dvh)] overflow-y-auto p-2">
         {groups.length === 0 && (
           <p className="px-3 py-8 text-center text-sm text-muted">
             Nothing matches &ldquo;{query}&rdquo;. Try &ldquo;projects&rdquo; or &ldquo;email&rdquo;.

@@ -48,6 +48,20 @@
   --blink: 1.1s;
 }
 
+/* ───────────── layout ─────────────
+   --dock is the space the phone section dock (nav.tsx) takes at the bottom of the screen.
+   Page padding, the toast and scroll targets all clear it; it is 0 once the top nav takes over. */
+
+:root {
+  --dock: 0px;
+}
+
+@media (width < 48rem) {
+  :root {
+    --dock: calc(4.75rem + env(safe-area-inset-bottom));
+  }
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
@@ -69,6 +83,7 @@
     color-scheme: light;
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    scroll-padding-bottom: var(--dock);
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -80,6 +95,7 @@
      unlike hidden it creates no scroll container, so the sticky nav keeps working. */
   body {
     overflow-x: clip;
+    padding-bottom: var(--dock);
     background: var(--bg);
     color: var(--fg);
     font-feature-settings: "ss01", "cv11";
@@ -104,6 +120,15 @@
 }
 
 /* ───────────── utilities ───────────── */
+
+/* Page side padding. Never less than the safe area, so text clears the notch on a
+   phone held sideways. Edge-to-edge scrollers bleed by the base value (-mx-5 px-5). */
+@utility gutter {
+  padding-inline: max(1.25rem, env(safe-area-inset-left)) max(1.25rem, env(safe-area-inset-right));
+  @media (width >= 40rem) {
+    padding-inline: max(2rem, env(safe-area-inset-left)) max(2rem, env(safe-area-inset-right));
+  }
+}
 
 @utility no-scrollbar {
   scrollbar-width: none;
@@ -157,10 +182,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   .link,
-  .press {
+  .press,
+  .max-lg\:press {
     transition-duration: 0.01ms;
   }
-  .press:active {
+  .press:active,
+  .max-lg\:press:active {
     transform: none;
   }
 }
@@ -304,6 +331,10 @@ dialog.overlay::backdrop {
   dialog.overlay::backdrop {
     backdrop-filter: none;
     background: rgb(0 0 0 / 0.8);
+  }
+  .dock {
+    backdrop-filter: none;
+    background: var(--surface);
   }
 }
 

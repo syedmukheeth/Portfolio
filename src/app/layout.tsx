@@ -77,6 +77,9 @@ export const viewport: Viewport = {
   ],
   width: "device-width",
   initialScale: 1,
+  // Lets env(safe-area-inset-*) report real values: the phone dock clears the home indicator
+  // and the page gutter clears the notch in landscape.
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

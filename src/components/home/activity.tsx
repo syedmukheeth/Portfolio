@@ -75,16 +75,16 @@ export async function Activity() {
           }
         />
 
-        <dl className="mb-10 grid gap-6 sm:grid-cols-3">
+        <dl className="mb-10 grid grid-cols-3 gap-4 sm:gap-6">
           {stats.map(({ label, value }) => (
             <div key={label}>
-              <dd className="text-3xl font-semibold tracking-tight tabular-nums">{value}</dd>
-              <dt className="mt-1 text-sm text-muted">{label}</dt>
+              <dd className="text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">{value}</dd>
+              <dt className="mt-1 text-xs leading-5 text-muted sm:text-sm">{label}</dt>
             </div>
           ))}
         </dl>
 
-        <div className="no-scrollbar -mx-5 flex flex-row-reverse overflow-x-auto px-5 sm:mx-0 sm:px-0 md:justify-end">
+        <div className="no-scrollbar -mx-5 flex flex-row-reverse overflow-x-auto overscroll-x-contain px-5 [mask-image:linear-gradient(to_right,transparent,black_2.5rem)] sm:mx-0 sm:px-0 lg:justify-end lg:[mask-image:none]">
           <div role="img" aria-label={`${data.total} GitHub contributions in the last year`} className="shrink-0" style={{ width }}>
             <div aria-hidden className="relative mb-2 h-4 font-mono text-[10px] text-muted">
               {monthLabels(weeks).map(({ week, label }) => (

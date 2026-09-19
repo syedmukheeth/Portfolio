@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
+import { ReadMore } from "@/components/ui/read-more";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { LOKHA, PROFILE, STUDIO } from "@/lib/data";
 
@@ -36,33 +37,35 @@ export function About() {
     <section id="about" aria-labelledby="about-title" className="reveal py-16 md:py-20">
       <Container>
         <SectionHeading id="about" title="About" />
-        <div className="grid gap-12 md:grid-cols-12">
+        <div className="grid gap-8 md:grid-cols-12 md:gap-12">
           <div className="md:col-span-7">
-            <div className="space-y-5 text-[17px] leading-8 text-muted">
+            <div className="text-[17px] leading-8 text-muted">
               <p>
                 I&apos;m {PROFILE.shortName}, a software engineer focused on <Strong>backend architecture</Strong> and{" "}
                 <Strong>distributed systems</Strong>. I build infrastructure that makes complexity feel simple.
               </p>
-              <p>
-                Most of my work runs on <Strong>TypeScript, Node.js, Redis, Kafka and Docker</Strong>, from queue-driven
-                pipelines to realtime sync and sandboxed code execution.{" "}
-                <InlineLink href="/projects/sam-compiler">SAM Compiler</InlineLink> and{" "}
-                <InlineLink href="/projects/peer-net">PeerNet</InlineLink> are where I push on those ideas.
-              </p>
-              <p>
-                I&apos;m <Strong>Tech Lead</Strong> at{" "}
-                <a href={LOKHA.url} target="_blank" rel="noopener" className="link font-medium text-fg hover:text-accent-text">
-                  {LOKHA.name}
-                </a>
-                , a startup incubator in {LOKHA.locality}, where I lead website development. I also founded{" "}
-                <InlineLink href="/projects/sampeer-studio">{STUDIO.name}</InlineLink>, where I build storytelling
-                websites, growth systems and AI automation that help founders get noticed.
-              </p>
-              <p>
-                AI is part of how I build. I use <Strong>Claude Code, Codex and Antigravity</Strong> for AI-assisted
-                development, and I design <Strong>AI workflows and automations</Strong> that take repetitive work off a
-                team&apos;s plate.
-              </p>
+              <ReadMore className="mt-5 space-y-5">
+                <p>
+                  Most of my work runs on <Strong>TypeScript, Node.js, Redis, Kafka and Docker</Strong>, from queue-driven
+                  pipelines to realtime sync and sandboxed code execution.{" "}
+                  <InlineLink href="/projects/sam-compiler">SAM Compiler</InlineLink> and{" "}
+                  <InlineLink href="/projects/peer-net">PeerNet</InlineLink> are where I push on those ideas.
+                </p>
+                <p>
+                  I&apos;m <Strong>Tech Lead</Strong> at{" "}
+                  <a href={LOKHA.url} target="_blank" rel="noopener" className="link font-medium text-fg hover:text-accent-text">
+                    {LOKHA.name}
+                  </a>
+                  , a startup incubator in {LOKHA.locality}, where I lead website development. I also founded{" "}
+                  <InlineLink href="/projects/sampeer-studio">{STUDIO.name}</InlineLink>, where I build storytelling
+                  websites, growth systems and AI automation that help founders get noticed.
+                </p>
+                <p>
+                  AI is part of how I build. I use <Strong>Claude Code, Codex and Antigravity</Strong> for AI-assisted
+                  development, and I design <Strong>AI workflows and automations</Strong>{" "}
+                  that take repetitive work off a team&apos;s plate.
+                </p>
+              </ReadMore>
             </div>
 
             <aside aria-labelledby="learning-title" className="mt-12 border-t border-line pt-10">
@@ -102,11 +105,16 @@ export function About() {
             </aside>
           </div>
 
-          <dl className="grid grid-cols-2 content-start gap-x-6 gap-y-6 border-t border-line pt-8 md:col-span-4 md:col-start-9 md:grid-cols-1 md:border-t-0 md:border-l md:pt-0 md:pl-8">
+          {/* Phones and small tablets: a swipeable strip of fact cards right under the heading, so the
+              essentials come before the long read. md+: the sidebar beside the text. */}
+          <dl className="no-scrollbar order-first -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto overscroll-x-contain px-5 sm:-mx-8 sm:scroll-px-8 sm:px-8 md:order-none md:col-span-4 md:col-start-9 md:mx-0 md:grid md:grid-cols-1 md:content-start md:gap-6 md:overflow-visible md:border-l md:border-line md:px-0 md:pl-8">
             {FACTS.map(({ label, value, href }) => (
-              <div key={label}>
+              <div
+                key={label}
+                className="shrink-0 snap-start rounded-lg border border-line bg-surface px-4 py-3 md:rounded-none md:border-0 md:bg-transparent md:p-0"
+              >
                 <dt className="text-sm text-muted">{label}</dt>
-                <dd className="mt-1 text-[15px] font-medium">
+                <dd className="mt-1 text-[15px] font-medium whitespace-nowrap md:whitespace-normal">
                   {href ? (
                     <a href={href} target="_blank" rel="noopener noreferrer" className="link hover:text-accent-text">
                       {value}

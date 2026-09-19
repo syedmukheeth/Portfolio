@@ -9,11 +9,12 @@ export function Stack() {
     <section id="stack" aria-labelledby="stack-title" className="reveal py-16 md:py-20">
       <Container>
         <SectionHeading id="stack" title="Stack" />
-        <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-6 lg:gap-x-6">
+        {/* Phones: one category per row, its tools as wrapping chips. sm+: a column per category. */}
+        <div className="grid gap-5 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-10 lg:grid-cols-6 lg:gap-x-6">
           {SKILL_CATEGORIES.map((category) => (
             <div key={category}>
-              <h3 className="mb-4 text-sm text-muted">{category}</h3>
-              <ul className="space-y-3">
+              <h3 className="mb-2.5 text-sm text-muted sm:mb-4">{category}</h3>
+              <ul className="flex flex-wrap gap-1.5 sm:block sm:space-y-3">
                 {SKILLS.filter((s) => s.category === category).map(({ name, href, icon: Icon }) => {
                   const usedIn = projectsUsing(name).map((p) => p.title);
                   const tipId = `skill-${slug(name)}`;
@@ -24,11 +25,11 @@ export function Stack() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-describedby={usedIn.length ? tipId : undefined}
-                        className="hit-area inline-flex items-center gap-2.5 text-[15px] text-fg"
+                        className="press inline-flex h-8 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-[13px] text-fg sm:h-auto sm:gap-2.5 sm:rounded-none sm:border-0 sm:bg-transparent sm:px-0 sm:text-[15px] sm:hit-area"
                       >
                         <Icon
                           aria-hidden
-                          className="size-4 shrink-0 text-muted transition-colors duration-[var(--dur-micro)] group-hover:text-accent-text group-focus-within:text-accent-text"
+                          className="size-3.5 shrink-0 text-muted transition-colors duration-[var(--dur-micro)] group-hover:text-accent-text group-focus-within:text-accent-text sm:size-4"
                         />
                         {name}
                       </a>
