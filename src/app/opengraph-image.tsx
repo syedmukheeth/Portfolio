@@ -7,7 +7,7 @@ export const alt = `${PROFILE.name} | ${PROFILE.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const COLORS = { bg: "#0b0b0c", fg: "#ededee", muted: "#9a9aa1", line: "#232327", accent: "#c4e86f" };
+const COLORS = { bg: "#0b0b0c", fg: "#ededee", muted: "#9a9aa1", line: "#232327" };
 
 type Font = { name: string; data: ArrayBuffer; weight: 400 | 600; style: "normal" };
 
@@ -30,7 +30,7 @@ async function loadFont(name: string, weight: 400 | 600, text: string): Promise<
 export default async function OpengraphImage() {
   const subtitle = `${PROFILE.role} · Founder of SAMPeer Studio`;
   const [regular, semibold, portrait] = await Promise.all([
-    loadFont("Geist", 400, PROFILE.status + subtitle),
+    loadFont("Geist", 400, subtitle),
     loadFont("Geist", 600, PROFILE.name),
     readFile(join(process.cwd(), "public/images/portrait.jpg")).catch(() => null),
   ]);
@@ -51,23 +51,7 @@ export default async function OpengraphImage() {
         }}
       >
         <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              display: "flex",
-              alignSelf: "flex-start",
-              alignItems: "center",
-              gap: 12,
-              padding: "8px 18px",
-              border: `1px solid ${COLORS.line}`,
-              borderRadius: 999,
-              fontSize: 22,
-              color: COLORS.muted,
-            }}
-          >
-            <div style={{ width: 12, height: 12, borderRadius: 6, background: COLORS.accent }} />
-            {PROFILE.status}
-          </div>
-          <div style={{ marginTop: 36, fontSize: 76, fontWeight: 600, lineHeight: 1.02, letterSpacing: -3 }}>
+          <div style={{ fontSize: 76, fontWeight: 600, lineHeight: 1.02, letterSpacing: -3 }}>
             {PROFILE.name}
           </div>
           <div style={{ marginTop: 28, fontSize: 28, color: COLORS.muted }}>{subtitle}</div>

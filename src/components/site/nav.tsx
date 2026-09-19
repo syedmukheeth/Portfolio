@@ -74,7 +74,7 @@ export function Nav() {
             window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
             if (window.location.hash) history.replaceState(null, "", "/");
           }}
-          className="flex shrink-0 items-center gap-2.5 rounded-full"
+          className="hit-area flex shrink-0 items-center gap-2.5 rounded-full"
           aria-label={`${PROFILE.shortName}, home`}
         >
           <Image
@@ -98,7 +98,7 @@ export function Nav() {
                     href={isHome ? `#${id}` : `/#${id}`}
                     aria-current={current ? (isHome ? "location" : "page") : undefined}
                     className={cn(
-                      "press rounded-full px-3 py-1.5 text-sm",
+                      "press hit-area rounded-full px-3 py-1.5 text-sm",
                       current ? "text-accent-text" : "text-muted hover:text-fg",
                     )}
                   >
@@ -116,7 +116,7 @@ export function Nav() {
               openPalette();
             }}
             aria-keyshortcuts="Meta+K Control+K /"
-            className="press ml-1 inline-flex size-9 items-center justify-center gap-2 rounded-full border border-line bg-surface text-sm text-muted hover:border-faint hover:text-fg sm:h-8 sm:w-auto sm:pr-1.5 sm:pl-2.5 sm:pointer-coarse:pr-3"
+            className="press ml-1 inline-flex size-9 items-center justify-center gap-2 rounded-full border border-line bg-surface text-sm text-muted hover:border-faint hover:text-fg sm:h-8 sm:w-auto sm:pr-1.5 sm:pl-2.5 sm:pointer-coarse:h-9 sm:pointer-coarse:pr-3"
           >
             <Search className="size-3.5" aria-hidden />
             <span className="sr-only sm:not-sr-only">Search</span>
@@ -129,13 +129,13 @@ export function Nav() {
             href={PROFILE.resume}
             target="_blank"
             rel="noopener noreferrer"
-            className="press hidden items-center gap-0.5 rounded-full px-3 py-1.5 text-sm text-muted hover:text-fg sm:inline-flex"
+            className="press hit-area hidden items-center gap-0.5 rounded-full px-3 py-1.5 text-sm text-muted hover:text-fg sm:inline-flex"
           >
             Resume
             <ArrowUpRight className="size-3.5" aria-hidden />
           </a>
 
-          <ThemeToggle className="size-9 sm:size-8" />
+          <ThemeToggle className="size-9 sm:size-8 sm:pointer-coarse:size-9" />
 
           <button
             ref={menuButtonRef}
@@ -154,7 +154,7 @@ export function Nav() {
       <div
         id={menuId}
         hidden={!menuOpen}
-        className="pop absolute inset-x-0 top-full origin-top border-b border-line bg-bg shadow-2xl shadow-black/30 md:hidden"
+        className="pop absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] origin-top overflow-y-auto overscroll-contain border-b border-line bg-bg shadow-2xl shadow-black/30 md:hidden"
       >
         <Container>
           <ul className="py-2">

@@ -9,7 +9,7 @@ export function Stack() {
     <section id="stack" aria-labelledby="stack-title" className="reveal py-16 md:py-20">
       <Container>
         <SectionHeading id="stack" title="Stack" />
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-6">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-6 lg:gap-x-6">
           {SKILL_CATEGORIES.map((category) => (
             <div key={category}>
               <h3 className="mb-4 text-sm text-muted">{category}</h3>
@@ -24,7 +24,7 @@ export function Stack() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-describedby={usedIn.length ? tipId : undefined}
-                        className="inline-flex items-center gap-2.5 text-[15px] text-fg"
+                        className="hit-area inline-flex items-center gap-2.5 text-[15px] text-fg"
                       >
                         <Icon
                           aria-hidden

@@ -55,7 +55,7 @@ export function CopyEmailLarge() {
         type="button"
         onClick={onClick}
         aria-label={`Copy email address ${PROFILE.email}`}
-        className="press group inline-flex max-w-full items-center gap-3 text-left text-xl font-semibold tracking-tight wrap-anywhere min-[375px]:text-2xl sm:text-4xl"
+        className="press group inline-flex max-w-full items-center gap-3 text-left text-xl font-semibold tracking-tight wrap-anywhere min-[375px]:text-2xl sm:text-3xl md:text-4xl"
       >
         {/* On narrow screens, wrap at the @ rather than mid-name. */}
         <span className="link">

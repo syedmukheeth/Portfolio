@@ -13,7 +13,7 @@ export function Footer() {
           <kbd className="rounded-md border border-line bg-elevated px-1.5 font-mono text-[11px] leading-5">/</kbd>
           to search
         </p>
-        <a href="#top" className="link self-start sm:self-auto">
+        <a href="#top" className="link hit-area self-start sm:self-auto">
           Back to top
         </a>
       </Container>

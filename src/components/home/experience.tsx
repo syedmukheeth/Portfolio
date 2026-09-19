@@ -52,7 +52,7 @@ export function Experience() {
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="link inline-flex items-center gap-0.5 text-sm font-medium text-fg hover:text-accent-text"
+                            className="link hit-area inline-flex items-center gap-0.5 text-sm font-medium text-fg hover:text-accent-text"
                           >
                             {link.label}
                             <ArrowUpRight className="size-3.5" aria-hidden />

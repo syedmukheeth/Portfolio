@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }: Props) {
       <div aria-hidden className="reading-progress fixed inset-x-0 top-0 z-50 h-0.5 bg-accent-text" />
 
       <Container className="pt-10 md:pt-14">
-        <Link href="/projects" className="link inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg">
+        <Link href="/projects" className="link hit-area inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg">
           <ArrowLeft className="size-4" aria-hidden />
           All projects
         </Link>

@@ -127,6 +127,21 @@
   }
 }
 
+/* Touch screens: an invisible hit area at least 44px tall around small text links,
+   centred on the link so the layout doesn't move. */
+@utility hit-area {
+  position: relative;
+  @media (pointer: coarse) {
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 50% -0.5rem auto;
+      height: max(100%, 2.75rem);
+      translate: 0 -50%;
+    }
+  }
+}
+
 /* Tactile press for buttons. */
 @utility press {
   transition:

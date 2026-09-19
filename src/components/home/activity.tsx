@@ -68,7 +68,7 @@ export async function Activity() {
               href={`https://github.com/${PROFILE.github}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="link font-mono text-sm text-muted hover:text-fg"
+              className="link hit-area font-mono text-sm text-muted hover:text-fg"
             >
               @{PROFILE.github}
             </a>

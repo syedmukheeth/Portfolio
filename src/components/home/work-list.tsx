@@ -76,11 +76,20 @@ export function WorkList({ projects }: { projects: Project[] }) {
                 loading="lazy"
                 className="col-span-full aspect-[16/10] w-full rounded-lg border border-line object-cover object-top md:hidden"
               />
-              <div className="md:col-span-5">
-                <h3 className="text-xl font-semibold tracking-tight transition-colors duration-[var(--dur-micro)] group-hover:text-accent-text">
-                  {project.title}
-                </h3>
-                <p className="mt-1 text-sm text-muted">{project.tagline}</p>
+              <div className="md:col-span-5 md:pointer-coarse:flex md:pointer-coarse:items-center md:pointer-coarse:gap-4">
+                {/* eslint-disable-next-line @next/next/no-img-element -- touch tablets get no hover preview, so a small inline one */}
+                <img
+                  src={project.thumbnail}
+                  alt=""
+                  loading="lazy"
+                  className="hidden aspect-[16/10] w-28 shrink-0 rounded-md border border-line object-cover object-top md:pointer-coarse:block"
+                />
+                <div>
+                  <h3 className="text-xl font-semibold tracking-tight transition-colors duration-[var(--dur-micro)] group-hover:text-accent-text">
+                    {project.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted">{project.tagline}</p>
+                </div>
               </div>
               <p className="hidden text-sm text-muted md:col-span-3 md:block">{project.role}</p>
               <p className="hidden text-sm text-muted md:col-span-3 md:block">{project.stack.slice(0, 3).join(", ")}</p>

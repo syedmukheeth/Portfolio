@@ -10,8 +10,8 @@ function Featured({ project }: { project: Project }) {
   const href = `/projects/${project.id}`;
 
   return (
-    <article className="group grid gap-8 md:grid-cols-12 md:items-center md:gap-12">
-      <Link href={href} tabIndex={-1} aria-hidden className="block overflow-hidden rounded-xl border border-line bg-surface md:col-span-7">
+    <article className="group grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+      <Link href={href} tabIndex={-1} aria-hidden className="block overflow-hidden rounded-xl border border-line bg-surface lg:col-span-7">
         <Image
           src={project.thumbnail}
           alt=""
@@ -22,16 +22,16 @@ function Featured({ project }: { project: Project }) {
         />
       </Link>
 
-      <div className="md:col-span-5">
+      <div className="lg:col-span-5">
         <p className="text-sm text-muted">{project.role}</p>
         <h3 className="mt-2 text-3xl font-semibold tracking-tight">
           <Link href={href} className="link hover:text-accent-text">
             {project.title}
           </Link>
         </h3>
-        <p className="mt-3 leading-7 text-muted">{project.description}</p>
+        <p className="mt-3 max-w-[60ch] leading-7 text-muted">{project.description}</p>
 
-        <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-line pt-6">
+        <dl className="mt-6 grid max-w-md grid-cols-2 gap-4 border-t border-line pt-6 lg:max-w-none">
           {project.stats.slice(0, 2).map(({ label, value }) => (
             <div key={label}>
               <dd className="text-3xl font-semibold tracking-tight tabular-nums">{value}</dd>
@@ -41,7 +41,7 @@ function Featured({ project }: { project: Project }) {
         </dl>
 
         <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
-          <Link href={href} className="link inline-flex items-center gap-1 hover:text-accent-text">
+          <Link href={href} className="link hit-area inline-flex items-center gap-1 hover:text-accent-text">
             Read case study
             <ArrowRight className="size-4" aria-hidden />
           </Link>
@@ -50,7 +50,7 @@ function Featured({ project }: { project: Project }) {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="link inline-flex items-center gap-0.5 text-muted hover:text-fg"
+              className="link hit-area inline-flex items-center gap-0.5 text-muted hover:text-fg"
             >
               Visit site
               <ArrowUpRight className="size-4" aria-hidden />
@@ -73,7 +73,7 @@ export function Work({ heading = true }: { heading?: boolean }) {
             id="projects"
             title="Projects"
             action={
-              <Link href="/projects" className="link text-sm text-muted hover:text-fg">
+              <Link href="/projects" className="link hit-area text-sm text-muted hover:text-fg">
                 All projects
               </Link>
             }

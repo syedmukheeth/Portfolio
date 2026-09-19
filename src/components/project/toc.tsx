@@ -24,7 +24,7 @@ export function Toc({ items }: { items: TocItem[] }) {
                 href={`#${id}`}
                 aria-current={current ? "location" : undefined}
                 className={cn(
-                  "-ml-px block border-l py-1.5 pl-4 text-sm transition-colors duration-[var(--dur-micro)]",
+                  "hit-area -ml-px block border-l py-1.5 pl-4 text-sm transition-colors duration-[var(--dur-micro)]",
                   current ? "border-accent-text text-fg" : "border-transparent text-muted hover:text-fg",
                 )}
               >

@@ -102,7 +102,7 @@ export function About() {
             </aside>
           </div>
 
-          <dl className="grid content-start gap-6 border-t border-line pt-8 md:col-span-4 md:col-start-9 md:border-t-0 md:border-l md:pt-0 md:pl-8">
+          <dl className="grid grid-cols-2 content-start gap-x-6 gap-y-6 border-t border-line pt-8 md:col-span-4 md:col-start-9 md:grid-cols-1 md:border-t-0 md:border-l md:pt-0 md:pl-8">
             {FACTS.map(({ label, value, href }) => (
               <div key={label}>
                 <dt className="text-sm text-muted">{label}</dt>

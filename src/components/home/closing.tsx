@@ -33,7 +33,7 @@ export function Closing() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-fg"
+                  className="group hit-area inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-fg"
                 >
                   <Icon className="size-4" aria-hidden />
                   <span className="link">{label}</span>
