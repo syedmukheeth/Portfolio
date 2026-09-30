@@ -36,7 +36,7 @@ export const PROFILE = {
   /** Hero line. Keep it under 20 words. */
   intro: "Software engineer building backend, realtime and AI-powered systems. Founder of SAMPeer Studio.",
   email: "syedmukheeth09@gmail.com",
-  resume: "https://drive.google.com/file/d/1SMFd_ADTNeYjBQ-6IH7RHT_UzzAPrTBy/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1VCBuhFwEExmKZMlr2G9xuAy6Q3lYjDgn/view?usp=sharing",
   avatar: "/images/avatar.jpg",
   github: "syedmukheeth",
   twitter: "@syed_mukheeth",
